@@ -68,7 +68,7 @@
   --no-bg: #f8d7da;   --no-text: #7f1d1d;
   --good-bg: #cef6ce;
   --bad-bg: #f6cece;
-  --row-hover: #f2efe3;   /* soft row highlight */
+  --row-hover: #f9f7f1;   /* faint row highlight, about half the old #f2efe3 */
   --answer-bg: #f5f2e7;  /* the answer half of a FAQ item: a shade deeper than the white question row */
   --head-bg: #dad6c3; --head-text: #29261c;   /* table header cells: a light khaki from the site's olive family (was blue) */
   --band-bg: #ece7da;
@@ -92,7 +92,7 @@
     --accent: #c2b78a; --accent-text: #17141a; --link: #8fb8f0; --link-visited: #b89bea;
     --header-bg: #0f0c12; --header-text: #f3e9d2;
     --yes-bg: #1c3d2a; --yes-text: #b7f0c9; --no-bg: #4a1f26; --no-text: #f6c4ca;
-    --good-bg: #1d3b25; --bad-bg: #472228; --row-hover: #2b2822; --answer-bg: #1b1820; --head-bg: #3e3b2c; --head-text: #ece6d2; --band-bg: #2a2532;
+    --good-bg: #1d3b25; --bad-bg: #472228; --row-hover: #252224; --answer-bg: #1b1820; --head-bg: #3e3b2c; --head-text: #ece6d2; --band-bg: #2a2532;
     --warn-bg: #3d3210; --warn-border: #7a6420; --warn-text: #f3dd8b;
     --dark-bg: #0b090d; --dark-text: #eee;
   }
@@ -306,7 +306,7 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--wide { width: 100%; }
 
 /* table--hover: a soft highlight on the row under the pointer (data cells only, so header rows are left alone) */
-.page__body table.table--hover tr:hover > td { background-color: var(--row-hover); }
+.page__body table.table--hover tr:hover > td:not(.cell-good):not(.cell-bad) { background-color: var(--row-hover); }   /* green / red cells keep their colour */
 .page__body table.table--hover.table--sticky-first tr:nth-child(n+3):hover > :first-child { background-color: var(--row-hover); }   /* the frozen Race cell has its own solid background, so it needs its own hover rule */
 .page__body table.table--hover td { transition: background-color .12s; }
 @media (prefers-reduced-motion: reduce) { .page__body table.table--hover td { transition: none; } }
