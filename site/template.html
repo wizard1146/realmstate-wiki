@@ -36,6 +36,9 @@
     <nav class="site-nav" id="site-nav">
 {{nav}}
     </nav>
+    <!-- REGION: nav-marker (the broken shield beside the current page's row, sitting on the sidebar's edge. It lives outside
+         .site-nav because a scrolling box clips anything that pokes out of it; the script below keeps it level with the row.) -->
+    <span class="nav-marker" id="nav-marker" aria-hidden="true"></span>
     <script>
       /* Restore the nav's scroll position before first paint, so clicking a link doesn't send the sidebar back to the top.
          First visit in a tab: centre the current page's link instead. */
@@ -45,6 +48,21 @@
           if (y !== null) nav.scrollTop = +y;
           else { var a = nav.querySelector('[aria-current="page"]'); if (a) nav.scrollTop = a.offsetTop - nav.clientHeight / 2 + a.offsetHeight / 2; }
         } catch (e) {}
+      })();
+      /* Keep the shield level with the current page's row as the nav scrolls; hide it while the row is scrolled out of view. */
+      (function () {
+        var nav = document.getElementById('site-nav'), mark = document.getElementById('nav-marker'),
+            a = nav.querySelector('[aria-current="page"]'), side = nav.parentNode;
+        if (!a) return;
+        function place() {
+          var r = a.getBoundingClientRect(), n = nav.getBoundingClientRect(), mid = r.top + r.height / 2;
+          mark.style.top = (mid - side.getBoundingClientRect().top) + 'px';
+          mark.classList.toggle('is-shown', mid > n.top + 4 && mid < n.bottom - 4);
+        }
+        place();
+        nav.addEventListener('scroll', place, { passive: true });
+        addEventListener('resize', place);
+        if (document.fonts) document.fonts.ready.then(place);
       })();
     </script>
   </aside>
@@ -74,6 +92,8 @@
         </div>
 {{toc}}
       </article>
+      <!-- REGION: related (other pages in this page's sidebar group; built by build.py) -->
+{{related}}
       <!-- REGION: page-footer -->
       <footer class="page__footer">
 {{categories}}

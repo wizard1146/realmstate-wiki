@@ -204,7 +204,45 @@ def fill(template, **values):
     return template
 
 
-def render(template, nav, page, extra_body=""):
+NAV_GROUP = re.compile(r'<section class="nav-group[^"]*">\s*<h2 class="nav-group__title">(.*?)</h2>(.*?)</section>', re.S)
+
+
+def site_map(nav, pages):
+    """Group pages the way the sidebar does. Returns (groups, home): groups is [(title, [page, ...])] in nav order; home maps a slug to
+    (group title, parent page or None). A page that is not in the nav joins the group of the nav page whose title is one of its
+    categories (race-dwarf, category Races -> the Races page), as that page's child."""
+    by_url = {p["url"]: p for p in pages}
+    groups, home = [], {}
+    for title, block in NAV_GROUP.findall(nav):
+        members = [by_url[u] for u in re.findall(r'href="([^"]+)"', block) if u in by_url]
+        groups.append((plain(title), members))
+        for m in members: home.setdefault(m["slug"], (plain(title), None))
+    by_title = {p["title"]: p for g in groups for p in g[1]}
+    for p in pages:
+        if p["slug"] in home: continue
+        parent = next((by_title[c] for c in p["categories"] if c in by_title), None)
+        if parent: home[p["slug"]] = (home[parent["slug"]][0], parent)
+    return groups, home
+
+
+def related_box(page, groups, home, pages):
+    """'More in <group>' box under the article: the other pages in the same sidebar group, or, for a child page, its parent and siblings."""
+    if page["slug"] not in home: return ""
+    group, parent = home[page["slug"]]
+    if parent:
+        heading = parent["title"]
+        links = [parent] + sorted((p for p in pages if home.get(p["slug"], (None, None))[1] is parent), key=lambda p: p["title"].lower())
+    else:
+        heading = group
+        links = next(m for t, m in groups if t == group)
+    links = [p for p in links if p is not page]
+    if not links: return ""
+    items = "".join(f'<li><a href="{p["url"]}">{html.escape(p["title"])}</a></li>' for p in links)
+    return (f'<nav class="related" aria-label="Related pages"><h2 class="related__title">More in {html.escape(heading)}</h2>'
+            f'<ul class="related__list">{items}</ul></nav>')
+
+
+def render(template, nav, page, extra_body="", related=""):
     page = dict(page)
     page["body"], toc = add_toc(page)
     cats = ""
@@ -226,7 +264,7 @@ def render(template, nav, page, extra_body=""):
                 f'<strong class="status-banner__label">{st["label"]}.</strong> {st["banner"]}{note}{help_link}</aside>\n') + body
     body += extra_body
     tab = page.get("tab_title") or f'{page["title"]} · Realmstate Wiki'
-    return fill(template, toc=toc, body_class=" page__body--with-toc" if toc else "", title_class=" page__title--hidden" if page.get("hide_title") else "", tab_title=html.escape(tab), title=html.escape(page["title"]), body=body, nav=nav, categories=cats, credits=credits,
+    return fill(template, toc=toc, body_class=" page__body--with-toc" if toc else "", title_class=" page__title--hidden" if page.get("hide_title") else "", tab_title=html.escape(tab), title=html.escape(page["title"]), body=body, nav=nav, related=related, categories=cats, credits=credits,
                 description=html.escape(plain(page["body"])[:160]))
 
 
@@ -258,9 +296,18 @@ def main():
         lis = "".join(f'<li><a href="{m["url"]}">{html.escape(m["title"])}</a>' + (f' <span class="page-list__note">{html.escape(m["status_note"])}</span>' if m["status_note"] else "") + "</li>" for m in members)
         generated.append({"slug": st["list_slug"], "url": st["list_slug"] + ".html", "title": st["list_title"], "categories": [], "credits": [], "status": "", "status_note": "",
                           "body": f'<p>{st["blurb"]}</p>' + (f'<ul class="page-list">{lis}</ul>' if members else '<p><em>None right now.</em></p>')})
-    items = "".join(f'<li><a href="{p["url"]}">{html.escape(p["title"])}</a>{badge(p)}</li>' for p in sorted(pages, key=lambda p: p["title"].lower()))
-    generated.append({"slug": "all-pages", "url": "all-pages.html", "title": "All pages",
-                      "body": f'<ul class="page-list page-list--all">{items}</ul>', "categories": [], "credits": [], "status": "", "status_note": ""})
+    groups, home = site_map(nav, pages)
+    def entry(p):
+        kids = sorted((c for c in pages if home.get(c["slug"], (None, None))[1] is p), key=lambda c: c["title"].lower())
+        sub = f'<ul>{"".join(entry(c) for c in kids)}</ul>' if kids else ""
+        return f'<li><a href="{p["url"]}">{html.escape(p["title"])}</a>{badge(p)}{sub}</li>'
+    sections = [(t, members) for t, members in groups if members]
+    loose = sorted((p for p in pages if p["slug"] not in home), key=lambda p: p["title"].lower())
+    if loose: sections.append(("Other pages", loose))
+    body = "".join(f'<section class="all-pages__group"><h2>{html.escape(t)}</h2><ul class="page-list page-list--all">{"".join(entry(p) for p in members)}</ul></section>'
+                   for t, members in sections)
+    generated.append({"slug": "all-pages", "url": "all-pages.html", "title": "All pages", "toc": "no",
+                      "body": f'<p>Every page on the wiki, grouped as in the sidebar.</p><div class="all-pages">{body}</div>', "categories": [], "credits": [], "status": "", "status_note": ""})
     generated.append({"slug": "404", "url": "404.html", "title": "Page not found",
                       "body": '<p>That page does not exist (yet). Try the search box, or see <a href="all-pages.html">all pages</a>.</p>',
                       "categories": [], "credits": [], "status": "", "status_note": ""})
@@ -269,7 +316,7 @@ def main():
     known = {p["url"] for p in everything} | set(REDIRECTS) | {"search-index.json"}
     broken = []
     for p in everything:
-        (DIST / p["url"]).write_text(render(template, nav, p), encoding="utf-8")
+        (DIST / p["url"]).write_text(render(template, nav, p, related=related_box(p, groups, home, pages)), encoding="utf-8")
         lp = Links(); lp.feed(p["body"])
         for href in lp.hrefs:
             if re.match(r"^(https?:|mailto:|#)", href): continue
