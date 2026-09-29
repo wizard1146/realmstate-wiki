@@ -277,6 +277,147 @@ def units_table(d, vocab):
             f"{rows}</table></div>\n")
 
 
+UNIT_SHORT = {"offense": "Offense spec.", "defense": "Defense spec.", "elite": "Elite", "thief": "Thief",
+              "offense+": "Offense spec.+", "defense+": "Defense spec.+", "elite+": "Elite+"}
+AGE_DATES = CONTENT / "_age-dates.json"   # hand-edited: {"2": {"from": "2026-10-01", "to": "2026-12-31"}}; the game has no dates
+
+
+def age_dates(age):
+    """'1 Oct – 31 Dec 2026' from content/_age-dates.json, or 'dates to be announced'."""
+    import datetime
+    try: d = json.loads(AGE_DATES.read_text(encoding="utf-8")).get(str(age["age"]), {})
+    except (OSError, ValueError): d = {}
+    try: a, b = (datetime.date.fromisoformat(d[k]) for k in ("from", "to"))
+    except (KeyError, TypeError, ValueError): return "dates to be announced"
+    left = f"{a.day} {a:%b}" + ("" if a.year == b.year else f" {a.year}")
+    return f"{left} &ndash; {b.day} {b:%b %Y}"
+
+
+def split_effects(d, vocab):
+    """A definition's effects as (bonuses, penalties, other) lists of <li>."""
+    good, bad = [], []
+    for li in effects_list(d, vocab["stats"]):
+        (good if 'class="cell-good"' in li else bad).append(li)
+    other = [f'<li>{e(FLAG_TEXT.get(name, name))}</li>' for n, name in enumerate(vocab["flags"]) if d["flags"] & (1 << n)]
+    other += [f'<li>Unlocks {e(kind)} <b>{e(ident)}</b></li>' for kind, ident in d.get("unlocks", [])]
+    return good, bad, other
+
+
+def change_tag(changes, kind, ident):
+    """' new' / ' rebalanced' tag for a race or personality that changed since the previous age."""
+    for c in changes or []:
+        if c["kind"] == kind and c["identity"] == ident and c["to"]:
+            return f' <span class="status-badge status-badge--retired">{"rebalanced" if c["from"] else "new"}</span>'
+    return ""
+
+
+def other_changes(prev, cur):
+    """Everything but races and personalities that differs between two ages: [(area, what, before, after)]."""
+    rows = []
+    groups = {k: t for t, rows_ in grouped_params({**prev["params"], **cur["params"]}) for k, _, _ in rows_}
+    labels = {k: label for t, rows_ in grouped_params({**prev["params"], **cur["params"]}) for k, label, _ in rows_}
+    for k, _, how in PARAM_TEXT:
+        a, b = prev["params"].get(k), cur["params"].get(k)
+        if a != b:
+            show = lambda v: "&mdash;" if v is None else show_param(v, how)
+            rows.append((groups.get(k, "Other"), e(labels.get(k, k)), show(a), show(b)))
+    def ident(x): return x["key"]["identity"] if isinstance(x.get("key"), dict) else x.get("id") or x.get("name")
+    def version(x): return f'<code>{e(ident(x))}@{e(x["key"]["version"])}</code>' if isinstance(x.get("key"), dict) and x["key"].get("version") else "changed"
+    for field, area in (("buildings", "Buildings"), ("materials", "Materials"), ("recipes", "Refining"), ("traits", "Generals' traits"),
+                        ("sciences", "Sciences"), ("projects", "Colloquium projects"), ("attributes", "Academics' attributes")):
+        before = {ident(x): x for x in prev.get(field, []) if x}
+        after = {ident(x): x for x in cur.get(field, []) if x}
+        for k in sorted(set(before) | set(after)):
+            a, b = before.get(k), after.get(k)
+            name = e((b or a).get("name", k))
+            if a is None: rows.append((area, name, "&mdash;", "added"))
+            elif b is None: rows.append((area, name, "removed", "&mdash;"))
+            elif json.dumps(a, sort_keys=True) != json.dumps(b, sort_keys=True): rows.append((area, name, version(a), version(b)))
+    names = lambda age: [m["name"] for m in age.get("materials", [])]
+    for r in range(max(len(prev.get("realm_material", [])), len(cur.get("realm_material", [])))):
+        a = names(prev)[prev["realm_material"][r]] if r < len(prev.get("realm_material", [])) else None
+        b = names(cur)[cur["realm_material"][r]] if r < len(cur.get("realm_material", [])) else None
+        if a != b: rows.append(("Materials", f"Realm {r + 1} produces", e(a or "&mdash;"), e(b or "&mdash;")))
+    sb_prev, sb_cur = prev.get("starting_buildings") or {}, cur.get("starting_buildings") or {}
+    for k in sorted(set(sb_prev) | set(sb_cur)) if isinstance(sb_cur, dict) else []:
+        if sb_prev.get(k) != sb_cur.get(k):
+            rows.append(("Starting a house", f"Starting {e(k.replace('_', ' '))}", f'{sb_prev.get(k, 0):,}', f'{sb_cur.get(k, 0):,}'))
+    return rows
+
+
+def current_age_body(ages, vocab):
+    cur = ages[-1]
+    prev = ages[-2] if len(ages) > 1 else None
+    changes = cur.get("changes_from_previous")
+    races = [d for d in cur["races"] if d]
+    pers = [d for d in cur["personalities"] if d]
+    link = f'<a href="age-{cur["age"]}.html">{e(cur["name"])}</a>'
+    out = [f'<p>The current age is {link} ({age_dates(cur)}). This page sums up its races, personalities and what changed'
+           + (f' since <a href="age-{prev["age"]}.html">{e(prev["name"])}</a>' if prev else "") + '. Full numbers are on the ' + link + ' page.</p>\n']
+
+    # Units: one row per race. Each upgraded unit (+) shares its base unit's columns as "5 → 6"; a stat no race has is left out.
+    slots = vocab["unit_slots"]
+    cols = []
+    for k, role in enumerate(slots):
+        if role.endswith("+"): continue
+        up = slots.index(role + "+") if role + "+" in slots else None
+        units = lambda r: [r["units"][k]] + ([r["units"][up]] if up is not None else [])
+        stats = [s_ for s_ in ("off", "def", "gold") if any(u[s_] for r in races for u in units(r))]
+        if stats: cols.append((k, up, role, stats))
+    def cell(r, k, up, s_):
+        v = r["units"][k][s_]
+        w = r["units"][up][s_] if up is not None else v
+        return f'{v:,}' + (f' <span class="upgrade">&rarr;&nbsp;{w:,}</span>' if w != v else "")
+    head1 = "".join(f'<th colspan="{len(st)}">{e(UNIT_ROLE.get(role, role))}</th>' for k, up, role, st in cols)
+    head2 = "".join(f'<th class="cell-num">{ {"off": "Off", "def": "Def", "gold": "Gold"}[s_] }</th>' for k, up, role, st in cols for s_ in st)
+    body = "".join(
+        f'<tr><td><a href="race-{r["key"]["identity"]}.html"><b>{e(r["name"])}</b></a>{change_tag(changes, "race", r["key"]["identity"])}</td>'
+        + "".join(f'<td class="cell-num{" cell-muted" if s_ == "gold" else ""}">{cell(r, k, up, s_)}</td>' for k, up, role, st in cols for s_ in st)
+        + "</tr>\n" for r in races)
+    out.append('<h2 id="units">Race units</h2>\n<p>Offense, defense and gold cost of each unit. After the arrow: the upgraded unit (+), '
+               'where it differs. How upgrading works: <a href="military.html">Military</a>.</p>\n'
+               '<div class="table-scroll" data-updated="none"><table class="table--sticky-first table--hover table--unit-summary">\n'
+               f'<tr><th rowspan="2">Race</th>{head1}</tr>\n<tr>{head2}</tr>\n{body}</table></div>\n')
+
+    def effects_table(defs, kind, singular):
+        """Bonuses / Penalties / Other per definition. A column empty for every row is left out; a cell is shaded only when it has something."""
+        split = [(d, *split_effects(d, vocab)) for d in defs]
+        columns = [(n, label, cls, width) for n, label, cls, width in ((1, "Bonuses", "cell-good", ""), (2, "Penalties", "cell-bad", ""), (3, "Other", "", ' class="col-md"'))
+                   if any(row[n] for row in split)]
+        ul = lambda items: f'<ul class="list-plain list-spaced">{"".join(items)}</ul>' if items else '<span class="cell-muted">None</span>'
+        rows = "".join(
+            f'<tr><td><a href="{singular}-{d["key"]["identity"]}.html"><b>{e(d["name"])}</b></a>{change_tag(changes, singular, d["key"]["identity"])}</td>'
+            + "".join(f'<td{f" class={chr(34)}{cls}{chr(34)}" if cls and row[n] else ""} data-label="{label}">{ul(row[n])}</td>' for n, label, cls, _ in columns)
+            + "</tr>\n" for row in split for d in [row[0]])
+        heads = "".join(f"<th{w}>{label}</th>" for _, label, _, w in columns)
+        return ('<div class="table-scroll" data-updated="none"><table class="table--fixed table--cards table--hover table--wide">\n'
+                f'<tr><th class="col-sm">{e(kind)}</th>{heads}</tr>\n{rows}</table></div>\n')
+    out.append('<h2 id="race-effects">Race bonuses and penalties</h2>\n' + effects_table(races, "Race", "race"))
+    out.append('<h2 id="personalities">Personalities</h2>\n' + effects_table(pers, "Personality", "personality"))
+
+    gone = [c for c in changes or [] if not c["to"]]
+    if gone:
+        out.append("<p>Retired since " + e(prev["name"]) + ": " + ", ".join(
+            f'<a href="{c["kind"]}-{c["identity"]}.html">{e(c["identity"].title())}</a> ({e(c["kind"])})' for c in gone) + ".</p>\n")
+
+    if prev:
+        rows = other_changes(prev, cur)
+        out.append(f'<h2 id="changes">Other changes since {e(prev["name"])}</h2>\n')
+        if rows:
+            areas = []
+            for area, *_ in rows:
+                if area not in areas: areas.append(area)
+            body = "".join(
+                f'<tr class="row-group"><th colspan="3" scope="colgroup">{e(area)}</th></tr>\n'
+                + "".join(f'<tr><td>{w}</td><td class="cell-num cell-muted">{a}</td><td class="cell-num">{b}</td></tr>\n' for ar, w, a, b in rows if ar == area)
+                for area in areas)
+            out.append('<div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">\n'
+                       f'<tr><th>What</th><th class="cell-num">{e(prev["name"])}</th><th class="cell-num">{e(cur["name"])}</th></tr>\n{body}</table></div>\n')
+        else:
+            out.append("<p>Nothing else changed.</p>\n")
+    return "".join(out) + source_note(cur)
+
+
 def generate(rules):
     vocab = rules["vocabulary"]
     ages = rules["ages"]
@@ -403,6 +544,9 @@ def generate(rules):
                 f'<h2 id="races">Races</h2>\n{slots("races", "race")}'
                 f'<h2 id="personalities">Personalities</h2>\n{slots("personalities", "personality")}' + materials_html + source_note(a))
         pages[f"age-{a['age']}.html"] = header(a["name"], "Ages") + body
+
+    # Current age: one summary page, linked from "Current Age" in the sidebar.
+    pages["current-age.html"] = header("Current Age", "Ages") + current_age_body(ages, vocab)
 
     # Materials (latest age).
     # A material made only by refining sits directly under the material it is refined from.

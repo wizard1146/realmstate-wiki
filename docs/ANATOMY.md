@@ -58,6 +58,7 @@ Every part of the site has one stable name. Use these names in issues, PRs and c
 | `cell-muted` | Muted grey text for secondary figures (NW, cost) |
 | `cell-num` | Right-aligned figure with right padding (also put it on the column header). Keep decimals equal within a column so digits line up |
 | `table--fit` / `table--wide` | **Wiki rule:** a table is only as wide as its content needs. `build.py` adds `table--fit` to any table whose cells are all 40 characters or less; tables with sentences stay full width. Put `table--wide` on a table to keep it full width, or `table--fit` to force it narrow |
+| `table--unit-summary` | One row per race with each unit's stats across; `upgrade` wraps the upgraded unit's value after an arrow (Current Age) |
 | `table--grouped` | A long table split into topics by `<tr class="row-group"><th colspan="…">Topic</th></tr>` band rows (the age pages' Numbers) |
 | `table--fixed` | Fixed layout: columns with no width share the space equally |
 | `col-sm` / `col-md` | Width (7.5rem / 12rem) for a header cell of a `table--fixed` table |

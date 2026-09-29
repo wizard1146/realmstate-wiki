@@ -1,0 +1,4 @@
+{
+  "_note": "When each age runs. The game's rules have no dates, so they live here. Dates are YYYY-MM-DD; an age with no entry shows 'dates to be announced'. Run python3 tools/sync.py --offline after editing.",
+  "2": {"from": "", "to": ""}
+}

@@ -286,6 +286,13 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--units col.col-w-num { width: 3.25rem; }
 .page__body table.table--units col.col-w-cost { width: 5.5rem; }   /* wide enough that the "Cost (gc)" header stays on one line */
 .page__body table.table--units .cell-num { padding-left: .25rem; padding-right: .75rem; }   /* tighter than the default so 4-digit costs still fit the narrow columns */
+/* table--unit-summary: one row per race, each unit's stats across (Current Age). "upgrade" is the upgraded unit's value after an arrow. */
+.page__body table.table--unit-summary { width: auto; }
+.page__body table.table--unit-summary td:first-child { white-space: nowrap; }
+.page__body table.table--unit-summary .cell-num { white-space: nowrap; }
+.page__body table .upgrade { color: var(--muted); font-size: .85em; }
+.page__body table.table--unit-summary .status-badge { margin-left: .4rem; }
+
 /* table--grouped: a long table split into topics by row-group header rows (<tr class="row-group"><th colspan="…">Topic</th></tr>).
    The group row is a quiet band, not a second header, so the real column headers stay the strongest thing in the table. */
 .page__body table tr.row-group > th { padding: .55rem .6rem .3rem; background: var(--band-bg); color: var(--accent); text-align: left;
