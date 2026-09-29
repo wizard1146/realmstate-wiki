@@ -342,8 +342,8 @@ def generate(rules):
                                 f'<td>Refined from {e(mats[m]["name"])}</td><td class="cell-num cell-muted">–</td>'
                                 f'<td class="cell-num cell-muted">–</td></tr>')
     pages["materials.html"] = header("Materials", "Rules, Economy") + (
-        "<p>Every realm produces one material each tick. Bauxite is made in three realms, so weapons are never "
-        "scarce; every other material is made in two, so no realm holds a monopoly. See "
+        "<p>Every realm produces its own signature material each tick. No material comes from just one realm, "
+        "so nobody can corner the market. See "
         '<a href="trade.html">Materials and Trade</a> for how production is shared and sold.</p>\n'
         f'<h2 id="current">In {e(latest["name"])}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
         '<tr><th>Material</th><th>Used for</th><th>Made in realms</th><th class="cell-num">Per realm, per tick</th>'
