@@ -751,8 +751,13 @@ def generate(rules):
                 "example_treasury_part": state - houses,
                 "example_per_house": f'{houses / p["houses_per_state"]:.1f}',
             })
+    # Hostility meters count hundredths of a point; pages show points.
+    meter = ("hostility_attack_points", "hostility_failed_attack_points", "hostility_spy_points", "unfriendly_points",
+             "hostile_points", "declare_either_points", "auto_war_points", "hostility_cap", "meter_decay_min_points")
     for k, v in p.items():
-        if k.endswith("_bp"):
+        if k in meter:
+            values[k] = f"{v / 100:g}"
+        elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
         elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v

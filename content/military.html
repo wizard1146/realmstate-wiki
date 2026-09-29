@@ -40,15 +40,16 @@ updated: 2026-09-29
 <ol>
   <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
   <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>
-  <li>If offense is higher, you win and take {{land_gain_pct}}% of their land. They lose it at once; you receive it when your army returns.</li>
+  <li>If offense is higher, you win and take {{land_gain_pct}}% of their land. They lose it at once; you receive it when your army returns. You take more from a state that is Unfriendly or Hostile toward yours, and more still from one you're <a href="war.html">at war</a> with.</li>
   <li>Win or lose, {{attacker_loss_pct}}% of the troops you sent die and {{defender_loss_pct}}% of the target's troops at home die, less what each side's <a href="#Medics">medics</a> save.</li>
   <li>A win earns <a href="#Renown">renown</a>.</li>
   <li>Your army comes home {{attack_return_ticks}} hours later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
 </ol>
 <p>Troops that are away don't defend your house.</p>
+<p>You can't attack houses in your own state, or across a ceasefire. Every attack raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours.</p>
 
 <h2 id="Renown">Renown</h2>
-<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. War wins will add renown too (a later milestone). Renown unlocks better <a href="generals.html">generals</a>.</p>
+<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more, and winning a war gives every house in the state {{war_win_renown}}. Renown unlocks better <a href="generals.html">generals</a>.</p>
 
 <h2 id="What_You_Learn">What you learn</h2>
 <p>You see your own offense, whether you won, the land taken and the losses on both sides, but never the defender's defense. The defender's news tells them who attacked and what they lost. To size up a target first, <a href="spying.html">spy</a> on it.</p>

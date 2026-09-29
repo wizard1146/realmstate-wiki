@@ -1,0 +1,72 @@
+<!--
+title: War
+category: Mechanics
+updated: 2026-09-29
+-->
+<p>War is fought between <a href="world.html">states</a>, not single houses. It grows out of fighting: every attack or spy operation across two states makes the victim's state more hostile. Once a state is hostile enough, the other state's <a href="leadership.html">leader</a> may declare war. There are two kinds. A <b>general war</b> is between states of different realms. An <b>intra-realm war</b> is between states of the same realm.</p>
+
+<h2 id="Meter">The hostility meter</h2>
+<p>Each state keeps a meter for every other state: how hostile it feels toward that state. Actions by the other state's houses against its houses raise it:</p>
+<div class="table-wrap"><table>
+<tr><th>Action</th><th>Points</th></tr>
+<tr><td>A successful attack</td><td>{{hostility_attack_points}}</td></tr>
+<tr><td>An attack that is driven off</td><td>{{hostility_failed_attack_points}}</td></tr>
+<tr><td>A spy operation, caught or not</td><td>{{hostility_spy_points}}</td></tr>
+</table></div>
+<p>Every {{meter_decay_ticks}} ticks the meter falls by {{meter_decay_pct}}% or {{meter_decay_min_points}} points, whichever is more. It stops at {{hostility_cap}} points.</p>
+<p>You can't attack or spy on houses in your own state, or on a state you have a ceasefire with.</p>
+
+<h2 id="Relations">Relations</h2>
+<p>The meter sets the relation:</p>
+<div class="table-wrap"><table>
+<tr><th>Relation</th><th>Meter</th><th>Your gains when you attack them</th></tr>
+<tr><td>Normal</td><td>below {{unfriendly_points}}</td><td>normal</td></tr>
+<tr><td>Unfriendly</td><td>{{unfriendly_points}} or more</td><td>+{{unfriendly_gain_pct}}% land</td></tr>
+<tr><td>Hostile</td><td>{{hostile_points}} or more</td><td>+{{hostile_gain_pct}}% land</td></tr>
+</table></div>
+<p>The bonus goes to houses attacking a state that feels hostile toward <em>theirs</em>. A state that keeps attacking you makes itself a better target.</p>
+<p>Only the two states can see the meters between them (on your home page and at <code>/relations</code>). Wars and ceasefires are public.</p>
+
+<h2 id="Declaring">Declaring war</h2>
+<p>Only a state's leader can declare war, and only when all of these hold:</p>
+<ul>
+  <li>Neither state is already at war, and there's no ceasefire between them.</li>
+  <li>Their total land is {{war_range_min_pct}}% to {{war_range_max_pct}}% of yours.</li>
+  <li>At least {{war_unique_attackers}} different houses have attacked across the two states, either way.</li>
+  <li>They are Hostile toward you, and you are at least Unfriendly toward them.</li>
+</ul>
+<p>When both states are Hostile toward each other, only the one with the lower meter may declare. When both meters reach {{declare_either_points}}, either side may. When both reach {{auto_war_points}}, war starts on its own at the next tick, whatever the sizes.</p>
+
+<h2 id="AtWar">At war</h2>
+<ul>
+  <li>A war lasts at least {{war_min_ticks}} ticks.</li>
+  <li>Attacks between the two states take {{war_gain_pct}}% more land and earn {{war_renown_pct}}% more <a href="military.html#Renown">renown</a>.</li>
+  <li>Neither state's houses can buy or sell in the <a href="hall-of-deeds.html">Hall of Deeds</a>.</li>
+  <li>A state fights one war at a time.</li>
+</ul>
+
+<h2 id="Ending">Ending a war</h2>
+<p>After the minimum length, either leader can end it:</p>
+<ul>
+  <li><b>Withdraw.</b> Your state concedes and the other state wins.</li>
+  <li><b>Offer peace.</b> When both leaders have offered, the war ends in peace. Offering again takes the offer back.</li>
+</ul>
+<p>Every war ends with a {{eowcf_ticks}}-tick ceasefire that can't be broken. The meters between the two states start again from nothing.</p>
+
+<h2 id="Outcomes">Outcomes</h2>
+<div class="table-wrap"><table>
+<tr><th>Result</th><th>War points</th><th>Renown for every house in the state</th></tr>
+<tr><td>Win</td><td>{{war_win_points}}</td><td>{{war_win_renown}}</td></tr>
+<tr><td>Peace</td><td>{{war_peace_points}}</td><td>{{war_peace_renown}}</td></tr>
+<tr><td>Loss</td><td>0</td><td>0</td></tr>
+</table></div>
+<p>The winner also takes spoils, depending on the kind of war:</p>
+<ul>
+  <li><b>General war.</b> For {{tribute_ticks}} ticks, {{tribute_pct}}% of the loser's <a href="materials.html">material</a> output goes to the winner's treasury as tribute.</li>
+  <li><b>Intra-realm war.</b> The winner takes {{share_transfer_pct}}% of the realm's output <a href="trade.html#Shares">share</a> from the loser. A share never falls below {{share_floor_pct}}%, so a state near the floor gives up less.</li>
+</ul>
+<p><b>Example.</b> Two states in realm 4 each hold a {{equal_share_pct}}% share. The first wins an intra-realm war, so its share rises by {{share_transfer_pct}} points and the loser's falls by {{share_transfer_pct}}.</p>
+
+<h2 id="Ceasefires">Ceasefires</h2>
+<p>Leaders can also agree a ceasefire without a war. One leader proposes a length of {{ceasefire_min_ticks}} to {{ceasefire_max_ticks}} ticks. The other accepts by proposing the same length; a different length is a counter-proposal.</p>
+<p>A ceasefire blocks attacks and spying between the two states, and clears the meters between them. Either leader may break an agreed ceasefire once {{ceasefire_min_ticks}} ticks have passed. The ceasefire after a war can't be broken.</p>
