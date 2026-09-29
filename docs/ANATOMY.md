@@ -63,7 +63,7 @@ Every part of the site has one stable name. Use these names in issues, PRs and c
 | `table--fixed` | Fixed layout: columns with no width share the space equally |
 | `col-sm` / `col-md` | Width (7.5rem / 12rem) for a header cell of a `table--fixed` table |
 | `table--units` | Fixed narrow columns via `<colgroup>` (`col-w-race`, `col-w-num`, `col-w-cost`) instead of full width. Used on the Current Changes units table |
-| `table--hover` | Soft highlight (`--row-hover`) on the data row under the pointer |
+| `table--hover` | No longer needed: every table highlights the row under the pointer (faint `--row-hover`). Cells with their own colour keep it |
 | `table--borderless` | No cell borders, inside or out |
 | `table--sticky-first` | The first column stays in view while the table scrolls sideways (for two-row headers whose first header cell spans both rows) |
 | `table--cards` | Below 64rem each row turns into a card; each cell's `data-label="…"` becomes its caption. For text-heavy tables |

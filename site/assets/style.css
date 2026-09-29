@@ -149,9 +149,9 @@ a:visited { color: var(--link-visited); }
 }
 .nav-group__title { margin: 0 0 .25rem; padding: 0 .7rem; font-size: .78rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }   /* same plum as the Play Utopia button */
 .nav-group__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; }
-.nav-group__list a, .nav-group__list a:visited { display: block; padding: .54rem .7rem .3rem; border-radius: .3rem; text-decoration: none; color: var(--text-dim); transition: background-color .12s, color .12s; }
+.nav-group__list a, .nav-group__list a:visited { display: block; margin-right: -.7rem; padding: .54rem .7rem .3rem; border-radius: .3rem 0 0 .3rem; text-decoration: none; color: var(--text-dim); transition: background-color .12s, color .12s; }
 .nav-group__list a:hover { background: var(--surface); color: var(--text); }
-.nav-group__list a[aria-current="page"] { margin-right: -.7rem; border-radius: .3rem 0 0 .3rem; background: var(--surface); color: var(--text); }   /* the current row runs right up to the sidebar's border */
+.nav-group__list a[aria-current="page"] { background: var(--surface); color: var(--text); }   /* every row, hovered or current, runs right up to the sidebar's border (margin-right above) */
 /* nav-marker: the current page's broken shield, centred on the sidebar's right border so it overlaps both the sidebar and the page.
    Coloured to match the theme via mask. Positioned by the inline script in template.html (it can't live inside the scrolling .site-nav, which would clip it). */
 .nav-marker { position: absolute; top: 0; right: -14.5px; width: 28px; height: 28px; transform: translateY(-50%); pointer-events: none; opacity: 0; transition: opacity .12s;
@@ -305,11 +305,12 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--fit { width: auto; min-width: min(20rem, 100%); }
 .page__body table.table--wide { width: 100%; }
 
-/* table--hover: a soft highlight on the row under the pointer (data cells only, so header rows are left alone) */
-.page__body table.table--hover tr:hover > td:not(.cell-good):not(.cell-bad) { background-color: var(--row-hover); }   /* green / red cells keep their colour */
-.page__body table.table--hover.table--sticky-first tr:nth-child(n+3):hover > :first-child { background-color: var(--row-hover); }   /* the frozen Race cell has its own solid background, so it needs its own hover rule */
-.page__body table.table--hover td { transition: background-color .12s; }
-@media (prefers-reduced-motion: reduce) { .page__body table.table--hover td { transition: none; } }
+/* Row hover: every table gives the row under the pointer a faint highlight (data cells only, so header rows are left alone).
+   Cells with their own colour (bonus, penalty, heading, band, dark) keep it. The old table--hover class is no longer needed. */
+.page__body table tr:hover > td:not(.cell-good):not(.cell-bad):not(.cell-head):not(.cell-band):not(.cell-dark) { background-color: var(--row-hover); }
+.page__body table.table--sticky-first tr:nth-child(n+3):hover > :first-child { background-color: var(--row-hover); }   /* the frozen Race cell has its own solid background, so it needs its own hover rule */
+.page__body table td { transition: background-color .12s; }
+@media (prefers-reduced-motion: reduce) { .page__body table td { transition: none; } }
 
 /* table--cards: below 64rem each row becomes a card, with a caption (from the cell's data-label) above each section. Use with table--fixed tables
    whose columns are too text-heavy to squeeze into a narrow screen. The header row is hidden visually but kept for screen readers. */
