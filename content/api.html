@@ -10,8 +10,11 @@ updated: 2026-09-29
 <tr><td><code>GET /world</code></td><td>Age, current time, tick count, number of houses</td></tr>
 <tr><td><code>GET /rules</code></td><td>The age's slots, definitions, fingerprints and numbers</td></tr>
 <tr><td><code>GET /rankings</code></td><td>The 100 largest houses by land</td></tr>
-<tr><td><code>GET /houses/{id}</code></td><td>One house, including its address</td></tr>
+<tr><td><code>GET /houses/{id}</code></td><td>Your own house in full; any other house's public facts (name, address, race, land)</td></tr>
+<tr><td><code>GET /states/{realm}/{state}</code></td><td>A state's houses (public facts)</td></tr>
 <tr><td><code>GET /me</code></td><td>Your account and your house this age (signed in)</td></tr>
+<tr><td><code>GET /news</code></td><td>Your house's news, newest first (signed in)</td></tr>
+<tr><td><code>GET /reports</code></td><td>Spy reports from your state, newest first; add <code>?target={id}</code> for one house (signed in)</td></tr>
 <tr><td><code>POST /commands</code></td><td>Give an order (signed in; below)</td></tr>
 </table></div>
 
@@ -20,7 +23,8 @@ updated: 2026-09-29
 {"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage", "realm": 4, "state": 2}
 {"type": "explore", "house": 0, "acres": 20}
 {"type": "train", "house": 0, "unit": 2, "count": 100}
-{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}</code></pre>
+{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}
+{"type": "spy", "house": 0, "target": 5, "thieves": 20}</code></pre>
 <p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 
 <h2 id="Answers">Answers</h2>
@@ -30,4 +34,4 @@ updated: 2026-09-29
   <li><b>422</b>: the game refused the order; <code>error</code> says why (for example "that house isn't yours").</li>
   <li><b>429</b>: too many orders. You may send a burst of 30, then 5 a second.</li>
 </ul>
-<p>Reads may lag the game by up to a quarter of a second. Every house is public to read for now; hidden information arrives with spying, in a later milestone.</p>
+<p>Reads may lag the game by up to a quarter of a second. What each request may show follows <a href="visibility.html">What You Can See</a>: a successful <code>spy</code> answers with a full report, and nothing else reveals another house's hidden numbers.</p>

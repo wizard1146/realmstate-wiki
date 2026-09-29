@@ -19,6 +19,8 @@
   "peasant_growth_pct": "3",
   "people_per_acre": 25,
   "realms": 13,
+  "spy_base_success_pct": "50",
+  "spy_loss_pct": "5",
   "starting_food": "60,000",
   "starting_gold": "150,000",
   "starting_land": 400,

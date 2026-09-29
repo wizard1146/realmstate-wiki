@@ -1,0 +1,23 @@
+<!--
+title: Spying
+category: Mechanics
+updated: 2026-09-29
+-->
+<p>Other houses' gold, food, peasants and troops are hidden (see <a href="visibility.html">What You Can See</a>). Spying is how you find them out. You send thieves, the fourth <a href="military.html">unit slot</a>, at a target house.</p>
+
+<h2 id="Chance">Chance of success</h2>
+<p>It depends on thieves per acre: yours sent, against theirs at home.</p>
+<ul>
+  <li>Equal thieves per acre: {{spy_base_success_pct}}%.</li>
+  <li>More than them raises the chance; fewer lowers it. Formally: {{spy_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs).</li>
+  <li>It never goes above 95% or below 5%. A target with no thieves at home is spied on at 95%.</li>
+</ul>
+
+<h2 id="Success">If it works</h2>
+<p>You get a full report of the house as it is right now: land, incoming land, peasants, gold, food, troops at home, troops away and troops in training. The target is not told.</p>
+<p>Everyone in your state can read the report too. It stays in your state's reports.</p>
+
+<h2 id="Failure">If it fails</h2>
+<p>{{spy_loss_pct}}% of the thieves you sent are caught (at least one). The target's news says how many were caught, and which house sent them.</p>
+
+<p class="data-note">Stealth and other thievery operations come in a later milestone. For now, spying has no cost beyond the thieves you risk.</p>

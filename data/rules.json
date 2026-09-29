@@ -3,7 +3,7 @@
     {
       "age": 1,
       "changes_from_previous": null,
-      "hash": "b554dcbb72b843c5",
+      "hash": "bc5ac22cf0e42acc",
       "name": "Age 1",
       "params": {
         "attack_return_ticks": 12,
@@ -20,6 +20,8 @@
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "spy_base_success_bp": 5000,
+        "spy_loss_bp": 500,
         "starting_food": 60000,
         "starting_gold": 150000,
         "starting_land": 400,
@@ -396,7 +398,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "9657490261c3101c",
+      "hash": "cb8862136c7f6966",
       "name": "Age 2",
       "params": {
         "attack_return_ticks": 12,
@@ -413,6 +415,8 @@
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "spy_base_success_bp": 5000,
+        "spy_loss_bp": 500,
         "starting_food": 60000,
         "starting_gold": 150000,
         "starting_land": 400,

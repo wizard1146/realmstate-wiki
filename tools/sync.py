@@ -67,6 +67,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("attacker_loss_bp", "Attacker's troops lost", "pct"),
     ("defender_loss_bp", "Defender's troops lost", "pct"),
     ("luck_bp", "Battle luck (offense varies by up to)", "pm"),
+    ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
+    ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
 ]
 
 e = html.escape
