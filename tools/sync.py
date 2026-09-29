@@ -166,6 +166,35 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("settling_penalty_bp", "Trading: penalty while settling in", "pct"),
 ]
 
+# Groups for an age's Numbers table, in order. A rule joins a group by its key, or by its label's "Topic:" prefix.
+# The prefix is dropped from the label when it just repeats the group's name. Anything unmatched lands in "Other".
+PARAM_GROUPS = [
+    ("World", {"realms", "states_per_realm", "houses_per_state", "tick_ms"}, ()),
+    ("Starting a house", {"starting_land", "starting_peasants", "starting_gold", "starting_food"}, ()),
+    ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp"}, ()),
+    ("Land and construction", {"explore_gold_per_acre", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
+    ("Economy", set(), ("Economy",)),
+    ("Trading", set(), ("Trading",)),
+    ("War", {"train_ticks", "attack_return_ticks", "land_gain_bp", "attacker_loss_bp", "defender_loss_bp", "luck_bp", "renown_per_win"},
+     ("Upgrades", "Medics", "Mounts", "Chariots")),
+    ("Generals", set(), ("Generals",)),
+    ("Spying", set(), ("Spying",)),
+    ("Science", set(), ("Science", "Learning by doing", "Lost texts", "Colloquium", "Academics")),
+]
+
+
+def grouped_params(params):
+    """PARAM_TEXT entries present in `params`, as [(group title, [(key, label, how), ...])] in PARAM_GROUPS order."""
+    out = {title: [] for title, _, _ in PARAM_GROUPS} | {"Other": []}
+    for k, label, how in PARAM_TEXT:
+        if k not in params: continue
+        prefix, _, rest = label.partition(": ")
+        title = next((t for t, keys, prefixes in PARAM_GROUPS if k in keys or (rest and prefix in prefixes)), "Other")
+        if rest and prefix == title: label = rest[0].upper() + rest[1:]
+        out[title].append((k, label, how))
+    return [(t, rows) for t, rows in out.items() if rows]
+
+
 e = html.escape
 
 
@@ -331,8 +360,10 @@ def generate(rules):
                                                     "Reports from an age are always read under that age's rules.</p>\n"
                                                     f"<ul>\n{lis}</ul>\n") + source_note(latest)
     for n, a in enumerate(ages):
-        params = "".join(f'<tr><td>{e(label)}</td><td class="cell-num">{show_param(a["params"][k], how)}</td></tr>\n'
-                         for k, label, how in PARAM_TEXT if k in a["params"])
+        params = "".join(
+            f'<tr class="row-group" id="numbers-{re.sub(r"[^a-z]+", "-", title.lower())}"><th colspan="2" scope="colgroup">{e(title)}</th></tr>\n'
+            + "".join(f'<tr><td>{e(label)}</td><td class="cell-num">{show_param(a["params"][k], how)}</td></tr>\n' for k, label, how in rows)
+            for title, rows in grouped_params(a["params"]))
         def slots(kind, singular):
             rows = []
             for slot, d in enumerate(a[kind]):
@@ -346,7 +377,7 @@ def generate(rules):
         realm_rows = "".join(
             f'<tr><td class="cell-num">{r + 1}</td><td><a href="materials.html#{a["materials"][m]["key"]["identity"]}">{e(a["materials"][m]["name"])}</a></td></tr>\n'
             for r, m in enumerate(a.get("realm_material", [])))
-        materials_html = ('<h2 id="materials">Materials</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+        materials_html = ('<h2 id="materials">Materials</h2>\n<div class="table-scroll" data-updated="none"><table class="table--fit">\n'
                           f'<tr><th class="cell-num">Realm</th><th>Material</th></tr>\n{realm_rows}</table></div>\n') if realm_rows else ""
         changes = a["changes_from_previous"]
         if changes is None:
@@ -367,7 +398,7 @@ def generate(rules):
         prev = f' (compared with <a href="age-{ages[n - 1]["age"]}.html">{e(ages[n - 1]["name"])}</a>)' if n else ""
         body = (f'<p>Ruleset fingerprint <code>{e(a["hash"])}</code>.</p>\n'
                 f'<h2 id="changes">What changed{prev}</h2>\n{notes}'
-                '<h2 id="numbers">Numbers</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+                '<h2 id="numbers">Numbers</h2>\n<div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">\n'
                 f'<tr><th>Rule</th><th class="cell-num">Value</th></tr>\n{params}</table></div>\n'
                 f'<h2 id="races">Races</h2>\n{slots("races", "race")}'
                 f'<h2 id="personalities">Personalities</h2>\n{slots("personalities", "personality")}' + materials_html + source_note(a))

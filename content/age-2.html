@@ -12,35 +12,58 @@ generated: tools/sync.py
 <li><a href="personality-explorer.html">explorer</a> added (<code>explorer@v1</code>)</li>
 </ul>
 <h2 id="numbers">Numbers</h2>
-<div class="table-scroll" data-updated="none"><table>
+<div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">
 <tr><th>Rule</th><th class="cell-num">Value</th></tr>
+<tr class="row-group" id="numbers-world"><th colspan="2" scope="colgroup">World</th></tr>
 <tr><td>Realms in the world</td><td class="cell-num">13</td></tr>
 <tr><td>States in each realm</td><td class="cell-num">7</td></tr>
 <tr><td>Houses each state can hold</td><td class="cell-num">15</td></tr>
 <tr><td>Length of a tick</td><td class="cell-num">1 hour(s)</td></tr>
+<tr class="row-group" id="numbers-starting-a-house"><th colspan="2" scope="colgroup">Starting a house</th></tr>
 <tr><td>Starting land (acres)</td><td class="cell-num">400</td></tr>
 <tr><td>Starting peasants</td><td class="cell-num">8,000</td></tr>
 <tr><td>Starting gold</td><td class="cell-num">150,000</td></tr>
 <tr><td>Starting food</td><td class="cell-num">60,000</td></tr>
+<tr class="row-group" id="numbers-population-and-food"><th colspan="2" scope="colgroup">Population and food</th></tr>
 <tr><td>Peasant growth per tick</td><td class="cell-num">3%</td></tr>
 <tr><td>Gold per peasant per tick</td><td class="cell-num">3</td></tr>
 <tr><td>Food eaten per person per tick</td><td class="cell-num">0.25</td></tr>
 <tr><td>Peasants lost per tick without food</td><td class="cell-num">2%</td></tr>
+<tr class="row-group" id="numbers-land-and-construction"><th colspan="2" scope="colgroup">Land and construction</th></tr>
 <tr><td>Gold to explore one acre</td><td class="cell-num">600</td></tr>
 <tr><td>Explored land arrives after (ticks)</td><td class="cell-num">12</td></tr>
+<tr><td>Land: people each barren acre houses</td><td class="cell-num">15</td></tr>
+<tr><td>Land: food each barren acre grows per tick</td><td class="cell-num">2</td></tr>
+<tr><td>Land: people each acre under construction houses</td><td class="cell-num">15</td></tr>
+<tr><td>Construction: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
+<tr><td>Construction: land added before costing</td><td class="cell-num">10,000</td></tr>
+<tr><td>Construction: ticks to build</td><td class="cell-num">16</td></tr>
+<tr><td>Razing: base gold per building</td><td class="cell-num">300</td></tr>
+<tr><td>Razing: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
+<tr><td>Efficiency: peasants needed, as a share of jobs</td><td class="cell-num">67%</td></tr>
+<tr class="row-group" id="numbers-economy"><th colspan="2" scope="colgroup">Economy</th></tr>
+<tr><td>Lowest share a state can fall to</td><td class="cell-num">7%</td></tr>
+<tr><td>Part of a state&#x27;s output shared among its houses</td><td class="cell-num">50%</td></tr>
+<tr><td>Lowest state tax on house income</td><td class="cell-num">0%</td></tr>
+<tr><td>Highest state tax on house income</td><td class="cell-num">10%</td></tr>
+<tr><td>Tax a new state starts with</td><td class="cell-num">2%</td></tr>
+<tr class="row-group" id="numbers-trading"><th colspan="2" scope="colgroup">Trading</th></tr>
+<tr><td>Share of a sale paid to the seller&#x27;s state</td><td class="cell-num">5%</td></tr>
+<tr><td>Extra an out-of-realm buyer pays</td><td class="cell-num">10%</td></tr>
+<tr><td>Shortest auction, ticks</td><td class="cell-num">12</td></tr>
+<tr><td>Longest auction, ticks</td><td class="cell-num">48</td></tr>
+<tr><td>Each bid must beat the last by</td><td class="cell-num">5%</td></tr>
+<tr><td>An offer lapses after, ticks</td><td class="cell-num">24</td></tr>
+<tr><td>No trading again for, ticks</td><td class="cell-num">72</td></tr>
+<tr><td>Settling in lasts, ticks</td><td class="cell-num">24</td></tr>
+<tr><td>Penalty while settling in</td><td class="cell-num">-5%</td></tr>
+<tr class="row-group" id="numbers-war"><th colspan="2" scope="colgroup">War</th></tr>
 <tr><td>Troops finish training after (ticks)</td><td class="cell-num">9</td></tr>
 <tr><td>Armies return after (ticks)</td><td class="cell-num">12</td></tr>
 <tr><td>Land taken on a successful attack</td><td class="cell-num">10%</td></tr>
 <tr><td>Attacker&#x27;s troops lost</td><td class="cell-num">8%</td></tr>
 <tr><td>Defender&#x27;s troops lost</td><td class="cell-num">6%</td></tr>
 <tr><td>Battle luck (offense varies by up to)</td><td class="cell-num">&plusmn;5%</td></tr>
-<tr><td>Spying: chance with equal thieves per acre</td><td class="cell-num">50%</td></tr>
-<tr><td>Spying: thieves caught when it fails</td><td class="cell-num">5%</td></tr>
-<tr><td>Economy: lowest share a state can fall to</td><td class="cell-num">7%</td></tr>
-<tr><td>Economy: part of a state&#x27;s output shared among its houses</td><td class="cell-num">50%</td></tr>
-<tr><td>Economy: lowest state tax on house income</td><td class="cell-num">0%</td></tr>
-<tr><td>Economy: highest state tax on house income</td><td class="cell-num">10%</td></tr>
-<tr><td>Economy: tax a new state starts with</td><td class="cell-num">2%</td></tr>
 <tr><td>Upgrades: extra main stat of an upgraded unit (unless the race sets it)</td><td class="cell-num">25%</td></tr>
 <tr><td>Upgrades: material spent</td><td class="cell-num">bauxite</td></tr>
 <tr><td>Upgrades: material per unit</td><td class="cell-num">1</td></tr>
@@ -51,34 +74,30 @@ generated: tools/sync.py
 <tr><td>Medics: deaths saved per medic per 100 troops</td><td class="cell-num">2%</td></tr>
 <tr><td>Medics: most deaths saved</td><td class="cell-num">50%</td></tr>
 <tr><td>Renown for a successful attack (scaled by how close it was)</td><td class="cell-num">20</td></tr>
-<tr><td>Generals: material paid</td><td class="cell-num">amber</td></tr>
-<tr><td>Generals: elites retired to raise one</td><td class="cell-num">100</td></tr>
-<tr><td>Generals: material per trait</td><td class="cell-num">50</td></tr>
-<tr><td>Generals: renown for 1st, 2nd, 3rd... trait</td><td class="cell-num">0, 200, 500</td></tr>
-<tr><td>Generals: renown to choose traits</td><td class="cell-num">300</td></tr>
-<tr><td>Generals: most a house can keep</td><td class="cell-num">5</td></tr>
-<tr><td>Generals: chance of dying leading a failed attack</td><td class="cell-num">5%</td></tr>
-<tr><td>Land: people each barren acre houses</td><td class="cell-num">15</td></tr>
-<tr><td>Land: food each barren acre grows per tick</td><td class="cell-num">2</td></tr>
-<tr><td>Land: people each acre under construction houses</td><td class="cell-num">15</td></tr>
-<tr><td>Construction: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
-<tr><td>Construction: land added before costing</td><td class="cell-num">10,000</td></tr>
-<tr><td>Construction: ticks to build</td><td class="cell-num">16</td></tr>
-<tr><td>Razing: base gold per building</td><td class="cell-num">300</td></tr>
-<tr><td>Razing: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
-<tr><td>Efficiency: peasants needed, as a share of jobs</td><td class="cell-num">67%</td></tr>
 <tr><td>Mounts: offense a horse adds</td><td class="cell-num">1</td></tr>
 <tr><td>Mounts: offense a chariot adds</td><td class="cell-num">2</td></tr>
 <tr><td>Chariots: horses per chariot</td><td class="cell-num">1</td></tr>
 <tr><td>Chariots: material used</td><td class="cell-num">timber</td></tr>
 <tr><td>Chariots: material per chariot</td><td class="cell-num">1</td></tr>
 <tr><td>Chariots: gold per chariot</td><td class="cell-num">100</td></tr>
-<tr><td>Science: scientists a new house starts with</td><td class="cell-num">6</td></tr>
-<tr><td>Science: new scientists per tick, thousandths</td><td class="cell-num">100</td></tr>
-<tr><td>Science: ranks as [books written per scientist, books a tick]</td><td class="cell-num">0: 60, 1,440: 80, 5,280: 100, 12,480: 120</td></tr>
-<tr><td>Science: material that speeds research</td><td class="cell-num">paper</td></tr>
-<tr><td>Science: books each paper adds</td><td class="cell-num">5</td></tr>
-<tr><td>Science: most extra books from paper, share of the base</td><td class="cell-num">100%</td></tr>
+<tr class="row-group" id="numbers-generals"><th colspan="2" scope="colgroup">Generals</th></tr>
+<tr><td>Material paid</td><td class="cell-num">amber</td></tr>
+<tr><td>Elites retired to raise one</td><td class="cell-num">100</td></tr>
+<tr><td>Material per trait</td><td class="cell-num">50</td></tr>
+<tr><td>Renown for 1st, 2nd, 3rd... trait</td><td class="cell-num">0, 200, 500</td></tr>
+<tr><td>Renown to choose traits</td><td class="cell-num">300</td></tr>
+<tr><td>Most a house can keep</td><td class="cell-num">5</td></tr>
+<tr><td>Chance of dying leading a failed attack</td><td class="cell-num">5%</td></tr>
+<tr class="row-group" id="numbers-spying"><th colspan="2" scope="colgroup">Spying</th></tr>
+<tr><td>Chance with equal thieves per acre</td><td class="cell-num">50%</td></tr>
+<tr><td>Thieves caught when it fails</td><td class="cell-num">5%</td></tr>
+<tr class="row-group" id="numbers-science"><th colspan="2" scope="colgroup">Science</th></tr>
+<tr><td>Scientists a new house starts with</td><td class="cell-num">6</td></tr>
+<tr><td>New scientists per tick, thousandths</td><td class="cell-num">100</td></tr>
+<tr><td>Ranks as [books written per scientist, books a tick]</td><td class="cell-num">0: 60, 1,440: 80, 5,280: 100, 12,480: 120</td></tr>
+<tr><td>Material that speeds research</td><td class="cell-num">paper</td></tr>
+<tr><td>Books each paper adds</td><td class="cell-num">5</td></tr>
+<tr><td>Most extra books from paper, share of the base</td><td class="cell-num">100%</td></tr>
 <tr><td>Learning by doing: books for a close win</td><td class="cell-num">200</td></tr>
 <tr><td>Learning by doing: books for a successful spy</td><td class="cell-num">50</td></tr>
 <tr><td>Learning by doing: books per building built</td><td class="cell-num">5</td></tr>
@@ -96,15 +115,6 @@ generated: tools/sync.py
 <tr><td>Academics: material per attribute</td><td class="cell-num">50</td></tr>
 <tr><td>Academics: books invested for 1st, 2nd, 3rd attribute</td><td class="cell-num">0, 50,000, 200,000</td></tr>
 <tr><td>Academics: books invested to choose attributes</td><td class="cell-num">100,000</td></tr>
-<tr><td>Trading: share of a sale paid to the seller&#x27;s state</td><td class="cell-num">5%</td></tr>
-<tr><td>Trading: extra an out-of-realm buyer pays</td><td class="cell-num">10%</td></tr>
-<tr><td>Trading: shortest auction, ticks</td><td class="cell-num">12</td></tr>
-<tr><td>Trading: longest auction, ticks</td><td class="cell-num">48</td></tr>
-<tr><td>Trading: each bid must beat the last by</td><td class="cell-num">5%</td></tr>
-<tr><td>Trading: an offer lapses after, ticks</td><td class="cell-num">24</td></tr>
-<tr><td>Trading: no trading again for, ticks</td><td class="cell-num">72</td></tr>
-<tr><td>Trading: settling in lasts, ticks</td><td class="cell-num">24</td></tr>
-<tr><td>Trading: penalty while settling in</td><td class="cell-num">-5%</td></tr>
 </table></div>
 <h2 id="races">Races</h2>
 <div class="table-scroll" data-updated="none"><table>
@@ -138,7 +148,7 @@ generated: tools/sync.py
 <tr class="cell-muted"><td class="cell-num">7</td><td colspan="2">unused</td></tr>
 </table></div>
 <h2 id="materials">Materials</h2>
-<div class="table-scroll" data-updated="none"><table>
+<div class="table-scroll" data-updated="none"><table class="table--fit">
 <tr><th class="cell-num">Realm</th><th>Material</th></tr>
 <tr><td class="cell-num">1</td><td><a href="materials.html#bauxite">Bauxite</a></td></tr>
 <tr><td class="cell-num">2</td><td><a href="materials.html#limestone">Limestone</a></td></tr>

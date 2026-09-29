@@ -286,6 +286,16 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--units col.col-w-num { width: 3.25rem; }
 .page__body table.table--units col.col-w-cost { width: 5.5rem; }   /* wide enough that the "Cost (gc)" header stays on one line */
 .page__body table.table--units .cell-num { padding-left: .25rem; padding-right: .75rem; }   /* tighter than the default so 4-digit costs still fit the narrow columns */
+/* table--grouped: a long table split into topics by row-group header rows (<tr class="row-group"><th colspan="…">Topic</th></tr>).
+   The group row is a quiet band, not a second header, so the real column headers stay the strongest thing in the table. */
+.page__body table tr.row-group > th { padding: .55rem .6rem .3rem; background: var(--band-bg); color: var(--accent); text-align: left;
+    font: 700 .72rem/1.3 var(--font-body); text-transform: uppercase; letter-spacing: .1em; }
+.page__body table.table--grouped td:first-child { padding-left: 1.1rem; }   /* rows sit a little in from their group's name */
+
+/* table--fit: only as wide as the content needs (capped at the page width), for tables of short values that would otherwise
+   stretch across the page with most of each row empty */
+.page__body table.table--fit { width: auto; min-width: min(20rem, 100%); }
+
 /* table--hover: a soft highlight on the row under the pointer (data cells only, so header rows are left alone) */
 .page__body table.table--hover tr:hover > td { background-color: var(--row-hover); }
 .page__body table.table--hover.table--sticky-first tr:nth-child(n+3):hover > :first-child { background-color: var(--row-hover); }   /* the frozen Race cell has its own solid background, so it needs its own hover rule */
