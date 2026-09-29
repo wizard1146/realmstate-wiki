@@ -3,7 +3,7 @@
     {
       "age": 1,
       "changes_from_previous": null,
-      "hash": "6fa32eec7c9a8616",
+      "hash": "1438b2b5c31174af",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -14,7 +14,8 @@
           },
           "lineage_from": null,
           "name": "Amber",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Lightweight weaponry. Used to arm troops for offense.",
@@ -25,7 +26,8 @@
           },
           "lineage_from": null,
           "name": "Bauxite",
-          "output_per_tick": 800
+          "output_per_tick": 800,
+          "produced": true
         },
         {
           "description": "Construction. Used for buildings (a later milestone).",
@@ -36,7 +38,8 @@
           },
           "lineage_from": null,
           "name": "Limestone",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Science. Used for research (a later milestone).",
@@ -47,7 +50,8 @@
           },
           "lineage_from": null,
           "name": "Paper",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Speed. Used to bring armies home sooner.",
@@ -58,7 +62,20 @@
           },
           "lineage_from": null,
           "name": "Pine",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
+        },
+        {
+          "description": "Refined from pine. Burned as incense for magic (a later milestone).",
+          "hash": "0652587385f8fa3b",
+          "key": {
+            "identity": "resin",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Resin",
+          "output_per_tick": 0,
+          "produced": false
         },
         {
           "description": "Healing. Used to save troops from dying in battle.",
@@ -69,7 +86,20 @@
           },
           "lineage_from": null,
           "name": "Sulfur",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
+        },
+        {
+          "description": "Processed pine. Builds chariots (with stables, a later milestone).",
+          "hash": "453d695279943d9a",
+          "key": {
+            "identity": "timber",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Timber",
+          "output_per_tick": 0,
+          "produced": false
         }
       ],
       "name": "Age 1",
@@ -81,14 +111,31 @@
         "explore_ticks": 12,
         "food_per_acre": 8,
         "food_per_person_milli": 250,
+        "general_cost": 50,
+        "general_death_bp": 500,
+        "general_elites": 100,
+        "general_material": "amber",
+        "general_max": 3,
+        "general_pick_renown": 300,
+        "general_trait_renown": [
+          0,
+          200,
+          500
+        ],
         "gold_per_peasant": 3,
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
+        "medic_gold": 250,
+        "medic_material": "sulfur",
+        "medic_material_cost": 1,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "renown_per_win": 20,
+        "rescue_bp_per_medic": 200,
+        "rescue_cap_bp": 5000,
         "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
@@ -102,12 +149,16 @@
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
         "tick_ms": 3600000,
-        "train_ticks": 9
+        "train_ticks": 9,
+        "upgrade_bonus_bp": 2500,
+        "upgrade_cost": 1,
+        "upgrade_cost_elite": 2,
+        "upgrade_material": "bauxite"
       },
       "personalities": [
         {
           "flags": 0,
-          "hash": "f15cd53562f3bf49",
+          "hash": "2c0ad71b676f546d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -115,6 +166,8 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
             0,
             0,
             0,
@@ -130,7 +183,7 @@
         },
         {
           "flags": 0,
-          "hash": "fa551d64b8896731",
+          "hash": "3a802ada77be50d7",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -145,7 +198,9 @@
             0,
             0,
             0,
-            -1000
+            -1000,
+            0,
+            0
           ],
           "name": "The Warrior",
           "units": [],
@@ -153,7 +208,7 @@
         },
         {
           "flags": 0,
-          "hash": "9f7eeb3420040faa",
+          "hash": "a226631fede9eab9",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -162,6 +217,8 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
             0,
             0,
             0,
@@ -188,7 +245,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "b86b8c88a08821ef",
+          "hash": "d858b4b03d2e1e22",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -196,6 +253,8 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
             0,
             0,
             0,
@@ -230,13 +289,31 @@
               "gold": 400,
               "name": "Cutpurses",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Pikemen+",
+              "off": 6
+            },
+            {
+              "def": 6,
+              "gold": 320,
+              "name": "Shieldbearers+",
+              "off": 0
+            },
+            {
+              "def": 6,
+              "gold": 900,
+              "name": "Knights+",
+              "off": 10
             }
           ],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "b6424d73f8419529",
+          "hash": "d307cca508fc0217",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -249,6 +326,8 @@
             0,
             1000,
             -500,
+            0,
+            0,
             0,
             0,
             0
@@ -278,13 +357,31 @@
               "gold": 380,
               "name": "Sneaks",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 320,
+              "name": "Raiders+",
+              "off": 8
+            },
+            {
+              "def": 5,
+              "gold": 300,
+              "name": "Stockade+",
+              "off": 0
+            },
+            {
+              "def": 3,
+              "gold": 1000,
+              "name": "Warlords+",
+              "off": 14
             }
           ],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "fe587a72dacbcd2d",
+          "hash": "aced4fdece486016",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -297,6 +394,8 @@
             0,
             0,
             500,
+            0,
+            0,
             0,
             0,
             0
@@ -326,6 +425,24 @@
               "gold": 420,
               "name": "Shadows",
               "off": 0
+            },
+            {
+              "def": 1,
+              "gold": 330,
+              "name": "Archers+",
+              "off": 6
+            },
+            {
+              "def": 8,
+              "gold": 350,
+              "name": "Wardens+",
+              "off": 0
+            },
+            {
+              "def": 8,
+              "gold": 950,
+              "name": "Bladedancers+",
+              "off": 9
             }
           ],
           "unlocks": [
@@ -337,7 +454,7 @@
         },
         {
           "flags": 0,
-          "hash": "76d2bef6b5b862bd",
+          "hash": "4dee029ffa46371e",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -352,7 +469,9 @@
             0,
             0,
             0,
-            -1000
+            -1000,
+            0,
+            0
           ],
           "name": "Dwarf",
           "units": [
@@ -379,13 +498,31 @@
               "gold": 400,
               "name": "Tunnelers",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 310,
+              "name": "Axemen+",
+              "off": 6
+            },
+            {
+              "def": 8,
+              "gold": 360,
+              "name": "Hearthguard+",
+              "off": 0
+            },
+            {
+              "def": 9,
+              "gold": 1100,
+              "name": "Ironclads+",
+              "off": 11
             }
           ],
           "unlocks": []
         },
         {
           "flags": 1,
-          "hash": "ddf500d1540455d4",
+          "hash": "64687cbb03343510",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -394,6 +531,8 @@
           "mods_bp": [
             0,
             -1000,
+            0,
+            0,
             0,
             0,
             0,
@@ -427,6 +566,24 @@
               "gold": 400,
               "name": "Whispers",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Thralls+",
+              "off": 6
+            },
+            {
+              "def": 6,
+              "gold": 330,
+              "name": "Bonewall+",
+              "off": 0
+            },
+            {
+              "def": 4,
+              "gold": 1000,
+              "name": "Wights+",
+              "off": 13
             }
           ],
           "unlocks": []
@@ -446,16 +603,167 @@
         1,
         2,
         0,
-        5,
+        6,
         4,
         1,
         3,
         2,
         0,
-        5,
+        6,
         1,
         4,
         3
+      ],
+      "recipes": [
+        {
+          "id": "timber",
+          "inputs": [
+            [
+              4,
+              5
+            ]
+          ],
+          "output": 7,
+          "quantity": 1
+        },
+        {
+          "id": "resin",
+          "inputs": [
+            [
+              4,
+              5
+            ]
+          ],
+          "output": 5,
+          "quantity": 1
+        }
+      ],
+      "traits": [
+        {
+          "flags": 0,
+          "hash": "49fe34b2bcd4c876",
+          "key": {
+            "identity": "aggressive",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Aggressive",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "e5a5d530ce7e3dac",
+          "key": {
+            "identity": "charismatic",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000
+          ],
+          "name": "Charismatic",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "1ba3c36a5013b878",
+          "key": {
+            "identity": "skilled",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000,
+            0
+          ],
+          "name": "Skilled",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "957e0224521c0c31",
+          "key": {
+            "identity": "strategist",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Strategist",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "e409730a84d70e4a",
+          "key": {
+            "identity": "swift",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1000,
+            0,
+            0
+          ],
+          "name": "Swift",
+          "units": [],
+          "unlocks": []
+        }
       ]
     },
     {
@@ -486,7 +794,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "93ec645e494169e2",
+      "hash": "00f810db645e340c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -497,7 +805,8 @@
           },
           "lineage_from": null,
           "name": "Amber",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Lightweight weaponry. Used to arm troops for offense.",
@@ -508,7 +817,8 @@
           },
           "lineage_from": null,
           "name": "Bauxite",
-          "output_per_tick": 800
+          "output_per_tick": 800,
+          "produced": true
         },
         {
           "description": "Construction. Used for buildings (a later milestone).",
@@ -519,7 +829,8 @@
           },
           "lineage_from": null,
           "name": "Limestone",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Science. Used for research (a later milestone).",
@@ -530,7 +841,8 @@
           },
           "lineage_from": null,
           "name": "Paper",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
         },
         {
           "description": "Speed. Used to bring armies home sooner.",
@@ -541,7 +853,20 @@
           },
           "lineage_from": null,
           "name": "Pine",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
+        },
+        {
+          "description": "Refined from pine. Burned as incense for magic (a later milestone).",
+          "hash": "0652587385f8fa3b",
+          "key": {
+            "identity": "resin",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Resin",
+          "output_per_tick": 0,
+          "produced": false
         },
         {
           "description": "Healing. Used to save troops from dying in battle.",
@@ -552,7 +877,20 @@
           },
           "lineage_from": null,
           "name": "Sulfur",
-          "output_per_tick": 1200
+          "output_per_tick": 1200,
+          "produced": true
+        },
+        {
+          "description": "Processed pine. Builds chariots (with stables, a later milestone).",
+          "hash": "453d695279943d9a",
+          "key": {
+            "identity": "timber",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Timber",
+          "output_per_tick": 0,
+          "produced": false
         }
       ],
       "name": "Age 2",
@@ -564,14 +902,31 @@
         "explore_ticks": 12,
         "food_per_acre": 8,
         "food_per_person_milli": 250,
+        "general_cost": 50,
+        "general_death_bp": 500,
+        "general_elites": 100,
+        "general_material": "amber",
+        "general_max": 3,
+        "general_pick_renown": 300,
+        "general_trait_renown": [
+          0,
+          200,
+          500
+        ],
         "gold_per_peasant": 3,
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
+        "medic_gold": 250,
+        "medic_material": "sulfur",
+        "medic_material_cost": 1,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "renown_per_win": 20,
+        "rescue_bp_per_medic": 200,
+        "rescue_cap_bp": 5000,
         "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
@@ -585,12 +940,16 @@
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
         "tick_ms": 3600000,
-        "train_ticks": 9
+        "train_ticks": 9,
+        "upgrade_bonus_bp": 2500,
+        "upgrade_cost": 1,
+        "upgrade_cost_elite": 2,
+        "upgrade_material": "bauxite"
       },
       "personalities": [
         {
           "flags": 0,
-          "hash": "f15cd53562f3bf49",
+          "hash": "2c0ad71b676f546d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -598,6 +957,8 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
             0,
             0,
             0,
@@ -613,7 +974,7 @@
         },
         {
           "flags": 0,
-          "hash": "fa551d64b8896731",
+          "hash": "3a802ada77be50d7",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -628,7 +989,9 @@
             0,
             0,
             0,
-            -1000
+            -1000,
+            0,
+            0
           ],
           "name": "The Warrior",
           "units": [],
@@ -636,7 +999,7 @@
         },
         {
           "flags": 0,
-          "hash": "9f7eeb3420040faa",
+          "hash": "a226631fede9eab9",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -645,6 +1008,8 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
             0,
             0,
             0,
@@ -664,7 +1029,7 @@
         },
         {
           "flags": 0,
-          "hash": "0f1edbabacd43bed",
+          "hash": "f681a599c128a6b3",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -678,6 +1043,8 @@
             0,
             0,
             -2000,
+            0,
+            0,
             0,
             0
           ],
@@ -693,7 +1060,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "b86b8c88a08821ef",
+          "hash": "d858b4b03d2e1e22",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -701,6 +1068,8 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
             0,
             0,
             0,
@@ -735,13 +1104,31 @@
               "gold": 400,
               "name": "Cutpurses",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Pikemen+",
+              "off": 6
+            },
+            {
+              "def": 6,
+              "gold": 320,
+              "name": "Shieldbearers+",
+              "off": 0
+            },
+            {
+              "def": 6,
+              "gold": 900,
+              "name": "Knights+",
+              "off": 10
             }
           ],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "65f82fc58ef4ec5b",
+          "hash": "b9d8ca56df814bca",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -756,6 +1143,8 @@
             -500,
             0,
             -500,
+            0,
+            0,
             0
           ],
           "name": "Orc",
@@ -783,13 +1172,31 @@
               "gold": 380,
               "name": "Sneaks",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Raiders+",
+              "off": 8
+            },
+            {
+              "def": 5,
+              "gold": 300,
+              "name": "Stockade+",
+              "off": 0
+            },
+            {
+              "def": 3,
+              "gold": 950,
+              "name": "Warlords+",
+              "off": 14
             }
           ],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "fe587a72dacbcd2d",
+          "hash": "aced4fdece486016",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -802,6 +1209,8 @@
             0,
             0,
             500,
+            0,
+            0,
             0,
             0,
             0
@@ -831,6 +1240,24 @@
               "gold": 420,
               "name": "Shadows",
               "off": 0
+            },
+            {
+              "def": 1,
+              "gold": 330,
+              "name": "Archers+",
+              "off": 6
+            },
+            {
+              "def": 8,
+              "gold": 350,
+              "name": "Wardens+",
+              "off": 0
+            },
+            {
+              "def": 8,
+              "gold": 950,
+              "name": "Bladedancers+",
+              "off": 9
             }
           ],
           "unlocks": [
@@ -842,7 +1269,7 @@
         },
         {
           "flags": 0,
-          "hash": "76d2bef6b5b862bd",
+          "hash": "4dee029ffa46371e",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -857,7 +1284,9 @@
             0,
             0,
             0,
-            -1000
+            -1000,
+            0,
+            0
           ],
           "name": "Dwarf",
           "units": [
@@ -884,6 +1313,24 @@
               "gold": 400,
               "name": "Tunnelers",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 310,
+              "name": "Axemen+",
+              "off": 6
+            },
+            {
+              "def": 8,
+              "gold": 360,
+              "name": "Hearthguard+",
+              "off": 0
+            },
+            {
+              "def": 9,
+              "gold": 1100,
+              "name": "Ironclads+",
+              "off": 11
             }
           ],
           "unlocks": []
@@ -893,7 +1340,7 @@
         null,
         {
           "flags": 3,
-          "hash": "29364efaf503804f",
+          "hash": "dfc3d7175d4907f9",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -902,6 +1349,8 @@
           "mods_bp": [
             0,
             500,
+            0,
+            0,
             0,
             0,
             0,
@@ -935,6 +1384,24 @@
               "gold": 400,
               "name": "Whispers",
               "off": 0
+            },
+            {
+              "def": 0,
+              "gold": 290,
+              "name": "Husks+",
+              "off": 6
+            },
+            {
+              "def": 6,
+              "gold": 330,
+              "name": "Gravewardens+",
+              "off": 0
+            },
+            {
+              "def": 5,
+              "gold": 1050,
+              "name": "Dreadknights+",
+              "off": 13
             }
           ],
           "unlocks": []
@@ -951,16 +1418,167 @@
         1,
         2,
         0,
-        5,
+        6,
         4,
         1,
         3,
         2,
         0,
-        5,
+        6,
         1,
         4,
         3
+      ],
+      "recipes": [
+        {
+          "id": "timber",
+          "inputs": [
+            [
+              4,
+              5
+            ]
+          ],
+          "output": 7,
+          "quantity": 1
+        },
+        {
+          "id": "resin",
+          "inputs": [
+            [
+              4,
+              5
+            ]
+          ],
+          "output": 5,
+          "quantity": 1
+        }
+      ],
+      "traits": [
+        {
+          "flags": 0,
+          "hash": "49fe34b2bcd4c876",
+          "key": {
+            "identity": "aggressive",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Aggressive",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "e5a5d530ce7e3dac",
+          "key": {
+            "identity": "charismatic",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000
+          ],
+          "name": "Charismatic",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "1ba3c36a5013b878",
+          "key": {
+            "identity": "skilled",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000,
+            0
+          ],
+          "name": "Skilled",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "957e0224521c0c31",
+          "key": {
+            "identity": "strategist",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Strategist",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "e409730a84d70e4a",
+          "key": {
+            "identity": "swift",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1000,
+            0,
+            0
+          ],
+          "name": "Swift",
+          "units": [],
+          "unlocks": []
+        }
       ]
     }
   ],
@@ -1006,9 +1624,25 @@
       ]
     },
     {
+      "id": "resin",
+      "lineage_from": null,
+      "name": "Resin",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
       "id": "sulfur",
       "lineage_from": null,
       "name": "Sulfur",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "timber",
+      "lineage_from": null,
+      "name": "Timber",
       "versions": [
         "v1"
       ]
@@ -1113,13 +1747,18 @@
       "defense",
       "explore_cost",
       "training_cost",
-      "return_time"
+      "return_time",
+      "elite_offense",
+      "elite_defense"
     ],
     "unit_slots": [
       "offense",
       "defense",
       "elite",
-      "thief"
+      "thief",
+      "offense+",
+      "defense+",
+      "elite+"
     ],
     "unlock_kinds": [
       "spell",

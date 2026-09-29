@@ -3,7 +3,7 @@ title: Military
 category: Mechanics
 updated: 2026-09-29
 -->
-<p>Every race has four unit slots: an offense specialist, a defense specialist, an elite and a thief. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
+<p>Every race has an offense specialist, a defense specialist, an elite and a thief, plus upgraded offense+, defense+ and elite+ units. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
 
 <h2 id="Training">Training</h2>
 <ul>
@@ -12,16 +12,35 @@ updated: 2026-09-29
   <li>Up to 1,000,000 at a time.</li>
 </ul>
 
+<h2 id="Upgrades">Upgrades</h2>
+<p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers.</p>
+<ul>
+  <li>Cost: {{upgrade_cost}} {{upgrade_material}} per unit, {{upgrade_cost_elite}} per elite. See <a href="materials.html">Materials</a>.</li>
+  <li>The units are in training for {{train_ticks}} hours, then return upgraded.</li>
+</ul>
+
+<h2 id="Medics">Medics</h2>
+<p>Medics don't fight; they save troops who would die in battle. A medic costs {{medic_gold}} gold, {{medic_material_cost}} {{medic_material}} and a peasant, and is ready after {{train_ticks}} hours.</p>
+<ul>
+  <li>Each medic per 100 troops in a fight saves {{rescue_per_medic_pct}}% of that side's deaths, up to {{rescue_cap_pct}}%.</li>
+  <li>Medics you send with an attack protect your attackers and come home with the army. Medics at home protect your defenders.</li>
+  <li>Example: 400 troops sent with 40 medics is 10 medics per 100 troops, so 20% of the deaths are saved.</li>
+</ul>
+
 <h2 id="Attacking">Attacking</h2>
 <p>You choose how many troops of each unit slot to send. The battle resolves at once.</p>
 <ol>
-  <li><b>Offense</b> = the offense of every unit sent, times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%).</li>
-  <li><b>Defense</b> = the defense of every unit the target has at home, times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own.</li>
+  <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
+  <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>
   <li>If offense is higher, you win and take {{land_gain_pct}}% of their land. They lose it at once; you receive it when your army returns.</li>
-  <li>Win or lose, you lose {{attacker_loss_pct}}% of the troops you sent and the target loses {{defender_loss_pct}}% of their troops at home.</li>
+  <li>Win or lose, {{attacker_loss_pct}}% of the troops you sent die and {{defender_loss_pct}}% of the target's troops at home die, less what each side's <a href="#Medics">medics</a> save.</li>
+  <li>A win earns <a href="#Renown">renown</a>.</li>
   <li>Your army comes home {{attack_return_ticks}} hours later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
 </ol>
 <p>Troops that are away don't defend your house.</p>
+
+<h2 id="Renown">Renown</h2>
+<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. War wins will add renown too (a later milestone). Renown unlocks better <a href="generals.html">generals</a>.</p>
 
 <h2 id="What_You_Learn">What you learn</h2>
 <p>You see your own offense, whether you won, the land taken and the losses on both sides, but never the defender's defense. The defender's news tells them who attacked and what they lost. To size up a target first, <a href="spying.html">spy</a> on it.</p>

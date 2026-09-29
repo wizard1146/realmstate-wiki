@@ -27,7 +27,13 @@ updated: 2026-09-29
 {"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage", "realm": 4, "state": 2}
 {"type": "explore", "house": 0, "acres": 20}
 {"type": "train", "house": 0, "unit": 2, "count": 100}
-{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}
+{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0, 0, 0, 20], "medics": 10, "general": 1}
+{"type": "upgrade", "house": 0, "unit": 2, "count": 20}
+{"type": "train_medics", "house": 0, "count": 30}
+{"type": "refine", "house": 0, "recipe": "timber", "times": 4}
+{"type": "recruit_general", "house": 0, "name": "Vess"}
+{"type": "recruit_general", "house": 0, "name": "Vess", "traits": ["aggressive", "skilled"]}
+{"type": "set_defender", "house": 0, "general": 1}
 {"type": "spy", "house": 0, "target": 5, "thieves": 20}
 {"type": "vote", "house": 0, "vote": {"type": "for", "house": 3}}
 {"type": "vote", "house": 0, "vote": {"type": "against"}}
@@ -38,7 +44,7 @@ updated: 2026-09-29
 {"type": "grant", "house": 0, "to": 3, "amount": 1000}
 {"type": "set_tax", "house": 0, "rate_bp": 300}</code></pre>
 <p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders, <code>grant</code> and <code>set_tax</code> are for the state leader only. Rates are in basis points: 300 means 3%.</p>
-<p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
+<p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief, 4 offense+, 5 defense+, 6 elite+; <code>units</code> lists all seven. <code>medics</code> and <code>general</code> are optional in an attack. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 
 <h2 id="Answers">Answers</h2>
 <ul>

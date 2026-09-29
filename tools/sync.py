@@ -33,6 +33,8 @@ STAT_TEXT = {
     "explore_cost": "Gold cost of exploring",
     "training_cost": "Gold cost of training troops",
     "return_time": "How long armies take to come home",
+    "elite_offense": "Offense of elite troops (elite and elite+)",
+    "elite_defense": "Defense of elite troops (elite and elite+)",
 }
 FLAG_TEXT = {
     "no_food": "The house's people and troops eat nothing.",
@@ -43,7 +45,8 @@ UNLOCK_TEXT = {
     "operation": "Grants a thievery or spy operation (later milestone).",
     "building": "Grants a building (later milestone).",
 }
-UNIT_ROLE = {"offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief"}
+UNIT_ROLE = {"offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief",
+             "offense+": "Offense specialist, upgraded", "defense+": "Defense specialist, upgraded", "elite+": "Elite, upgraded"}
 PARAM_TEXT = [  # (key, label, how to show it)
     ("realms", "Realms in the world", "n"),
     ("states_per_realm", "States in each realm", "n"),
@@ -74,6 +77,23 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("tax_min_bp", "Economy: lowest state tax on house income", "pct"),
     ("tax_max_bp", "Economy: highest state tax on house income", "pct"),
     ("tax_default_bp", "Economy: tax a new state starts with", "pct"),
+    ("upgrade_bonus_bp", "Upgrades: extra main stat of an upgraded unit (unless the race sets it)", "pct"),
+    ("upgrade_material", "Upgrades: material spent", "text"),
+    ("upgrade_cost", "Upgrades: material per unit", "n"),
+    ("upgrade_cost_elite", "Upgrades: material per elite", "n"),
+    ("medic_material", "Medics: material spent", "text"),
+    ("medic_material_cost", "Medics: material per medic", "n"),
+    ("medic_gold", "Medics: gold per medic", "n"),
+    ("rescue_bp_per_medic", "Medics: deaths saved per medic per 100 troops", "pct"),
+    ("rescue_cap_bp", "Medics: most deaths saved", "pct"),
+    ("renown_per_win", "Renown for a successful attack (scaled by how close it was)", "n"),
+    ("general_material", "Generals: material paid", "text"),
+    ("general_elites", "Generals: elites retired to raise one", "n"),
+    ("general_cost", "Generals: material per trait", "n"),
+    ("general_trait_renown", "Generals: renown for 1st, 2nd, 3rd... trait", "list"),
+    ("general_pick_renown", "Generals: renown to choose traits", "n"),
+    ("general_max", "Generals: most a house can keep", "n"),
+    ("general_death_bp", "Generals: chance of dying leading a failed attack", "pct"),
 ]
 
 e = html.escape
@@ -93,6 +113,10 @@ def show_param(value, how):
         return f"&plusmn;{pct(value)}%"
     if how == "milli":
         return f"{value / 1000:g}"
+    if how == "text":
+        return e(str(value))
+    if how == "list":
+        return ", ".join(f"{v:,}" for v in value)
     return f"{value:,}"
 
 
@@ -293,6 +317,29 @@ def generate(rules):
         '<tr><th>Material</th><th>Used for</th><th>Made in realms</th><th class="cell-num">Per realm, per tick</th>'
         '<th class="cell-num">World total, per tick</th></tr>\n' + "\n".join(mat_rows) + "\n</table></div>\n" + source_note(latest))
 
+    # Refining recipes, on the materials page.
+    names = {m["key"]["identity"]: m["name"] for m in latest.get("materials", [])}
+    slot_name = [m["name"] for m in latest.get("materials", [])]
+    recipe_rows = "".join(
+        f'<tr><td><b>{e(r["id"])}</b></td><td>{", ".join(f"{q} {e(slot_name[m])}" for m, q in r["inputs"])}</td>'
+        f'<td>{r["quantity"]} {e(slot_name[r["output"]])}</td></tr>\n' for r in latest.get("recipes", []))
+    if recipe_rows:
+        pages["materials.html"] = pages["materials.html"].replace(source_note(latest), "") + (
+            '<h2 id="refining">Refining</h2>\n<p>Some materials are made only by refining others. Refining happens at once.</p>\n'
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recipe</th><th>Uses</th><th>Makes</th></tr>\n'
+            + recipe_rows + "</table></div>\n" + source_note(latest))
+
+    # General traits.
+    trait_rows = "".join(
+        f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
+        for t in latest.get("traits", []))
+    if trait_rows:
+        pages["traits.html"] = header("General Traits", "Rules") + (
+            '<p>A <a href="generals.html">general</a> has one or more of these traits. Each is a flat modifier while '
+            "the general leads an army or commands the defense.</p>\n"
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Trait</th><th>Effect</th></tr>\n'
+            + trait_rows + "</table></div>\n" + source_note(latest))
+
     # Effects reference.
     stat_rows = "".join(f'<tr id="{s}"><td><code>{s}</code></td><td>{e(STAT_TEXT.get(s, "(no description yet)"))}</td></tr>\n' for s in vocab["stats"])
     flag_rows = "".join(f'<tr id="{f}"><td><code>{f}</code></td><td>{e(FLAG_TEXT.get(f, "(no description yet)"))}</td></tr>\n' for f in vocab["flags"])
@@ -316,6 +363,9 @@ def generate(rules):
               "food_per_person": f'{p["food_per_person_milli"] / 1000:g}'}
     values["world_states"] = p["realms"] * p["states_per_realm"]
     values["world_houses"] = f'{p["realms"] * p["states_per_realm"] * p["houses_per_state"]:,}'
+    values["general_trait_renown"] = ", ".join(f"{v:,}" for v in p["general_trait_renown"])
+    values["general_trait_slots"] = len(p["general_trait_renown"])
+    values["rescue_per_medic_pct"] = pct(p["rescue_bp_per_medic"])
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
     for mat in latest.get("materials", []):
         if mat["key"]["identity"] == "bauxite":
@@ -333,7 +383,7 @@ def generate(rules):
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
