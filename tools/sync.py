@@ -690,6 +690,34 @@ def generate(rules):
             "<p><b>Elite troops are the exception.</b> Elites get their elite bonus first. The whole army, elites included, then gets "
             "the offense or defense bonus, so for elites the two multiply.</p>\n" + source_note(latest))
 
+    # Attack kinds.
+    kinds = latest["params"].get("attacks", [])
+    takes_text = {
+        "land": lambda k: f'{pct(k["amount_bp"])}% of a march\'s land' if k["amount_bp"] != 10_000 else f'land ({pct(latest["params"]["land_gain_bp"])}% of theirs)',
+        "reclaim": lambda k: f'{pct(k["amount_bp"])}% of the land their army is carrying home from you',
+        "buildings": lambda k: f'{pct(k["amount_bp"])}% of every building, left as barren land',
+        "resources": lambda k: f'{pct(k["amount_bp"])}% of their gold, food and materials, carried home',
+        "people": lambda k: f'{pct(k["amount_bp"])}% of their peasants and thieves, killed',
+        "books": lambda k: f'{pct(k["amount_bp"])}% of their unspent books, carried home',
+    }
+    attack_rows = "".join(
+        f'<tr id="{e(k["id"])}"><td><b>{e(k["name"])}</b><br><code>{e(k["id"])}</code></td>'
+        f'<td>{takes_text[k["takes"]](k)}{"; earns renown" if k.get("renown") else ""}</td>'
+        f'<td class="cell-num">{"the army that took your land" if k["takes"] == "reclaim" else (str(pct(k["range_min_bp"])) + "%" if k.get("range_min_bp") else "any")}</td>'
+        f'<td class="cell-num">&times;{k["hostility_bp"] / 10_000:g}</td>'
+        f'<td class="cell-num">{"+" + pct(k["war_bonus_bp"]) + "% (" + pct(k["amount_bp"] + k["war_bonus_bp"]) + "% in all)" if k.get("war_bonus_bp") else ""}{" (war only)" if k.get("war_only") else ""}</td></tr>\n'
+        for k in kinds)
+    if attack_rows:
+        pages["attacks.html"] = header("Attacks", "Rules") + (
+            '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes. '
+            "The first is the default.</p>\n"
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attack</th><th>A win takes</th><th class="cell-num">Smallest target</th>'
+            '<th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>\n'
+            + attack_rows + "</table></div>\n"
+            "<p><b>Smallest target</b> is their land as a share of yours. <b>Meter</b> scales the hostility points the attack adds to the target "
+            "state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead.</p>\n"
+            + source_note(latest))
+
     # Academic attributes.
     attr_rows = "".join(
         f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
@@ -759,7 +787,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

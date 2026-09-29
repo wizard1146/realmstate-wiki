@@ -724,7 +724,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "96304ef1715d1401",
+      "hash": "d152e3c54826331b",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -838,6 +838,85 @@
         "academic_universities": 100,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "attacks": [
+          {
+            "amount_bp": 10000,
+            "hostility_bp": 10000,
+            "id": "march",
+            "name": "Traditional March",
+            "range_min_bp": 7500,
+            "renown": true,
+            "takes": "land",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 6000,
+            "hostility_bp": 10000,
+            "id": "conquest",
+            "name": "Conquest",
+            "range_min_bp": 6000,
+            "renown": true,
+            "takes": "land",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 7500,
+            "hostility_bp": 5000,
+            "id": "ambush",
+            "name": "Ambush",
+            "range_min_bp": 0,
+            "renown": true,
+            "takes": "reclaim",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 500,
+            "hostility_bp": 15000,
+            "id": "raze",
+            "name": "Raze",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "buildings",
+            "war_bonus_bp": 250,
+            "war_only": false
+          },
+          {
+            "amount_bp": 600,
+            "hostility_bp": 12000,
+            "id": "plunder",
+            "name": "Plunder",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "resources",
+            "war_bonus_bp": 300,
+            "war_only": false
+          },
+          {
+            "amount_bp": 300,
+            "hostility_bp": 20000,
+            "id": "massacre",
+            "name": "Massacre",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "people",
+            "war_bonus_bp": 200,
+            "war_only": false
+          },
+          {
+            "amount_bp": 500,
+            "hostility_bp": 10000,
+            "id": "learn",
+            "name": "Learn",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "books",
+            "war_bonus_bp": 250,
+            "war_only": false
+          }
+        ],
         "auction_max_ticks": 48,
         "auction_min_ticks": 12,
         "auto_war_points": 18000,
@@ -3109,7 +3188,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "3adfbb976da55069",
+      "hash": "ebd144ddef400faa",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -3223,6 +3302,85 @@
         "academic_universities": 100,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "attacks": [
+          {
+            "amount_bp": 10000,
+            "hostility_bp": 10000,
+            "id": "march",
+            "name": "Traditional March",
+            "range_min_bp": 7500,
+            "renown": true,
+            "takes": "land",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 6000,
+            "hostility_bp": 10000,
+            "id": "conquest",
+            "name": "Conquest",
+            "range_min_bp": 6000,
+            "renown": true,
+            "takes": "land",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 7500,
+            "hostility_bp": 5000,
+            "id": "ambush",
+            "name": "Ambush",
+            "range_min_bp": 0,
+            "renown": true,
+            "takes": "reclaim",
+            "war_bonus_bp": 0,
+            "war_only": false
+          },
+          {
+            "amount_bp": 500,
+            "hostility_bp": 15000,
+            "id": "raze",
+            "name": "Raze",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "buildings",
+            "war_bonus_bp": 250,
+            "war_only": false
+          },
+          {
+            "amount_bp": 600,
+            "hostility_bp": 12000,
+            "id": "plunder",
+            "name": "Plunder",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "resources",
+            "war_bonus_bp": 300,
+            "war_only": false
+          },
+          {
+            "amount_bp": 300,
+            "hostility_bp": 20000,
+            "id": "massacre",
+            "name": "Massacre",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "people",
+            "war_bonus_bp": 200,
+            "war_only": false
+          },
+          {
+            "amount_bp": 500,
+            "hostility_bp": 10000,
+            "id": "learn",
+            "name": "Learn",
+            "range_min_bp": 7500,
+            "renown": false,
+            "takes": "books",
+            "war_bonus_bp": 250,
+            "war_only": false
+          }
+        ],
         "auction_max_ticks": 48,
         "auction_min_ticks": 12,
         "auto_war_points": 18000,

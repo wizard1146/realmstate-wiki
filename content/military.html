@@ -36,13 +36,14 @@ updated: 2026-09-29
 </ul>
 
 <h2 id="Attacking">Attacking</h2>
-<p>You choose how many troops of each unit slot to send. The battle resolves at once.</p>
+<p>You choose how many troops of each unit slot to send, and the <a href="attacks.html">kind of attack</a>: a Traditional March for land (the default), or Conquest, Ambush, Raze, Plunder, Massacre or Learn. Every kind fights the same battle; they differ in what a win takes. The battle resolves at once.</p>
 <ol>
   <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
   <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>
-  <li>If offense is higher, you win and take {{land_gain_pct}}% of their land. They lose it at once; you receive it when your army returns. You take more from a state that is Unfriendly or Hostile toward yours, and more still from one you're <a href="war.html">at war</a> with.</li>
+  <li>If offense is higher, you win. A march takes {{land_gain_pct}}% of their land; other kinds take what the <a href="attacks.html">Attacks</a> table says. They lose it at once; you receive it when your army returns. You take more from a state that is Unfriendly or Hostile toward yours, and more still from one you're <a href="war.html">at war</a> with.</li>
   <li>Win or lose, {{attacker_loss_pct}}% of the troops you sent die and {{defender_loss_pct}}% of the target's troops at home die, less what each side's <a href="#Medics">medics</a> save.</li>
-  <li>A win earns <a href="#Renown">renown</a>.</li>
+  <li>A march, conquest or ambush that wins earns <a href="#Renown">renown</a>.</li>
+  <li>Plunder and stolen books travel home with the army and arrive when it does.</li>
   <li>Your army comes home {{attack_return_ticks}} hours later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
 </ol>
 <p>Troops that are away don't defend your house.</p>

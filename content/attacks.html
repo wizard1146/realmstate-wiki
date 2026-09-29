@@ -1,0 +1,18 @@
+<!--
+title: Attacks
+category: Rules
+generated: tools/sync.py
+-->
+<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes. The first is the default.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Attack</th><th>A win takes</th><th class="cell-num">Smallest target</th><th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>
+<tr id="march"><td><b>Traditional March</b><br><code>march</code></td><td>land (10% of theirs); earns renown</td><td class="cell-num">75%</td><td class="cell-num">&times;1</td><td class="cell-num"></td></tr>
+<tr id="conquest"><td><b>Conquest</b><br><code>conquest</code></td><td>60% of a march's land; earns renown</td><td class="cell-num">60%</td><td class="cell-num">&times;1</td><td class="cell-num"></td></tr>
+<tr id="ambush"><td><b>Ambush</b><br><code>ambush</code></td><td>75% of the land their army is carrying home from you; earns renown</td><td class="cell-num">the army that took your land</td><td class="cell-num">&times;0.5</td><td class="cell-num"></td></tr>
+<tr id="raze"><td><b>Raze</b><br><code>raze</code></td><td>5% of every building, left as barren land</td><td class="cell-num">75%</td><td class="cell-num">&times;1.5</td><td class="cell-num">+2.5% (7.5% in all)</td></tr>
+<tr id="plunder"><td><b>Plunder</b><br><code>plunder</code></td><td>6% of their gold, food and materials, carried home</td><td class="cell-num">75%</td><td class="cell-num">&times;1.2</td><td class="cell-num">+3% (9% in all)</td></tr>
+<tr id="massacre"><td><b>Massacre</b><br><code>massacre</code></td><td>3% of their peasants and thieves, killed</td><td class="cell-num">75%</td><td class="cell-num">&times;2</td><td class="cell-num">+2% (5% in all)</td></tr>
+<tr id="learn"><td><b>Learn</b><br><code>learn</code></td><td>5% of their unspent books, carried home</td><td class="cell-num">75%</td><td class="cell-num">&times;1</td><td class="cell-num">+2.5% (7.5% in all)</td></tr>
+</table></div>
+<p><b>Smallest target</b> is their land as a share of yours. <b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead.</p>
+<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>ebd144ddef400faa</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
