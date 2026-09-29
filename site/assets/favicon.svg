@@ -2,7 +2,7 @@
   <!-- Realmstate: a swallowtail banner billowing from a leaning pole. Parchment on olive, the wiki's colours.
        apple-touch-icon.png is the same drawing on a square (iOS rounds the corners itself). -->
   <rect width="64" height="64" rx="14" fill="#6f674a"/>
-  <g transform="translate(0 7.5)" fill="#fbf8f1">
+  <g transform="translate(1 6.5)" fill="#fbf8f1">
     <line x1="13" y1="19.3" x2="31.4" y2="49.5" stroke="#fbf8f1" stroke-width="4" stroke-linecap="round"/>
     <circle cx="12.4" cy="18.2" r="3.6"/>
     <path transform="translate(26.2 35.5) scale(1.25) translate(-26.2 -35.5)" d="M16.8 20.2 C20 14.5 26 14 30.9 13.4 C35 12.8 37.5 10 38.9 7 C40 11 39.5 17 37.2 20.6 C41 20.5 45 21.5 48.4 22.6 C45.5 26.5 42 27.5 38.5 27.8 C33 28.3 28.5 31 26.2 35.5 Z"/>
