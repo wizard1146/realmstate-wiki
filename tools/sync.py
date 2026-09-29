@@ -15,7 +15,7 @@ Writes:
   content/races.html, race-<id>.html, personalities.html, personality-<id>.html,
   content/ages.html, age-<n>.html, content/effects.html, content/materials.html
 """
-import html, json, os, pathlib, subprocess, sys
+import html, json, os, pathlib, re, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CONTENT, DATA = ROOT / "content", ROOT / "data"
@@ -35,7 +35,14 @@ STAT_TEXT = {
     "return_time": "How long armies take to come home",
     "elite_offense": "Offense of elite troops (elite and elite+)",
     "elite_defense": "Defense of elite troops (elite and elite+)",
+    "casualties": "Troops killed in battle",
+    "land_loss": "Land lost when attacked",
+    "construction_cost": "Gold cost of construction",
+    "thief_strength": "Strength of your thieves when spying",
+    "thief_defense": "Strength of your thieves against enemy spies",
+    "trade_bonus": "Extra gold on your market sales",
 }
+PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown"}
 FLAG_TEXT = {
     "no_food": "The house's people and troops eat nothing.",
     "no_explore": "The house cannot explore for land.",
@@ -56,10 +63,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("starting_peasants", "Starting peasants", "n"),
     ("starting_gold", "Starting gold", "n"),
     ("starting_food", "Starting food", "n"),
-    ("people_per_acre", "People each acre can hold", "n"),
     ("peasant_growth_bp", "Peasant growth per tick", "pct"),
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
-    ("food_per_acre", "Food grown per acre per tick", "n"),
     ("food_per_person_milli", "Food eaten per person per tick", "milli"),
     ("starvation_bp", "Peasants lost per tick without food", "pct"),
     ("explore_gold_per_acre", "Gold to explore one acre", "n"),
@@ -94,6 +99,21 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("general_pick_renown", "Generals: renown to choose traits", "n"),
     ("general_max", "Generals: most a house can keep", "n"),
     ("general_death_bp", "Generals: chance of dying leading a failed attack", "pct"),
+    ("barren_living", "Land: people each barren acre houses", "n"),
+    ("barren_food", "Land: food each barren acre grows per tick", "n"),
+    ("constructing_living", "Land: people each acre under construction houses", "n"),
+    ("build_cost_per_land_milli", "Construction: gold per acre of land, thousandths", "n"),
+    ("build_cost_offset", "Construction: land added before costing", "n"),
+    ("construction_ticks", "Construction: ticks to build", "n"),
+    ("raze_cost_base", "Razing: base gold per building", "n"),
+    ("raze_cost_per_land_milli", "Razing: gold per acre of land, thousandths", "n"),
+    ("optimal_workers_bp", "Efficiency: peasants needed, as a share of jobs", "pct"),
+    ("horse_offense", "Mounts: offense a horse adds", "n"),
+    ("chariot_offense", "Mounts: offense a chariot adds", "n"),
+    ("chariot_horses", "Chariots: horses per chariot", "n"),
+    ("chariot_material", "Chariots: material used", "text"),
+    ("chariot_material_cost", "Chariots: material per chariot", "n"),
+    ("chariot_gold", "Chariots: gold per chariot", "n"),
 ]
 
 e = html.escape
@@ -302,13 +322,25 @@ def generate(rules):
         pages[f"age-{a['age']}.html"] = header(a["name"], "Ages") + body
 
     # Materials (latest age).
+    # A material made only by refining sits directly under the material it is refined from.
+    mats = latest.get("materials", [])
+    refined_from = {r["output"]: r["inputs"][0][0] for r in latest.get("recipes", []) if r["inputs"]}
+    refined_from = {out: src for out, src in refined_from.items()
+                     if not any(x == out for x in latest["realm_material"])}
     mat_rows = []
-    for m, mat in enumerate(latest.get("materials", [])):
-        realms = [str(r + 1) for r, x in enumerate(latest["realm_material"]) if x == m]
-        ident = mat["key"]["identity"]
-        mat_rows.append(f'<tr id="{ident}"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
-                        f'<td>{", ".join(realms)}</td><td class="cell-num">{mat["output_per_tick"]:,}</td>'
-                        f'<td class="cell-num">{mat["output_per_tick"] * len(realms):,}</td></tr>')
+    for m, mat in enumerate(mats):
+        if m in refined_from: continue
+        for n in [m] + [o for o in range(len(mats)) if refined_from.get(o) == m]:
+            mat, ident = mats[n], mats[n]["key"]["identity"]
+            if n == m:
+                realms = [str(r + 1) for r, x in enumerate(latest["realm_material"]) if x == m]
+                mat_rows.append(f'<tr id="{ident}"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
+                                f'<td>{", ".join(realms)}</td><td class="cell-num">{mat["output_per_tick"]:,}</td>'
+                                f'<td class="cell-num">{mat["output_per_tick"] * len(realms):,}</td></tr>')
+            else:
+                mat_rows.append(f'<tr id="{ident}" class="row-sub"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
+                                f'<td>Refined from {e(mats[m]["name"])}</td><td class="cell-num cell-muted">–</td>'
+                                f'<td class="cell-num cell-muted">–</td></tr>')
     pages["materials.html"] = header("Materials", "Rules, Economy") + (
         "<p>Every realm produces one material each tick. Bauxite is made in three realms, so weapons are never "
         "scarce; every other material is made in two, so no realm holds a monopoly. See "
@@ -328,6 +360,45 @@ def generate(rules):
             '<h2 id="refining">Refining</h2>\n<p>Some materials are made only by refining others. Refining happens at once.</p>\n'
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recipe</th><th>Uses</th><th>Makes</th></tr>\n'
             + recipe_rows + "</table></div>\n" + source_note(latest))
+
+    # Buildings.
+    def snake(name):
+        return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()
+
+    def building_effects(b):
+        items = []
+        for product, n in b["produce"]:
+            items.append(f"Makes {n:,} {PRODUCT_TEXT[product]} a tick" + ("" if product == "renown" else " (times efficiency)"))
+        for product, n in b["capacity"]:
+            items.append(f"Holds {n:,} {PRODUCT_TEXT[product]}")
+        for m in b["mods"]:
+            base, cap = m["base_bp"] / 100, m["max_bp"] / 100
+            sign = "+" if base > 0 else ""
+            items.append(f'{sign}{base:g}% {e(STAT_TEXT.get(snake(m["stat"]), m["stat"]).lower())} per 1% of land, up to {sign}{cap:g}% '
+                         f'(<a href="effects.html#{snake(m["stat"])}"><code>{snake(m["stat"])}</code></a>)')
+        if b["trait_slots"]:
+            items.append(f'+{b["trait_slots"]} general trait slot')
+        return "<br>".join(items) or "None"
+    def building_cost(b):
+        parts = [f'{q:,} {e(slot_name[m])}' for m, q in b["materials"]]
+        if b["extra_gold"]:
+            parts.insert(0, f'{b["extra_gold"]:,} extra gold')
+        return ", ".join(parts) or "Gold only"
+    brow = []
+    for k, b in enumerate(latest.get("buildings", [])):
+        ticks = b["construction_ticks"] or latest["params"]["construction_ticks"]
+        limit = f'{b["max_count"]} per house' if b["max_count"] else ""
+        brow.append(f'<tr id="{b["key"]["identity"]}"><td><b>{e(b["name"])}</b><br><span class="cell-muted">{e(b["description"])}</span></td>'
+                    f'<td>{building_effects(b)}</td><td class="cell-num">{b["living"]}</td><td class="cell-num">{b["jobs"]}</td>'
+                    f'<td>{building_cost(b)}</td><td class="cell-num">{ticks}</td><td class="cell-num">{latest["starting_buildings"][k]}</td><td>{limit}</td></tr>')
+    if brow:
+        pages["buildings.html"] = header("Buildings", "Rules, Buildings") + (
+            '<p>Every building is built on one acre of barren land. See <a href="construction.html">Land and Construction</a> for costs, '
+            'building efficiency and how percentage effects grow.</p>\n'
+            f'<h2 id="current">In {e(latest["name"])}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+            '<tr><th>Building</th><th>Effects</th><th class="cell-num">Houses (people)</th><th class="cell-num">Jobs</th>'
+            '<th>Extra cost</th><th class="cell-num">Build time (ticks)</th><th class="cell-num">A new house starts with</th><th>Limit</th></tr>\n'
+            + "\n".join(brow) + "\n</table></div>\n" + source_note(latest))
 
     # General traits.
     trait_rows = "".join(
@@ -366,6 +437,9 @@ def generate(rules):
     values["general_trait_renown"] = ", ".join(f"{v:,}" for v in p["general_trait_renown"])
     values["general_trait_slots"] = len(p["general_trait_renown"])
     values["rescue_per_medic_pct"] = pct(p["rescue_bp_per_medic"])
+    values["example_build_cost"] = f'{p["build_cost_per_land_milli"] * (p["starting_land"] + p["build_cost_offset"]) // 1000:,}'
+    values["starting_built"] = sum(latest.get("starting_buildings", []))
+    values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
     for mat in latest.get("materials", []):
         if mat["key"]["identity"] == "bauxite":
@@ -383,7 +457,7 @@ def generate(rules):
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

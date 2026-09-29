@@ -2,8 +2,425 @@
   "ages": [
     {
       "age": 1,
+      "buildings": [
+        {
+          "capacity": [],
+          "construction_ticks": 72,
+          "description": "One per house. Your generals may carry one more trait, and it earns 1 renown a tick.",
+          "extra_gold": 250000,
+          "hash": "686d1e7334326ae5",
+          "jobs": 25,
+          "key": {
+            "identity": "ancestral_hall",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              0,
+              250
+            ],
+            [
+              2,
+              500
+            ]
+          ],
+          "max_count": 1,
+          "mods": [],
+          "name": "Ancestral Hall",
+          "produce": [
+            [
+              "renown",
+              1
+            ]
+          ],
+          "trait_slots": 1
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Cheaper troops.",
+          "extra_gold": 0,
+          "hash": "4a99660f3e323ca7",
+          "jobs": 25,
+          "key": {
+            "identity": "armouries",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -150,
+              "max_bp": -3750,
+              "stat": "TrainingCost"
+            }
+          ],
+          "name": "Armouries",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Make gold and raise income.",
+          "extra_gold": 0,
+          "hash": "1b705a1ab8c4949e",
+          "jobs": 25,
+          "key": {
+            "identity": "banks",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Income"
+            }
+          ],
+          "name": "Banks",
+          "produce": [
+            [
+              "gold",
+              25
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Armies come home sooner.",
+          "extra_gold": 0,
+          "hash": "c28524b1de0f5f04",
+          "jobs": 25,
+          "key": {
+            "identity": "barracks",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -150,
+              "max_bp": -3750,
+              "stat": "ReturnTime"
+            }
+          ],
+          "name": "Barracks",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Lose less land when attacked. Built with limestone.",
+          "extra_gold": 0,
+          "hash": "9b3b0009dca55c5b",
+          "jobs": 25,
+          "key": {
+            "identity": "castles",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              2,
+              2
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -225,
+              "max_bp": -5000,
+              "stat": "LandLoss"
+            }
+          ],
+          "name": "Castles",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Grow food.",
+          "extra_gold": 0,
+          "hash": "7724c2e31fce8192",
+          "jobs": 25,
+          "key": {
+            "identity": "farms",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Farms",
+          "produce": [
+            [
+              "food",
+              60
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Stronger defense. Built with limestone.",
+          "extra_gold": 0,
+          "hash": "fdb2ec1c337b6bdb",
+          "jobs": 25,
+          "key": {
+            "identity": "forts",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              2,
+              1
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Defense"
+            }
+          ],
+          "name": "Forts",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Houses more people than any other land.",
+          "extra_gold": 0,
+          "hash": "d221ca295c938de7",
+          "jobs": 0,
+          "key": {
+            "identity": "homes",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 35,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Homes",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Fewer troops die in battle.",
+          "extra_gold": 0,
+          "hash": "0db7ea2956087f1f",
+          "jobs": 25,
+          "key": {
+            "identity": "hospitals",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -300,
+              "max_bp": -7500,
+              "stat": "Casualties"
+            }
+          ],
+          "name": "Hospitals",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Cheaper construction and exploring.",
+          "extra_gold": 0,
+          "hash": "564c194b65eace3d",
+          "jobs": 25,
+          "key": {
+            "identity": "mills",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -400,
+              "max_bp": -10000,
+              "stat": "ConstructionCost"
+            },
+            {
+              "base_bp": -300,
+              "max_bp": -7500,
+              "stat": "ExploreCost"
+            }
+          ],
+          "name": "Mills",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [
+            [
+              "horses",
+              80
+            ]
+          ],
+          "construction_ticks": 0,
+          "description": "Breed and keep war horses.",
+          "extra_gold": 0,
+          "hash": "95243577a2445b06",
+          "jobs": 25,
+          "key": {
+            "identity": "stables",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Stables",
+          "produce": [
+            [
+              "horses",
+              2
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Your spies are harder to catch.",
+          "extra_gold": 0,
+          "hash": "12a4d85e6758a774",
+          "jobs": 25,
+          "key": {
+            "identity": "thieves_dens",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 300,
+              "max_bp": 7500,
+              "stat": "ThiefStrength"
+            }
+          ],
+          "name": "Thieves' Dens",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Merchants add a premium to what you sell on the market.",
+          "extra_gold": 0,
+          "hash": "23836802d88e1c76",
+          "jobs": 25,
+          "key": {
+            "identity": "trading_houses",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "TradeBonus"
+            }
+          ],
+          "name": "Trading Houses",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Stronger offense.",
+          "extra_gold": 0,
+          "hash": "3b9ebb8060523cef",
+          "jobs": 25,
+          "key": {
+            "identity": "training_grounds",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Offense"
+            }
+          ],
+          "name": "Training Grounds",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Enemy spies are easier to catch.",
+          "extra_gold": 0,
+          "hash": "9e84f42947822ebc",
+          "jobs": 25,
+          "key": {
+            "identity": "watch_towers",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 200,
+              "max_bp": 5000,
+              "stat": "ThiefDefense"
+            }
+          ],
+          "name": "Watch Towers",
+          "produce": [],
+          "trait_slots": 0
+        }
+      ],
       "changes_from_previous": null,
-      "hash": "1438b2b5c31174af",
+      "hash": "632bde112b2ee413",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -106,10 +523,20 @@
       "params": {
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "barren_food": 2,
+        "barren_living": 15,
+        "build_cost_offset": 10000,
+        "build_cost_per_land_milli": 50,
+        "chariot_gold": 100,
+        "chariot_horses": 1,
+        "chariot_material": "timber",
+        "chariot_material_cost": 1,
+        "chariot_offense": 2,
+        "constructing_living": 15,
+        "construction_ticks": 16,
         "defender_loss_bp": 600,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
-        "food_per_acre": 8,
         "food_per_person_milli": 250,
         "general_cost": 50,
         "general_death_bp": 500,
@@ -123,6 +550,7 @@
           500
         ],
         "gold_per_peasant": 3,
+        "horse_offense": 1,
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
@@ -130,8 +558,10 @@
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
+        "optimal_workers_bp": 6700,
         "peasant_growth_bp": 300,
-        "people_per_acre": 25,
+        "raze_cost_base": 300,
+        "raze_cost_per_land_milli": 50,
         "realms": 13,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
@@ -158,7 +588,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "2c0ad71b676f546d",
+          "hash": "ae26fc76cde8623d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -166,6 +596,12 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -183,7 +619,7 @@
         },
         {
           "flags": 0,
-          "hash": "3a802ada77be50d7",
+          "hash": "81afcbce2043fc2f",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -200,6 +636,12 @@
             0,
             -1000,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -208,7 +650,7 @@
         },
         {
           "flags": 0,
-          "hash": "a226631fede9eab9",
+          "hash": "a0f2ee7038e67100",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -217,6 +659,12 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -245,7 +693,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "d858b4b03d2e1e22",
+          "hash": "17d8ee7fc7753956",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -253,6 +701,12 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -313,7 +767,7 @@
         },
         {
           "flags": 0,
-          "hash": "d307cca508fc0217",
+          "hash": "b7bd2b6b3d0c7614",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -326,6 +780,12 @@
             0,
             1000,
             -500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -381,7 +841,7 @@
         },
         {
           "flags": 0,
-          "hash": "aced4fdece486016",
+          "hash": "80b1bb190b629fd8",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -394,6 +854,12 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -454,7 +920,7 @@
         },
         {
           "flags": 0,
-          "hash": "4dee029ffa46371e",
+          "hash": "67df82ce5ae535f9",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -470,6 +936,12 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0
           ],
@@ -522,7 +994,7 @@
         },
         {
           "flags": 1,
-          "hash": "64687cbb03343510",
+          "hash": "fcc951c8336eb963",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -531,6 +1003,12 @@
           "mods_bp": [
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -638,66 +1116,34 @@
           "quantity": 1
         }
       ],
+      "starting_buildings": [
+        0,
+        0,
+        40,
+        0,
+        0,
+        60,
+        20,
+        30,
+        0,
+        0,
+        10,
+        10,
+        0,
+        20,
+        10
+      ],
       "traits": [
         {
           "flags": 0,
-          "hash": "49fe34b2bcd4c876",
+          "hash": "2293d1a5f56e0c8f",
           "key": {
-            "identity": "aggressive",
+            "identity": "anointed",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
             0,
-            0,
-            0,
-            0,
-            500,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "name": "Aggressive",
-          "units": [],
-          "unlocks": []
-        },
-        {
-          "flags": 0,
-          "hash": "e5a5d530ce7e3dac",
-          "key": {
-            "identity": "charismatic",
-            "version": "v1"
-          },
-          "lineage_from": null,
-          "mods_bp": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1000
-          ],
-          "name": "Charismatic",
-          "units": [],
-          "unlocks": []
-        },
-        {
-          "flags": 0,
-          "hash": "1ba3c36a5013b878",
-          "key": {
-            "identity": "skilled",
-            "version": "v1"
-          },
-          "lineage_from": null,
-          "mods_bp": [
             0,
             0,
             0,
@@ -708,17 +1154,53 @@
             0,
             0,
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Skilled",
+          "name": "Anointed",
           "units": [],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "957e0224521c0c31",
+          "hash": "b7548811d0f5ef69",
           "key": {
-            "identity": "strategist",
+            "identity": "bellator",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Bellator",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "a8978a4619a9344a",
+          "key": {
+            "identity": "grandmaster",
             "version": "v1"
           },
           "lineage_from": null,
@@ -733,17 +1215,23 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Strategist",
+          "name": "Grandmaster",
           "units": [],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "e409730a84d70e4a",
+          "hash": "74b96430bf4c8221",
           "key": {
-            "identity": "swift",
+            "identity": "pathfinder",
             "version": "v1"
           },
           "lineage_from": null,
@@ -758,9 +1246,46 @@
             0,
             -1000,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Swift",
+          "name": "Pathfinder",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "1b1480575df3a580",
+          "key": {
+            "identity": "virtuic",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Virtuic",
           "units": [],
           "unlocks": []
         }
@@ -768,6 +1293,423 @@
     },
     {
       "age": 2,
+      "buildings": [
+        {
+          "capacity": [],
+          "construction_ticks": 72,
+          "description": "One per house. Your generals may carry one more trait, and it earns 1 renown a tick.",
+          "extra_gold": 250000,
+          "hash": "686d1e7334326ae5",
+          "jobs": 25,
+          "key": {
+            "identity": "ancestral_hall",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              0,
+              250
+            ],
+            [
+              2,
+              500
+            ]
+          ],
+          "max_count": 1,
+          "mods": [],
+          "name": "Ancestral Hall",
+          "produce": [
+            [
+              "renown",
+              1
+            ]
+          ],
+          "trait_slots": 1
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Cheaper troops.",
+          "extra_gold": 0,
+          "hash": "4a99660f3e323ca7",
+          "jobs": 25,
+          "key": {
+            "identity": "armouries",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -150,
+              "max_bp": -3750,
+              "stat": "TrainingCost"
+            }
+          ],
+          "name": "Armouries",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Make gold and raise income.",
+          "extra_gold": 0,
+          "hash": "1b705a1ab8c4949e",
+          "jobs": 25,
+          "key": {
+            "identity": "banks",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Income"
+            }
+          ],
+          "name": "Banks",
+          "produce": [
+            [
+              "gold",
+              25
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Armies come home sooner.",
+          "extra_gold": 0,
+          "hash": "c28524b1de0f5f04",
+          "jobs": 25,
+          "key": {
+            "identity": "barracks",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -150,
+              "max_bp": -3750,
+              "stat": "ReturnTime"
+            }
+          ],
+          "name": "Barracks",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Lose less land when attacked. Built with limestone.",
+          "extra_gold": 0,
+          "hash": "9b3b0009dca55c5b",
+          "jobs": 25,
+          "key": {
+            "identity": "castles",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              2,
+              2
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -225,
+              "max_bp": -5000,
+              "stat": "LandLoss"
+            }
+          ],
+          "name": "Castles",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Grow food.",
+          "extra_gold": 0,
+          "hash": "7724c2e31fce8192",
+          "jobs": 25,
+          "key": {
+            "identity": "farms",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Farms",
+          "produce": [
+            [
+              "food",
+              60
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Stronger defense. Built with limestone.",
+          "extra_gold": 0,
+          "hash": "fdb2ec1c337b6bdb",
+          "jobs": 25,
+          "key": {
+            "identity": "forts",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [
+            [
+              2,
+              1
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Defense"
+            }
+          ],
+          "name": "Forts",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Houses more people than any other land.",
+          "extra_gold": 0,
+          "hash": "d221ca295c938de7",
+          "jobs": 0,
+          "key": {
+            "identity": "homes",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 35,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Homes",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Fewer troops die in battle.",
+          "extra_gold": 0,
+          "hash": "0db7ea2956087f1f",
+          "jobs": 25,
+          "key": {
+            "identity": "hospitals",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -300,
+              "max_bp": -7500,
+              "stat": "Casualties"
+            }
+          ],
+          "name": "Hospitals",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Cheaper construction and exploring.",
+          "extra_gold": 0,
+          "hash": "564c194b65eace3d",
+          "jobs": 25,
+          "key": {
+            "identity": "mills",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -400,
+              "max_bp": -10000,
+              "stat": "ConstructionCost"
+            },
+            {
+              "base_bp": -300,
+              "max_bp": -7500,
+              "stat": "ExploreCost"
+            }
+          ],
+          "name": "Mills",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [
+            [
+              "horses",
+              80
+            ]
+          ],
+          "construction_ticks": 0,
+          "description": "Breed and keep war horses.",
+          "extra_gold": 0,
+          "hash": "95243577a2445b06",
+          "jobs": 25,
+          "key": {
+            "identity": "stables",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Stables",
+          "produce": [
+            [
+              "horses",
+              2
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Your spies are harder to catch.",
+          "extra_gold": 0,
+          "hash": "12a4d85e6758a774",
+          "jobs": 25,
+          "key": {
+            "identity": "thieves_dens",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 300,
+              "max_bp": 7500,
+              "stat": "ThiefStrength"
+            }
+          ],
+          "name": "Thieves' Dens",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Merchants add a premium to what you sell on the market.",
+          "extra_gold": 0,
+          "hash": "23836802d88e1c76",
+          "jobs": 25,
+          "key": {
+            "identity": "trading_houses",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "TradeBonus"
+            }
+          ],
+          "name": "Trading Houses",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Stronger offense.",
+          "extra_gold": 0,
+          "hash": "3b9ebb8060523cef",
+          "jobs": 25,
+          "key": {
+            "identity": "training_grounds",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "Offense"
+            }
+          ],
+          "name": "Training Grounds",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Enemy spies are easier to catch.",
+          "extra_gold": 0,
+          "hash": "9e84f42947822ebc",
+          "jobs": 25,
+          "key": {
+            "identity": "watch_towers",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 200,
+              "max_bp": 5000,
+              "stat": "ThiefDefense"
+            }
+          ],
+          "name": "Watch Towers",
+          "produce": [],
+          "trait_slots": 0
+        }
+      ],
       "changes_from_previous": [
         {
           "from": "orc@v1",
@@ -794,7 +1736,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "00f810db645e340c",
+      "hash": "ffcf95bf46f68d50",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -897,10 +1839,20 @@
       "params": {
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "barren_food": 2,
+        "barren_living": 15,
+        "build_cost_offset": 10000,
+        "build_cost_per_land_milli": 50,
+        "chariot_gold": 100,
+        "chariot_horses": 1,
+        "chariot_material": "timber",
+        "chariot_material_cost": 1,
+        "chariot_offense": 2,
+        "constructing_living": 15,
+        "construction_ticks": 16,
         "defender_loss_bp": 600,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
-        "food_per_acre": 8,
         "food_per_person_milli": 250,
         "general_cost": 50,
         "general_death_bp": 500,
@@ -914,6 +1866,7 @@
           500
         ],
         "gold_per_peasant": 3,
+        "horse_offense": 1,
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
@@ -921,8 +1874,10 @@
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
+        "optimal_workers_bp": 6700,
         "peasant_growth_bp": 300,
-        "people_per_acre": 25,
+        "raze_cost_base": 300,
+        "raze_cost_per_land_milli": 50,
         "realms": 13,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
@@ -949,7 +1904,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "2c0ad71b676f546d",
+          "hash": "ae26fc76cde8623d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -957,6 +1912,12 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -974,7 +1935,7 @@
         },
         {
           "flags": 0,
-          "hash": "3a802ada77be50d7",
+          "hash": "81afcbce2043fc2f",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -991,6 +1952,12 @@
             0,
             -1000,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -999,7 +1966,7 @@
         },
         {
           "flags": 0,
-          "hash": "a226631fede9eab9",
+          "hash": "a0f2ee7038e67100",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -1008,6 +1975,12 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1029,7 +2002,7 @@
         },
         {
           "flags": 0,
-          "hash": "f681a599c128a6b3",
+          "hash": "d22ae12647cf5959",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -1043,6 +2016,12 @@
             0,
             0,
             -2000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1060,7 +2039,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "d858b4b03d2e1e22",
+          "hash": "17d8ee7fc7753956",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -1068,6 +2047,12 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1128,7 +2113,7 @@
         },
         {
           "flags": 0,
-          "hash": "b9d8ca56df814bca",
+          "hash": "d1ff2513aa538b64",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -1143,6 +2128,12 @@
             -500,
             0,
             -500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -1196,7 +2187,7 @@
         },
         {
           "flags": 0,
-          "hash": "aced4fdece486016",
+          "hash": "80b1bb190b629fd8",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -1209,6 +2200,12 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1269,7 +2266,7 @@
         },
         {
           "flags": 0,
-          "hash": "4dee029ffa46371e",
+          "hash": "67df82ce5ae535f9",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -1285,6 +2282,12 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0
           ],
@@ -1340,7 +2343,7 @@
         null,
         {
           "flags": 3,
-          "hash": "dfc3d7175d4907f9",
+          "hash": "f5250ebbf0be9063",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -1349,6 +2352,12 @@
           "mods_bp": [
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1453,66 +2462,34 @@
           "quantity": 1
         }
       ],
+      "starting_buildings": [
+        0,
+        0,
+        40,
+        0,
+        0,
+        60,
+        20,
+        30,
+        0,
+        0,
+        10,
+        10,
+        0,
+        20,
+        10
+      ],
       "traits": [
         {
           "flags": 0,
-          "hash": "49fe34b2bcd4c876",
+          "hash": "2293d1a5f56e0c8f",
           "key": {
-            "identity": "aggressive",
+            "identity": "anointed",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
             0,
-            0,
-            0,
-            0,
-            500,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0
-          ],
-          "name": "Aggressive",
-          "units": [],
-          "unlocks": []
-        },
-        {
-          "flags": 0,
-          "hash": "e5a5d530ce7e3dac",
-          "key": {
-            "identity": "charismatic",
-            "version": "v1"
-          },
-          "lineage_from": null,
-          "mods_bp": [
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            1000
-          ],
-          "name": "Charismatic",
-          "units": [],
-          "unlocks": []
-        },
-        {
-          "flags": 0,
-          "hash": "1ba3c36a5013b878",
-          "key": {
-            "identity": "skilled",
-            "version": "v1"
-          },
-          "lineage_from": null,
-          "mods_bp": [
             0,
             0,
             0,
@@ -1523,17 +2500,53 @@
             0,
             0,
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Skilled",
+          "name": "Anointed",
           "units": [],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "957e0224521c0c31",
+          "hash": "b7548811d0f5ef69",
           "key": {
-            "identity": "strategist",
+            "identity": "bellator",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Bellator",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "a8978a4619a9344a",
+          "key": {
+            "identity": "grandmaster",
             "version": "v1"
           },
           "lineage_from": null,
@@ -1548,17 +2561,23 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Strategist",
+          "name": "Grandmaster",
           "units": [],
           "unlocks": []
         },
         {
           "flags": 0,
-          "hash": "e409730a84d70e4a",
+          "hash": "74b96430bf4c8221",
           "key": {
-            "identity": "swift",
+            "identity": "pathfinder",
             "version": "v1"
           },
           "lineage_from": null,
@@ -1573,9 +2592,46 @@
             0,
             -1000,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
-          "name": "Swift",
+          "name": "Pathfinder",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "1b1480575df3a580",
+          "key": {
+            "identity": "virtuic",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Virtuic",
           "units": [],
           "unlocks": []
         }
@@ -1749,7 +2805,13 @@
       "training_cost",
       "return_time",
       "elite_offense",
-      "elite_defense"
+      "elite_defense",
+      "casualties",
+      "land_loss",
+      "construction_cost",
+      "thief_strength",
+      "thief_defense",
+      "trade_bonus"
     ],
     "unit_slots": [
       "offense",

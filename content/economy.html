@@ -6,15 +6,15 @@ updated: 2026-09-29
 <p>Your economy updates every tick. All results are rounded down. Modifiers from your race and personality on the same stat add together, then multiply the base amount (for example +5% and +10% give &times;1.15).</p>
 
 <h2 id="Income">Income</h2>
-<p>Gold each tick = peasants &times; {{gold_per_peasant}} &times; your <a href="effects.html#income">income</a> modifier. Your state then takes its <a href="leadership.html#Tax">tax</a> ({{tax_default_pct}}% unless your leader changes it) for the state treasury.</p>
+<p>Gold each tick = peasants &times; {{gold_per_peasant}} &times; your <a href="effects.html#income">income</a> modifier (banks raise it), plus what your <a href="buildings.html#banks">banks</a> make. Your state then takes its <a href="leadership.html#Tax">tax</a> ({{tax_default_pct}}% unless your leader changes it) for the state treasury.</p>
 
 <h2 id="Food">Food</h2>
-<p>Food grown each tick = acres &times; {{food_per_acre}} &times; your <a href="effects.html#food_production">food production</a> modifier.</p>
+<p>Food grown each tick = what your <a href="buildings.html#farms">farms</a> grow (times <a href="construction.html#Efficiency">building efficiency</a>) plus {{barren_food}} for each barren acre, times your <a href="effects.html#food_production">food production</a> modifier.</p>
 <p>Food eaten each tick = people &times; {{food_per_person}} &times; your <a href="effects.html#food_consumption">food consumption</a> modifier. People means peasants plus every troop: at home, away, or in training. Races with <a href="effects.html#no_food">no_food</a> eat nothing.</p>
 <p>If food runs out, it stays at zero and you lose {{starvation_pct}}% of your peasants each tick until it recovers.</p>
 
 <h2 id="Population">Population</h2>
-<p>Your land holds acres &times; {{people_per_acre}} people, times your <a href="effects.html#population">population</a> modifier.</p>
+<p>Your land holds the living space of every building (see <a href="buildings.html">Buildings</a>; homes hold the most), plus {{barren_living}} people per barren acre and {{constructing_living}} per acre under construction, times your <a href="effects.html#population">population</a> modifier.</p>
 <ul>
   <li>Below that, peasants grow by {{peasant_growth_pct}}% a tick (at least 1), up to the limit.</li>
   <li>Above it, for example after losing land, peasants leave until you are back at the limit.</li>

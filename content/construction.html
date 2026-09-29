@@ -1,0 +1,35 @@
+<!--
+title: Land and Construction
+category: Mechanics, Buildings
+updated: 2026-09-29
+-->
+<p>Every acre is barren, built on, or under construction. Buildings are how land does anything more than house a few people. The list is on <a href="buildings.html">Buildings</a>.</p>
+
+<h2 id="Land">Land</h2>
+<ul>
+  <li>A barren acre houses {{barren_living}} people and grows {{barren_food}} food a tick.</li>
+  <li>An acre under construction houses {{constructing_living}} people.</li>
+  <li>A new house starts with {{starting_built}} of its {{starting_land}} acres built and {{starting_barren}} barren.</li>
+  <li>Explored and conquered land arrives barren.</li>
+</ul>
+
+<h2 id="Building">Building and razing</h2>
+<ul>
+  <li>A building costs 0.05 &times; (your land + {{build_cost_offset}}) gold, less what your <a href="buildings.html#mills">mills</a> save. A new house pays {{example_build_cost}} gold a building.</li>
+  <li>Some buildings also cost materials (forts and castles use limestone) or extra gold. See <a href="buildings.html">Buildings</a>.</li>
+  <li>Construction takes {{construction_ticks}} ticks, unless a building says otherwise.</li>
+  <li>Razing costs {{raze_cost_base}} + 0.05 &times; your land gold a building. The land is barren again at once.</li>
+</ul>
+
+<h2 id="Efficiency">Building efficiency</h2>
+<p>Buildings need workers. Every building has jobs; when your peasants number at least {{optimal_workers_pct}}% of all jobs, efficiency is 100%. With no peasants it's 50%, and between the two it scales evenly.</p>
+<p>Efficiency scales everything buildings make and every percentage effect. It doesn't touch living space, how many horses stables hold, or renown.</p>
+
+<h2 id="Percentages">How percentage effects grow</h2>
+<p>A percentage building's effect depends on the share of your land it covers, following Utopia's curve:</p>
+<pre><code>effect = base &times; share &times; (100% &minus; share)</code></pre>
+<p>The share counts up to 50%, and the result never passes the building's maximum. The first buildings of a kind help the most; past a point, more add little.</p>
+<p><b>Example.</b> Banks add 1.5% income per 1% of land. With 40 banks on 400 acres (10%): 1.5 &times; 10 &times; 90 &divide; 100 = 13.5% more income. At 50% banks the effect peaks at the 37.5% maximum.</p>
+
+<h2 id="Attacks">When you're attacked</h2>
+<p>Land taken from you comes out of your barren land and every kind of building in proportion. <a href="buildings.html#castles">Castles</a> reduce how much is taken. Land under construction is never taken.</p>
