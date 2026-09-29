@@ -388,6 +388,18 @@ a:visited { color: var(--link-visited); }
 .related__title { margin: 0 0 .4rem; font: 700 .72rem/1.4 var(--font-body); text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
 .related__list { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; margin: 0; padding: 0; list-style: none; }
 
+/* glossary: a <dl> of terms. Wide screens: term in a narrow left column, definition beside it. Phones: definition under the term.
+   Give each <dt> an id (lowercase, hyphens) so other pages can link to it: glossary.html#tick */
+.page__body dl.glossary { display: grid; grid-template-columns: minmax(8rem, 12rem) 1fr; margin: .6rem 0 1.4rem; border-top: 1px solid var(--border); }
+.page__body dl.glossary > dt, .page__body dl.glossary > dd { margin: 0; padding: .55rem 0; border-bottom: 1px solid var(--border); }
+.page__body dl.glossary > dt { padding-right: 1rem; font-weight: 700; color: var(--text); scroll-margin-top: calc(var(--header-h) + 1.5rem); }
+.page__body dl.glossary > dt:target, .page__body dl.glossary > dt:target + dd { background: var(--band-bg); }   /* the term you were linked to */
+@media (max-width: 40rem) {
+  .page__body dl.glossary { display: block; }
+  .page__body dl.glossary > dt { padding-bottom: 0; border-bottom: 0; }
+  .page__body dl.glossary > dd { padding-top: .15rem; }
+}
+
 /* row-sub: a table row that belongs to the row above it (Resin and Timber under Pine). Indented, with a hook before the name. */
 .page__body tr.row-sub > td:first-child { padding-left: 1.6rem; }
 .page__body tr.row-sub > td:first-child::before { content: "↳ "; color: var(--muted); }

@@ -3,28 +3,51 @@ title: Glossary
 category: Guides
 updated: 2026-09-29
 -->
-<dl>
-  <dt>House</dt><dd>What one player runs: land, peasants, gold, food and troops. One per account per age.</dd>
-  <dt>State</dt><dd>A group of houses (up to {{houses_per_state}}) that play together.</dd>
-  <dt>Realm</dt><dd>A group of states ({{states_per_realm}} each). Realms are the top level of the world map. See <a href="world.html">The World</a>.</dd>
-  <dt>Spy report</dt><dd>A full picture of another house at one moment, from a successful <a href="spying.html">spy</a> operation. Shared with your state.</dd>
-  <dt>News</dt><dd>Your house's private feed of what happened to it. See <a href="visibility.html#News">What You Can See</a>.</dd>
-  <dt>Material</dt><dd>A resource each realm produces every tick. See <a href="materials.html">Materials</a>.</dd>
-  <dt>Share</dt><dd>A state's part of its realm's production. See <a href="trade.html#Shares">Materials and Trade</a>.</dd>
-  <dt>Treasury</dt><dd>A state's own gold and materials, run by its <a href="leadership.html">leader</a>.</dd>
-  <dt>Clearing price</dt><dd>The single price a market book trades at each tick.</dd>
-  <dt>Renown</dt><dd>Public standing won in battle. Unlocks better <a href="generals.html">generals</a>.</dd>
-  <dt>General</dt><dd>A commander raised from elites, with flat <a href="traits.html">traits</a>; one per army.</dd>
-  <dt>Medic</dt><dd>A non-fighting unit that saves battle deaths. See <a href="military.html#Medics">Military</a>.</dd>
-  <dt>Barren land</dt><dd>Land with no building. It houses a few people and grows a little food.</dd>
-  <dt>Building efficiency</dt><dd>How well your buildings are staffed, 50-100%. See <a href="construction.html#Efficiency">Land and Construction</a>.</dd>
-  <dt>Address</dt><dd>Where a house sits, written realm:state:house, such as <code>4:2:1</code>.</dd>
-  <dt>Age</dt><dd>One round of the game, from start to reset. Each age has its own frozen rules. See <a href="ages.html">All Ages</a>.</dd>
-  <dt>Tick</dt><dd>The hourly economy update: income, food and population. See <a href="how-time-works.html">How Time Works</a>.</dd>
-  <dt>Identity</dt><dd>A race or personality's permanent name, such as <code>orc</code>. It never changes, so history can follow it across ages.</dd>
-  <dt>Definition</dt><dd>A race or personality's numbers and effects for an age, such as <code>orc@v2</code>. A rebalance is a new definition of the same identity.</dd>
-  <dt>Slot</dt><dd>A numbered place an age puts a definition into (15 for races, 8 for personalities). Slots can be left unused. Only the current age uses them; history records identities.</dd>
-  <dt>Rules fingerprint</dt><dd>A short code computed from a definition's mechanics. Same fingerprint, same rules, even across ages.</dd>
-  <dt>Lineage</dt><dd>A reworked race gets a new identity that points back to the one it replaced (for example Revenant from Undead).</dd>
-  <dt>Effect</dt><dd>One building block of a race or personality: a modifier, a flag, an unlock or its unit slots. See <a href="effects.html">Effects</a>.</dd>
+<p>Terms grouped by topic, as in the sidebar. Link to a term with its name, such as <code>glossary.html#tick</code>.</p>
+
+<h2 id="world">The World</h2>
+<dl class="glossary">
+  <dt id="address">Address</dt><dd>Where a house sits, written realm:state:house, such as <code>4:2:1</code>.</dd>
+  <dt id="house">House</dt><dd>What one player runs: land, peasants, gold, food and troops. One per account per age.</dd>
+  <dt id="realm">Realm</dt><dd>A group of states ({{states_per_realm}} each). Realms are the top level of the world map. See <a href="world.html">The World</a>.</dd>
+  <dt id="state">State</dt><dd>A group of houses (up to {{houses_per_state}}) that play together.</dd>
+</dl>
+
+<h2 id="economy">Economy</h2>
+<dl class="glossary">
+  <dt id="barren-land">Barren land</dt><dd>Land with no building. It houses a few people and grows a little food.</dd>
+  <dt id="building-efficiency">Building efficiency</dt><dd>How well your buildings are staffed, 50-100%. See <a href="construction.html#Efficiency">Land and Construction</a>.</dd>
+  <dt id="clearing-price">Clearing price</dt><dd>The single price a market book trades at each tick.</dd>
+  <dt id="material">Material</dt><dd>A resource each realm produces every tick. See <a href="materials.html">Materials</a>.</dd>
+  <dt id="share">Share</dt><dd>A state's part of its realm's production. See <a href="trade.html#Shares">Materials and Trade</a>.</dd>
+  <dt id="treasury">Treasury</dt><dd>A state's own gold and materials, run by its <a href="leadership.html">leader</a>.</dd>
+</dl>
+
+<h2 id="war">War</h2>
+<dl class="glossary">
+  <dt id="general">General</dt><dd>A commander raised from elites, with flat <a href="traits.html">traits</a>; one per army.</dd>
+  <dt id="medic">Medic</dt><dd>A non-fighting unit that saves battle deaths. See <a href="military.html#Medics">Military</a>.</dd>
+  <dt id="renown">Renown</dt><dd>Public standing won in battle. Unlocks better <a href="generals.html">generals</a>.</dd>
+</dl>
+
+<h2 id="information">Information</h2>
+<dl class="glossary">
+  <dt id="news">News</dt><dd>Your house's private feed of what happened to it. See <a href="visibility.html#News">What You Can See</a>.</dd>
+  <dt id="spy-report">Spy report</dt><dd>A full picture of another house at one moment, from a successful <a href="spying.html">spy</a> operation. Shared with your state.</dd>
+</dl>
+
+<h2 id="time">Time and Ages</h2>
+<dl class="glossary">
+  <dt id="age">Age</dt><dd>One round of the game, from start to reset. Each age has its own frozen rules. See <a href="ages.html">All Ages</a>.</dd>
+  <dt id="tick">Tick</dt><dd>The hourly economy update: income, food and population. See <a href="how-time-works.html">How Time Works</a>.</dd>
+</dl>
+
+<h2 id="rules-records">How the rules are recorded</h2>
+<dl class="glossary">
+  <dt id="definition">Definition</dt><dd>A race or personality's numbers and effects for an age, such as <code>orc@v2</code>. A rebalance is a new definition of the same identity.</dd>
+  <dt id="effect">Effect</dt><dd>One building block of a race or personality: a modifier, a flag, an unlock or its unit slots. See <a href="effects.html">Effects</a>.</dd>
+  <dt id="identity">Identity</dt><dd>A race or personality's permanent name, such as <code>orc</code>. It never changes, so history can follow it across ages.</dd>
+  <dt id="lineage">Lineage</dt><dd>A reworked race gets a new identity that points back to the one it replaced (for example Revenant from Undead).</dd>
+  <dt id="rules-fingerprint">Rules fingerprint</dt><dd>A short code computed from a definition's mechanics. Same fingerprint, same rules, even across ages.</dd>
+  <dt id="slot">Slot</dt><dd>A numbered place an age puts a definition into (15 for races, 8 for personalities). Slots can be left unused. Only the current age uses them; history records identities.</dd>
 </dl>

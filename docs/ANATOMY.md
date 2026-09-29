@@ -69,6 +69,7 @@ Every part of the site has one stable name. Use these names in issues, PRs and c
 | `entry-link` | On a `<p>`: a small link line tucked under a summary paragraph ("Full entry and history: …") |
 | `list-spaced` | Add to a `list-plain` list: a small gap between items, useful when items wrap onto several lines |
 | `row-sub` | On a `<tr>`: a row that belongs to the row above (Resin and Timber under Pine). Indented, with a ↳ | 
+| `glossary` | On a `<dl>`: terms in a left column, definitions beside them (stacked on phones). Give each `<dt>` an id so pages can link `glossary.html#tick`; the linked term is highlighted |
 | `list-plain` | A list with no bullets or indent (e.g. a stacked spell list) |
 
 **Dates on numbers.** Every data table gets a `data-note` line under it: "Numbers last updated 13 Feb 2026".
