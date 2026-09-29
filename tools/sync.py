@@ -409,7 +409,13 @@ def generate(rules):
             '<p>A <a href="generals.html">general</a> has one or more of these traits. Each is a flat modifier while '
             "the general leads an army or commands the defense.</p>\n"
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Trait</th><th>Effect</th></tr>\n'
-            + trait_rows + "</table></div>\n" + source_note(latest))
+            + trait_rows + "</table></div>\n"
+            '<h2 id="stacking">How traits stack</h2>\n'
+            '<p class="callout"><b>Traits are additive.</b> A general\'s traits for the same stat are added together, and that total is '
+            "added to your house's other bonuses for the stat (race, personality, buildings, sciences). The army is then scaled by the "
+            "combined percentage once. Bonuses that strengthen generals scale the traits' total before it is added.</p>\n"
+            "<p><b>Elite troops are the exception.</b> Elites get their elite bonus first. The whole army, elites included, then gets "
+            "the offense or defense bonus, so for elites the two multiply.</p>\n" + source_note(latest))
 
     # Effects reference.
     stat_rows = "".join(f'<tr id="{s}"><td><code>{s}</code></td><td>{e(STAT_TEXT.get(s, "(no description yet)"))}</td></tr>\n' for s in vocab["stats"])

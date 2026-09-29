@@ -12,4 +12,7 @@ generated: tools/sync.py
 <tr id="pathfinder"><td><b>Pathfinder</b></td><td><ul class="list-plain"><li><span class="cell-good">-10%</span> how long armies take to come home (<a href="effects.html#return_time"><code>return_time</code></a>)</li></ul></td></tr>
 <tr id="virtuic"><td><b>Virtuic</b></td><td><ul class="list-plain"><li><span class="cell-good">+10%</span> offense of elite troops (elite and elite+) (<a href="effects.html#elite_offense"><code>elite_offense</code></a>)</li></ul></td></tr>
 </table></div>
+<h2 id="stacking">How traits stack</h2>
+<p class="callout"><b>Traits are additive.</b> A general's traits for the same stat are added together, and that total is added to your house's other bonuses for the stat (race, personality, buildings, sciences). The army is then scaled by the combined percentage once. Bonuses that strengthen generals scale the traits' total before it is added.</p>
+<p><b>Elite troops are the exception.</b> Elites get their elite bonus first. The whole army, elites included, then gets the offense or defense bonus, so for elites the two multiply.</p>
 <p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>ffcf95bf46f68d50</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
