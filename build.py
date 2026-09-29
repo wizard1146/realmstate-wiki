@@ -194,6 +194,25 @@ def add_toc(page):
     return body, toc
 
 
+FIT_MAX_CHARS = 40      # a table whose every cell is this short (or shorter) is only as wide as its content: see fit_tables
+TABLE = re.compile(r"<table\b([^>]*)>(.*?)</table>", re.S)
+CELL = re.compile(r"<t[dh]\b[^>]*>(.*?)</t[dh]>", re.S)
+NO_AUTO_FIT = ("table--wide", "table--fit", "table--fixed", "table--units")   # already sized by hand
+
+
+def fit_tables(body):
+    """Wiki rule: a table is only as wide as its content needs, capped at the page width. One that holds sentences
+    (a cell longer than FIT_MAX_CHARS) keeps the full width. `table--wide` / `table--fit` on a table override the rule."""
+    def one(m):
+        attrs, inner = m.group(1), m.group(2)
+        cls = re.search(r'class="([^"]*)"', attrs)
+        if cls and any(c in cls.group(1).split() for c in NO_AUTO_FIT): return m.group(0)
+        if any(len(plain(c)) > FIT_MAX_CHARS for c in CELL.findall(inner)): return m.group(0)
+        attrs = attrs.replace(cls.group(0), f'class="{cls.group(1)} table--fit"') if cls else attrs + ' class="table--fit"'
+        return f"<table{attrs}>{inner}</table>"
+    return TABLE.sub(one, body)
+
+
 def category_slug(name):
     return "category-" + re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
 
@@ -256,6 +275,7 @@ def render(template, nav, page, extra_body="", related=""):
                    f'<p>Written by: {names}.</p></details>')
     nav = nav.replace(f'href="{page["url"]}"', f'href="{page["url"]}" aria-current="page"')   # highlights the current page in the sidebar
     body, _ = add_data_notes(page)
+    body = fit_tables(body)
     st = STATUSES.get(page.get("status", ""))
     if st:
         note = f' {html.escape(page["status_note"])}' if page.get("status_note") else ""

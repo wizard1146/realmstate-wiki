@@ -293,8 +293,10 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--grouped td:first-child { padding-left: 1.1rem; }   /* rows sit a little in from their group's name */
 
 /* table--fit: only as wide as the content needs (capped at the page width), for tables of short values that would otherwise
-   stretch across the page with most of each row empty */
+   stretch across the page with most of each row empty. build.py adds it automatically to any table whose cells are all short
+   (FIT_MAX_CHARS); table--wide keeps a table full width. */
 .page__body table.table--fit { width: auto; min-width: min(20rem, 100%); }
+.page__body table.table--wide { width: 100%; }
 
 /* table--hover: a soft highlight on the row under the pointer (data cells only, so header rows are left alone) */
 .page__body table.table--hover tr:hover > td { background-color: var(--row-hover); }
