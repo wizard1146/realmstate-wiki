@@ -1,6 +1,7 @@
 # Realmstate Wiki
 
 The wiki for [Realmstate](https://github.com/wizard1146/realmstate), built alongside the game.
+Live at https://wizard1146.github.io/realmstate-wiki/
 
 - **Rules pages** (races, personalities, effects, ages) are generated from the game's own rule files by
   `tools/sync.py`, so every number is the one the engine uses.
