@@ -1,0 +1,39 @@
+<!--
+title: Hall of Deeds
+category: Mechanics
+updated: 2026-09-29
+-->
+<p>The Hall of Deeds is where houses buy and sell <a href="generals.html">generals</a> and <a href="academics.html">academics</a>. Every character carries its service record, so a proven veteran is worth more than a fresh recruit.</p>
+
+<h2 id="Selling">Selling</h2>
+<p>Listing a character shows its name, traits or attributes and full record to everyone. You list it one of two ways:</p>
+<ul>
+  <li><b>Auction.</b> Set a reserve price and a length of {{auction_min_ticks}} to {{auction_max_ticks}} ticks. Each bid must beat the last by {{bid_step_pct}}%. When the auction ends, the top bidder buys it. Once there's a bid, the auction runs to its end.</li>
+  <li><b>Open to offers.</b> Anyone may offer gold; you accept or decline.</li>
+</ul>
+
+<h2 id="Buying">Buying</h2>
+<ul>
+  <li>Bid on an auction, or make a direct offer on any character you know of, listed or not (a <a href="spying.html">spy report</a> shows a house's generals and academics).</li>
+  <li>Your gold is held from the moment you bid or offer. It comes back at once if you're outbid, declined, withdraw, or the offer lapses after {{offer_ticks}} ticks.</li>
+  <li>You need room for it: fewer than {{general_max}} generals, or the universities for another academic.</li>
+</ul>
+
+<h2 id="Costs">What a sale costs</h2>
+<ul>
+  <li>{{trade_fee_pct}}% of the price goes to the seller's state treasury.</li>
+  <li>A buyer from another realm pays {{out_of_realm_pct}}% on top. That extra goes to the character itself, recorded in its history as transfer income, and leaves the economy for good.</li>
+  <li>Every character's record keeps how often it has been traded, and its transfer fees: lifetime total, highest and average.</li>
+</ul>
+<p><b>Example.</b> A general sells for 10,000 gold to a house in another realm. The buyer pays 11,000; the seller receives 9,500 and their state 500; the general's transfer income rises by 1,000.</p>
+
+<h2 id="Limits">What can't be traded</h2>
+<ul>
+  <li>A general away with an army, or your main general.</li>
+  <li>A character that changed hands in the last {{trade_cooldown_ticks}} ticks.</li>
+  <li>Any character while either house's state is at war (when war arrives).</li>
+</ul>
+<p>A listed general can't lead an army or be named main general until you take it off the market.</p>
+
+<h2 id="Settling">Settling in</h2>
+<p>For {{settling_ticks}} ticks after a trade, a character is settling in with its new house: a general's army fights {{settling_penalty_size}}% weaker, and its house writes {{settling_penalty_size}}% fewer books for each settling academic.</p>

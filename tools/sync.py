@@ -155,6 +155,15 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("academic_material_cost", "Academics: material per attribute", "n"),
     ("academic_attribute_books", "Academics: books invested for 1st, 2nd, 3rd attribute", "list"),
     ("academic_pick_books", "Academics: books invested to choose attributes", "n"),
+    ("trade_fee_bp", "Trading: share of a sale paid to the seller's state", "pct"),
+    ("out_of_realm_bp", "Trading: extra an out-of-realm buyer pays", "pct"),
+    ("auction_min_ticks", "Trading: shortest auction, ticks", "n"),
+    ("auction_max_ticks", "Trading: longest auction, ticks", "n"),
+    ("bid_step_bp", "Trading: each bid must beat the last by", "pct"),
+    ("offer_ticks", "Trading: an offer lapses after, ticks", "n"),
+    ("trade_cooldown_ticks", "Trading: no trading again for, ticks", "n"),
+    ("settling_ticks", "Trading: settling in lasts, ticks", "n"),
+    ("settling_penalty_bp", "Trading: penalty while settling in", "pct"),
 ]
 
 e = html.escape
@@ -548,6 +557,7 @@ def generate(rules):
     values["science_ranks"] = "; ".join(f"{b} books a tick from {x:,}" for x, b in p["science_ranks"])
     values["professor_books"] = p["science_ranks"][-1][1]
     values["starting_books_per_tick"] = p["starting_scientists"] * p["science_ranks"][0][1]
+    values["settling_penalty_size"] = pct(abs(p["settling_penalty_bp"]))
     values["academic_attribute_books"] = ", ".join(f"{v:,}" for v in p["academic_attribute_books"])
     values["scientists_per_tick"] = f'{p["scientist_spawn_milli"] / 1000:g}'
     values["starting_built"] = sum(latest.get("starting_buildings", []))
