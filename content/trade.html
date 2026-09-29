@@ -1,0 +1,26 @@
+<!--
+title: Materials and Trade
+category: Mechanics, Economy
+updated: 2026-09-29
+-->
+<p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
+
+<h2 id="Shares">Shares</h2>
+<p>A realm's output is divided among its {{states_per_realm}} states by share. Shares start equal, about {{equal_share_pct}}% each, and never fall below {{share_floor_pct}}%. Wars inside a realm will move shares (a later milestone).</p>
+
+<h2 id="Split">Houses and treasury</h2>
+<p>Of each state's part, {{house_split_pct}}% is shared equally among its houses. The rest goes to the state's treasury, which only the <a href="leadership.html">state leader</a> can use. The split is set per age.</p>
+<p><b>Worked example.</b> A bauxite realm makes {{bauxite_output}} units a tick. A state with a {{equal_share_pct}}% share gets about {{example_state_output}} a tick. {{house_split_pct}}% of that, {{example_houses_part}}, is shared among the state's houses, and {{example_treasury_part}} goes to the treasury. With {{houses_per_state}} houses, each gets about {{example_per_house}} a tick; leftovers carry over, so no unit is ever lost.</p>
+
+<h2 id="Market">The market</h2>
+<ul>
+  <li>Each material has one order book. You post a buy (the most you'll pay per unit) or a sell (the least you'll take).</li>
+  <li>Placing an order sets its goods or gold aside at once. Cancelling gives them back.</li>
+  <li>Once a tick, each book clears at a <b>single price</b>: the one that trades the most units. Everyone who trades pays or receives that price; a buyer who offered more gets the difference back.</li>
+  <li>Better-priced orders fill first, then older ones. Whatever doesn't trade stays open.</li>
+  <li>The book shows prices and quantities, never who placed them.</li>
+</ul>
+<p>States that make the same material may agree on prices between themselves. The game doesn't enforce such agreements; keeping them is up to the players.</p>
+
+<h2 id="Giving">Giving and granting</h2>
+<p>Any house can give gold or materials to its state's treasury. The leader can grant treasury gold or materials to any house in the state, and the house's news says so.</p>

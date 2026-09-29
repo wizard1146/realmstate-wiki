@@ -12,6 +12,10 @@ updated: 2026-09-29
 <tr><td><code>GET /rankings</code></td><td>The 100 largest houses by land</td></tr>
 <tr><td><code>GET /houses/{id}</code></td><td>Your own house in full; any other house's public facts (name, address, race, land)</td></tr>
 <tr><td><code>GET /states/{realm}/{state}</code></td><td>A state's houses (public facts)</td></tr>
+<tr><td><code>GET /market</code></td><td>Every material: producing realms, last clearing price and volume, open orders by price</td></tr>
+<tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count and leader</td></tr>
+<tr><td><code>GET /state</code></td><td>Your state: members, leader, vote counts, treasury (signed in)</td></tr>
+<tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
 <tr><td><code>GET /me</code></td><td>Your account and your house this age (signed in)</td></tr>
 <tr><td><code>GET /news</code></td><td>Your house's news, newest first (signed in)</td></tr>
 <tr><td><code>GET /reports</code></td><td>Spy reports from your state, newest first; add <code>?target={id}</code> for one house (signed in)</td></tr>
@@ -24,7 +28,15 @@ updated: 2026-09-29
 {"type": "explore", "house": 0, "acres": 20}
 {"type": "train", "house": 0, "unit": 2, "count": 100}
 {"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}
-{"type": "spy", "house": 0, "target": 5, "thieves": 20}</code></pre>
+{"type": "spy", "house": 0, "target": 5, "thieves": 20}
+{"type": "vote", "house": 0, "vote": {"type": "for", "house": 3}}
+{"type": "vote", "house": 0, "vote": {"type": "against"}}
+{"type": "order", "house": 0, "side": "sell", "material": "bauxite", "quantity": 50, "price": 10}
+{"type": "order", "house": 0, "treasury": true, "side": "buy", "material": "paper", "quantity": 20, "price": 12}
+{"type": "cancel", "house": 0, "order": 7}
+{"type": "donate", "house": 0, "material": "bauxite", "amount": 25}
+{"type": "grant", "house": 0, "to": 3, "amount": 1000}</code></pre>
+<p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders and <code>grant</code> are for the state leader only.</p>
 <p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 
 <h2 id="Answers">Answers</h2>

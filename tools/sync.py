@@ -13,7 +13,7 @@ Writes:
   data/rules.json             the raw export
   content/_values.json        the current (latest) age's numbers, for {{name}} in hand-written pages
   content/races.html, race-<id>.html, personalities.html, personality-<id>.html,
-  content/ages.html, age-<n>.html, content/effects.html
+  content/ages.html, age-<n>.html, content/effects.html, content/materials.html
 """
 import html, json, os, pathlib, subprocess, sys
 
@@ -69,6 +69,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("luck_bp", "Battle luck (offense varies by up to)", "pm"),
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
+    ("share_floor_bp", "Economy: lowest share a state can fall to", "pct"),
+    ("house_split_bp", "Economy: part of a state's output shared among its houses", "pct"),
 ]
 
 e = html.escape
@@ -242,6 +244,11 @@ def generate(rules):
                     rows.append(f'<tr class="cell-muted"><td class="cell-num">{slot}</td><td colspan="2">unused</td></tr>')
             return ('<div class="table-scroll" data-updated="none"><table>\n<tr><th class="cell-num">Slot</th>'
                     f'<th>{singular.title()}</th><th>Definition</th></tr>\n' + "\n".join(rows) + "\n</table></div>\n")
+        realm_rows = "".join(
+            f'<tr><td class="cell-num">{r + 1}</td><td><a href="materials.html#{a["materials"][m]["key"]["identity"]}">{e(a["materials"][m]["name"])}</a></td></tr>\n'
+            for r, m in enumerate(a.get("realm_material", [])))
+        materials_html = ('<h2 id="materials">Materials</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+                          f'<tr><th class="cell-num">Realm</th><th>Material</th></tr>\n{realm_rows}</table></div>\n') if realm_rows else ""
         changes = a["changes_from_previous"]
         if changes is None:
             notes = "<p>The first age.</p>\n"
@@ -264,8 +271,24 @@ def generate(rules):
                 '<h2 id="numbers">Numbers</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
                 f'<tr><th>Rule</th><th class="cell-num">Value</th></tr>\n{params}</table></div>\n'
                 f'<h2 id="races">Races</h2>\n{slots("races", "race")}'
-                f'<h2 id="personalities">Personalities</h2>\n{slots("personalities", "personality")}' + source_note(a))
+                f'<h2 id="personalities">Personalities</h2>\n{slots("personalities", "personality")}' + materials_html + source_note(a))
         pages[f"age-{a['age']}.html"] = header(a["name"], "Ages") + body
+
+    # Materials (latest age).
+    mat_rows = []
+    for m, mat in enumerate(latest.get("materials", [])):
+        realms = [str(r + 1) for r, x in enumerate(latest["realm_material"]) if x == m]
+        ident = mat["key"]["identity"]
+        mat_rows.append(f'<tr id="{ident}"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
+                        f'<td>{", ".join(realms)}</td><td class="cell-num">{mat["output_per_tick"]:,}</td>'
+                        f'<td class="cell-num">{mat["output_per_tick"] * len(realms):,}</td></tr>')
+    pages["materials.html"] = header("Materials", "Rules, Economy") + (
+        "<p>Every realm produces one material each tick. Bauxite is made in three realms, so weapons are never "
+        "scarce; every other material is made in two, so no realm holds a monopoly. See "
+        '<a href="trade.html">Materials and Trade</a> for how production is shared and sold.</p>\n'
+        f'<h2 id="current">In {e(latest["name"])}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+        '<tr><th>Material</th><th>Used for</th><th>Made in realms</th><th class="cell-num">Per realm, per tick</th>'
+        '<th class="cell-num">World total, per tick</th></tr>\n' + "\n".join(mat_rows) + "\n</table></div>\n" + source_note(latest))
 
     # Effects reference.
     stat_rows = "".join(f'<tr id="{s}"><td><code>{s}</code></td><td>{e(STAT_TEXT.get(s, "(no description yet)"))}</td></tr>\n' for s in vocab["stats"])
@@ -290,6 +313,20 @@ def generate(rules):
               "food_per_person": f'{p["food_per_person_milli"] / 1000:g}'}
     values["world_states"] = p["realms"] * p["states_per_realm"]
     values["world_houses"] = f'{p["realms"] * p["states_per_realm"] * p["houses_per_state"]:,}'
+    values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    for mat in latest.get("materials", []):
+        if mat["key"]["identity"] == "bauxite":
+            # Worked example for trade.html: one bauxite state with an equal share and a full roster.
+            out = mat["output_per_tick"]
+            state = out * (10_000 // p["states_per_realm"]) // 10_000
+            houses = state * p["house_split_bp"] // 10_000
+            values.update({
+                "bauxite_output": f"{out:,}",
+                "example_state_output": state,
+                "example_houses_part": houses,
+                "example_treasury_part": state - houses,
+                "example_per_house": f'{houses / p["houses_per_state"]:.1f}',
+            })
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)

@@ -3,7 +3,75 @@
     {
       "age": 1,
       "changes_from_previous": null,
-      "hash": "bc5ac22cf0e42acc",
+      "hash": "c05c2b38c046b9a7",
+      "materials": [
+        {
+          "description": "Prestige. Uses to be decided.",
+          "hash": "ab9ab51b4b511b37",
+          "key": {
+            "identity": "amber",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Amber",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Lightweight weaponry. Used to arm troops for offense.",
+          "hash": "226b702987e78fc2",
+          "key": {
+            "identity": "bauxite",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Bauxite",
+          "output_per_tick": 800
+        },
+        {
+          "description": "Construction. Used for buildings (a later milestone).",
+          "hash": "c2ed1be64dd2d99d",
+          "key": {
+            "identity": "limestone",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Limestone",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Science. Used for research (a later milestone).",
+          "hash": "e9a305db3c32e8e0",
+          "key": {
+            "identity": "paper",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Paper",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Speed. Used to bring armies home sooner.",
+          "hash": "6e8cdd4bc37a1b95",
+          "key": {
+            "identity": "pine",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Pine",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Healing. Used to save troops from dying in battle.",
+          "hash": "f6b347615346175a",
+          "key": {
+            "identity": "sulfur",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Sulfur",
+          "output_per_tick": 1200
+        }
+      ],
       "name": "Age 1",
       "params": {
         "attack_return_ticks": 12,
@@ -14,12 +82,14 @@
         "food_per_acre": 8,
         "food_per_person_milli": 250,
         "gold_per_peasant": 3,
+        "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
         "starting_food": 60000,
@@ -368,6 +438,21 @@
         null,
         null,
         null
+      ],
+      "realm_material": [
+        1,
+        2,
+        0,
+        5,
+        4,
+        1,
+        3,
+        2,
+        0,
+        5,
+        1,
+        4,
+        3
       ]
     },
     {
@@ -398,7 +483,75 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "cb8862136c7f6966",
+      "hash": "4d7dc50ed04f67b3",
+      "materials": [
+        {
+          "description": "Prestige. Uses to be decided.",
+          "hash": "ab9ab51b4b511b37",
+          "key": {
+            "identity": "amber",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Amber",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Lightweight weaponry. Used to arm troops for offense.",
+          "hash": "226b702987e78fc2",
+          "key": {
+            "identity": "bauxite",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Bauxite",
+          "output_per_tick": 800
+        },
+        {
+          "description": "Construction. Used for buildings (a later milestone).",
+          "hash": "c2ed1be64dd2d99d",
+          "key": {
+            "identity": "limestone",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Limestone",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Science. Used for research (a later milestone).",
+          "hash": "e9a305db3c32e8e0",
+          "key": {
+            "identity": "paper",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Paper",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Speed. Used to bring armies home sooner.",
+          "hash": "6e8cdd4bc37a1b95",
+          "key": {
+            "identity": "pine",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Pine",
+          "output_per_tick": 1200
+        },
+        {
+          "description": "Healing. Used to save troops from dying in battle.",
+          "hash": "f6b347615346175a",
+          "key": {
+            "identity": "sulfur",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "name": "Sulfur",
+          "output_per_tick": 1200
+        }
+      ],
       "name": "Age 2",
       "params": {
         "attack_return_ticks": 12,
@@ -409,12 +562,14 @@
         "food_per_acre": 8,
         "food_per_person_milli": 250,
         "gold_per_peasant": 3,
+        "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
         "realms": 13,
+        "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
         "starting_food": 60000,
@@ -785,6 +940,71 @@
         null,
         null,
         null
+      ],
+      "realm_material": [
+        1,
+        2,
+        0,
+        5,
+        4,
+        1,
+        3,
+        2,
+        0,
+        5,
+        1,
+        4,
+        3
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "id": "amber",
+      "lineage_from": null,
+      "name": "Amber",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "bauxite",
+      "lineage_from": null,
+      "name": "Bauxite",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "limestone",
+      "lineage_from": null,
+      "name": "Limestone",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "paper",
+      "lineage_from": null,
+      "name": "Paper",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "pine",
+      "lineage_from": null,
+      "name": "Pine",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "sulfur",
+      "lineage_from": null,
+      "name": "Sulfur",
+      "versions": [
+        "v1"
       ]
     }
   ],
