@@ -405,7 +405,7 @@ def generate(rules):
         f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
         for t in latest.get("traits", []))
     if trait_rows:
-        pages["traits.html"] = header("General Traits", "Rules") + (
+        pages["traits.html"] = header("Generals' Traits", "Rules") + (
             '<p>A <a href="generals.html">general</a> has one or more of these traits. Each is a flat modifier while '
             "the general leads an army or commands the defense.</p>\n"
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Trait</th><th>Effect</th></tr>\n'
