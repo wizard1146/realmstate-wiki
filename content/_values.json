@@ -35,5 +35,8 @@
   "starting_peasants": 8000,
   "starvation_pct": "2",
   "states_per_realm": 7,
+  "tax_default_pct": "2",
+  "tax_max_pct": "10",
+  "tax_min_pct": "0",
   "train_ticks": 9
 }

@@ -71,6 +71,9 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("share_floor_bp", "Economy: lowest share a state can fall to", "pct"),
     ("house_split_bp", "Economy: part of a state's output shared among its houses", "pct"),
+    ("tax_min_bp", "Economy: lowest state tax on house income", "pct"),
+    ("tax_max_bp", "Economy: highest state tax on house income", "pct"),
+    ("tax_default_bp", "Economy: tax a new state starts with", "pct"),
 ]
 
 e = html.escape

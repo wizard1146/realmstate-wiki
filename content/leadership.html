@@ -16,7 +16,11 @@ updated: 2026-09-29
 
 <h2 id="Powers">What the leader can do</h2>
 <ul>
+  <li>Set the state's <a href="#Tax">tax</a>.</li>
   <li>Buy and sell on the <a href="trade.html#Market">market</a> with the treasury's gold and materials.</li>
   <li>Grant treasury gold or materials to houses in the state.</li>
 </ul>
 <p>Everything else about a house stays with its owner.</p>
+
+<h2 id="Tax">Tax</h2>
+<p>Each tick, the state takes a share of every member's income and pays it into the treasury. The leader sets the rate anywhere from {{tax_min_pct}}% to {{tax_max_pct}}%; a new state starts at {{tax_default_pct}}%. A change applies from the next tick, and every member's news reports it.</p>

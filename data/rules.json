@@ -3,7 +3,7 @@
     {
       "age": 1,
       "changes_from_previous": null,
-      "hash": "c05c2b38c046b9a7",
+      "hash": "6fa32eec7c9a8616",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -98,6 +98,9 @@
         "starting_peasants": 8000,
         "starvation_bp": 200,
         "states_per_realm": 7,
+        "tax_default_bp": 200,
+        "tax_max_bp": 1000,
+        "tax_min_bp": 0,
         "tick_ms": 3600000,
         "train_ticks": 9
       },
@@ -483,7 +486,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "4d7dc50ed04f67b3",
+      "hash": "93ec645e494169e2",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -578,6 +581,9 @@
         "starting_peasants": 8000,
         "starvation_bp": 200,
         "states_per_realm": 7,
+        "tax_default_bp": 200,
+        "tax_max_bp": 1000,
+        "tax_min_bp": 0,
         "tick_ms": 3600000,
         "train_ticks": 9
       },

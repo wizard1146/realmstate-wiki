@@ -35,8 +35,9 @@ updated: 2026-09-29
 {"type": "order", "house": 0, "treasury": true, "side": "buy", "material": "paper", "quantity": 20, "price": 12}
 {"type": "cancel", "house": 0, "order": 7}
 {"type": "donate", "house": 0, "material": "bauxite", "amount": 25}
-{"type": "grant", "house": 0, "to": 3, "amount": 1000}</code></pre>
-<p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders and <code>grant</code> are for the state leader only.</p>
+{"type": "grant", "house": 0, "to": 3, "amount": 1000}
+{"type": "set_tax", "house": 0, "rate_bp": 300}</code></pre>
+<p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders, <code>grant</code> and <code>set_tax</code> are for the state leader only. Rates are in basis points: 300 means 3%.</p>
 <p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 
 <h2 id="Answers">Answers</h2>
