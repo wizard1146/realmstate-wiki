@@ -148,6 +148,13 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("decay_growth_bp", "Colloquium: extra loss per tick without a contribution", "pct"),
     ("decay_max_bp", "Colloquium: most knowledge lost per tick", "pct"),
     ("renown_per_thousand_books", "Colloquium: renown per 1,000 books contributed", "n"),
+    ("academic_building", "Academics: building that supports them", "text"),
+    ("academic_universities", "Academics: buildings needed per academic", "n"),
+    ("academic_books", "Academics: books to recruit one", "n"),
+    ("academic_material", "Academics: material paid per attribute", "text"),
+    ("academic_material_cost", "Academics: material per attribute", "n"),
+    ("academic_attribute_books", "Academics: books invested for 1st, 2nd, 3rd attribute", "list"),
+    ("academic_pick_books", "Academics: books invested to choose attributes", "n"),
 ]
 
 e = html.escape
@@ -499,6 +506,17 @@ def generate(rules):
             "<p><b>Elite troops are the exception.</b> Elites get their elite bonus first. The whole army, elites included, then gets "
             "the offense or defense bonus, so for elites the two multiply.</p>\n" + source_note(latest))
 
+    # Academic attributes.
+    attr_rows = "".join(
+        f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
+        for t in latest.get("attributes", []))
+    if attr_rows:
+        pages["attributes.html"] = header("Academics' Attributes", "Rules") + (
+            '<p>An <a href="academics.html">academic</a> has one or more of these attributes. Each is a flat modifier to your '
+            "house's science for as long as the academic stays. Attributes of every academic you keep add together.</p>\n"
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attribute</th><th>Effect</th></tr>\n'
+            + attr_rows + "</table></div>\n" + source_note(latest))
+
     # Effects reference.
     stat_rows = "".join(f'<tr id="{s}"><td><code>{s}</code></td><td>{e(STAT_TEXT.get(s, "(no description yet)"))}</td></tr>\n' for s in vocab["stats"])
     flag_rows = "".join(f'<tr id="{f}"><td><code>{f}</code></td><td>{e(FLAG_TEXT.get(f, "(no description yet)"))}</td></tr>\n' for f in vocab["flags"])
@@ -530,6 +548,7 @@ def generate(rules):
     values["science_ranks"] = "; ".join(f"{b} books a tick from {x:,}" for x, b in p["science_ranks"])
     values["professor_books"] = p["science_ranks"][-1][1]
     values["starting_books_per_tick"] = p["starting_scientists"] * p["science_ranks"][0][1]
+    values["academic_attribute_books"] = ", ".join(f"{v:,}" for v in p["academic_attribute_books"])
     values["scientists_per_tick"] = f'{p["scientist_spawn_milli"] / 1000:g}'
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
@@ -550,7 +569,7 @@ def generate(rules):
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
