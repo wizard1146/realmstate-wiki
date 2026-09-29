@@ -1,0 +1,894 @@
+{
+  "ages": [
+    {
+      "age": 1,
+      "changes_from_previous": null,
+      "hash": "9a108ff5f93f1fb9",
+      "name": "Age 1",
+      "params": {
+        "attack_return_ticks": 12,
+        "attacker_loss_bp": 800,
+        "defender_loss_bp": 600,
+        "explore_gold_per_acre": 600,
+        "explore_ticks": 12,
+        "food_per_acre": 8,
+        "food_per_person_milli": 250,
+        "gold_per_peasant": 3,
+        "land_gain_bp": 1000,
+        "luck_bp": 500,
+        "peasant_growth_bp": 300,
+        "people_per_acre": 25,
+        "starting_food": 60000,
+        "starting_gold": 150000,
+        "starting_land": 400,
+        "starting_peasants": 8000,
+        "starvation_bp": 200,
+        "tick_ms": 3600000,
+        "train_ticks": 9
+      },
+      "personalities": [
+        {
+          "flags": 0,
+          "hash": "f15cd53562f3bf49",
+          "key": {
+            "identity": "merchant",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Merchant",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "fa551d64b8896731",
+          "key": {
+            "identity": "warrior",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            -1000
+          ],
+          "name": "The Warrior",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "9f7eeb3420040faa",
+          "key": {
+            "identity": "sage",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Sage",
+          "units": [],
+          "unlocks": [
+            [
+              "spell",
+              "clarity"
+            ]
+          ]
+        },
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "races": [
+        {
+          "flags": 0,
+          "hash": "b86b8c88a08821ef",
+          "key": {
+            "identity": "human",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Human",
+          "units": [
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Pikemen",
+              "off": 5
+            },
+            {
+              "def": 5,
+              "gold": 320,
+              "name": "Shieldbearers",
+              "off": 0
+            },
+            {
+              "def": 5,
+              "gold": 900,
+              "name": "Knights",
+              "off": 8
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Cutpurses",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "b6424d73f8419529",
+          "key": {
+            "identity": "orc",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            1000,
+            -500,
+            0,
+            0,
+            0
+          ],
+          "name": "Orc",
+          "units": [
+            {
+              "def": 0,
+              "gold": 320,
+              "name": "Raiders",
+              "off": 6
+            },
+            {
+              "def": 4,
+              "gold": 300,
+              "name": "Stockade",
+              "off": 0
+            },
+            {
+              "def": 2,
+              "gold": 1000,
+              "name": "Warlords",
+              "off": 11
+            },
+            {
+              "def": 0,
+              "gold": 380,
+              "name": "Sneaks",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "fe587a72dacbcd2d",
+          "key": {
+            "identity": "elf",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0
+          ],
+          "name": "Elf",
+          "units": [
+            {
+              "def": 1,
+              "gold": 330,
+              "name": "Archers",
+              "off": 5
+            },
+            {
+              "def": 6,
+              "gold": 350,
+              "name": "Wardens",
+              "off": 0
+            },
+            {
+              "def": 6,
+              "gold": 950,
+              "name": "Bladedancers",
+              "off": 7
+            },
+            {
+              "def": 0,
+              "gold": 420,
+              "name": "Shadows",
+              "off": 0
+            }
+          ],
+          "unlocks": [
+            [
+              "spell",
+              "moonveil"
+            ]
+          ]
+        },
+        {
+          "flags": 0,
+          "hash": "76d2bef6b5b862bd",
+          "key": {
+            "identity": "dwarf",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1000
+          ],
+          "name": "Dwarf",
+          "units": [
+            {
+              "def": 0,
+              "gold": 310,
+              "name": "Axemen",
+              "off": 5
+            },
+            {
+              "def": 6,
+              "gold": 360,
+              "name": "Hearthguard",
+              "off": 0
+            },
+            {
+              "def": 7,
+              "gold": 1100,
+              "name": "Ironclads",
+              "off": 9
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Tunnelers",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        {
+          "flags": 1,
+          "hash": "ddf500d1540455d4",
+          "key": {
+            "identity": "undead",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Undead",
+          "units": [
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Thralls",
+              "off": 5
+            },
+            {
+              "def": 5,
+              "gold": 330,
+              "name": "Bonewall",
+              "off": 0
+            },
+            {
+              "def": 3,
+              "gold": 1000,
+              "name": "Wights",
+              "off": 10
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Whispers",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "age": 2,
+      "changes_from_previous": [
+        {
+          "from": "orc@v1",
+          "identity": "orc",
+          "kind": "race",
+          "to": "orc@v2"
+        },
+        {
+          "from": null,
+          "identity": "revenant",
+          "kind": "race",
+          "to": "revenant@v1"
+        },
+        {
+          "from": "undead@v1",
+          "identity": "undead",
+          "kind": "race",
+          "to": null
+        },
+        {
+          "from": null,
+          "identity": "explorer",
+          "kind": "personality",
+          "to": "explorer@v1"
+        }
+      ],
+      "hash": "619441560b1faf1b",
+      "name": "Age 2",
+      "params": {
+        "attack_return_ticks": 12,
+        "attacker_loss_bp": 800,
+        "defender_loss_bp": 600,
+        "explore_gold_per_acre": 600,
+        "explore_ticks": 12,
+        "food_per_acre": 8,
+        "food_per_person_milli": 250,
+        "gold_per_peasant": 3,
+        "land_gain_bp": 1000,
+        "luck_bp": 500,
+        "peasant_growth_bp": 300,
+        "people_per_acre": 25,
+        "starting_food": 60000,
+        "starting_gold": 150000,
+        "starting_land": 400,
+        "starting_peasants": 8000,
+        "starvation_bp": 200,
+        "tick_ms": 3600000,
+        "train_ticks": 9
+      },
+      "personalities": [
+        {
+          "flags": 0,
+          "hash": "f15cd53562f3bf49",
+          "key": {
+            "identity": "merchant",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Merchant",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "fa551d64b8896731",
+          "key": {
+            "identity": "warrior",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0,
+            -1000
+          ],
+          "name": "The Warrior",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "9f7eeb3420040faa",
+          "key": {
+            "identity": "sage",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Sage",
+          "units": [],
+          "unlocks": [
+            [
+              "spell",
+              "clarity"
+            ]
+          ]
+        },
+        {
+          "flags": 0,
+          "hash": "0f1edbabacd43bed",
+          "key": {
+            "identity": "explorer",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -2000,
+            0,
+            0
+          ],
+          "name": "The Explorer",
+          "units": [],
+          "unlocks": []
+        },
+        null,
+        null,
+        null,
+        null
+      ],
+      "races": [
+        {
+          "flags": 0,
+          "hash": "b86b8c88a08821ef",
+          "key": {
+            "identity": "human",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Human",
+          "units": [
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Pikemen",
+              "off": 5
+            },
+            {
+              "def": 5,
+              "gold": 320,
+              "name": "Shieldbearers",
+              "off": 0
+            },
+            {
+              "def": 5,
+              "gold": 900,
+              "name": "Knights",
+              "off": 8
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Cutpurses",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "65f82fc58ef4ec5b",
+          "key": {
+            "identity": "orc",
+            "version": "v2"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            750,
+            -500,
+            0,
+            -500,
+            0
+          ],
+          "name": "Orc",
+          "units": [
+            {
+              "def": 0,
+              "gold": 300,
+              "name": "Raiders",
+              "off": 6
+            },
+            {
+              "def": 4,
+              "gold": 300,
+              "name": "Stockade",
+              "off": 0
+            },
+            {
+              "def": 2,
+              "gold": 950,
+              "name": "Warlords",
+              "off": 11
+            },
+            {
+              "def": 0,
+              "gold": 380,
+              "name": "Sneaks",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        {
+          "flags": 0,
+          "hash": "fe587a72dacbcd2d",
+          "key": {
+            "identity": "elf",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            500,
+            0,
+            0,
+            0
+          ],
+          "name": "Elf",
+          "units": [
+            {
+              "def": 1,
+              "gold": 330,
+              "name": "Archers",
+              "off": 5
+            },
+            {
+              "def": 6,
+              "gold": 350,
+              "name": "Wardens",
+              "off": 0
+            },
+            {
+              "def": 6,
+              "gold": 950,
+              "name": "Bladedancers",
+              "off": 7
+            },
+            {
+              "def": 0,
+              "gold": 420,
+              "name": "Shadows",
+              "off": 0
+            }
+          ],
+          "unlocks": [
+            [
+              "spell",
+              "moonveil"
+            ]
+          ]
+        },
+        {
+          "flags": 0,
+          "hash": "76d2bef6b5b862bd",
+          "key": {
+            "identity": "dwarf",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -1000
+          ],
+          "name": "Dwarf",
+          "units": [
+            {
+              "def": 0,
+              "gold": 310,
+              "name": "Axemen",
+              "off": 5
+            },
+            {
+              "def": 6,
+              "gold": 360,
+              "name": "Hearthguard",
+              "off": 0
+            },
+            {
+              "def": 7,
+              "gold": 1100,
+              "name": "Ironclads",
+              "off": 9
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Tunnelers",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        null,
+        null,
+        null,
+        {
+          "flags": 3,
+          "hash": "29364efaf503804f",
+          "key": {
+            "identity": "revenant",
+            "version": "v1"
+          },
+          "lineage_from": "undead",
+          "mods_bp": [
+            0,
+            500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "Revenant",
+          "units": [
+            {
+              "def": 0,
+              "gold": 290,
+              "name": "Husks",
+              "off": 5
+            },
+            {
+              "def": 5,
+              "gold": 330,
+              "name": "Gravewardens",
+              "off": 0
+            },
+            {
+              "def": 4,
+              "gold": 1050,
+              "name": "Dreadknights",
+              "off": 10
+            },
+            {
+              "def": 0,
+              "gold": 400,
+              "name": "Whispers",
+              "off": 0
+            }
+          ],
+          "unlocks": []
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "personalities": [
+    {
+      "id": "explorer",
+      "lineage_from": null,
+      "name": "The Explorer",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "merchant",
+      "lineage_from": null,
+      "name": "The Merchant",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "sage",
+      "lineage_from": null,
+      "name": "The Sage",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "warrior",
+      "lineage_from": null,
+      "name": "The Warrior",
+      "versions": [
+        "v1"
+      ]
+    }
+  ],
+  "races": [
+    {
+      "id": "dwarf",
+      "lineage_from": null,
+      "name": "Dwarf",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "elf",
+      "lineage_from": null,
+      "name": "Elf",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "human",
+      "lineage_from": null,
+      "name": "Human",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "orc",
+      "lineage_from": null,
+      "name": "Orc",
+      "versions": [
+        "v1",
+        "v2"
+      ]
+    },
+    {
+      "id": "revenant",
+      "lineage_from": "undead",
+      "name": "Revenant",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "undead",
+      "lineage_from": null,
+      "name": "Undead",
+      "versions": [
+        "v1"
+      ]
+    }
+  ],
+  "vocabulary": {
+    "flags": [
+      "no_food",
+      "no_explore"
+    ],
+    "stats": [
+      "income",
+      "population",
+      "food_production",
+      "food_consumption",
+      "offense",
+      "defense",
+      "explore_cost",
+      "training_cost",
+      "return_time"
+    ],
+    "unit_slots": [
+      "offense",
+      "defense",
+      "elite",
+      "thief"
+    ],
+    "unlock_kinds": [
+      "spell",
+      "operation",
+      "building"
+    ]
+  }
+}

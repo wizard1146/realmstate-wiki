@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" class="title-in-header">   <!-- remove this class to go back to the pinned title bar on desktop -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{tab_title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#6b2d5c">
+  <link rel="preload" href="assets/fonts/im-fell-english-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- REGION: site-backdrop (dims the page behind the open drawer on phones; tapping it closes the drawer) -->
+  <div class="site-backdrop" id="site-backdrop" hidden></div>
+
+  <!-- REGION: site-sidebar (brand + navigation). A persistent rail from 768px up, an off-canvas drawer below. -->
+  <aside class="site-sidebar" id="site-sidebar" aria-label="Primary navigation">
+    <div class="site-sidebar__brand">
+      <a class="site-sidebar__brand-link" href="getting-started.html">
+        <span class="site-sidebar__brand-text">
+          <span class="site-sidebar__brand-name">Realmstate</span>
+          <span class="site-sidebar__brand-tagline">The game wiki</span>
+        </span>
+      </a>
+      <button class="site-sidebar__close" id="nav-close-button" type="button" aria-label="Close navigation">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="3" x2="15" y2="15"/><line x1="15" y1="3" x2="3" y2="15"/></svg>
+      </button>
+    </div>
+    <nav class="site-nav" id="site-nav">
+{{nav}}
+    </nav>
+    <script>
+      /* Restore the nav's scroll position before first paint, so clicking a link doesn't send the sidebar back to the top.
+         First visit in a tab: centre the current page's link instead. */
+      (function () {
+        try {
+          var nav = document.getElementById('site-nav'), y = sessionStorage.getItem('realmstate-nav-scroll');
+          if (y !== null) nav.scrollTop = +y;
+          else { var a = nav.querySelector('[aria-current="page"]'); if (a) nav.scrollTop = a.offsetTop - nav.clientHeight / 2 + a.offsetHeight / 2; }
+        } catch (e) {}
+      })();
+    </script>
+  </aside>
+
+  <div class="site-main" id="site-main">
+
+    <!-- REGION: site-header (sticky bar above the page: menu button on phones, search, link to the game) -->
+    <header class="site-header" id="site-header">
+      <button class="site-header__menu-button" id="nav-open-button" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-sidebar">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><line x1="2.5" y1="5.5" x2="17.5" y2="5.5"/><line x1="2.5" y1="10" x2="17.5" y2="10"/><line x1="2.5" y1="14.5" x2="17.5" y2="14.5"/></svg>
+      </button>
+      <!-- REGION: site-header__title (desktop only: the page title condenses in here once the big one has scrolled away; a visual copy, hidden from screen readers) -->
+      <a class="site-header__title" href="#page" tabindex="-1" aria-hidden="true" title="{{title}}">{{title}}</a>
+      <!-- REGION: site-search -->
+      <form class="site-search" role="search" onsubmit="return false">
+        <input class="site-search__input" type="search" placeholder="Search the wiki…" aria-label="Search" autocomplete="off">
+        <ol class="site-search__results" hidden></ol>
+      </form>
+    </header>
+
+    <!-- REGION: page -->
+    <main class="page" id="page">
+      <h1 class="page__title{{title_class}}">{{title}}</h1>
+      <article class="page__body{{body_class}}">
+        <div class="page__content">
+{{body}}
+        </div>
+{{toc}}
+      </article>
+      <!-- REGION: page-footer -->
+      <footer class="page__footer">
+{{categories}}
+{{credits}}
+      </footer>
+    </main>
+
+    <!-- REGION: site-footer -->
+    <footer class="site-footer" id="site-footer">
+      <p class="site-footer__licence">The official wiki for Realmstate. Rules pages are generated from the game's own rule files. Code is MIT.</p>
+      <p class="site-footer__links"><a href="https://github.com/wizard1146/realmstate-wiki">Edit on GitHub</a> · <a href="all-pages.html">All pages</a> · <a href="about.html">About</a></p>
+    </footer>
+
+  </div>
+</div>
+
+<!-- REGION: scroll-top (round up-arrow button, bottom-right; fades in once you have scrolled down) -->
+<button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><circle class="scroll-top__disc" cx="12" cy="12" r="11"/><path class="scroll-top__arrow" d="M12 17V8M8 12l4-4 4 4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="assets/search.js" defer></script>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

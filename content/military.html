@@ -1,0 +1,24 @@
+<!--
+title: Military
+category: Mechanics
+updated: 2026-09-29
+-->
+<p>Every race has four unit slots: an offense specialist, a defense specialist, an elite and a thief. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
+
+<h2 id="Training">Training</h2>
+<ul>
+  <li>Each unit costs gold (its price, times your <a href="effects.html#training_cost">training cost</a> modifier) and one peasant.</li>
+  <li>Troops are ready exactly {{train_ticks}} hours later. While training they still eat.</li>
+  <li>Up to 1,000,000 at a time.</li>
+</ul>
+
+<h2 id="Attacking">Attacking</h2>
+<p>You choose how many troops of each unit slot to send. The battle resolves at once.</p>
+<ol>
+  <li><b>Offense</b> = the offense of every unit sent, times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%).</li>
+  <li><b>Defense</b> = the defense of every unit the target has at home, times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own.</li>
+  <li>If offense is higher, you win and take {{land_gain_pct}}% of their land. They lose it at once; you receive it when your army returns.</li>
+  <li>Win or lose, you lose {{attacker_loss_pct}}% of the troops you sent and the target loses {{defender_loss_pct}}% of their troops at home.</li>
+  <li>Your army comes home {{attack_return_ticks}} hours later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
+</ol>
+<p>Troops that are away don't defend your province.</p>

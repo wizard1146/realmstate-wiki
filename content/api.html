@@ -1,0 +1,23 @@
+<!--
+title: API for Tools
+category: Tools
+updated: 2026-09-29
+-->
+<p>The game has an official HTTP API, so tools never need to scrape pages. It sends and receives JSON.</p>
+
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Request</th><th>What it does</th></tr>
+<tr><td><code>GET /world</code></td><td>Age, current time, tick count, number of provinces</td></tr>
+<tr><td><code>GET /rules</code></td><td>The age's slots, definitions, fingerprints and numbers</td></tr>
+<tr><td><code>GET /rankings</code></td><td>The 100 largest provinces by land</td></tr>
+<tr><td><code>GET /provinces/{id}</code></td><td>One province</td></tr>
+<tr><td><code>POST /commands</code></td><td>Send an action (below)</td></tr>
+</table></div>
+
+<h2 id="Commands">Commands</h2>
+<pre><code>{"type": "create_province", "name": "Test Keep", "race": "dwarf", "personality": "sage"}
+{"type": "explore", "province": 0, "acres": 20}
+{"type": "train", "province": 0, "unit": 2, "count": 100}
+{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}</code></pre>
+<p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. A refused action returns status 422 with an <code>error</code> message.</p>
+<p>Reads may lag the game by up to a quarter of a second. Accounts, per-player access and rate limits come in a later milestone; until then every province is public.</p>

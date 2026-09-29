@@ -1,0 +1,26 @@
+<!--
+title: How Time Works
+category: Guides, Mechanics
+updated: 2026-09-29
+-->
+<p>The game runs on two clocks. Actions happen the moment you take them. Your economy updates once every tick.</p>
+
+<h2 id="Real_Time">Real time</h2>
+<p>Attacks, and every other action, resolve the instant you send them. You see the result straight away.</p>
+<p>Things you start finish at an exact moment, to the second, not at the next tick:</p>
+<ul>
+  <li>Explored land arrives {{explore_ticks}} hours after you explore.</li>
+  <li>Troops finish training {{train_ticks}} hours after you start.</li>
+  <li>Armies come home {{attack_return_ticks}} hours after an attack (some races and personalities are faster; see <a href="effects.html#return_time">return time</a>).</li>
+</ul>
+
+<h2 id="The_Tick">The tick</h2>
+<p>Every {{tick_hours}} hour, every province updates at once:</p>
+<ol>
+  <li><a href="economy.html#Income">Income</a>: peasants pay gold.</li>
+  <li><a href="economy.html#Food">Food</a>: farms grow food and everyone eats.</li>
+  <li><a href="economy.html#Population">Population</a>: peasants grow toward what your land can hold.</li>
+</ol>
+
+<h2 id="Order">Order and fairness</h2>
+<p>Everything happens in one order: every action, finishing timer and tick. Two attacks sent in the same second still resolve one after the other. The game keeps a record of that order, so any result can be replayed exactly.</p>

@@ -1,0 +1,37 @@
+<!--
+title: Effects
+category: Rules
+generated: tools/sync.py
+-->
+<p>Races and personalities are built only from these effect types. The game implements each type once; rule files combine them. A race and a personality's modifiers on the same stat add together.</p>
+<h2 id="modifiers">Modifiers</h2>
+<p>Change a stat by a percentage.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Stat</th><th>What it changes</th></tr>
+<tr id="income"><td><code>income</code></td><td>Gold earned from peasants each tick</td></tr>
+<tr id="population"><td><code>population</code></td><td>How many people the land can hold</td></tr>
+<tr id="food_production"><td><code>food_production</code></td><td>Food grown on land each tick</td></tr>
+<tr id="food_consumption"><td><code>food_consumption</code></td><td>Food eaten each tick</td></tr>
+<tr id="offense"><td><code>offense</code></td><td>Offense of troops sent on attacks</td></tr>
+<tr id="defense"><td><code>defense</code></td><td>Defense of troops at home</td></tr>
+<tr id="explore_cost"><td><code>explore_cost</code></td><td>Gold cost of exploring</td></tr>
+<tr id="training_cost"><td><code>training_cost</code></td><td>Gold cost of training troops</td></tr>
+<tr id="return_time"><td><code>return_time</code></td><td>How long armies take to come home</td></tr>
+</table></div>
+<h2 id="flags">Flags</h2>
+<p>Switch a rule on.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Flag</th><th>Effect</th></tr>
+<tr id="no_food"><td><code>no_food</code></td><td>The province&#x27;s people and troops eat nothing.</td></tr>
+<tr id="no_explore"><td><code>no_explore</code></td><td>The province cannot explore for land.</td></tr>
+</table></div>
+<h2 id="unlocks">Unlocks</h2>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Kind</th><th>Effect</th></tr>
+<tr id="unlock-spell"><td><code>spell</code></td><td>Grants a spell (spells arrive in a later milestone).</td></tr>
+<tr id="unlock-operation"><td><code>operation</code></td><td>Grants a thievery or spy operation (later milestone).</td></tr>
+<tr id="unlock-building"><td><code>building</code></td><td>Grants a building (later milestone).</td></tr>
+</table></div>
+<h2 id="units">Unit slots</h2>
+<p>Every race fills the same four unit slots: offense specialist, defense specialist, elite, thief.</p>
+<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>619441560b1faf1b</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

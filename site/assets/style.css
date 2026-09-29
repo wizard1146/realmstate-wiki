@@ -1,0 +1,433 @@
+/* Scriptorium stylesheet. Class names follow BEM-ish "block__element--modifier".
+   Regions: site-header, site-search, site-sidebar, page, page-footer, site-footer.
+   Content vocabulary (used inside content/*.html): see docs/ANATOMY.md */
+
+/* IM Fell English (SIL OFL 1.1, Igino Marini; licence in assets/fonts/). Vendored so the site loads nothing from third parties. */
+@font-face {
+  font-family: "IM Fell English";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/im-fell-english-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Lora (SIL OFL 1.1, Cyreal; licence in assets/fonts/). Variable weight 400-700, regular and italic. */
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/lora-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Lora";
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/lora-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Spline Sans Mono and JetBrains Mono (both SIL OFL 1.1; licences in assets/fonts/). Variable weight 400-700. Used by table--mono tables. */
+@font-face {
+  font-family: "Spline Sans Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/spline-sans-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --bg: #fbf8f1;            /* parchment */
+  --surface: #ffffff;
+  --sidebar-bg: #f1ece0;    /* a shade deeper than the page */
+  --text-dim: #4a463d;
+  --text: #29261c;          /* dark ink */
+  --muted: #6b6558;
+  --border: #ddd5c3;
+  --accent: #6f674a;        /* olive khaki, dark enough for small text to pass AA contrast */
+  --accent-text: #ffffff;
+  --link: #2a5d9f;
+  --link-visited: #6b3fa0;
+  --header-bg: #2b1a27;
+  --header-text: #f3e9d2;
+
+  /* semantic table colours */
+  --yes-bg: #d4edda;  --yes-text: #14532d;
+  --no-bg: #f8d7da;   --no-text: #7f1d1d;
+  --good-bg: #cef6ce;
+  --bad-bg: #f6cece;
+  --row-hover: #f2efe3;   /* soft row highlight */
+  --answer-bg: #f5f2e7;  /* the answer half of a FAQ item: a shade deeper than the white question row */
+  --head-bg: #dad6c3; --head-text: #29261c;   /* table header cells: a light khaki from the site's olive family (was blue) */
+  --band-bg: #ece7da;
+  --warn-bg: #fff3cd; --warn-border: #e2c96f; --warn-text: #5c4400;
+  --dark-bg: #000; --dark-text: #fff;
+
+  --header-h: 3.6rem;        /* fixed height of the sticky header; the sticky page title pins just below it */
+  --page-pad: 2rem;          /* horizontal padding of the page column (smaller on tablets and phones) */
+  --sidebar-w: 15.5rem;      /* 248px persistent rail (768px and up) */
+  --content-w: 62rem;
+  --font-heading: "IM Fell English", Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;   /* brand name, page title, h2: vendored font, then Charter, then system serif */
+  --font-body: "Lora", "Iowan Old Style", "Palatino Linotype", ui-serif, Georgia, serif;   /* everything else: vendored Lora, then Iowan Old Style, then system serifs */
+  --font-mono: "Spline Sans Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;   /* used by table--mono: vendored Spline Sans Mono, then JetBrains Mono, then the system monospace */
+  --font-scale: 1;                                                                          /* multiplies the base text size */
+  font-size: calc(100% * var(--font-scale));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #17141a; --surface: #201c25; --sidebar-bg: #100d13; --text-dim: #c9c3d2; --text: #e9e4ee; --muted: #a59fb0; --border: #3a3342;
+    --accent: #c2b78a; --accent-text: #17141a; --link: #8fb8f0; --link-visited: #b89bea;
+    --header-bg: #0f0c12; --header-text: #f3e9d2;
+    --yes-bg: #1c3d2a; --yes-text: #b7f0c9; --no-bg: #4a1f26; --no-text: #f6c4ca;
+    --good-bg: #1d3b25; --bad-bg: #472228; --row-hover: #2b2822; --answer-bg: #1b1820; --head-bg: #3e3b2c; --head-text: #ece6d2; --band-bg: #2a2532;
+    --warn-bg: #3d3210; --warn-border: #7a6420; --warn-text: #f3dd8b;
+    --dark-bg: #0b090d; --dark-text: #eee;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: calc(var(--header-h) + 4.5rem); }   /* anchor links land below the header and the pinned title */
+body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.6 var(--font-body); }
+a { color: var(--link); }
+a:visited { color: var(--link-visited); }
+
+/* ---- layout: sidebar (brand + nav) on the left; header, page and footer in the main column ---- */
+.layout { display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); min-height: 100vh; }
+.site-main { display: flex; flex-direction: column; min-width: 0; }
+.site-main > .page { flex: 1; width: 100%; }
+
+/* ---- site-sidebar: brand block, grouped nav, pinned group at the bottom ---- */
+.site-sidebar { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; background: var(--sidebar-bg); border-right: 1px solid var(--border); }   /* the sidebar itself never scrolls: the brand stays put, only .site-nav scrolls */
+.site-sidebar__brand { flex: none; display: flex; align-items: center; justify-content: space-between; gap: .5rem; height: var(--header-h); padding: 0 1.3rem; border-bottom: 1px solid var(--border); }   /* same height as .site-header so their bottom borders line up */   /* pinned to the top of the sidebar */
+.site-sidebar__brand-link, .site-sidebar__brand-link:visited { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--accent); line-height: 1.2; }
+.site-sidebar__brand-text { display: flex; flex-direction: column; }
+.site-sidebar__brand-name { font: 400 1.45rem var(--font-heading); letter-spacing: .02em; }
+.site-sidebar__brand-tagline { font-size: .76rem; color: var(--muted); letter-spacing: .03em; }
+.site-sidebar__close { display: none; background: none; border: 0; color: var(--muted); padding: .4rem; margin: 0 -.4rem 0 0; cursor: pointer; }
+.site-sidebar__close:hover { color: var(--text); }
+
+.site-nav { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 1.1rem; padding: 1rem .7rem; font: 400 1rem/1.4 var(--font-heading); }   /* same stack as the headings */   /* scrolls independently; position is remembered across pages (see the inline script in template.html) */
+/* Sidebar scrollbar. Chrome / Edge / Safari: the bar and track are invisible; only the sword shows (point down), sitting in the middle of the
+   (transparent) handle, so it travels down the sidebar as you scroll. Drag anywhere on the handle.
+   Firefox can't paint images on scrollbars: it gets a thin scrollbar in the site colours. The standard scrollbar-* properties are kept out
+   of the WebKit branch on purpose: Chromium ignores ::-webkit-scrollbar styling whenever scrollbar-color is set. */
+/* The scrollbar sits on the LEFT: the scroll container is right-to-left (which moves its scrollbar), its children are put back to left-to-right.
+   The scrollbar's gutter takes the place of the left padding. */
+.site-nav { direction: rtl; padding: 1rem .7rem 1rem 0; }
+.site-nav > * { direction: ltr; }
+@supports not selector(::-webkit-scrollbar) {
+  .site-nav { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+}
+@supports selector(::-webkit-scrollbar) {
+  .site-nav::-webkit-scrollbar { width: 28px; }
+  .site-nav::-webkit-scrollbar-track { background: transparent; }
+  /* The handle is drawn as: the sword (point down) in the middle, with a faint chevron at each end: ∧ (U+2227) at the top and ∨ (U+2228) at the bottom (35% strength; 90% on hover).
+     The chevrons are inline SVG paths because a scrollbar can only take background images. Their colour is a mid khaki that reads on both themes, like the sword's. */
+  .site-nav::-webkit-scrollbar-thumb { min-height: 62px; border: 0 2px solid transparent; background:
+      url("sword.png") center / auto 42px no-repeat,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1.5 6.5 L7 1.5 L12.5 6.5' fill='none' stroke='%238a8058' stroke-opacity='.35' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center top / 14px 8px no-repeat,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1.5 1.5 L7 6.5 L12.5 1.5' fill='none' stroke='%238a8058' stroke-opacity='.35' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom / 14px 8px no-repeat;
+    background-clip: padding-box; }
+  .site-nav::-webkit-scrollbar-thumb:hover { background:
+      url("sword.png") center / auto 42px no-repeat,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1.5 6.5 L7 1.5 L12.5 6.5' fill='none' stroke='%238a8058' stroke-opacity='.9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center top / 14px 8px no-repeat,
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1.5 1.5 L7 6.5 L12.5 1.5' fill='none' stroke='%238a8058' stroke-opacity='.9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom / 14px 8px no-repeat;
+    background-clip: padding-box; }
+}
+.nav-group__title { margin: 0 0 .25rem; padding: 0 .7rem; font-size: .78rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }   /* same plum as the Play Utopia button */
+.nav-group__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; }
+.nav-group__list a, .nav-group__list a:visited { display: block; padding: .54rem .7rem .3rem; border-radius: .3rem; text-decoration: none; color: var(--text-dim); transition: background-color .12s, color .12s; }
+.nav-group__list a:hover { background: var(--surface); color: var(--text); }
+.nav-group__list a[aria-current="page"] { position: relative; background: var(--surface); color: var(--text); }
+.nav-group__list a[aria-current="page"]::after { content: ""; position: absolute; top: 50%; right: -7px; width: 22px; height: 22px; transform: translateY(-50%);
+    background-color: var(--accent); -webkit-mask: url("broken-shield.png") center / contain no-repeat; mask: url("broken-shield.png") center / contain no-repeat; }   /* the current page's marker: a broken shield instead of the old accent bar, coloured to match the theme via mask.
+    Sits right on the row's edge, with its right third overhanging past the highlighted background. */
+.nav-group--pinned { margin-top: auto; padding-top: .9rem; border-top: 1px solid var(--border); }   /* stays at the bottom of the rail, like Settings in Hegemoney */
+
+/* ---- site-header: sticky bar above the page ---- */
+.site-header { position: sticky; top: 0; z-index: 20; height: var(--header-h); display: flex; align-items: center; gap: .8rem; padding: .7rem 2rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+.site-header__menu-button { display: none; background: none; border: 0; color: var(--text); padding: .4rem; margin-left: -.4rem; cursor: pointer; }
+.site-header__play-link, .site-header__play-link:visited { margin-left: auto; padding: .38rem .95rem; border-radius: .4rem; background: radial-gradient(ellipse at center, #7b7354 0%, #29261c 100%); color: #fff; font-size: .85rem; font-weight: 600; white-space: nowrap; text-decoration: none; }
+.site-header__play-link:hover, .site-header__play-link:visited:hover, .site-header__play-link:focus-visible { background: var(--surface); color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }   /* inverts on hover: light fill, accent text + outline */
+
+/* ---- title in the header (desktop, enabled by class="title-in-header" on <html>) ----
+   The big page title stays at the top of the article and scrolls away as normal. Once it has, a condensed copy fades in on the left of the
+   header (long titles are cut with an ellipsis), so one bar replaces the old header + pinned-title pair. Below 48rem nothing changes. */
+.site-header__title { display: none; }
+@media (min-width: 48rem) {
+  html.title-in-header .site-header__title, html.title-in-header .site-header__title:visited { display: block; flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    font: 400 1.4rem/1.2 var(--font-heading); color: var(--text); text-decoration: none; opacity: 0; transform: translateY(.35rem); pointer-events: none; transition: opacity .18s, transform .18s; }
+  html.title-in-header .site-header.is-title-shown .site-header__title { opacity: 1; transform: none; pointer-events: auto; }
+  html.title-in-header .site-search { flex: 0 1 22rem; }                 /* search and Play sit together on the right, so nothing shifts when the title appears */
+  html.title-in-header .site-header__play-link { margin-left: 0; }
+  @media (max-width: 64rem) { html.title-in-header .site-search { flex-basis: 14rem; } }   /* narrower desktops: a slimmer search box leaves the title more room */
+  html.title-in-header .page__title:not(.page__title--hidden) { position: static; }   /* the in-page title no longer pins: the header carries it */
+  html.title-in-header { scroll-padding-top: calc(var(--header-h) + 1.5rem); }
+}
+@media (min-width: 80rem) and (min-height: 32rem) {
+  html.title-in-header .page__body--with-toc .toc { top: calc(var(--header-h) + 1.25rem); max-height: min(30rem, calc(100vh - var(--header-h) - 3.5rem)); }   /* one bar above, not two */
+}
+@media (prefers-reduced-motion: reduce) { .site-header__title { transition: none !important; } }
+
+/* ---- site-search ---- */
+.site-search { position: relative; flex: 1; min-width: 0; max-width: 30rem; }
+.site-search__input { width: 100%; padding: .48rem .9rem; border-radius: 1.2rem; border: 1px solid var(--border); font: inherit; background: var(--surface); color: var(--text); }
+.site-search__input::placeholder { color: var(--muted); }
+.site-search__input:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.site-search__results { position: absolute; right: 0; left: 0; top: calc(100% + .3rem); margin: 0; padding: .3rem; list-style: none; max-height: 70vh; overflow: auto; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: .5rem; box-shadow: 0 8px 24px #0004; }
+.site-search__results[hidden] { display: none; }
+.search-result__link { display: block; padding: .4rem .6rem; border-radius: .3rem; text-decoration: none; color: inherit; }
+.search-result__link:hover, .search-result__link:focus { background: var(--band-bg); }
+.search-result__title { display: block; font-weight: 600; color: var(--link); }
+.search-result__snippet { display: block; font-size: .8rem; color: var(--muted); }
+.search-result--empty { padding: .5rem .6rem; color: var(--muted); }
+
+/* ---- page ---- */
+.page { padding: 1.75rem var(--page-pad) 3rem; min-width: 0; }
+.page__title { margin: 0 calc(-1 * var(--page-pad)) 1rem; padding: .5rem var(--page-pad) .4rem; font: 400 2rem/1.2 var(--font-heading); background: var(--bg); border-bottom: 1px solid var(--accent); border-bottom-color: color-mix(in srgb, var(--accent) 67%, transparent); }   /* 1px, at 67% strength (the text stays fully opaque); the solid colour before it is the fallback */
+/* The title scrolls with the page, then pins just under the header. Skipped on short windows (e.g. a phone held sideways),
+   where a pinned bar would take too much of the screen. */
+@media (min-height: 32rem) { .page__title:not(.page__title--hidden) { position: sticky; top: var(--header-h); z-index: 10; } }
+.page__title--hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }   /* visually hidden, still exposed to screen readers */
+.page__body h2 { margin: 2rem 0 .6rem; font: 400 1.5rem var(--font-heading); border-bottom: 1px solid var(--border); padding-bottom: .2rem; }
+.page__body h3 { margin: 1.5rem 0 .4rem; font-size: 1.2rem; }
+.page__body h4 { margin: 1.2rem 0 .3rem; }
+.page__body img { max-width: 100%; height: auto; }
+.page__body sub { color: var(--muted); }
+/* pre: wraps instead of scrolling sideways. Add class="pre-scroll" for a block that must keep its exact columns. */
+.page__body pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; background: var(--band-bg); border-radius: .4rem; font-size: .9rem; }
+.page__body pre.pre-scroll { white-space: pre; overflow: auto; overflow-wrap: normal; }
+
+/* formula: "Name = term × term × term". The name is on its own line and terms wrap as whole chips, never mid-term. */
+.formula { margin: 1rem 0; padding: .7rem .9rem; background: var(--band-bg); border-left: 4px solid var(--accent); border-radius: 0 .4rem .4rem 0; line-height: 2.1; }
+.formula__name { display: inline; font-weight: 700; }
+.formula__equals { margin: 0 .3rem 0 .2rem; font-weight: 700; color: var(--muted); }
+.formula__equals::after { content: ""; display: block; }        /* line break after "=": terms start on a fresh line */
+.formula__term { display: inline-block; max-width: 100%; padding: 0 .55rem; border: 1px solid var(--border); border-radius: .35rem; background: var(--surface); line-height: 1.6; }
+.formula__step { display: inline-block; max-width: 100%; margin-right: .3rem; }
+.formula__op { margin-right: .3rem; font-weight: 700; color: var(--muted); }
+
+/* ---- page-footer ---- */
+.page__footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: .85rem; color: var(--muted); }
+.category-tag { display: inline-block; padding: .05rem .6rem; margin: 0 .15rem; border: 1px solid var(--border); border-radius: 1rem; text-decoration: none; background: var(--surface); }
+.page__credits summary { cursor: pointer; }
+
+/* ---- site-footer ---- */
+.site-footer { padding: 1.5rem 1rem; text-align: center; font-size: .8rem; color: var(--muted); border-top: 1px solid var(--border); }
+.site-footer p { margin: .2rem 0; }
+
+/* ---- content vocabulary: tables ----
+   Every <table> inside .page__body is styled automatically; no class needed. Modifiers are optional classes. */
+.page__body table { border-collapse: collapse; margin: 1rem 0; width: 100%; max-width: 100%; font-size: .92rem; background: var(--surface); }
+.page__body table th, .page__body table td { padding: .35rem .6rem; border: 1px solid var(--border); }
+.page__body table th { background: var(--head-bg); color: var(--head-text); text-align: center; }
+.table-scroll { overflow-x: auto; margin: 1rem 0; }
+.page__body .table-scroll > table { margin: 0; }
+.wiki-table--center td { text-align: center; }
+.page__body table.table--mono { font-family: var(--font-mono); font-size: .84rem; }   /* optional: monospace table, e.g. Current Changes */
+.page__body table.table--mono th, .page__body table.table--mono td:first-child { font: 400 .98rem/1.3 var(--font-heading); letter-spacing: .02em; }   /* header cells and the first (Race) column use the page-title font */
+.page__body table.table--mono td:first-child b { font-weight: inherit; }   /* IM Fell has no bold: keep the race names at regular weight instead of a faked bold */
+/* table--names: a plain two-column list (name + detail). The header cells and the first column use the page-title font; the rest keeps the body font. */
+.page__body table.table--names th, .page__body table.table--names td:first-child { font: 400 .98rem/1.3 var(--font-heading); letter-spacing: .02em; }
+.page__body table.table--names td:first-child b { font-weight: inherit; }   /* IM Fell has no bold */
+.page__body table.table--mono td:not(.cell-num) { font: 400 .98rem/1.35 var(--font-heading); letter-spacing: .01em; }   /* every text cell (not the figure cells) in the page-title font */
+.page__body table.table--mono b.ability { font-weight: 400; color: var(--accent); letter-spacing: .03em; }   /* an ability's name: accent colour instead of bold (IM Fell has no bold) */
+.page__body table.table--mono .num { font-family: var(--font-mono); font-size: .88em; letter-spacing: 0; line-height: 1; }   /* line-height 1: the monospace font's own metrics must not make a line taller than the lines around it */   /* a figure set in the monospace font inside text set in another font */
+.page__body table.table--mono th[rowspan] { vertical-align: middle; }   /* a header cell that spans both header rows (Race) sits in the middle of its box */
+.page__body table.table--mono tr:first-child > th { padding-top: .95rem; padding-bottom: .6rem; }   /* the top header row (group headers on the units table, the column headings on the other) gets extra height, mostly above the text */
+
+.cell-yes  { background: var(--yes-bg); color: var(--yes-text); text-align: center; font-weight: 600; }
+.cell-no   { background: var(--no-bg);  color: var(--no-text);  text-align: center; font-weight: 600; }
+.cell-good { background: var(--good-bg); }
+.start-bonus { position: relative; margin-top: 1.1rem; padding-top: .9rem; color: var(--muted); }   /* a personality's starting bonus: listed under its bonuses, in a lighter colour, set off by a short faint rule, centred */
+.start-bonus::before { content: ""; position: absolute; top: 0; left: 50%; width: 3rem; transform: translateX(-50%); border-top: 1px solid var(--border); border-top-color: color-mix(in srgb, currentColor 40%, transparent); }
+.cell-bad  { background: var(--bad-bg); }
+.cell-band { background: var(--band-bg); }
+.cell-head { background: var(--head-bg); color: var(--head-text); font-weight: 700; }
+.cell-dark { background: var(--dark-bg); color: var(--dark-text); font-weight: 700; }
+.cell-center { text-align: center; }
+.cell-muted { color: var(--muted); color: color-mix(in srgb, var(--muted) 40%, var(--surface)); }   /* de-emphasised figure (NW, Cost): the muted colour blended 60% toward the background; the plain colour first is the fallback */
+.cell-muted a, .cell-muted a:visited { color: inherit; }   /* a link inside a de-emphasised cell (a race or personality no longer in play) takes the muted colour too */
+.page__body table .cell-num { text-align: right; padding-right: 1rem; }   /* right-aligned figure with breathing room on the right; also used on its column header */
+.page__body table.table--fixed { table-layout: fixed; }                   /* columns without a width share the space equally */
+.page__body table .col-sm { width: 7.5rem; }                              /* set on a header cell of a table--fixed table */
+.page__body table .col-md { width: 12rem; }
+.list-plain { list-style: none; margin: 0; padding: 0; }                  /* a list with no bullets or indent, e.g. a stacked Spellbook */   /* de-emphasised figure, e.g. NW and Cost on Current Changes */
+.page__body .entry-link { margin-top: -.6rem; font-size: .85rem; }   /* a small "full entry" link under a summary paragraph */
+.list-spaced > li + li { margin-top: .4rem; }                          /* a little air between items of a bullet-less list */
+
+/* table--sticky-first: the Race column stays put while the table scrolls sideways (the header cell spans two rows, so the second header row is skipped). */
+.page__body table.table--sticky-first tr:first-child > :first-child,
+.page__body table.table--sticky-first tr:nth-child(n+3) > :first-child { position: sticky; left: 0; z-index: 2; box-shadow: 1px 0 0 var(--border); }
+.page__body table.table--sticky-first tr:nth-child(n+3) > :first-child { background: var(--surface); }
+
+/* table--borderless: no cell borders at all, inside or out (the coloured header cells still mark the header). Also drops the edge line on a frozen first column. */
+.page__body table.table--borderless th, .page__body table.table--borderless td { border: 0; }
+.page__body table.table--borderless.table--sticky-first tr > :first-child { box-shadow: none; }
+
+/* table--units: fixed, narrower columns (set by <col> classes) instead of stretching across the whole page; scrolls sideways when the window is narrower than the table. */
+.page__body table.table--units { table-layout: fixed; width: max-content; max-width: none; }
+.page__body table.table--units col.col-w-race { width: 7rem; }
+.page__body table.table--units col.col-w-num { width: 3.25rem; }
+.page__body table.table--units col.col-w-cost { width: 5.5rem; }   /* wide enough that the "Cost (gc)" header stays on one line */
+.page__body table.table--units .cell-num { padding-left: .25rem; padding-right: .75rem; }   /* tighter than the default so 4-digit costs still fit the narrow columns */
+/* table--hover: a soft highlight on the row under the pointer (data cells only, so header rows are left alone) */
+.page__body table.table--hover tr:hover > td { background-color: var(--row-hover); }
+.page__body table.table--hover.table--sticky-first tr:nth-child(n+3):hover > :first-child { background-color: var(--row-hover); }   /* the frozen Race cell has its own solid background, so it needs its own hover rule */
+.page__body table.table--hover td { transition: background-color .12s; }
+@media (prefers-reduced-motion: reduce) { .page__body table.table--hover td { transition: none; } }
+
+/* table--cards: below 64rem each row becomes a card, with a caption (from the cell's data-label) above each section. Use with table--fixed tables
+   whose columns are too text-heavy to squeeze into a narrow screen. The header row is hidden visually but kept for screen readers. */
+@media (max-width: 63.99rem) {
+  .page__body table.table--cards, .page__body table.table--cards tbody, .page__body table.table--cards tr, .page__body table.table--cards td { display: block; width: auto; }
+  .page__body table.table--cards { margin: 1rem 0; background: none; }
+  .page__body table.table--cards tr:first-child { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .page__body table.table--cards tr { margin: 0 0 1rem; border: 1px solid var(--border); border-radius: .5rem; overflow: hidden; background: var(--surface); }
+  .page__body table.table--cards td { padding: .6rem .9rem; border: 0; border-top: 1px solid var(--border); }
+  .page__body table.table--cards td:first-child { border-top: 0; padding: .55rem .9rem; font-size: 1.05rem; background: var(--head-bg); color: var(--head-text); }
+  .page__body table.table--cards td[data-label]::before { content: attr(data-label); display: block; font-family: var(--font-mono); margin-bottom: .25rem; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .page__body table.table--cards .list-plain, .page__body table.table--cards ul { margin-top: 0; margin-bottom: 0; }
+}
+
+/* data-note: the small "Numbers last updated" line under each data table. Also usable by hand under a formula:
+   <p class="data-note">Numbers last updated 1 Jan 2026.</p> */
+.data-note { margin: -.6rem 0 1.2rem; font-size: .72rem; color: var(--muted); }
+.data-note a { color: inherit; }
+
+/* status-banner: shown at the top of a page whose header has `status: needs-update` or `status: retired`.
+   status-badge: the small pill next to a title in lists and search results. */
+.status-banner { margin: 0 0 1.4rem; padding: .7rem 1rem; border: 1px solid var(--border); border-left-width: 4px; border-radius: .4rem; font-size: .92rem; }
+.status-banner--needs-update { background: var(--warn-bg); border-color: var(--warn-border); color: var(--warn-text); }
+.status-banner--needs-update a { color: inherit; font-weight: 600; }
+.status-banner--retired { background: var(--band-bg); color: var(--muted); border-left-color: var(--muted); }
+.status-badge { display: inline-block; padding: 0 .5rem; margin-left: .35rem; border-radius: 1rem; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; vertical-align: .1em; }
+.status-badge--needs-update { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
+.status-badge--retired { background: var(--band-bg); color: var(--muted); border: 1px solid var(--border); }
+.page-list__note { color: var(--muted); font-size: .85rem; }
+
+/* toc: "On this page". Built by build.py when a page has enough h2/h3 headings (see TOC_MIN_HEADINGS).
+   Windows 80rem+ wide (and taller than 32rem): a right-hand column that stays pinned under the header and page title while you scroll.
+   Anything narrower: a collapsible block above the article (collapsed by site.js on smaller screens), which scrolls away as normal. */
+.page__body--with-toc { display: flex; flex-direction: column; }
+.page__content { min-width: 0; }
+.page__body .toc { order: -1; margin: 0 0 1.2rem; padding: .6rem .8rem; background: var(--surface); border: 1px solid var(--border); border-radius: .4rem; font-size: .85rem; line-height: 1.4; }
+.page__body .toc > summary.toc__title { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
+.toc__list, .toc__sublist { margin: .4rem 0 0; padding: 0; list-style: none; }
+.toc__sublist { margin: .1rem 0 .3rem; padding-left: .9rem; }
+.toc__link, .toc__link:visited { display: block; padding: .18rem 0; color: var(--text-dim); text-decoration: none; }
+.toc__link:hover, .toc__link:focus-visible { color: var(--link); text-decoration: underline; }
+@media (min-width: 80rem) and (min-height: 32rem) {
+  .page__body--with-toc { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; column-gap: 2rem; align-items: start; }
+  .page__body--with-toc .toc { order: 0; position: sticky; top: calc(var(--header-h) + 4.5rem); z-index: 5; margin: 0;
+    max-height: min(30rem, calc(100vh - var(--header-h) - 7.5rem)); overflow-y: auto; }   /* 4.5rem = room for the pinned page title */
+}
+
+/* faq-item: one collapsible question/answer (native <details>, no JavaScript). Used on the FAQ page.
+   Every colour is a --fq-* variable with the current look as its fallback, so a colour scheme is just a set of overrides:
+   --fq-bg / --fq-text / --fq-weight / --fq-font / --fq-size   the closed question row
+   --fq-open-bg / --fq-open-text                               the open question row     --fq-hover / --fq-open-hover   hover tints
+   --fq-a-bg / --fq-a-text                                     the answer panel          --fq-border / --fq-bw / --fq-radius   the box
+   --fq-bar / --fq-bar-open                                    left accent bar colour (closed / open)      --fq-chevron / --fq-chevron-open */
+.page__body .faq-item { margin: .5rem 0; padding: 0; background: var(--fq-bg, var(--surface)); border-style: solid; border-width: var(--fq-bw, 1px);
+  border-color: var(--fq-border, var(--border)); border-left-color: var(--fq-bar, var(--fq-border, var(--border))); border-radius: var(--fq-radius, .5rem); overflow: hidden; }
+.page__body .faq-item[open] { border-left-color: var(--fq-bar-open, var(--fq-bar, var(--fq-border, var(--border)))); }
+.page__body .faq-item > summary { position: relative; padding: .8rem 2.6rem .8rem 1rem; cursor: pointer; list-style: none;
+  font: var(--fq-weight, 400) var(--fq-size, 1rem)/1.5 var(--fq-font, var(--font-body)); color: var(--fq-text, var(--text)); }
+.page__body .faq-item > summary::-webkit-details-marker { display: none; }
+.page__body .faq-item > summary::after { content: ""; position: absolute; right: 1.1rem; top: 50%; width: .5rem; height: .5rem; border-right: 2px solid var(--fq-chevron, var(--muted)); border-bottom: 2px solid var(--fq-chevron, var(--muted)); transform: translateY(-70%) rotate(45deg); transition: transform .15s; }
+.page__body .faq-item[open] > summary { color: var(--fq-open-text, var(--accent)); background: var(--fq-open-bg, transparent); border-bottom: 1px solid var(--fq-border, var(--border)); }
+.page__body .faq-item[open] > summary::after { transform: translateY(-25%) rotate(-135deg); border-color: var(--fq-chevron-open, var(--fq-chevron, var(--muted))); }
+.page__body .faq-item > summary:hover { background: var(--fq-hover, var(--band-bg)); }
+.page__body .faq-item[open] > summary:hover { background: var(--fq-open-hover, var(--fq-open-bg, var(--fq-hover, var(--band-bg)))); }
+.page__body .faq-item > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+@media (prefers-reduced-motion: reduce) { .page__body .faq-item > summary::after { transition: none; } }
+.faq-item__answer { padding: .3rem 1rem .9rem; background: var(--fq-a-bg, var(--answer-bg)); color: var(--fq-a-text, inherit); }
+.faq-item__answer > :first-child { margin-top: .6rem; }
+.faq-item__answer > :last-child { margin-bottom: 0; }
+
+/* ---- FAQ colour scheme: "Accent bar" (a left bar that darkens on the open one) ----------------------------
+   Everything in this block is a --fq-* override. TO REVERT to the previous look (white boxes, tinted answer, olive open
+   question), delete this whole block; the faq-item rules above fall back to it. ---------------------------------------------- */
+:root {
+  --fq-bg: var(--surface); --fq-a-bg: var(--surface); --fq-a-text: var(--text);       /* question and answer on the same white, so the bar does the separating */
+  --fq-border: #cfc8b0; --fq-weight: 400; --fq-hover: #f5f2e7;                        /* regular-weight questions, a firmer border than before */
+  --fq-open-text: #94938d;                                                            /* the open question is muted to 50% (the text colour at 50% over white), so the answer takes the focus */
+  --fq-bar: #b9b08a; --fq-bar-open: #6f674a; --fq-bw: 1px 1px 1px 5px;                /* a 5px bar on the left: soft khaki when closed, dark olive when open */
+}
+@media (prefers-color-scheme: dark) {
+  :root { --fq-border: #4a4536; --fq-hover: #2a2620; --fq-bar: #6b6448; --fq-bar-open: #c2b78a; --fq-open-text: #85808a; }   /* dark counterpart (open question at 50% over the dark surface) */
+}
+/* ---- end of FAQ colour scheme -------------------------------------------------------------------------------------------- */
+
+/* ---- content vocabulary: boxes ---- */
+.infobox { float: right; clear: right; margin: 0 0 1rem 1.5rem; width: min(22rem, 100%); }
+.callout { margin: 1rem 0; padding: .7rem 1rem; border-left: 4px solid var(--accent); background: var(--band-bg); border-radius: 0 .4rem .4rem 0; }
+.page-list { columns: 16rem; padding-left: 1.2rem; }
+.page__body details { margin: .8rem 0; padding: .4rem .8rem; border: 1px solid var(--border); border-radius: .4rem; background: var(--surface); }
+.page__body details > summary { cursor: pointer; font-weight: 600; }
+
+/* ---- scroll-top: fixed round button, bottom-right; shown by site.js once the page is scrolled ---- */
+.scroll-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 30; width: 2.9rem; height: 2.9rem; padding: 0; border: 0; background: none; color: var(--accent); cursor: pointer;
+  filter: drop-shadow(0 2px 6px #0003); opacity: 0; visibility: hidden; transform: translateY(.6rem); transition: opacity .2s, transform .2s, visibility .2s; }
+.scroll-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.scroll-top svg { display: block; width: 100%; height: 100%; }
+.scroll-top__disc { fill: var(--surface); stroke: currentColor; stroke-width: 1.4; transition: fill .15s; }
+.scroll-top__arrow { stroke: currentColor; stroke-width: 2.2; transition: stroke .15s; }
+.scroll-top:hover .scroll-top__disc, .scroll-top:focus-visible .scroll-top__disc { fill: var(--accent); }
+.scroll-top:hover .scroll-top__arrow, .scroll-top:focus-visible .scroll-top__arrow { stroke: var(--surface); }
+.scroll-top:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 50%; }
+@media (max-width: 47.99rem) { .scroll-top { right: .9rem; bottom: .9rem; } }
+@media (prefers-reduced-motion: reduce) { .scroll-top { transition: none; } }
+
+/* ---- site-backdrop: dims the page behind the open drawer; tapping it closes the drawer ---- */
+.site-backdrop { position: fixed; inset: 0; z-index: 40; background: #0006; }
+.site-backdrop[hidden] { display: none; }
+
+/* ---- responsive ----
+   phone   < 48rem (768px)   sidebar becomes an off-canvas drawer opened by the header's menu button
+   tablet  48rem - 64rem     persistent 248px rail, tighter padding, slightly denser tables
+   desktop > 64rem           full layout                                                        */
+@media (min-width: 48rem) and (max-width: 64rem) {
+  .site-header { padding: .7rem 1.5rem; }
+  .page { --page-pad: 1.5rem; padding: 1.5rem var(--page-pad) 2.5rem; }
+  .page__body table { font-size: .88rem; }
+  .page__body table th, .page__body table td { padding: .3rem .5rem; }
+}
+
+@media (max-width: 47.99rem) {
+  .layout { display: block; }
+  .site-sidebar { position: fixed; z-index: 50; inset: 0 auto 0 0; width: min(17.5rem, 85vw); height: auto; transform: translateX(-100%); visibility: hidden; transition: transform .2s ease-out, visibility .2s; }
+  .sidebar-open .site-sidebar { transform: none; visibility: visible; box-shadow: 6px 0 24px #0005; }
+  body.sidebar-open { overflow: hidden; }
+  .site-sidebar__close, .site-header__menu-button { display: block; }
+  .site-header { padding: .55rem .8rem; }
+  .page { --page-pad: 1rem; padding: 1.25rem var(--page-pad) 2.5rem; }
+  .page__title { font-size: 1.6rem; }
+  .infobox { float: none; margin: 1rem 0; width: 100%; }
+}
+
+/* touch screens (tablets, phones): bigger tap targets */
+@media (pointer: coarse) {
+  .nav-group__list a { padding: .62rem .7rem; }
+  .site-header__menu-button, .site-sidebar__close { padding: .55rem; }
+  .search-result__link { padding: .65rem .7rem; }
+  .category-tag { padding: .3rem .8rem; margin: .2rem; }
+  .page__body li { margin: .15rem 0; }
+  .page__body details > summary { padding: .35rem 0; }
+}
+
+@media (prefers-reduced-motion: reduce) { .site-sidebar { transition: none; } }

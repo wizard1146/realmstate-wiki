@@ -1,0 +1,10 @@
+<!--
+title: Contribute
+category: Wiki
+updated: 2026-09-29
+-->
+<p>Guide pages are HTML files in <a href="https://github.com/wizard1146/realmstate-wiki/tree/main/content">content/</a>. Edit one on GitHub and open a pull request; the build checks every link.</p>
+<ul>
+  <li>Don't type game numbers into guide pages. Write <code>{{</code><code>name}}</code> and the build fills in the current age's number (the list is in <code>content/_values.json</code>).</li>
+  <li>Pages marked <code>generated: tools/sync.py</code> are made from the game's rule files. Change the game's rules instead, then run <code>python3 tools/sync.py</code>.</li>
+</ul>
