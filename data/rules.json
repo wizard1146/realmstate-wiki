@@ -256,6 +256,32 @@
         {
           "capacity": [],
           "construction_ticks": 0,
+          "description": "Every science works better.",
+          "extra_gold": 0,
+          "hash": "31160e94e682f4eb",
+          "jobs": 25,
+          "key": {
+            "identity": "libraries",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "ScienceEfficiency"
+            }
+          ],
+          "name": "Libraries",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
           "description": "Cheaper construction and exploring.",
           "extra_gold": 0,
           "hash": "564c194b65eace3d",
@@ -395,6 +421,37 @@
         {
           "capacity": [],
           "construction_ticks": 0,
+          "description": "More scientists, and they write more books.",
+          "extra_gold": 0,
+          "hash": "16e0121a81d6453e",
+          "jobs": 25,
+          "key": {
+            "identity": "universities",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "ScientistSpawn"
+            },
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "BookProduction"
+            }
+          ],
+          "name": "Universities",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
           "description": "Enemy spies are easier to catch.",
           "extra_gold": 0,
           "hash": "9e84f42947822ebc",
@@ -420,7 +477,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "632bde112b2ee413",
+      "hash": "01d7efe7d8e129bc",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -525,6 +582,12 @@
         "attacker_loss_bp": 800,
         "barren_food": 2,
         "barren_living": 15,
+        "books_per_building": 5,
+        "books_per_close_win": 200,
+        "books_per_explored_acre": 20,
+        "books_per_paper": 5,
+        "books_per_spy": 50,
+        "books_per_thousand_traded": 10,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "chariot_gold": 100,
@@ -534,6 +597,9 @@
         "chariot_offense": 2,
         "constructing_living": 15,
         "construction_ticks": 16,
+        "decay_growth_bp": 1,
+        "decay_max_bp": 100,
+        "decay_start_bp": 2,
         "defender_loss_bp": 600,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
@@ -554,18 +620,41 @@
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
+        "lost_text_chance_bp": 1500,
         "luck_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
         "optimal_workers_bp": 6700,
+        "paper_cap_bp": 10000,
+        "paper_material": "paper",
         "peasant_growth_bp": 300,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realms": 13,
+        "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "science_ranks": [
+          [
+            0,
+            60
+          ],
+          [
+            1440,
+            80
+          ],
+          [
+            5280,
+            100
+          ],
+          [
+            12480,
+            120
+          ]
+        ],
+        "scientist_spawn_milli": 100,
         "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
@@ -573,6 +662,7 @@
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
+        "starting_scientists": 6,
         "starvation_bp": 200,
         "states_per_realm": 7,
         "tax_default_bp": 200,
@@ -588,7 +678,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "ae26fc76cde8623d",
+          "hash": "776a494fdc3d36c2",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -596,6 +686,24 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -619,7 +727,7 @@
         },
         {
           "flags": 0,
-          "hash": "81afcbce2043fc2f",
+          "hash": "7d141c8a465cf75f",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -642,6 +750,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -650,7 +776,7 @@
         },
         {
           "flags": 0,
-          "hash": "a0f2ee7038e67100",
+          "hash": "f2fcc871c4fb35b6",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -659,6 +785,24 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -690,10 +834,237 @@
         null,
         null
       ],
+      "projects": [
+        {
+          "description": "More amber from your state's share, and generals cost less of it.",
+          "hash": "106f240c7eb35240",
+          "key": {
+            "identity": "amber_lore",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "GeneralCost",
+              -1000
+            ]
+          ],
+          "name": "Amber Lore",
+          "requires_material": 0,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More sulfur from your state's share, and medics save more troops.",
+          "hash": "1f8378b26d626855",
+          "key": {
+            "identity": "apothecary",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "Rescue",
+              1000
+            ]
+          ],
+          "name": "Apothecary",
+          "requires_material": 6,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More books from learning by doing and from lost texts.",
+          "hash": "3e9971f489027202",
+          "key": {
+            "identity": "archives",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "PracticeBooks",
+              1500
+            ]
+          ],
+          "name": "Archives",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More pine from your state's share, and refining makes more.",
+          "hash": "7198171a197116fb",
+          "key": {
+            "identity": "forestry",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "RefineYield",
+              1000
+            ]
+          ],
+          "name": "Forestry",
+          "requires_material": 4,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "Your state's deeds are sung: more renown.",
+          "hash": "e7e29bc9136d2241",
+          "key": {
+            "identity": "heraldry",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "RenownGain",
+              1000
+            ]
+          ],
+          "name": "Heraldry",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More bauxite from your state's share, and upgrades need less of it.",
+          "hash": "704ee04f9a805e87",
+          "key": {
+            "identity": "mining_knowledge",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "UpgradeCost",
+              -1000
+            ]
+          ],
+          "name": "Mining Knowledge",
+          "requires_material": 1,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More paper from your state's share, and each paper adds more books.",
+          "hash": "2f7924ab66d4ea6d",
+          "key": {
+            "identity": "printing",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "PaperBooks",
+              2000
+            ]
+          ],
+          "name": "Printing",
+          "requires_material": 3,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More limestone from your state's share, and buildings need less of it.",
+          "hash": "d26d5a852b041a0b",
+          "key": {
+            "identity": "quarrying",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "BuildingMaterials",
+              -1000
+            ]
+          ],
+          "name": "Quarrying",
+          "requires_material": 2,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "Your state's generals lead better: their traits are stronger, and the last tier adds a trait slot.",
+          "hash": "8f413aefcc9ab13d",
+          "key": {
+            "identity": "statesmanship",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "GeneralEffect",
+              1500
+            ]
+          ],
+          "name": "Statesmanship",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": [
+            3,
+            1
+          ]
+        }
+      ],
       "races": [
         {
           "flags": 0,
-          "hash": "17d8ee7fc7753956",
+          "hash": "6855197ddd7da47c",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -701,6 +1072,24 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -767,7 +1156,7 @@
         },
         {
           "flags": 0,
-          "hash": "b7bd2b6b3d0c7614",
+          "hash": "69faead7e2e3d6cf",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -780,6 +1169,24 @@
             0,
             1000,
             -500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -841,7 +1248,7 @@
         },
         {
           "flags": 0,
-          "hash": "80b1bb190b629fd8",
+          "hash": "7ead9127898b21b8",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -854,6 +1261,24 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -920,7 +1345,7 @@
         },
         {
           "flags": 0,
-          "hash": "67df82ce5ae535f9",
+          "hash": "7b007a38fb09e000",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -936,6 +1361,24 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -994,7 +1437,7 @@
         },
         {
           "flags": 1,
-          "hash": "fcc951c8336eb963",
+          "hash": "f11c194080c33763",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -1003,6 +1446,24 @@
           "mods_bp": [
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1116,6 +1577,220 @@
           "quantity": 1
         }
       ],
+      "sciences": [
+        {
+          "category": 0,
+          "description": "More income.",
+          "effects": [
+            [
+              "Income",
+              552
+            ]
+          ],
+          "hash": "98f5572e40c6cd73",
+          "key": {
+            "identity": "alchemy",
+            "version": "v1"
+          },
+          "name": "Alchemy"
+        },
+        {
+          "category": 0,
+          "description": "Cheaper, faster construction.",
+          "effects": [
+            [
+              "ConstructionCost",
+              -364
+            ],
+            [
+              "ConstructionTime",
+              -364
+            ]
+          ],
+          "hash": "c60433ec68dcf2bc",
+          "key": {
+            "identity": "artisan",
+            "version": "v1"
+          },
+          "name": "Artisan"
+        },
+        {
+          "category": 0,
+          "description": "Land holds more people.",
+          "effects": [
+            [
+              "Population",
+              200
+            ]
+          ],
+          "hash": "86c8babb605a4d72",
+          "key": {
+            "identity": "housing",
+            "version": "v1"
+          },
+          "name": "Housing"
+        },
+        {
+          "category": 0,
+          "description": "More food.",
+          "effects": [
+            [
+              "FoodProduction",
+              1655
+            ]
+          ],
+          "hash": "0f9659c50e4f6f8f",
+          "key": {
+            "identity": "production",
+            "version": "v1"
+          },
+          "name": "Production"
+        },
+        {
+          "category": 0,
+          "description": "Higher building efficiency.",
+          "effects": [
+            [
+              "BuildingEfficiency",
+              399
+            ]
+          ],
+          "hash": "6554646518fd313d",
+          "key": {
+            "identity": "tools",
+            "version": "v1"
+          },
+          "name": "Tools"
+        },
+        {
+          "category": 1,
+          "description": "Fewer troops die in battle.",
+          "effects": [
+            [
+              "Casualties",
+              -373
+            ]
+          ],
+          "hash": "be4022a227840542",
+          "key": {
+            "identity": "resilience",
+            "version": "v1"
+          },
+          "name": "Resilience"
+        },
+        {
+          "category": 1,
+          "description": "More land from successful attacks.",
+          "effects": [
+            [
+              "LandGain",
+              200
+            ]
+          ],
+          "hash": "cd683ef6b92bb7e8",
+          "key": {
+            "identity": "siege",
+            "version": "v1"
+          },
+          "name": "Siege"
+        },
+        {
+          "category": 1,
+          "description": "Stronger defense.",
+          "effects": [
+            [
+              "Defense",
+              280
+            ]
+          ],
+          "hash": "ee83b1d94bac70ba",
+          "key": {
+            "identity": "strategy",
+            "version": "v1"
+          },
+          "name": "Strategy"
+        },
+        {
+          "category": 1,
+          "description": "Stronger offense.",
+          "effects": [
+            [
+              "Offense",
+              280
+            ]
+          ],
+          "hash": "d24a4b1b5d71d665",
+          "key": {
+            "identity": "tactics",
+            "version": "v1"
+          },
+          "name": "Tactics"
+        },
+        {
+          "category": 1,
+          "description": "Faster training.",
+          "effects": [
+            [
+              "TrainingTime",
+              -443
+            ]
+          ],
+          "hash": "c0751d0819cf8d50",
+          "key": {
+            "identity": "valor",
+            "version": "v1"
+          },
+          "name": "Valor"
+        },
+        {
+          "category": 2,
+          "description": "Your spies are stronger.",
+          "effects": [
+            [
+              "ThiefStrength",
+              1186
+            ]
+          ],
+          "hash": "dcfc3321276da376",
+          "key": {
+            "identity": "crime",
+            "version": "v1"
+          },
+          "name": "Crime"
+        },
+        {
+          "category": 2,
+          "description": "Fewer thieves lost when caught.",
+          "effects": [
+            [
+              "ThiefLosses",
+              -735
+            ]
+          ],
+          "hash": "1f8138707210b5c9",
+          "key": {
+            "identity": "finesse",
+            "version": "v1"
+          },
+          "name": "Finesse"
+        },
+        {
+          "category": 2,
+          "description": "Enemy spies are weaker against you.",
+          "effects": [
+            [
+              "ThiefDefense",
+              239
+            ]
+          ],
+          "hash": "0d20a6a7a965236d",
+          "key": {
+            "identity": "shielding",
+            "version": "v1"
+          },
+          "name": "Shielding"
+        }
+      ],
       "starting_buildings": [
         0,
         0,
@@ -1127,16 +1802,18 @@
         30,
         0,
         0,
+        0,
         10,
         10,
         0,
         20,
+        0,
         10
       ],
       "traits": [
         {
           "flags": 0,
-          "hash": "2293d1a5f56e0c8f",
+          "hash": "c813dc1176564407",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -1159,6 +1836,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -1167,7 +1862,7 @@
         },
         {
           "flags": 0,
-          "hash": "b7548811d0f5ef69",
+          "hash": "399bbaaf3d738bfc",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -1190,6 +1885,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -1198,7 +1911,7 @@
         },
         {
           "flags": 0,
-          "hash": "a8978a4619a9344a",
+          "hash": "badbd899aa2386ee",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -1221,6 +1934,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -1229,7 +1960,7 @@
         },
         {
           "flags": 0,
-          "hash": "74b96430bf4c8221",
+          "hash": "804085ecc249047b",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -1252,6 +1983,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -1260,7 +2009,7 @@
         },
         {
           "flags": 0,
-          "hash": "1b1480575df3a580",
+          "hash": "7516d0c1dec5b19a",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -1277,6 +2026,24 @@
             0,
             0,
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1547,6 +2314,32 @@
         {
           "capacity": [],
           "construction_ticks": 0,
+          "description": "Every science works better.",
+          "extra_gold": 0,
+          "hash": "31160e94e682f4eb",
+          "jobs": 25,
+          "key": {
+            "identity": "libraries",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "ScienceEfficiency"
+            }
+          ],
+          "name": "Libraries",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
           "description": "Cheaper construction and exploring.",
           "extra_gold": 0,
           "hash": "564c194b65eace3d",
@@ -1686,6 +2479,37 @@
         {
           "capacity": [],
           "construction_ticks": 0,
+          "description": "More scientists, and they write more books.",
+          "extra_gold": 0,
+          "hash": "16e0121a81d6453e",
+          "jobs": 25,
+          "key": {
+            "identity": "universities",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 25,
+          "materials": [],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 150,
+              "max_bp": 3750,
+              "stat": "ScientistSpawn"
+            },
+            {
+              "base_bp": 100,
+              "max_bp": 2500,
+              "stat": "BookProduction"
+            }
+          ],
+          "name": "Universities",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
           "description": "Enemy spies are easier to catch.",
           "extra_gold": 0,
           "hash": "9e84f42947822ebc",
@@ -1736,7 +2560,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "ffcf95bf46f68d50",
+      "hash": "8672a39622082caf",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1841,6 +2665,12 @@
         "attacker_loss_bp": 800,
         "barren_food": 2,
         "barren_living": 15,
+        "books_per_building": 5,
+        "books_per_close_win": 200,
+        "books_per_explored_acre": 20,
+        "books_per_paper": 5,
+        "books_per_spy": 50,
+        "books_per_thousand_traded": 10,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "chariot_gold": 100,
@@ -1850,6 +2680,9 @@
         "chariot_offense": 2,
         "constructing_living": 15,
         "construction_ticks": 16,
+        "decay_growth_bp": 1,
+        "decay_max_bp": 100,
+        "decay_start_bp": 2,
         "defender_loss_bp": 600,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
@@ -1870,18 +2703,41 @@
         "house_split_bp": 5000,
         "houses_per_state": 15,
         "land_gain_bp": 1000,
+        "lost_text_chance_bp": 1500,
         "luck_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
         "optimal_workers_bp": 6700,
+        "paper_cap_bp": 10000,
+        "paper_material": "paper",
         "peasant_growth_bp": 300,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realms": 13,
+        "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "science_ranks": [
+          [
+            0,
+            60
+          ],
+          [
+            1440,
+            80
+          ],
+          [
+            5280,
+            100
+          ],
+          [
+            12480,
+            120
+          ]
+        ],
+        "scientist_spawn_milli": 100,
         "share_floor_bp": 700,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
@@ -1889,6 +2745,7 @@
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
+        "starting_scientists": 6,
         "starvation_bp": 200,
         "states_per_realm": 7,
         "tax_default_bp": 200,
@@ -1904,7 +2761,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "ae26fc76cde8623d",
+          "hash": "776a494fdc3d36c2",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -1912,6 +2769,24 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -1935,7 +2810,7 @@
         },
         {
           "flags": 0,
-          "hash": "81afcbce2043fc2f",
+          "hash": "7d141c8a465cf75f",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -1958,6 +2833,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -1966,7 +2859,7 @@
         },
         {
           "flags": 0,
-          "hash": "a0f2ee7038e67100",
+          "hash": "f2fcc871c4fb35b6",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -1975,6 +2868,24 @@
           "mods_bp": [
             0,
             200,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2002,7 +2913,7 @@
         },
         {
           "flags": 0,
-          "hash": "d22ae12647cf5959",
+          "hash": "86e1ce8f35a470c2",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -2025,6 +2936,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Explorer",
@@ -2036,10 +2965,237 @@
         null,
         null
       ],
+      "projects": [
+        {
+          "description": "More amber from your state's share, and generals cost less of it.",
+          "hash": "106f240c7eb35240",
+          "key": {
+            "identity": "amber_lore",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "GeneralCost",
+              -1000
+            ]
+          ],
+          "name": "Amber Lore",
+          "requires_material": 0,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More sulfur from your state's share, and medics save more troops.",
+          "hash": "1f8378b26d626855",
+          "key": {
+            "identity": "apothecary",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "Rescue",
+              1000
+            ]
+          ],
+          "name": "Apothecary",
+          "requires_material": 6,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More books from learning by doing and from lost texts.",
+          "hash": "3e9971f489027202",
+          "key": {
+            "identity": "archives",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "PracticeBooks",
+              1500
+            ]
+          ],
+          "name": "Archives",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More pine from your state's share, and refining makes more.",
+          "hash": "7198171a197116fb",
+          "key": {
+            "identity": "forestry",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "RefineYield",
+              1000
+            ]
+          ],
+          "name": "Forestry",
+          "requires_material": 4,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "Your state's deeds are sung: more renown.",
+          "hash": "e7e29bc9136d2241",
+          "key": {
+            "identity": "heraldry",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "RenownGain",
+              1000
+            ]
+          ],
+          "name": "Heraldry",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More bauxite from your state's share, and upgrades need less of it.",
+          "hash": "704ee04f9a805e87",
+          "key": {
+            "identity": "mining_knowledge",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "UpgradeCost",
+              -1000
+            ]
+          ],
+          "name": "Mining Knowledge",
+          "requires_material": 1,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More paper from your state's share, and each paper adds more books.",
+          "hash": "2f7924ab66d4ea6d",
+          "key": {
+            "identity": "printing",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "PaperBooks",
+              2000
+            ]
+          ],
+          "name": "Printing",
+          "requires_material": 3,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "More limestone from your state's share, and buildings need less of it.",
+          "hash": "d26d5a852b041a0b",
+          "key": {
+            "identity": "quarrying",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "MaterialOutput",
+              1000
+            ],
+            [
+              "BuildingMaterials",
+              -1000
+            ]
+          ],
+          "name": "Quarrying",
+          "requires_material": 2,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": null
+        },
+        {
+          "description": "Your state's generals lead better: their traits are stronger, and the last tier adds a trait slot.",
+          "hash": "8f413aefcc9ab13d",
+          "key": {
+            "identity": "statesmanship",
+            "version": "v1"
+          },
+          "mods": [
+            [
+              "GeneralEffect",
+              1500
+            ]
+          ],
+          "name": "Statesmanship",
+          "requires_material": null,
+          "tiers": [
+            100000,
+            300000,
+            900000
+          ],
+          "trait_slots_at": [
+            3,
+            1
+          ]
+        }
+      ],
       "races": [
         {
           "flags": 0,
-          "hash": "17d8ee7fc7753956",
+          "hash": "6855197ddd7da47c",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -2047,6 +3203,24 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2113,7 +3287,7 @@
         },
         {
           "flags": 0,
-          "hash": "d1ff2513aa538b64",
+          "hash": "e5bc0dcf40daa44c",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -2128,6 +3302,24 @@
             -500,
             0,
             -500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2187,7 +3379,7 @@
         },
         {
           "flags": 0,
-          "hash": "80b1bb190b629fd8",
+          "hash": "7ead9127898b21b8",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -2200,6 +3392,24 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2266,7 +3476,7 @@
         },
         {
           "flags": 0,
-          "hash": "67df82ce5ae535f9",
+          "hash": "7b007a38fb09e000",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -2282,6 +3492,24 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2343,7 +3571,7 @@
         null,
         {
           "flags": 3,
-          "hash": "f5250ebbf0be9063",
+          "hash": "23f570a861358e19",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -2352,6 +3580,24 @@
           "mods_bp": [
             0,
             500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2462,6 +3708,220 @@
           "quantity": 1
         }
       ],
+      "sciences": [
+        {
+          "category": 0,
+          "description": "More income.",
+          "effects": [
+            [
+              "Income",
+              552
+            ]
+          ],
+          "hash": "98f5572e40c6cd73",
+          "key": {
+            "identity": "alchemy",
+            "version": "v1"
+          },
+          "name": "Alchemy"
+        },
+        {
+          "category": 0,
+          "description": "Cheaper, faster construction.",
+          "effects": [
+            [
+              "ConstructionCost",
+              -364
+            ],
+            [
+              "ConstructionTime",
+              -364
+            ]
+          ],
+          "hash": "c60433ec68dcf2bc",
+          "key": {
+            "identity": "artisan",
+            "version": "v1"
+          },
+          "name": "Artisan"
+        },
+        {
+          "category": 0,
+          "description": "Land holds more people.",
+          "effects": [
+            [
+              "Population",
+              200
+            ]
+          ],
+          "hash": "86c8babb605a4d72",
+          "key": {
+            "identity": "housing",
+            "version": "v1"
+          },
+          "name": "Housing"
+        },
+        {
+          "category": 0,
+          "description": "More food.",
+          "effects": [
+            [
+              "FoodProduction",
+              1655
+            ]
+          ],
+          "hash": "0f9659c50e4f6f8f",
+          "key": {
+            "identity": "production",
+            "version": "v1"
+          },
+          "name": "Production"
+        },
+        {
+          "category": 0,
+          "description": "Higher building efficiency.",
+          "effects": [
+            [
+              "BuildingEfficiency",
+              399
+            ]
+          ],
+          "hash": "6554646518fd313d",
+          "key": {
+            "identity": "tools",
+            "version": "v1"
+          },
+          "name": "Tools"
+        },
+        {
+          "category": 1,
+          "description": "Fewer troops die in battle.",
+          "effects": [
+            [
+              "Casualties",
+              -373
+            ]
+          ],
+          "hash": "be4022a227840542",
+          "key": {
+            "identity": "resilience",
+            "version": "v1"
+          },
+          "name": "Resilience"
+        },
+        {
+          "category": 1,
+          "description": "More land from successful attacks.",
+          "effects": [
+            [
+              "LandGain",
+              200
+            ]
+          ],
+          "hash": "cd683ef6b92bb7e8",
+          "key": {
+            "identity": "siege",
+            "version": "v1"
+          },
+          "name": "Siege"
+        },
+        {
+          "category": 1,
+          "description": "Stronger defense.",
+          "effects": [
+            [
+              "Defense",
+              280
+            ]
+          ],
+          "hash": "ee83b1d94bac70ba",
+          "key": {
+            "identity": "strategy",
+            "version": "v1"
+          },
+          "name": "Strategy"
+        },
+        {
+          "category": 1,
+          "description": "Stronger offense.",
+          "effects": [
+            [
+              "Offense",
+              280
+            ]
+          ],
+          "hash": "d24a4b1b5d71d665",
+          "key": {
+            "identity": "tactics",
+            "version": "v1"
+          },
+          "name": "Tactics"
+        },
+        {
+          "category": 1,
+          "description": "Faster training.",
+          "effects": [
+            [
+              "TrainingTime",
+              -443
+            ]
+          ],
+          "hash": "c0751d0819cf8d50",
+          "key": {
+            "identity": "valor",
+            "version": "v1"
+          },
+          "name": "Valor"
+        },
+        {
+          "category": 2,
+          "description": "Your spies are stronger.",
+          "effects": [
+            [
+              "ThiefStrength",
+              1186
+            ]
+          ],
+          "hash": "dcfc3321276da376",
+          "key": {
+            "identity": "crime",
+            "version": "v1"
+          },
+          "name": "Crime"
+        },
+        {
+          "category": 2,
+          "description": "Fewer thieves lost when caught.",
+          "effects": [
+            [
+              "ThiefLosses",
+              -735
+            ]
+          ],
+          "hash": "1f8138707210b5c9",
+          "key": {
+            "identity": "finesse",
+            "version": "v1"
+          },
+          "name": "Finesse"
+        },
+        {
+          "category": 2,
+          "description": "Enemy spies are weaker against you.",
+          "effects": [
+            [
+              "ThiefDefense",
+              239
+            ]
+          ],
+          "hash": "0d20a6a7a965236d",
+          "key": {
+            "identity": "shielding",
+            "version": "v1"
+          },
+          "name": "Shielding"
+        }
+      ],
       "starting_buildings": [
         0,
         0,
@@ -2473,16 +3933,18 @@
         30,
         0,
         0,
+        0,
         10,
         10,
         0,
         20,
+        0,
         10
       ],
       "traits": [
         {
           "flags": 0,
-          "hash": "2293d1a5f56e0c8f",
+          "hash": "c813dc1176564407",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -2505,6 +3967,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -2513,7 +3993,7 @@
         },
         {
           "flags": 0,
-          "hash": "b7548811d0f5ef69",
+          "hash": "399bbaaf3d738bfc",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -2536,6 +4016,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -2544,7 +4042,7 @@
         },
         {
           "flags": 0,
-          "hash": "a8978a4619a9344a",
+          "hash": "badbd899aa2386ee",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -2567,6 +4065,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -2575,7 +4091,7 @@
         },
         {
           "flags": 0,
-          "hash": "74b96430bf4c8221",
+          "hash": "804085ecc249047b",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -2598,6 +4114,24 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -2606,7 +4140,7 @@
         },
         {
           "flags": 0,
-          "hash": "1b1480575df3a580",
+          "hash": "7516d0c1dec5b19a",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -2623,6 +4157,24 @@
             0,
             0,
             1000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2811,7 +4363,25 @@
       "construction_cost",
       "thief_strength",
       "thief_defense",
-      "trade_bonus"
+      "trade_bonus",
+      "building_efficiency",
+      "construction_time",
+      "land_gain",
+      "training_time",
+      "thief_losses",
+      "science_efficiency",
+      "scientist_spawn",
+      "book_production",
+      "general_effect",
+      "renown_gain",
+      "practice_books",
+      "material_output",
+      "upgrade_cost",
+      "building_materials",
+      "general_cost",
+      "rescue",
+      "refine_yield",
+      "paper_books"
     ],
     "unit_slots": [
       "offense",

@@ -15,6 +15,7 @@ updated: 2026-09-29
 <tr><td><code>GET /market</code></td><td>Every material: producing realms, last clearing price and volume, open orders by price</td></tr>
 <tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count and leader</td></tr>
 <tr><td><code>GET /state</code></td><td>Your state: members, leader, vote counts, treasury (signed in)</td></tr>
+<tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
 <tr><td><code>GET /me</code></td><td>Your account and your house this age (signed in)</td></tr>
 <tr><td><code>GET /news</code></td><td>Your house's news, newest first (signed in)</td></tr>
@@ -37,6 +38,11 @@ updated: 2026-09-29
 {"type": "build", "house": 0, "building": "farms", "count": 10}
 {"type": "raze", "house": 0, "building": "homes", "count": 2}
 {"type": "build_chariots", "house": 0, "count": 5}
+{"type": "invest", "house": 0, "science": "alchemy", "books": 500}
+{"type": "set_science", "house": 0, "focus": "military", "paper_budget": 20}
+{"type": "assign_scientists", "house": 0, "from": "economy", "to": "arcane", "count": 1}
+{"type": "set_research", "house": 0, "project": "statesmanship"}
+{"type": "contribute", "house": 0, "category": "economy", "books": 1000}
 {"type": "spy", "house": 0, "target": 5, "thieves": 20}
 {"type": "vote", "house": 0, "vote": {"type": "for", "house": 3}}
 {"type": "vote", "house": 0, "vote": {"type": "against"}}

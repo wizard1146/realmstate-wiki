@@ -41,6 +41,24 @@ STAT_TEXT = {
     "thief_strength": "Strength of your thieves when spying",
     "thief_defense": "Strength of your thieves against enemy spies",
     "trade_bonus": "Extra gold on your market sales",
+    "building_efficiency": "Building efficiency (can pass 100%)",
+    "construction_time": "Time to build",
+    "land_gain": "Land taken on a successful attack",
+    "training_time": "Time to train troops, medics and upgrades",
+    "thief_losses": "Thieves lost when caught spying",
+    "science_efficiency": "Strength of every science bonus",
+    "scientist_spawn": "How fast new scientists arrive",
+    "book_production": "Books scientists write each tick",
+    "general_effect": "Strength of your generals' traits",
+    "renown_gain": "Renown earned",
+    "practice_books": "Books from learning by doing and lost texts",
+    "material_output": "Your state's output of its realm's material",
+    "upgrade_cost": "Material spent on unit upgrades",
+    "building_materials": "Materials spent on construction",
+    "general_cost": "Material spent on generals",
+    "rescue": "Troops your medics save",
+    "refine_yield": "What refining makes",
+    "paper_books": "Books each paper adds",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown"}
 FLAG_TEXT = {
@@ -114,6 +132,22 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("chariot_material", "Chariots: material used", "text"),
     ("chariot_material_cost", "Chariots: material per chariot", "n"),
     ("chariot_gold", "Chariots: gold per chariot", "n"),
+    ("starting_scientists", "Science: scientists a new house starts with", "n"),
+    ("scientist_spawn_milli", "Science: new scientists per tick, thousandths", "n"),
+    ("science_ranks", "Science: ranks as [books written per scientist, books a tick]", "pairs"),
+    ("paper_material", "Science: material that speeds research", "text"),
+    ("books_per_paper", "Science: books each paper adds", "n"),
+    ("paper_cap_bp", "Science: most extra books from paper, share of the base", "pct"),
+    ("books_per_close_win", "Learning by doing: books for a close win", "n"),
+    ("books_per_spy", "Learning by doing: books for a successful spy", "n"),
+    ("books_per_building", "Learning by doing: books per building built", "n"),
+    ("books_per_thousand_traded", "Learning by doing: books per 1,000 gold traded", "n"),
+    ("lost_text_chance_bp", "Lost texts: chance an exploration finds books", "pct"),
+    ("books_per_explored_acre", "Lost texts: books per acre explored", "n"),
+    ("decay_start_bp", "Colloquium: knowledge lost per tick at first", "pct"),
+    ("decay_growth_bp", "Colloquium: extra loss per tick without a contribution", "pct"),
+    ("decay_max_bp", "Colloquium: most knowledge lost per tick", "pct"),
+    ("renown_per_thousand_books", "Colloquium: renown per 1,000 books contributed", "n"),
 ]
 
 e = html.escape
@@ -137,6 +171,8 @@ def show_param(value, how):
         return e(str(value))
     if how == "list":
         return ", ".join(f"{v:,}" for v in value)
+    if how == "pairs":
+        return ", ".join(f"{a:,}: {b}" for a, b in value)
     return f"{value:,}"
 
 
@@ -400,6 +436,52 @@ def generate(rules):
             '<th>Extra cost</th><th class="cell-num">Build time (ticks)</th><th class="cell-num">A new house starts with</th><th>Limit</th></tr>\n'
             + "\n".join(brow) + "\n</table></div>\n" + source_note(latest))
 
+    # Sciences, by category.
+    cats = ["economy", "military", "arcane"]
+    sci_parts = []
+    for c, cat in enumerate(cats):
+        rows = []
+        for x in (x for x in latest.get("sciences", []) if x["category"] == c):
+            effs = []
+            for stat, per_root in x["effects"]:
+                st = snake(stat)
+                per = per_root / 100
+                at10k, at100k = per * 100 / 100, per * 316 / 100
+                sign = "+" if per > 0 else ""
+                effs.append(f'{e(STAT_TEXT.get(st, st))} (<a href="effects.html#{st}"><code>{st}</code></a>): '
+                            f'{sign}{at10k:.1f}% at 10,000 books, {sign}{at100k:.1f}% at 100,000')
+            rows.append(f'<tr id="{x["key"]["identity"]}"><td><b>{e(x["name"])}</b><br><span class="cell-muted">{e(x["description"])}</span></td>'
+                        f'<td>{"<br>".join(effs)}</td></tr>')
+        if rows:
+            sci_parts.append(f'<h2 id="{cat}">{cat.title()}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
+                             '<tr><th>Science</th><th>Effect</th></tr>\n' + "\n".join(rows) + "\n</table></div>\n")
+    if sci_parts:
+        pages["sciences.html"] = header("Sciences", "Rules, Science") + (
+            '<p>Each science grows with the square root of the books invested in it: four times the books gives twice the bonus. '
+            'Books are spent in their own category. See <a href="science.html">Science</a> for how books are earned.</p>\n'
+            + "".join(sci_parts) + source_note(latest))
+
+    # Colloquium projects.
+    prow = []
+    for proj in latest.get("projects", []):
+        effs = []
+        for stat, bp in proj["mods"]:
+            st = snake(stat)
+            sign = "+" if bp > 0 else ""
+            effs.append(f'{sign}{bp / 100:g}% {e(STAT_TEXT.get(st, st).lower())} per tier (<a href="effects.html#{st}"><code>{st}</code></a>)')
+        if proj["trait_slots_at"]:
+            t, n = proj["trait_slots_at"]
+            effs.append(f"+{n} general trait slot at tier {t}")
+        who = f'States in a realm making {e(slot_name[proj["requires_material"]])}' if proj["requires_material"] is not None else "Every state"
+        prow.append(f'<tr id="{proj["key"]["identity"]}"><td><b>{e(proj["name"])}</b><br><span class="cell-muted">{e(proj["description"])}</span></td>'
+                    f'<td>{"<br>".join(effs)}</td><td>{", ".join(f"{t:,}" for t in proj["tiers"])}</td><td>{who}</td></tr>')
+    if prow:
+        pages["projects.html"] = header("Colloquium Projects", "Rules, Science") + (
+            '<p>A state researches one of these at a time in its <a href="colloquium.html">Colloquium</a>. '
+            'Each finished tier applies to every house in the state.</p>\n<div class="table-scroll" data-updated="none"><table>\n'
+            '<tr><th>Project</th><th>Effect</th><th>Books for tiers 1, 2, 3</th><th>Who can research it</th></tr>\n'
+            + "\n".join(prow) + "\n</table></div>\n" + source_note(latest))
+
     # General traits.
     trait_rows = "".join(
         f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
@@ -444,6 +526,11 @@ def generate(rules):
     values["general_trait_slots"] = len(p["general_trait_renown"])
     values["rescue_per_medic_pct"] = pct(p["rescue_bp_per_medic"])
     values["example_build_cost"] = f'{p["build_cost_per_land_milli"] * (p["starting_land"] + p["build_cost_offset"]) // 1000:,}'
+    values["recruit_books"] = p["science_ranks"][0][1]
+    values["science_ranks"] = "; ".join(f"{b} books a tick from {x:,}" for x, b in p["science_ranks"])
+    values["professor_books"] = p["science_ranks"][-1][1]
+    values["starting_books_per_tick"] = p["starting_scientists"] * p["science_ranks"][0][1]
+    values["scientists_per_tick"] = f'{p["scientist_spawn_milli"] / 1000:g}'
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
@@ -463,7 +550,7 @@ def generate(rules):
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "rescue_bp_per_medic", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
