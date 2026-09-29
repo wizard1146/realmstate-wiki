@@ -7,17 +7,27 @@ updated: 2026-09-29
 
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>Request</th><th>What it does</th></tr>
-<tr><td><code>GET /world</code></td><td>Age, current time, tick count, number of provinces</td></tr>
+<tr><td><code>GET /world</code></td><td>Age, current time, tick count, number of houses</td></tr>
 <tr><td><code>GET /rules</code></td><td>The age's slots, definitions, fingerprints and numbers</td></tr>
-<tr><td><code>GET /rankings</code></td><td>The 100 largest provinces by land</td></tr>
-<tr><td><code>GET /provinces/{id}</code></td><td>One province</td></tr>
-<tr><td><code>POST /commands</code></td><td>Send an action (below)</td></tr>
+<tr><td><code>GET /rankings</code></td><td>The 100 largest houses by land</td></tr>
+<tr><td><code>GET /houses/{id}</code></td><td>One house, including its address</td></tr>
+<tr><td><code>GET /me</code></td><td>Your account and your house this age (signed in)</td></tr>
+<tr><td><code>POST /commands</code></td><td>Give an order (signed in; below)</td></tr>
 </table></div>
 
 <h2 id="Commands">Commands</h2>
-<pre><code>{"type": "create_province", "name": "Test Keep", "race": "dwarf", "personality": "sage"}
-{"type": "explore", "province": 0, "acres": 20}
-{"type": "train", "province": 0, "unit": 2, "count": 100}
+<pre><code>{"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage"}
+{"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage", "realm": 4, "state": 2}
+{"type": "explore", "house": 0, "acres": 20}
+{"type": "train", "house": 0, "unit": 2, "count": 100}
 {"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0]}</code></pre>
-<p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. A refused action returns status 422 with an <code>error</code> message.</p>
-<p>Reads may lag the game by up to a quarter of a second. Accounts, per-player access and rate limits come in a later milestone; until then every province is public.</p>
+<p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
+
+<h2 id="Answers">Answers</h2>
+<ul>
+  <li><b>200</b>: done; the body says what happened (for example <code>{"type": "created", "house": 0, "realm": 4, "state": 2, "seat": 1}</code>).</li>
+  <li><b>401</b>: sign in first (see <a href="signing-in.html">Signing In</a>). Orders use your sign-in cookie.</li>
+  <li><b>422</b>: the game refused the order; <code>error</code> says why (for example "that house isn't yours").</li>
+  <li><b>429</b>: too many orders. You may send a burst of 30, then 5 a second.</li>
+</ul>
+<p>Reads may lag the game by up to a quarter of a second. Every house is public to read for now; hidden information arrives with spying, in a later milestone.</p>

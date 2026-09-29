@@ -3,7 +3,7 @@
     {
       "age": 1,
       "changes_from_previous": null,
-      "hash": "9a108ff5f93f1fb9",
+      "hash": "b554dcbb72b843c5",
       "name": "Age 1",
       "params": {
         "attack_return_ticks": 12,
@@ -14,15 +14,18 @@
         "food_per_acre": 8,
         "food_per_person_milli": 250,
         "gold_per_peasant": 3,
+        "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
+        "realms": 13,
         "starting_food": 60000,
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
         "starvation_bp": 200,
+        "states_per_realm": 7,
         "tick_ms": 3600000,
         "train_ticks": 9
       },
@@ -393,7 +396,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "619441560b1faf1b",
+      "hash": "9657490261c3101c",
       "name": "Age 2",
       "params": {
         "attack_return_ticks": 12,
@@ -404,15 +407,18 @@
         "food_per_acre": 8,
         "food_per_person_milli": 250,
         "gold_per_peasant": 3,
+        "houses_per_state": 15,
         "land_gain_bp": 1000,
         "luck_bp": 500,
         "peasant_growth_bp": 300,
         "people_per_acre": 25,
+        "realms": 13,
         "starting_food": 60000,
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
         "starvation_bp": 200,
+        "states_per_realm": 7,
         "tick_ms": 3600000,
         "train_ticks": 9
       },

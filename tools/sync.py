@@ -35,8 +35,8 @@ STAT_TEXT = {
     "return_time": "How long armies take to come home",
 }
 FLAG_TEXT = {
-    "no_food": "The province's people and troops eat nothing.",
-    "no_explore": "The province cannot explore for land.",
+    "no_food": "The house's people and troops eat nothing.",
+    "no_explore": "The house cannot explore for land.",
 }
 UNLOCK_TEXT = {
     "spell": "Grants a spell (spells arrive in a later milestone).",
@@ -45,6 +45,9 @@ UNLOCK_TEXT = {
 }
 UNIT_ROLE = {"offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief"}
 PARAM_TEXT = [  # (key, label, how to show it)
+    ("realms", "Realms in the world", "n"),
+    ("states_per_realm", "States in each realm", "n"),
+    ("houses_per_state", "Houses each state can hold", "n"),
     ("tick_ms", "Length of a tick", "hours"),
     ("starting_land", "Starting land (acres)", "n"),
     ("starting_peasants", "Starting peasants", "n"),
@@ -283,6 +286,8 @@ def generate(rules):
     values = {"_note": "Written by tools/sync.py from the latest age. Do not edit by hand.",
               "age": latest["age"], "age_name": latest["name"], "tick_hours": f'{p["tick_ms"] / 3_600_000:g}',
               "food_per_person": f'{p["food_per_person_milli"] / 1000:g}'}
+    values["world_states"] = p["realms"] * p["states_per_realm"]
+    values["world_houses"] = f'{p["realms"] * p["states_per_realm"] * p["houses_per_state"]:,}'
     for k, v in p.items():
         if k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
