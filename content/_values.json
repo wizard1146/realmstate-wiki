@@ -78,11 +78,6 @@
     5000
   ],
   "heir_winner_slots": 1,
-  "hit_protection": {
-    "floor_bp": 2000,
-    "kind": "compound",
-    "step_bp": 1500
-  },
   "hit_window_ticks": 24,
   "horse_offense": 1,
   "hostile_gain_pct": "10",
@@ -102,6 +97,8 @@
   "meter_decay_pct": "20",
   "meter_decay_min_points": "3",
   "meter_decay_ticks": 24,
+  "nerve_fail_extra_pct": "50",
+  "nerve_regen_pct": "4",
   "offer_ticks": 24,
   "optimal_workers_pct": "67",
   "out_of_realm_pct": "10",
@@ -141,6 +138,8 @@
   "upgrade_cost": 1,
   "upgrade_cost_elite": 2,
   "upgrade_material": "bauxite",
+  "vigilance_decay_pct": "4",
+  "vigilance_max_pct": "80",
   "war_gain_pct": "15",
   "war_min_ticks": 48,
   "war_peace_points": 1,

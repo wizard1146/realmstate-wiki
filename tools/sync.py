@@ -95,6 +95,10 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("luck_bp", "Battle luck (offense varies by up to)", "pm"),
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
+    ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
+    ("nerve_fail_extra_bp", "Spying: extra Nerve a failure costs (share of the operation's cost)", "pct"),
+    ("vigilance_max_bp", "Spying: most Vigilance a house can have", "pct"),
+    ("vigilance_decay_bp", "Spying: Vigilance fading a tick", "pct"),
     ("share_floor_bp", "Economy: lowest share a state can fall to", "pct"),
     ("house_split_bp", "Economy: part of a state's output shared among its houses", "pct"),
     ("tax_min_bp", "Economy: lowest state tax on house income", "pct"),
@@ -139,7 +143,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("books_per_paper", "Science: books each paper adds", "n"),
     ("paper_cap_bp", "Science: most extra books from paper, share of the base", "pct"),
     ("books_per_close_win", "Learning by doing: books for a close win", "n"),
-    ("books_per_spy", "Learning by doing: books for a successful spy", "n"),
+    ("books_per_spy", "Learning by doing: books for a successful operation", "n"),
     ("books_per_building", "Learning by doing: books per building built", "n"),
     ("books_per_thousand_traded", "Learning by doing: books per 1,000 gold traded", "n"),
     ("lost_text_chance_bp", "Lost texts: chance an exploration finds books", "pct"),
@@ -781,6 +785,47 @@ def generate(rules):
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
             + source_note(latest))
 
+    # Thieves' operations.
+    ops = lp.get("operations", [])
+    op_kind = {"survey": "Intel", "muster": "Intel", "ledgers": "Intel", "archives": "Intel", "couriers": "Intel", "dossier": "Intel",
+               "steal_gold": "Theft", "steal_food": "Theft", "steal_material": "Theft", "steal_horses": "Theft", "steal_books": "Theft",
+               "undermine": "Sabotage", "set_fires": "Sabotage", "cut_throats": "Sabotage"}
+    op_does = {
+        "survey": lambda o: "Reveals buildings, construction and barren land",
+        "muster": lambda o: "Reveals troops at home and away, training, medics, mounts, generals and armies coming home",
+        "ledgers": lambda o: "Reveals gold, food, materials and open market orders",
+        "archives": lambda o: "Reveals books invested per science, unspent books, scientists and academics",
+        "couriers": lambda o: "Reveals their news from the last day",
+        "dossier": lambda o: "Reveals everything (the full spy report)",
+        "steal_gold": lambda o: f'Steals {pct(o["amount_bp"])}% of their gold, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "steal_food": lambda o: f'Steals {pct(o["amount_bp"])}% of their food, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "steal_material": lambda o: f'Steals {pct(o["amount_bp"])}% of one material you name, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "steal_horses": lambda o: f'Steals {pct(o["amount_bp"])}% of their horses at home, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "steal_books": lambda o: f'Steals {pct(o["amount_bp"])}% of their unspent books of one category you name, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "undermine": lambda o: f'Delays everything they are building by {o["delay_ticks"]} ticks',
+        "set_fires": lambda o: f'Burns {pct(o["amount_bp"])}% of one building type you name, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "cut_throats": lambda o: f'Kills {pct(o["amount_bp"])}% of their troops at home, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+    }
+    def op_row(o):
+        extra = []
+        if o.get("war_bonus_bp"):
+            extra.append(f'+{pct(o["war_bonus_bp"])}% at war')
+        if o.get("cost_material"):
+            extra.append(f'spends 1 {e(o["cost_material"])} per {o["thieves_per_material"]} thieves, win or lose')
+        return (f'<tr id="{e(o["id"])}"><td><b>{e(o["name"])}</b><br><code>{e(o["id"])}</code></td><td>{op_kind[o["effect"]]}</td>'
+                f'<td>{op_does[o["effect"]](o)}{"; " + "; ".join(extra) if extra else ""}</td>'
+                f'<td class="cell-num">{pct(o["nerve_bp"])}%</td><td class="cell-num">&times;{o.get("chance_bp", 10_000) / 10_000:g}</td>'
+                f'<td class="cell-num">+{pct(o["vigilance_bp"])}%</td>'
+                f'<td class="cell-num">{lp["hostility_spy_points"] * o["hostility_bp"] / 10_000 / 100:g}</td></tr>\n')
+    if ops:
+        pages["operations.html"] = header("Thieves' Operations", "Rules") + (
+            '<p>Every operation your thieves can run this age. How chance, Nerve and Vigilance work is on <a href="spying.html">Intrigue</a>.</p>\n'
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Operation</th><th>Kind</th><th>Does</th>'
+            '<th class="cell-num">Nerve</th><th class="cell-num">Chance</th><th class="cell-num">Vigilance</th><th class="cell-num"><a href="war.html#Meter">Meter points</a></th></tr>\n'
+            + "".join(op_row(o) for o in ops) + "</table></div>\n"
+            "<p><b>Chance</b> scales the usual spy chance. <b>Vigilance</b> is what the attempt adds to the target, success or not. "
+            "<b>Meter points</b> are added to the target state's hostility meter toward yours.</p>\n" + source_note(latest))
+
     # Academic attributes.
     attr_rows = "".join(
         f'<tr id="{t["key"]["identity"]}"><td><b>{e(t["name"])}</b></td><td><ul class="list-plain">{"".join(effects_list(t, vocab["stats"]))}</ul></td></tr>\n'
@@ -850,7 +895,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

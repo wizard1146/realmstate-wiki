@@ -23,7 +23,7 @@ updated: 2026-09-29
 <tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
 <tr><td><code>GET /me</code></td><td>Your account and your house this age (signed in)</td></tr>
 <tr><td><code>GET /news</code></td><td>Your house's news, newest first (signed in)</td></tr>
-<tr><td><code>GET /reports</code></td><td>Spy reports from your state, newest first; add <code>?target={id}</code> for one house (signed in)</td></tr>
+<tr><td><code>GET /reports</code></td><td>Intel reports from your state, newest first; each has a <code>kind</code> (survey, muster, ledgers, archives, couriers, dossier). Add <code>?target={id}</code> for one house (signed in)</td></tr>
 <tr><td><code>POST /commands</code></td><td>Give an order (signed in; below)</td></tr>
 </table></div>
 
@@ -49,6 +49,10 @@ updated: 2026-09-29
 {"type": "set_research", "house": 0, "project": "statesmanship"}
 {"type": "contribute", "house": 0, "category": "economy", "books": 1000}
 {"type": "spy", "house": 0, "target": 5, "thieves": 20}
+{"type": "operation", "house": 0, "target": 5, "op": "survey", "thieves": 20}
+{"type": "operation", "house": 0, "target": 5, "op": "smuggle", "thieves": 200, "material": "amber"}
+{"type": "operation", "house": 0, "target": 5, "op": "pilfer", "thieves": 100, "category": "military"}
+{"type": "operation", "house": 0, "target": 5, "op": "fires", "thieves": 100, "building": "homes"}
 {"type": "vote", "house": 0, "vote": {"type": "for", "house": 3}}
 {"type": "vote", "house": 0, "vote": {"type": "against"}}
 {"type": "order", "house": 0, "side": "sell", "material": "bauxite", "quantity": 50, "price": 10}
