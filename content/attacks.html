@@ -3,16 +3,22 @@ title: Attacks
 category: Rules
 generated: tools/sync.py
 -->
-<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes. The first is the default.</p>
+<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. The first is the default.</p>
 <div class="table-scroll" data-updated="none"><table>
-<tr><th>Attack</th><th>A win takes</th><th class="cell-num">Smallest target</th><th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>
-<tr id="march"><td><b>Traditional March</b><br><code>march</code></td><td>land (10% of theirs); earns renown</td><td class="cell-num">75%</td><td class="cell-num">&times;1</td><td class="cell-num"></td></tr>
-<tr id="conquest"><td><b>Conquest</b><br><code>conquest</code></td><td>60% of a march's land; earns renown</td><td class="cell-num">60%</td><td class="cell-num">&times;1</td><td class="cell-num"></td></tr>
-<tr id="ambush"><td><b>Ambush</b><br><code>ambush</code></td><td>75% of the land their army is carrying home from you; earns renown</td><td class="cell-num">the army that took your land</td><td class="cell-num">&times;0.5</td><td class="cell-num"></td></tr>
-<tr id="raze"><td><b>Raze</b><br><code>raze</code></td><td>5% of every building, left as barren land</td><td class="cell-num">75%</td><td class="cell-num">&times;1.5</td><td class="cell-num">+2.5% (7.5% in all)</td></tr>
-<tr id="plunder"><td><b>Plunder</b><br><code>plunder</code></td><td>6% of their gold, food and materials, carried home</td><td class="cell-num">75%</td><td class="cell-num">&times;1.2</td><td class="cell-num">+3% (9% in all)</td></tr>
-<tr id="massacre"><td><b>Massacre</b><br><code>massacre</code></td><td>3% of their peasants and thieves, killed</td><td class="cell-num">75%</td><td class="cell-num">&times;2</td><td class="cell-num">+2% (5% in all)</td></tr>
-<tr id="learn"><td><b>Learn</b><br><code>learn</code></td><td>5% of their unspent books, carried home</td><td class="cell-num">75%</td><td class="cell-num">&times;1</td><td class="cell-num">+2.5% (7.5% in all)</td></tr>
+<tr><th>Attack</th><th>A win</th><th>Needs</th><th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>
+<tr id="assault"><td><b>Assault</b><br><code>assault</code></td><td>land (10% of theirs); earns renown</td><td>target at least 75% your size</td><td class="cell-num">&times;1</td><td class="cell-num"></td></tr>
+<tr id="breach"><td><b>Breach</b><br><code>breach</code></td><td>land (10% of theirs); their defense bonuses count for 50%; 3&times; your usual losses; afterwards they stay breached for 6 ticks (defense bonuses at 75% against anyone); earns renown</td><td>target at least 75% your size<br>a general with the <a href="traits.html#bellator">Bellator</a> trait leading the army<br>a finished <a href="buildings.html#ancestral_hall">Ancestral Hall</a><br>a <a href="sciences.html#tactics">Tactics</a> bonus of 14%</td><td class="cell-num">&times;1.5</td><td class="cell-num"></td></tr>
+<tr id="reclaim"><td><b>Reclaim</b><br><code>reclaim</code></td><td>75% of the land their army is carrying home from you; earns renown</td><td>only against the army that took your land</td><td class="cell-num">&times;0.5</td><td class="cell-num"></td></tr>
+<tr id="torch"><td><b>Torch</b><br><code>torch</code></td><td>5% of every building, left as barren land</td><td>target at least 75% your size<br>1 <a href="materials.html">resin</a> per 20 troops sent, spent win or lose</td><td class="cell-num">&times;1.5</td><td class="cell-num">+2.5% (7.5% in all)</td></tr>
+<tr id="sack"><td><b>Sack</b><br><code>sack</code></td><td>6% of their gold, food and materials, carried home</td><td>target at least 75% your size</td><td class="cell-num">&times;1.2</td><td class="cell-num">+3% (9% in all)</td></tr>
+<tr id="massacre"><td><b>Massacre</b><br><code>massacre</code></td><td>3% of their peasants and thieves, killed</td><td>target at least 75% your size</td><td class="cell-num">&times;2</td><td class="cell-num">+2% (5% in all)</td></tr>
+<tr id="blockade"><td><b>Blockade</b><br><code>blockade</code></td><td>+2% blockade on their whole state's material output (up to 20%, lifting 24 ticks after the last); the lost output is destroyed</td><td>target at least 75% your size</td><td class="cell-num">&times;1.5</td><td class="cell-num"></td></tr>
 </table></div>
-<p><b>Smallest target</b> is their land as a share of yours. <b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead.</p>
-<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>ebd144ddef400faa</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p><b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>
+<h2 id="protection">Protection from repeated hits</h2>
+<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last 24 ticks, each recent hit takes 15% off what's left, never below 20% of the full amount. This is applied last, after every other bonus. Reclaim and Blockade neither count as hits nor are reduced.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Recent hits</th><th class="cell-num">0</th><th class="cell-num">1</th><th class="cell-num">2</th><th class="cell-num">3</th><th class="cell-num">4</th><th class="cell-num">5</th></tr>
+<tr><td>Share taken</td><td class="cell-num">100%</td><td class="cell-num">85%</td><td class="cell-num">72.25%</td><td class="cell-num">61.41%</td><td class="cell-num">52.19%</td><td class="cell-num">44.36%</td></tr>
+</table></div>
+<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>13f59b086bee565c</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

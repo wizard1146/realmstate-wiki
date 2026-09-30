@@ -691,31 +691,83 @@ def generate(rules):
             "the offense or defense bonus, so for elites the two multiply.</p>\n" + source_note(latest))
 
     # Attack kinds.
-    kinds = latest["params"].get("attacks", [])
+    lp = latest["params"]
+    kinds = lp.get("attacks", [])
+    names = {kind: {d["key"]["identity"]: d["name"] for d in latest.get(kind, [])} for kind in ("traits", "buildings", "sciences")}
     takes_text = {
-        "land": lambda k: f'{pct(k["amount_bp"])}% of a march\'s land' if k["amount_bp"] != 10_000 else f'land ({pct(latest["params"]["land_gain_bp"])}% of theirs)',
+        "land": lambda k: f'{pct(k["amount_bp"])}% of an assault\'s land' if k["amount_bp"] != 10_000 else f'land ({pct(lp["land_gain_bp"])}% of theirs)',
         "reclaim": lambda k: f'{pct(k["amount_bp"])}% of the land their army is carrying home from you',
         "buildings": lambda k: f'{pct(k["amount_bp"])}% of every building, left as barren land',
         "resources": lambda k: f'{pct(k["amount_bp"])}% of their gold, food and materials, carried home',
         "people": lambda k: f'{pct(k["amount_bp"])}% of their peasants and thieves, killed',
         "books": lambda k: f'{pct(k["amount_bp"])}% of their unspent books, carried home',
+        "blockade": lambda k: f'+{pct(k["amount_bp"])}% blockade on their whole state\'s material output (up to {pct(lp["blockade_max_bp"])}%, lifting {lp["blockade_ticks"]} ticks after the last); the lost output is destroyed',
     }
+
+    def attack_effects(k):
+        parts = [takes_text[k["takes"]](k)]
+        if k.get("defense_bonus_bp", 10_000) < 10_000:
+            parts.append(f'their defense bonuses count for {pct(k["defense_bonus_bp"])}%')
+        if k.get("attacker_losses_bp", 10_000) != 10_000:
+            parts.append(f'{k["attacker_losses_bp"] / 10_000:g}&times; your usual losses')
+        if k.get("breached_ticks"):
+            parts.append(f'afterwards they stay breached for {k["breached_ticks"]} ticks (defense bonuses at {pct(k["breached_bonus_bp"])}% against anyone)')
+        if k.get("renown"):
+            parts.append("earns renown")
+        return "; ".join(parts)
+
+    def attack_needs(k):
+        needs = []
+        if k["takes"] == "reclaim":
+            needs.append("only against the army that took your land")
+        elif k.get("range_min_bp"):
+            needs.append(f'target at least {pct(k["range_min_bp"])}% your size')
+        if k.get("requires_trait"):
+            needs.append(f'a general with the <a href="traits.html#{k["requires_trait"]}">{e(names["traits"].get(k["requires_trait"], k["requires_trait"]))}</a> trait leading the army')
+        if k.get("requires_building"):
+            needs.append(f'a finished <a href="buildings.html#{k["requires_building"]}">{e(names["buildings"].get(k["requires_building"], k["requires_building"]))}</a>')
+        if k.get("requires_science"):
+            needs.append(f'a <a href="sciences.html#{k["requires_science"]}">{e(names["sciences"].get(k["requires_science"], k["requires_science"]))}</a> bonus of {pct(k["requires_science_bp"])}%')
+        if k.get("cost_material"):
+            needs.append(f'1 <a href="materials.html">{e(k["cost_material"])}</a> per {k["troops_per_material"]} troops sent, spent win or lose')
+        if k.get("war_only"):
+            needs.append("war with their state")
+        return "<br>".join(needs) or "any target"
+
     attack_rows = "".join(
         f'<tr id="{e(k["id"])}"><td><b>{e(k["name"])}</b><br><code>{e(k["id"])}</code></td>'
-        f'<td>{takes_text[k["takes"]](k)}{"; earns renown" if k.get("renown") else ""}</td>'
-        f'<td class="cell-num">{"the army that took your land" if k["takes"] == "reclaim" else (str(pct(k["range_min_bp"])) + "%" if k.get("range_min_bp") else "any")}</td>'
+        f'<td>{attack_effects(k)}</td><td>{attack_needs(k)}</td>'
         f'<td class="cell-num">&times;{k["hostility_bp"] / 10_000:g}</td>'
-        f'<td class="cell-num">{"+" + pct(k["war_bonus_bp"]) + "% (" + pct(k["amount_bp"] + k["war_bonus_bp"]) + "% in all)" if k.get("war_bonus_bp") else ""}{" (war only)" if k.get("war_only") else ""}</td></tr>\n'
+        f'<td class="cell-num">{"+" + pct(k["war_bonus_bp"]) + "% (" + pct(k["amount_bp"] + k["war_bonus_bp"]) + "% in all)" if k.get("war_bonus_bp") else ""}</td></tr>\n'
         for k in kinds)
+    hp = lp.get("hit_protection", {})
+    curve = {
+        "compound": lambda: f'each recent hit takes {pct(hp["step_bp"])}% off what\'s left, never below {pct(hp["floor_bp"])}% of the full amount',
+        "linear": lambda: f'each recent hit takes {pct(hp["step_bp"])} points off the full amount, never below {pct(hp["floor_bp"])}%',
+        "table": lambda: "after 0, 1, 2 ... recent hits an attack takes " + ", ".join(f'{pct(v)}%' for v in hp["shares_bp"]) + " of the full amount (the last share from then on)",
+    }.get(hp.get("kind"), lambda: "")()
+    shares = []
+    if hp.get("kind") in ("compound", "linear"):
+        left = 10_000
+        for n in range(6):
+            shares.append(f'<td class="cell-num">{pct(left)}%</td>')
+            left = max(hp["floor_bp"], left * (10_000 - hp["step_bp"]) // 10_000 if hp["kind"] == "compound" else left - hp["step_bp"])
+    elif hp.get("kind") == "table":
+        shares = [f'<td class="cell-num">{pct(hp["shares_bp"][min(n, len(hp["shares_bp"]) - 1)])}%</td>' for n in range(6)]
     if attack_rows:
         pages["attacks.html"] = header("Attacks", "Rules") + (
-            '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes. '
+            '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. '
             "The first is the default.</p>\n"
-            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attack</th><th>A win takes</th><th class="cell-num">Smallest target</th>'
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attack</th><th>A win</th><th>Needs</th>'
             '<th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>\n'
             + attack_rows + "</table></div>\n"
-            "<p><b>Smallest target</b> is their land as a share of yours. <b>Meter</b> scales the hostility points the attack adds to the target "
-            "state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead.</p>\n"
+            "<p><b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two "
+            "states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>\n"
+            '<h2 id="protection">Protection from repeated hits</h2>\n'
+            f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {lp.get("hit_window_ticks", 0)} ticks, {curve}. '
+            "This is applied last, after every other bonus. Reclaim and Blockade neither count as hits nor are reduced.</p>\n"
+            + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recent hits</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
+               + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
             + source_note(latest))
 
     # Academic attributes.

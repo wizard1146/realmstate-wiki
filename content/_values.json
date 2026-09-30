@@ -39,6 +39,8 @@
   "barren_food": 2,
   "barren_living": 15,
   "bid_step_pct": "5",
+  "blockade_max_pct": "20",
+  "blockade_ticks": 24,
   "books_per_building": 5,
   "books_per_close_win": 200,
   "books_per_explored_acre": 20,
@@ -76,6 +78,12 @@
     5000
   ],
   "heir_winner_slots": 1,
+  "hit_protection": {
+    "floor_bp": 2000,
+    "kind": "compound",
+    "step_bp": 1500
+  },
+  "hit_window_ticks": 24,
   "horse_offense": 1,
   "hostile_gain_pct": "10",
   "hostile_points": "30",
