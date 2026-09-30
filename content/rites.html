@@ -1,0 +1,37 @@
+<!--
+title: Rites
+category: Mechanics
+updated: 2026-09-30
+-->
+<p>Rites are Realmstate's magic. Adepts work them with aether: on your own house to strengthen it, or on another house to learn about it or harm it. Every rite this age is on <a href="rite-list.html">Rites and Hexes</a>.</p>
+
+<h2 id="Adepts">Adepts and aether</h2>
+<ul>
+  <li><b>Shrines</b> (a <a href="buildings.html#shrines">building</a>) draw adepts from your peasants every tick, up to what your shrines can hold.</li>
+  <li>Shrines also gather <b>aether</b> every tick, up to what they can hold. Every rite spends aether.</li>
+  <li>Both scale with your <a href="construction.html#Efficiency">building efficiency</a>.</li>
+  <li><b>Hexes</b> also burn {{rite_material}} as incense. Resin is refined from pine, so magic depends on the pine realms.</li>
+</ul>
+
+<h2 id="Kinds">Kinds of rite</h2>
+<ul>
+  <li><b>On yourself.</b> They always work if you have the aether, and last a set number of ticks. Casting one again renews it; the same rite never stacks. <b>Veil</b> hides your name from the houses you attack. <b>Mirror Ward</b> turns some hexes back on whoever cast them.</li>
+  <li><b>Divinations</b> read another house without risking thieves: a quick look at its wealth and troops, the rites in force on it, or its armies on the road (and whose land they carry). What you learn is shared with your state, like a <a href="spying.html">spy report</a>.</li>
+  <li><b>Hexes</b> harm another house: rot its food, wreck its buildings, blight its share of the realm's material, or unravel one of its rites. They are stronger when your states are <a href="war.html">at war</a>.</li>
+</ul>
+
+<h2 id="Chance">Chance of a divination or hex</h2>
+<ol>
+  <li>Start from adepts per acre: yours against theirs. Equal adepts per acre gives {{rite_base_success_pct}}%; formally {{rite_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs), kept within 5%-95%. You need at least one adept.</li>
+  <li>Multiply by the rite's own chance.</li>
+  <li>Take off their <b>ward</b>, from <a href="buildings.html#watchstones">watchstones</a> (up to 80% counts).</li>
+</ol>
+<p>The result is kept between 1% and 95%. Ward also cuts what a Storm wrecks.</p>
+
+<h2 id="After">What the target learns</h2>
+<ul>
+  <li>A divination that works: nothing.</li>
+  <li>A hex that works: what it did, but not who cast it.</li>
+  <li>Anything that fails: which house tried it.</li>
+  <li>Every divination and hex raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours; hexes raise it more. Neither works inside your own state or across a ceasefire.</li>
+</ul>

@@ -59,8 +59,9 @@ STAT_TEXT = {
     "rescue": "Troops your medics save",
     "refine_yield": "What refining makes",
     "paper_books": "Books each paper adds",
+    "ward": "Resistance to hexes and divinations against you, and to storm damage",
 }
-PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown"}
+PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
     "no_food": "The house's people and troops eat nothing.",
     "no_explore": "The house cannot explore for land.",
@@ -96,6 +97,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
+    ("rite_base_success_bp", "Rites: chance of a divination or hex with equal adepts per acre", "pct"),
+    ("rite_material", "Rites: material hexes burn as incense", "text"),
     ("nerve_fail_extra_bp", "Spying: extra Nerve a failure costs (share of the operation's cost)", "pct"),
     ("vigilance_max_bp", "Spying: most Vigilance a house can have", "pct"),
     ("vigilance_decay_bp", "Spying: Vigilance fading a tick", "pct"),
@@ -785,6 +788,41 @@ def generate(rules):
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
             + source_note(latest))
 
+    # Rites.
+    rites = lp.get("rites", [])
+    stat_text = STAT_TEXT
+    def rite_does(r):
+        t = r["effect"]["type"]
+        if t == "modifiers":
+            return "; ".join(f'<span class="{"cell-good" if m["bp"] > 0 else "cell-good"}">{"+" if m["bp"] > 0 else ""}{pct(m["bp"])}%</span> {e(stat_text.get(m["stat"], m["stat"])).lower()} (<a href="effects.html#{m["stat"]}"><code>{m["stat"]}</code></a>)' for m in r["mods"])
+        war = f' ({pct(r["effect"].get("bp", 0) + r.get("war_bonus_bp", 0))}% at war)' if r.get("war_bonus_bp") else ""
+        return {
+            "veil": lambda: 'Your attacks show only "a veiled army" in the target\'s news',
+            "mirror_ward": lambda: f'{pct(r["effect"]["bp"])}% of hexes against you turn back on their caster',
+            "scry": lambda: "Reveals land, peasants, gold, food and troops at home",
+            "omens": lambda: "Reveals the rites and hexes in force on a house",
+            "roads": lambda: "Reveals a house's armies on the road, when they return, and whose land they carry",
+            "rot": lambda: f'{pct(r["effect"]["bp"])}% of their food spoils every tick{war}',
+            "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}, less their ward',
+            "blight": lambda: f'{pct(r["effect"]["bp"])}% of their share of the realm material is lost{war}',
+            "unravel": lambda: "Ends one of their rites (the one lasting longest)",
+        }[t]()
+    def rite_kind(r):
+        t = r["effect"]["type"]
+        return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Hex"
+    rite_rows = "".join(
+        f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code></td><td>{rite_kind(r)}</td><td>{rite_does(r)}</td>'
+        f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
+        f'<td class="cell-num">{str(r["ticks"]) + " ticks" if r.get("ticks") else "at once"}</td>'
+        f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td></tr>\n'
+        for r in rites)
+    if rites:
+        pages["rite-list.html"] = header("Rites and Hexes", "Rules") + (
+            '<p>Every rite this age. How adepts, aether, chance and ward work is on <a href="rites.html">Rites</a>.</p>\n'
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Rite</th><th>Kind</th><th>Does</th><th class="cell-num">Costs</th>'
+            '<th class="cell-num">Lasts</th><th class="cell-num">Chance</th></tr>\n' + rite_rows + "</table></div>\n"
+            "<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking.</p>\n" + source_note(latest))
+
     # Thieves' operations.
     ops = lp.get("operations", [])
     op_kind = {"survey": "Intel", "muster": "Intel", "ledgers": "Intel", "archives": "Intel", "couriers": "Intel", "dossier": "Intel",
@@ -895,7 +933,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "rites", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

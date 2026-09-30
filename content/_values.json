@@ -110,6 +110,8 @@
   "renown_per_thousand_books": 1,
   "renown_per_win": 20,
   "rescue_cap_pct": "50",
+  "rite_base_success_pct": "50",
+  "rite_material": "resin",
   "scientist_spawn_milli": 100,
   "settling_penalty_pct": "-5",
   "settling_ticks": 24,

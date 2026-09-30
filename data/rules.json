@@ -5,7 +5,7 @@
       "attributes": [
         {
           "flags": 0,
-          "hash": "04901e053332ca8f",
+          "hash": "9ac8fb046fc4b6e2",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -46,6 +46,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -54,7 +55,7 @@
         },
         {
           "flags": 0,
-          "hash": "0b3699d96d6d3f4c",
+          "hash": "5197db47aa7da828",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -95,6 +96,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -103,7 +105,7 @@
         },
         {
           "flags": 0,
-          "hash": "3ebea57e31790fe7",
+          "hash": "66b130247b156261",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -144,6 +146,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -152,7 +155,7 @@
         },
         {
           "flags": 0,
-          "hash": "340962c333da0477",
+          "hash": "9fe6d0a9da577766",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -193,7 +196,8 @@
             0,
             0,
             0,
-            2500
+            2500,
+            0
           ],
           "name": "Shrewd",
           "units": [],
@@ -201,7 +205,7 @@
         },
         {
           "flags": 0,
-          "hash": "12a4df314c2cd913",
+          "hash": "c32b41e0cbb5ffd6",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -231,6 +235,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -560,6 +565,44 @@
         {
           "capacity": [
             [
+              "adepts",
+              20
+            ],
+            [
+              "aether",
+              60
+            ]
+          ],
+          "construction_ticks": 0,
+          "description": "Adepts gather here (drawn from your peasants), and aether for rites.",
+          "extra_gold": 0,
+          "hash": "0c87b1151e17c6f7",
+          "jobs": 20,
+          "key": {
+            "identity": "shrines",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 15,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Shrines",
+          "produce": [
+            [
+              "adepts",
+              1
+            ],
+            [
+              "aether",
+              3
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [
+            [
               "horses",
               80
             ]
@@ -721,10 +764,41 @@
           "name": "Watch Towers",
           "produce": [],
           "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Hexes against you fail more often, and storms wreck less.",
+          "extra_gold": 0,
+          "hash": "35a7b0d51d704753",
+          "jobs": 20,
+          "key": {
+            "identity": "watchstones",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 0,
+          "materials": [
+            [
+              2,
+              10
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 300,
+              "max_bp": 6000,
+              "stat": "Ward"
+            }
+          ],
+          "name": "Watchstones",
+          "produce": [],
+          "trait_slots": 0
         }
       ],
       "changes_from_previous": null,
-      "hash": "ac5692b8858a8cf4",
+      "hash": "4adc88f3801009f7",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1373,6 +1447,258 @@
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "rite_base_success_bp": 5000,
+        "rite_material": "resin",
+        "rites": [
+          {
+            "aether": 150,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "bountiful_fields",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "food_production"
+              }
+            ],
+            "name": "Bountiful Fields",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "masons_blessing",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": -2000,
+                "stat": "construction_cost"
+              },
+              {
+                "bp": -2000,
+                "stat": "construction_time"
+              }
+            ],
+            "name": "Masons' Blessing",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "war_hymns",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 500,
+                "stat": "offense"
+              }
+            ],
+            "name": "War Hymns",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "circle_of_stones",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 500,
+                "stat": "defense"
+              }
+            ],
+            "name": "Circle of Stones",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "swift_roads",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "return_time"
+              }
+            ],
+            "name": "Swift Roads",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 150,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "scholars_lamp",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 1000,
+                "stat": "book_production"
+              }
+            ],
+            "name": "Scholar's Lamp",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "veil"
+            },
+            "hostility_bp": 0,
+            "id": "veil",
+            "incense": 0,
+            "mods": [],
+            "name": "Veil",
+            "ticks": 6,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 10000,
+            "effect": {
+              "bp": 2000,
+              "type": "mirror_ward"
+            },
+            "hostility_bp": 0,
+            "id": "mirror_ward",
+            "incense": 0,
+            "mods": [],
+            "name": "Mirror Ward",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 50,
+            "chance_bp": 12000,
+            "effect": {
+              "type": "scry"
+            },
+            "hostility_bp": 10000,
+            "id": "scrying_pool",
+            "incense": 0,
+            "mods": [],
+            "name": "Scrying Pool",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 60,
+            "chance_bp": 11000,
+            "effect": {
+              "type": "omens"
+            },
+            "hostility_bp": 10000,
+            "id": "read_the_omens",
+            "incense": 0,
+            "mods": [],
+            "name": "Read the Omens",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 80,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "roads"
+            },
+            "hostility_bp": 10000,
+            "id": "watch_the_roads",
+            "incense": 0,
+            "mods": [],
+            "name": "Watch the Roads",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "bp": 200,
+              "type": "rot"
+            },
+            "hostility_bp": 40000,
+            "id": "rot",
+            "incense": 5,
+            "mods": [],
+            "name": "Rot",
+            "ticks": 6,
+            "war_bonus_bp": 100
+          },
+          {
+            "aether": 300,
+            "chance_bp": 7000,
+            "effect": {
+              "bp": 300,
+              "type": "storm"
+            },
+            "hostility_bp": 80000,
+            "id": "storm",
+            "incense": 10,
+            "mods": [],
+            "name": "Storm",
+            "ticks": 0,
+            "war_bonus_bp": 200
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 3000,
+              "type": "blight"
+            },
+            "hostility_bp": 60000,
+            "id": "blight",
+            "incense": 8,
+            "mods": [],
+            "name": "Blight",
+            "ticks": 12,
+            "war_bonus_bp": 1000
+          },
+          {
+            "aether": 150,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "unravel"
+            },
+            "hostility_bp": 30000,
+            "id": "unravel",
+            "incense": 3,
+            "mods": [],
+            "name": "Unravel",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          }
+        ],
         "science_ranks": [
           [
             0,
@@ -1436,7 +1762,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "776a494fdc3d36c2",
+          "hash": "25810b0a761d7401",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -1444,6 +1770,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -1485,7 +1812,7 @@
         },
         {
           "flags": 0,
-          "hash": "7d141c8a465cf75f",
+          "hash": "c1401a9c21498dd9",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -1526,6 +1853,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -1534,7 +1862,7 @@
         },
         {
           "flags": 0,
-          "hash": "f2fcc871c4fb35b6",
+          "hash": "783433b81f02e81d",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -1543,6 +1871,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -1822,7 +2151,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "6855197ddd7da47c",
+          "hash": "7df26c219c7d0f04",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -1830,6 +2159,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -1914,7 +2244,7 @@
         },
         {
           "flags": 0,
-          "hash": "69faead7e2e3d6cf",
+          "hash": "dcee0403cb68ccac",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -1927,6 +2257,7 @@
             0,
             1000,
             -500,
+            0,
             0,
             0,
             0,
@@ -2006,7 +2337,7 @@
         },
         {
           "flags": 0,
-          "hash": "7ead9127898b21b8",
+          "hash": "d919a5213bddda34",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -2019,6 +2350,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -2103,7 +2435,7 @@
         },
         {
           "flags": 0,
-          "hash": "7b007a38fb09e000",
+          "hash": "ff45305d4ea863de",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -2119,6 +2451,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -2195,7 +2528,7 @@
         },
         {
           "flags": 1,
-          "hash": "f11c194080c33763",
+          "hash": "6992d16e72c61999",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -2204,6 +2537,7 @@
           "mods_bp": [
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -2561,17 +2895,19 @@
         0,
         0,
         0,
+        0,
         10,
         10,
         0,
         20,
         0,
-        10
+        10,
+        0
       ],
       "traits": [
         {
           "flags": 0,
-          "hash": "c813dc1176564407",
+          "hash": "d09601c62992c5dd",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -2612,6 +2948,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -2620,7 +2957,7 @@
         },
         {
           "flags": 0,
-          "hash": "399bbaaf3d738bfc",
+          "hash": "b6ecede3535e2f55",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -2661,6 +2998,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -2669,7 +3007,7 @@
         },
         {
           "flags": 0,
-          "hash": "badbd899aa2386ee",
+          "hash": "e05af1c800ef7fd3",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -2710,6 +3048,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -2718,7 +3057,7 @@
         },
         {
           "flags": 0,
-          "hash": "804085ecc249047b",
+          "hash": "62b85a27d4d11835",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -2759,6 +3098,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -2767,7 +3107,7 @@
         },
         {
           "flags": 0,
-          "hash": "7516d0c1dec5b19a",
+          "hash": "4f087ac057fb0e93",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -2808,6 +3148,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -2821,7 +3162,7 @@
       "attributes": [
         {
           "flags": 0,
-          "hash": "04901e053332ca8f",
+          "hash": "9ac8fb046fc4b6e2",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -2862,6 +3203,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -2870,7 +3212,7 @@
         },
         {
           "flags": 0,
-          "hash": "0b3699d96d6d3f4c",
+          "hash": "5197db47aa7da828",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -2911,6 +3253,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -2919,7 +3262,7 @@
         },
         {
           "flags": 0,
-          "hash": "3ebea57e31790fe7",
+          "hash": "66b130247b156261",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -2960,6 +3303,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -2968,7 +3312,7 @@
         },
         {
           "flags": 0,
-          "hash": "340962c333da0477",
+          "hash": "9fe6d0a9da577766",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -3009,7 +3353,8 @@
             0,
             0,
             0,
-            2500
+            2500,
+            0
           ],
           "name": "Shrewd",
           "units": [],
@@ -3017,7 +3362,7 @@
         },
         {
           "flags": 0,
-          "hash": "12a4df314c2cd913",
+          "hash": "c32b41e0cbb5ffd6",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -3047,6 +3392,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -3376,6 +3722,44 @@
         {
           "capacity": [
             [
+              "adepts",
+              20
+            ],
+            [
+              "aether",
+              60
+            ]
+          ],
+          "construction_ticks": 0,
+          "description": "Adepts gather here (drawn from your peasants), and aether for rites.",
+          "extra_gold": 0,
+          "hash": "0c87b1151e17c6f7",
+          "jobs": 20,
+          "key": {
+            "identity": "shrines",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 15,
+          "materials": [],
+          "max_count": 0,
+          "mods": [],
+          "name": "Shrines",
+          "produce": [
+            [
+              "adepts",
+              1
+            ],
+            [
+              "aether",
+              3
+            ]
+          ],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [
+            [
               "horses",
               80
             ]
@@ -3537,6 +3921,37 @@
           "name": "Watch Towers",
           "produce": [],
           "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Hexes against you fail more often, and storms wreck less.",
+          "extra_gold": 0,
+          "hash": "35a7b0d51d704753",
+          "jobs": 20,
+          "key": {
+            "identity": "watchstones",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 0,
+          "materials": [
+            [
+              2,
+              10
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": 300,
+              "max_bp": 6000,
+              "stat": "Ward"
+            }
+          ],
+          "name": "Watchstones",
+          "produce": [],
+          "trait_slots": 0
         }
       ],
       "changes_from_previous": [
@@ -3565,7 +3980,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "f7236c018644c7f5",
+      "hash": "d7ea357fd402fe77",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4214,6 +4629,258 @@
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "rite_base_success_bp": 5000,
+        "rite_material": "resin",
+        "rites": [
+          {
+            "aether": 150,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "bountiful_fields",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "food_production"
+              }
+            ],
+            "name": "Bountiful Fields",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "masons_blessing",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": -2000,
+                "stat": "construction_cost"
+              },
+              {
+                "bp": -2000,
+                "stat": "construction_time"
+              }
+            ],
+            "name": "Masons' Blessing",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "war_hymns",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 500,
+                "stat": "offense"
+              }
+            ],
+            "name": "War Hymns",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "circle_of_stones",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 500,
+                "stat": "defense"
+              }
+            ],
+            "name": "Circle of Stones",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "swift_roads",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "return_time"
+              }
+            ],
+            "name": "Swift Roads",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 150,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "modifiers"
+            },
+            "hostility_bp": 0,
+            "id": "scholars_lamp",
+            "incense": 0,
+            "mods": [
+              {
+                "bp": 1000,
+                "stat": "book_production"
+              }
+            ],
+            "name": "Scholar's Lamp",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "veil"
+            },
+            "hostility_bp": 0,
+            "id": "veil",
+            "incense": 0,
+            "mods": [],
+            "name": "Veil",
+            "ticks": 6,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 10000,
+            "effect": {
+              "bp": 2000,
+              "type": "mirror_ward"
+            },
+            "hostility_bp": 0,
+            "id": "mirror_ward",
+            "incense": 0,
+            "mods": [],
+            "name": "Mirror Ward",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 50,
+            "chance_bp": 12000,
+            "effect": {
+              "type": "scry"
+            },
+            "hostility_bp": 10000,
+            "id": "scrying_pool",
+            "incense": 0,
+            "mods": [],
+            "name": "Scrying Pool",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 60,
+            "chance_bp": 11000,
+            "effect": {
+              "type": "omens"
+            },
+            "hostility_bp": 10000,
+            "id": "read_the_omens",
+            "incense": 0,
+            "mods": [],
+            "name": "Read the Omens",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 80,
+            "chance_bp": 10000,
+            "effect": {
+              "type": "roads"
+            },
+            "hostility_bp": 10000,
+            "id": "watch_the_roads",
+            "incense": 0,
+            "mods": [],
+            "name": "Watch the Roads",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "bp": 200,
+              "type": "rot"
+            },
+            "hostility_bp": 40000,
+            "id": "rot",
+            "incense": 5,
+            "mods": [],
+            "name": "Rot",
+            "ticks": 6,
+            "war_bonus_bp": 100
+          },
+          {
+            "aether": 300,
+            "chance_bp": 7000,
+            "effect": {
+              "bp": 300,
+              "type": "storm"
+            },
+            "hostility_bp": 80000,
+            "id": "storm",
+            "incense": 10,
+            "mods": [],
+            "name": "Storm",
+            "ticks": 0,
+            "war_bonus_bp": 200
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 3000,
+              "type": "blight"
+            },
+            "hostility_bp": 60000,
+            "id": "blight",
+            "incense": 8,
+            "mods": [],
+            "name": "Blight",
+            "ticks": 12,
+            "war_bonus_bp": 1000
+          },
+          {
+            "aether": 150,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "unravel"
+            },
+            "hostility_bp": 30000,
+            "id": "unravel",
+            "incense": 3,
+            "mods": [],
+            "name": "Unravel",
+            "ticks": 0,
+            "war_bonus_bp": 0
+          }
+        ],
         "science_ranks": [
           [
             0,
@@ -4277,7 +4944,7 @@
       "personalities": [
         {
           "flags": 0,
-          "hash": "776a494fdc3d36c2",
+          "hash": "25810b0a761d7401",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -4285,6 +4952,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -4326,7 +4994,7 @@
         },
         {
           "flags": 0,
-          "hash": "7d141c8a465cf75f",
+          "hash": "c1401a9c21498dd9",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -4367,6 +5035,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -4375,7 +5044,7 @@
         },
         {
           "flags": 0,
-          "hash": "f2fcc871c4fb35b6",
+          "hash": "783433b81f02e81d",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -4384,6 +5053,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -4429,7 +5099,7 @@
         },
         {
           "flags": 0,
-          "hash": "86e1ce8f35a470c2",
+          "hash": "3930b74cff82c33d",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -4443,6 +5113,7 @@
             0,
             0,
             -2000,
+            0,
             0,
             0,
             0,
@@ -4711,7 +5382,7 @@
       "races": [
         {
           "flags": 0,
-          "hash": "6855197ddd7da47c",
+          "hash": "7df26c219c7d0f04",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -4719,6 +5390,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -4803,7 +5475,7 @@
         },
         {
           "flags": 0,
-          "hash": "e5bc0dcf40daa44c",
+          "hash": "cd6768d3a3da455f",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -4818,6 +5490,7 @@
             -500,
             0,
             -500,
+            0,
             0,
             0,
             0,
@@ -4895,7 +5568,7 @@
         },
         {
           "flags": 0,
-          "hash": "7ead9127898b21b8",
+          "hash": "d919a5213bddda34",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -4908,6 +5581,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -4992,7 +5666,7 @@
         },
         {
           "flags": 0,
-          "hash": "7b007a38fb09e000",
+          "hash": "ff45305d4ea863de",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -5008,6 +5682,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -5087,7 +5762,7 @@
         null,
         {
           "flags": 3,
-          "hash": "23f570a861358e19",
+          "hash": "d250e9ed7729c808",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -5096,6 +5771,7 @@
           "mods_bp": [
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -5450,17 +6126,19 @@
         0,
         0,
         0,
+        0,
         10,
         10,
         0,
         20,
         0,
-        10
+        10,
+        0
       ],
       "traits": [
         {
           "flags": 0,
-          "hash": "c813dc1176564407",
+          "hash": "d09601c62992c5dd",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -5501,6 +6179,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -5509,7 +6188,7 @@
         },
         {
           "flags": 0,
-          "hash": "399bbaaf3d738bfc",
+          "hash": "b6ecede3535e2f55",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -5550,6 +6229,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -5558,7 +6238,7 @@
         },
         {
           "flags": 0,
-          "hash": "badbd899aa2386ee",
+          "hash": "e05af1c800ef7fd3",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -5599,6 +6279,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -5607,7 +6288,7 @@
         },
         {
           "flags": 0,
-          "hash": "804085ecc249047b",
+          "hash": "62b85a27d4d11835",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -5648,6 +6329,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -5656,7 +6338,7 @@
         },
         {
           "flags": 0,
-          "hash": "7516d0c1dec5b19a",
+          "hash": "4f087ac057fb0e93",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -5673,6 +6355,7 @@
             0,
             0,
             1000,
+            0,
             0,
             0,
             0,
@@ -5897,7 +6580,8 @@
       "general_cost",
       "rescue",
       "refine_yield",
-      "paper_books"
+      "paper_books",
+      "ward"
     ],
     "unit_slots": [
       "offense",
