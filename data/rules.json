@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "4adc88f3801009f7",
+      "hash": "f480910da63582a1",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1169,6 +1169,8 @@
         "chariot_offense": 2,
         "constructing_living": 15,
         "construction_ticks": 16,
+        "court_auction_ticks": 24,
+        "court_reserve_gold": 2000,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -1177,6 +1179,8 @@
         "eowcf_ticks": 96,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
+        "false_flag_nerve_bp": 1000,
+        "first_refusal_ticks": 6,
         "food_per_person_milli": 250,
         "general_cost": 50,
         "general_death_bp": 500,
@@ -1213,6 +1217,7 @@
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "lost_text_chance_bp": 1500,
+        "loyal_ticks": 72,
         "luck_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
@@ -1433,6 +1438,126 @@
             "thieves_per_material": 0,
             "vigilance_bp": 1500,
             "war_bonus_bp": 100
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 3,
+            "effect": "foul_forges",
+            "hostility_bp": 80000,
+            "id": "forges",
+            "name": "Foul the Forges",
+            "nerve_bp": 1800,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 6,
+            "effect": "poison_wells",
+            "hostility_bp": 80000,
+            "id": "wells",
+            "name": "Poison the Wells",
+            "nerve_bp": 1800,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 300,
+            "cap_per_100_thieves": 20,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "silence_adepts",
+            "hostility_bp": 80000,
+            "id": "silence",
+            "name": "Silence the Adepts",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 200
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7500,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "forge_orders",
+            "hostility_bp": 60000,
+            "id": "forge_orders",
+            "name": "Forge Orders",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 1000,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 12,
+            "effect": "unsettle_general",
+            "hostility_bp": 60000,
+            "id": "unsettle",
+            "name": "Unsettle a General",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 5000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "court_general",
+            "hostility_bp": 80000,
+            "id": "court_general",
+            "name": "Court a General",
+            "nerve_bp": 2500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 2000,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 5000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "court_scholar",
+            "hostility_bp": 80000,
+            "id": "court_scholar",
+            "name": "Court a Scholar",
+            "nerve_bp": 2500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 2000,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 5000,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 12,
+            "effect": "stir_unrest",
+            "hostility_bp": 80000,
+            "id": "unrest",
+            "name": "Stir Unrest",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
           }
         ],
         "optimal_workers_bp": 6700,
@@ -1443,6 +1568,8 @@
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realms": 13,
+        "reassure_fee_bp": 200,
+        "reassure_gold": 500,
         "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
@@ -1697,6 +1824,44 @@
             "name": "Unravel",
             "ticks": 0,
             "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 50000,
+            "id": "pestilence",
+            "incense": 6,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "population"
+              }
+            ],
+            "name": "Pestilence",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 40000,
+            "id": "dreamfog",
+            "incense": 5,
+            "mods": [
+              {
+                "bp": -2500,
+                "stat": "book_production"
+              }
+            ],
+            "name": "Dreamfog",
+            "ticks": 12,
+            "war_bonus_bp": 0
           }
         ],
         "science_ranks": [
@@ -1748,6 +1913,51 @@
         "upgrade_material": "bauxite",
         "vigilance_decay_bp": 400,
         "vigilance_max_bp": 8000,
+        "vigils": [
+          {
+            "aether": 3000,
+            "id": "walls",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 800,
+                "stat": "defense"
+              }
+            ],
+            "name": "Vigil of Walls",
+            "ticks": 24
+          },
+          {
+            "aether": 3000,
+            "id": "plenty",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "food_production"
+              },
+              {
+                "bp": 500,
+                "stat": "income"
+              }
+            ],
+            "name": "Vigil of Plenty",
+            "ticks": 24
+          },
+          {
+            "aether": 3000,
+            "id": "blades",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 800,
+                "stat": "offense"
+              }
+            ],
+            "name": "Vigil of Blades",
+            "ticks": 24
+          }
+        ],
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -1757,7 +1967,8 @@
         "war_renown_bp": 5000,
         "war_unique_attackers": 3,
         "war_win_points": 2,
-        "war_win_renown": 100
+        "war_win_renown": 100,
+        "waver_ticks": 24
       },
       "personalities": [
         {
@@ -3980,7 +4191,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "d7ea357fd402fe77",
+      "hash": "d306da5732ca88b8",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4351,6 +4562,8 @@
         "chariot_offense": 2,
         "constructing_living": 15,
         "construction_ticks": 16,
+        "court_auction_ticks": 24,
+        "court_reserve_gold": 2000,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -4359,6 +4572,8 @@
         "eowcf_ticks": 96,
         "explore_gold_per_acre": 600,
         "explore_ticks": 12,
+        "false_flag_nerve_bp": 1000,
+        "first_refusal_ticks": 6,
         "food_per_person_milli": 250,
         "general_cost": 50,
         "general_death_bp": 500,
@@ -4395,6 +4610,7 @@
         "houses_per_state": 15,
         "land_gain_bp": 1000,
         "lost_text_chance_bp": 1500,
+        "loyal_ticks": 72,
         "luck_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
@@ -4615,6 +4831,126 @@
             "thieves_per_material": 0,
             "vigilance_bp": 1500,
             "war_bonus_bp": 100
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 3,
+            "effect": "foul_forges",
+            "hostility_bp": 80000,
+            "id": "forges",
+            "name": "Foul the Forges",
+            "nerve_bp": 1800,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 6,
+            "effect": "poison_wells",
+            "hostility_bp": 80000,
+            "id": "wells",
+            "name": "Poison the Wells",
+            "nerve_bp": 1800,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 300,
+            "cap_per_100_thieves": 20,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "silence_adepts",
+            "hostility_bp": 80000,
+            "id": "silence",
+            "name": "Silence the Adepts",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 200
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7500,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "forge_orders",
+            "hostility_bp": 60000,
+            "id": "forge_orders",
+            "name": "Forge Orders",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 1000,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 7000,
+            "cost_material": null,
+            "delay_ticks": 12,
+            "effect": "unsettle_general",
+            "hostility_bp": 60000,
+            "id": "unsettle",
+            "name": "Unsettle a General",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 5000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "court_general",
+            "hostility_bp": 80000,
+            "id": "court_general",
+            "name": "Court a General",
+            "nerve_bp": 2500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 2000,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 0,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 5000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "court_scholar",
+            "hostility_bp": 80000,
+            "id": "court_scholar",
+            "name": "Court a Scholar",
+            "nerve_bp": 2500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 2000,
+            "war_bonus_bp": 0
+          },
+          {
+            "amount_bp": 5000,
+            "cap_per_100_thieves": 0,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 12,
+            "effect": "stir_unrest",
+            "hostility_bp": 80000,
+            "id": "unrest",
+            "name": "Stir Unrest",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 0
           }
         ],
         "optimal_workers_bp": 6700,
@@ -4625,6 +4961,8 @@
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realms": 13,
+        "reassure_fee_bp": 200,
+        "reassure_gold": 500,
         "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
@@ -4879,6 +5217,44 @@
             "name": "Unravel",
             "ticks": 0,
             "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 50000,
+            "id": "pestilence",
+            "incense": 6,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "population"
+              }
+            ],
+            "name": "Pestilence",
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 40000,
+            "id": "dreamfog",
+            "incense": 5,
+            "mods": [
+              {
+                "bp": -2500,
+                "stat": "book_production"
+              }
+            ],
+            "name": "Dreamfog",
+            "ticks": 12,
+            "war_bonus_bp": 0
           }
         ],
         "science_ranks": [
@@ -4930,6 +5306,51 @@
         "upgrade_material": "bauxite",
         "vigilance_decay_bp": 400,
         "vigilance_max_bp": 8000,
+        "vigils": [
+          {
+            "aether": 3000,
+            "id": "walls",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 800,
+                "stat": "defense"
+              }
+            ],
+            "name": "Vigil of Walls",
+            "ticks": 24
+          },
+          {
+            "aether": 3000,
+            "id": "plenty",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "food_production"
+              },
+              {
+                "bp": 500,
+                "stat": "income"
+              }
+            ],
+            "name": "Vigil of Plenty",
+            "ticks": 24
+          },
+          {
+            "aether": 3000,
+            "id": "blades",
+            "incense": 60,
+            "mods": [
+              {
+                "bp": 800,
+                "stat": "offense"
+              }
+            ],
+            "name": "Vigil of Blades",
+            "ticks": 24
+          }
+        ],
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -4939,7 +5360,8 @@
         "war_renown_bp": 5000,
         "war_unique_attackers": 3,
         "war_win_points": 2,
-        "war_win_renown": 100
+        "war_win_renown": 100,
+        "waver_ticks": 24
       },
       "personalities": [
         {

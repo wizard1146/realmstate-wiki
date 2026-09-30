@@ -21,6 +21,16 @@ generated: tools/sync.py
 <tr id="storm"><td><b>Storm</b><br><code>storm</code></td><td>Hex</td><td>Wrecks 3% of every building (5% at war), less their ward</td><td class="cell-num">300 + 10 resin</td><td class="cell-num">at once</td><td class="cell-num">&times;0.7</td></tr>
 <tr id="blight"><td><b>Blight</b><br><code>blight</code></td><td>Hex</td><td>30% of their share of the realm material is lost (40% at war)</td><td class="cell-num">250 + 8 resin</td><td class="cell-num">12 ticks</td><td class="cell-num">&times;0.75</td></tr>
 <tr id="unravel"><td><b>Unravel</b><br><code>unravel</code></td><td>Hex</td><td>Ends one of their rites (the one lasting longest)</td><td class="cell-num">150 + 3 resin</td><td class="cell-num">at once</td><td class="cell-num">&times;0.8</td></tr>
+<tr id="pestilence"><td><b>Pestilence</b><br><code>pestilence</code></td><td>Curse</td><td><span class="cell-bad">-10%</span> how many people the land can hold (<a href="effects.html#population"><code>population</code></a>)</td><td class="cell-num">250 + 6 resin</td><td class="cell-num">12 ticks</td><td class="cell-num">&times;0.75</td></tr>
+<tr id="dreamfog"><td><b>Dreamfog</b><br><code>dreamfog</code></td><td>Curse</td><td><span class="cell-bad">-25%</span> books scientists write each tick (<a href="effects.html#book_production"><code>book_production</code></a>)</td><td class="cell-num">200 + 5 resin</td><td class="cell-num">12 ticks</td><td class="cell-num">&times;0.8</td></tr>
 </table></div>
-<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking.</p>
-<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>d7ea357fd402fe77</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking. Curses are hexes that weaken the target while they last.</p>
+<h2 id="vigils">State vigils</h2>
+<p>A state's leader opens a vigil; members give aether and resin. Once both are met, every house in the state has it. One at a time; opening another while one is still being funded loses what was given.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Vigil</th><th>Every member gets</th><th class="cell-num">Needs</th><th class="cell-num">Lasts</th></tr>
+<tr id="vigil-walls"><td><b>Vigil of Walls</b><br><code>walls</code></td><td><span class="cell-good">+8%</span> defense of troops at home</td><td class="cell-num">3,000 aether + 60 resin</td><td class="cell-num">24 ticks</td></tr>
+<tr id="vigil-plenty"><td><b>Vigil of Plenty</b><br><code>plenty</code></td><td><span class="cell-good">+15%</span> food grown on land each tick; <span class="cell-good">+5%</span> gold earned from peasants each tick</td><td class="cell-num">3,000 aether + 60 resin</td><td class="cell-num">24 ticks</td></tr>
+<tr id="vigil-blades"><td><b>Vigil of Blades</b><br><code>blades</code></td><td><span class="cell-good">+8%</span> offense of troops sent on attacks</td><td class="cell-num">3,000 aether + 60 resin</td><td class="cell-num">24 ticks</td></tr>
+</table></div>
+<p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>d306da5732ca88b8</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

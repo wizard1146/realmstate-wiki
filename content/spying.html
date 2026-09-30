@@ -9,7 +9,8 @@ updated: 2026-09-30
 <ul>
   <li><b>Intel</b> reads one part of a house: its estate, its muster roll, its ledgers, its archives or its recent news. A Full Dossier reads everything and costs the most.</li>
   <li><b>Theft</b> takes a share of their gold, food, a material, horses or books. What you get is capped by how many thieves you send.</li>
-  <li><b>Sabotage</b> delays their construction, burns a building type or kills troops at home.</li>
+  <li><b>Sabotage</b> delays their construction or training, burns a building type, poisons their wells, or kills troops or adepts.</li>
+  <li><b>Subversion</b> works on their affairs: cancels their market orders, unsettles their main general, stirs unrest against their state's tax, or courts one of their generals or academics.</li>
 </ul>
 
 <h2 id="Nerve">Nerve</h2>
@@ -36,10 +37,27 @@ updated: 2026-09-30
 <h2 id="Failure">If it fails</h2>
 <p>{{spy_loss_pct}}% of the thieves you sent are caught (at least one). The target's news says how many were caught, which operation it was, and which house sent them.</p>
 
+<h2 id="FalseFlag">False Flag</h2>
+<p>Any operation can be sent under a false flag: you name a third state (not yours, not the target's), and it costs {{false_flag_nerve_pct}}% more Nerve.</p>
+<ul>
+  <li><b>If it works,</b> the target's news says the thieves wore that state's colours, and the target state's <a href="war.html#Meter">hostility meter</a> rises toward the framed state, not yours.</li>
+  <li><b>If it fails,</b> the flag is uncovered: the target learns who sent the thieves and whom they tried to frame, the framed state is told too, and your state takes double the meter points.</li>
+</ul>
+
+<h2 id="Courting">Courting</h2>
+<p>Court a General and Court a Scholar don't steal anyone. They make one of the target's characters <b>waver</b>: their best eligible general (most renown earned) or academic (most books supervised).</p>
+<ol>
+  <li>The character wavers for {{waver_ticks}} ticks. Its owner's whole state hears about it at once, but not who courted it.</li>
+  <li>The owner can <b>Reassure</b> it for {{reassure_gold}} gold plus {{reassure_fee_pct}}% of its highest transfer fee. The wavering ends and the character stays loyal for {{loyal_ticks}} ticks; it can't be courted again in that time.</li>
+  <li>If nobody reassures it, it goes up for auction in the <a href="hall-of-deeds.html">Hall of Deeds</a> for {{court_auction_ticks}} ticks, at a reserve of {{court_reserve_gold}} gold (or half its highest transfer fee, if more). For the first {{first_refusal_ticks}} ticks only the house that courted it may bid. <b>The owner receives the price</b>, less the usual fee, as in any sale.</li>
+</ol>
+<p>Can't be courted: a main general, a general away with an army, a marked <a href="hall-of-deeds.html">heir</a>, a character still settling in after a trade, or one recently reassured. The character's record counts every time it was courted, reassured or auctioned.</p>
+
 <h2 id="Limits">Limits</h2>
 <ul>
   <li>No operations on houses in your own state, or across a ceasefire.</li>
   <li>Every attempt raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours: a little for intel ({{hostility_spy_points}} points), more for theft and most for sabotage.</li>
   <li>At war, thefts, fires and killings take a bigger share.</li>
   <li>Set Fires spends sulfur, win or lose.</li>
+  <li>For subversion and sabotage the target's news says what happened, but not who did it; a failure names the sender.</li>
 </ul>

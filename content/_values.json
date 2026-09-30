@@ -57,6 +57,8 @@
   "chariot_offense": 2,
   "constructing_living": 15,
   "construction_ticks": 16,
+  "court_auction_ticks": 24,
+  "court_reserve_gold": 2000,
   "decay_growth_pct": "0.01",
   "decay_max_pct": "1",
   "decay_start_pct": "0.02",
@@ -65,6 +67,8 @@
   "eowcf_ticks": 96,
   "explore_gold_per_acre": 600,
   "explore_ticks": 12,
+  "false_flag_nerve_pct": "10",
+  "first_refusal_ticks": 6,
   "general_cost": 50,
   "general_death_pct": "5",
   "general_elites": 100,
@@ -90,6 +94,7 @@
   "houses_per_state": 15,
   "land_gain_pct": "10",
   "lost_text_chance_pct": "15",
+  "loyal_ticks": 72,
   "luck_pct": "5",
   "medic_gold": 250,
   "medic_material": "sulfur",
@@ -107,6 +112,8 @@
   "peasant_growth_pct": "3",
   "raze_cost_base": 300,
   "realms": 13,
+  "reassure_fee_pct": "2",
+  "reassure_gold": 500,
   "renown_per_thousand_books": 1,
   "renown_per_win": 20,
   "rescue_cap_pct": "50",
@@ -151,5 +158,6 @@
   "war_renown_pct": "50",
   "war_unique_attackers": 3,
   "war_win_points": 2,
-  "war_win_renown": 100
+  "war_win_renown": 100,
+  "waver_ticks": 24
 }

@@ -97,6 +97,14 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
+    ("false_flag_nerve_bp", "Spying: extra Nerve for a False Flag", "pct"),
+    ("waver_ticks", "Spying: how long a courted character wavers (ticks)", "n"),
+    ("reassure_gold", "Spying: gold to reassure a wavering character", "n"),
+    ("reassure_fee_bp", "Spying: plus this share of its highest transfer fee", "pct"),
+    ("loyal_ticks", "Spying: loyalty after reassuring (ticks)", "n"),
+    ("court_auction_ticks", "Spying: auction length for a character left wavering (ticks)", "n"),
+    ("court_reserve_gold", "Spying: that auction's lowest reserve", "n"),
+    ("first_refusal_ticks", "Spying: the courting house's first refusal (ticks)", "n"),
     ("rite_base_success_bp", "Rites: chance of a divination or hex with equal adepts per acre", "pct"),
     ("rite_material", "Rites: material hexes burn as incense", "text"),
     ("nerve_fail_extra_bp", "Spying: extra Nerve a failure costs (share of the operation's cost)", "pct"),
@@ -793,8 +801,8 @@ def generate(rules):
     stat_text = STAT_TEXT
     def rite_does(r):
         t = r["effect"]["type"]
-        if t == "modifiers":
-            return "; ".join(f'<span class="{"cell-good" if m["bp"] > 0 else "cell-good"}">{"+" if m["bp"] > 0 else ""}{pct(m["bp"])}%</span> {e(stat_text.get(m["stat"], m["stat"])).lower()} (<a href="effects.html#{m["stat"]}"><code>{m["stat"]}</code></a>)' for m in r["mods"])
+        if t in ("modifiers", "curse"):
+            return "; ".join(f'<span class="{"cell-bad" if t == "curse" else "cell-good"}">{"+" if m["bp"] > 0 else ""}{pct(m["bp"])}%</span> {e(stat_text.get(m["stat"], m["stat"])).lower()} (<a href="effects.html#{m["stat"]}"><code>{m["stat"]}</code></a>)' for m in r["mods"])
         war = f' ({pct(r["effect"].get("bp", 0) + r.get("war_bonus_bp", 0))}% at war)' if r.get("war_bonus_bp") else ""
         return {
             "veil": lambda: 'Your attacks show only "a veiled army" in the target\'s news',
@@ -809,7 +817,7 @@ def generate(rules):
         }[t]()
     def rite_kind(r):
         t = r["effect"]["type"]
-        return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Hex"
+        return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Curse" if t == "curse" else "Hex"
     rite_rows = "".join(
         f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code></td><td>{rite_kind(r)}</td><td>{rite_does(r)}</td>'
         f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
@@ -821,13 +829,24 @@ def generate(rules):
             '<p>Every rite this age. How adepts, aether, chance and ward work is on <a href="rites.html">Rites</a>.</p>\n'
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Rite</th><th>Kind</th><th>Does</th><th class="cell-num">Costs</th>'
             '<th class="cell-num">Lasts</th><th class="cell-num">Chance</th></tr>\n' + rite_rows + "</table></div>\n"
-            "<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking.</p>\n" + source_note(latest))
+            "<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking. Curses are hexes that weaken the target while they last.</p>\n"
+            + ('<h2 id="vigils">State vigils</h2>\n<p>A state\'s leader opens a vigil; members give aether and ' + e(lp["rite_material"]) + '. '
+               "Once both are met, every house in the state has it. One at a time; opening another while one is still being funded loses what was given.</p>\n"
+               '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Vigil</th><th>Every member gets</th><th class="cell-num">Needs</th><th class="cell-num">Lasts</th></tr>\n'
+               + "".join(f'<tr id="vigil-{e(v["id"])}"><td><b>{e(v["name"])}</b><br><code>{e(v["id"])}</code></td><td>'
+                         + "; ".join(f'<span class="cell-good">+{pct(m["bp"])}%</span> {e(stat_text.get(m["stat"], m["stat"])).lower()}' for m in v["mods"])
+                         + f'</td><td class="cell-num">{v["aether"]:,} aether + {v["incense"]} {e(lp["rite_material"])}</td><td class="cell-num">{v["ticks"]} ticks</td></tr>\n' for v in lp.get("vigils", []))
+               + "</table></div>\n" if lp.get("vigils") else "")
+            + source_note(latest))
 
     # Thieves' operations.
     ops = lp.get("operations", [])
     op_kind = {"survey": "Intel", "muster": "Intel", "ledgers": "Intel", "archives": "Intel", "couriers": "Intel", "dossier": "Intel",
                "steal_gold": "Theft", "steal_food": "Theft", "steal_material": "Theft", "steal_horses": "Theft", "steal_books": "Theft",
-               "undermine": "Sabotage", "set_fires": "Sabotage", "cut_throats": "Sabotage"}
+               "undermine": "Sabotage", "set_fires": "Sabotage", "cut_throats": "Sabotage",
+               "foul_forges": "Sabotage", "poison_wells": "Sabotage", "silence_adepts": "Sabotage",
+               "forge_orders": "Subversion", "unsettle_general": "Subversion", "court_general": "Subversion",
+               "court_scholar": "Subversion", "stir_unrest": "Subversion"}
     op_does = {
         "survey": lambda o: "Reveals buildings, construction and barren land",
         "muster": lambda o: "Reveals troops at home and away, training, medics, mounts, generals and armies coming home",
@@ -843,6 +862,14 @@ def generate(rules):
         "undermine": lambda o: f'Delays everything they are building by {o["delay_ticks"]} ticks',
         "set_fires": lambda o: f'Burns {pct(o["amount_bp"])}% of one building type you name, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
         "cut_throats": lambda o: f'Kills {pct(o["amount_bp"])}% of their troops at home, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "foul_forges": lambda o: f'Delays their troops and medics in training by {o["delay_ticks"]} ticks',
+        "poison_wells": lambda o: f'Stops their peasant growth for {o["delay_ticks"]} ticks',
+        "silence_adepts": lambda o: f'Kills {pct(o["amount_bp"])}% of their adepts, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "forge_orders": lambda o: "Cancels their open market orders (their goods or gold go back to them)",
+        "unsettle_general": lambda o: f'Their main general fights {pct(o["amount_bp"])}% weaker for {o["delay_ticks"]} ticks',
+        "court_general": lambda o: 'One of their generals starts <a href="spying.html#Courting">wavering</a>',
+        "court_scholar": lambda o: 'One of their academics starts <a href="spying.html#Courting">wavering</a>',
+        "stir_unrest": lambda o: f'Their state\'s tax brings in {pct(o["amount_bp"])}% less for {o["delay_ticks"]} ticks',
     }
     def op_row(o):
         extra = []
@@ -933,7 +960,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "rites", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "rites", "vigils", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
