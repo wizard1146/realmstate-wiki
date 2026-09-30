@@ -701,11 +701,18 @@ def generate(rules):
         "resources": lambda k: f'{pct(k["amount_bp"])}% of their gold, food and materials, carried home',
         "people": lambda k: f'{pct(k["amount_bp"])}% of their peasants and thieves, killed',
         "books": lambda k: f'{pct(k["amount_bp"])}% of their unspent books, carried home',
+        "destroy": lambda k: f'destroys {pct(k["amount_bp"])}% of their land; nobody receives it',
         "blockade": lambda k: f'+{pct(k["amount_bp"])}% blockade on their whole state\'s material output (up to {pct(lp["blockade_max_bp"])}%, lifting {lp["blockade_ticks"]} ticks after the last); the lost output is destroyed',
     }
 
     def attack_effects(k):
         parts = [takes_text[k["takes"]](k)]
+        part_names = {"thieves": "thieves", "upgraded": "upgraded units (offense+, defense+, elite+)", "chariots": "chariots", "medics": "medics"}
+        share_names = {"all": "the share", "gold": "gold", "food": "food", "materials": "materials"}
+        for b in k.get("army_bonuses", []):
+            parts.append(f'{part_names[b["part"]]} add up to {pct(b["bp"])}% to {share_names[b["share"]]}, by their share of the troops sent')
+        if k.get("overkill_max_bp", 10_000) > 10_000:
+            parts.append(f'overwhelming force takes more: the share is multiplied by your offense &divide; their defense, up to {k["overkill_max_bp"] / 10_000:g}&times;')
         if k.get("defense_bonus_bp", 10_000) < 10_000:
             parts.append(f'their defense bonuses count for {pct(k["defense_bonus_bp"])}%')
         if k.get("attacker_losses_bp", 10_000) != 10_000:
@@ -718,6 +725,10 @@ def generate(rules):
 
     def attack_needs(k):
         needs = []
+        if k.get("own_state"):
+            needs.append("a house in your own state")
+        if k.get("requires_inactive_ticks"):
+            needs.append(f'that has given no command for {k["requires_inactive_ticks"]} ticks')
         if k["takes"] == "reclaim":
             needs.append("only against the army that took your land")
         elif k.get("range_min_bp"):
@@ -737,7 +748,7 @@ def generate(rules):
     attack_rows = "".join(
         f'<tr id="{e(k["id"])}"><td><b>{e(k["name"])}</b><br><code>{e(k["id"])}</code></td>'
         f'<td>{attack_effects(k)}</td><td>{attack_needs(k)}</td>'
-        f'<td class="cell-num">&times;{k["hostility_bp"] / 10_000:g}</td>'
+        f'<td class="cell-num">{"none" if k.get("own_state") else "&times;" + format(k["hostility_bp"] / 10_000, "g")}</td>'
         f'<td class="cell-num">{"+" + pct(k["war_bonus_bp"]) + "% (" + pct(k["amount_bp"] + k["war_bonus_bp"]) + "% in all)" if k.get("war_bonus_bp") else ""}</td></tr>\n'
         for k in kinds)
     hp = lp.get("hit_protection", {})
@@ -757,7 +768,7 @@ def generate(rules):
     if attack_rows:
         pages["attacks.html"] = header("Attacks", "Rules") + (
             '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. '
-            "The first is the default.</p>\n"
+            "The first is the default. Every attack is between states except Raze, which clears idle houses out of your own state.</p>\n"
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attack</th><th>A win</th><th>Needs</th>'
             '<th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>\n'
             + attack_rows + "</table></div>\n"
@@ -765,7 +776,7 @@ def generate(rules):
             "states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>\n"
             '<h2 id="protection">Protection from repeated hits</h2>\n'
             f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {lp.get("hit_window_ticks", 0)} ticks, {curve}. '
-            "This is applied last, after every other bonus. Reclaim and Blockade neither count as hits nor are reduced.</p>\n"
+            "This is applied last, after every other bonus. " + (", ".join(k["name"] for k in kinds if k.get("ignores_protection")) or "No attack") + " neither count as hits nor are reduced.</p>\n"
             + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recent hits</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
             + source_note(latest))
