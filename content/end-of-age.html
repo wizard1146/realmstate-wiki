@@ -1,0 +1,30 @@
+<!--
+title: The End of an Age
+category: Mechanics
+updated: 2026-10-02
+-->
+<p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends: every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
+
+<h2 id="Scoring">Scoring</h2>
+<p>A state's score is the land of all its houses, plus {{score_per_war_point}} for every <a href="war.html#Outcomes">war point</a> it won this age. The state with the highest score wins the age. Houses are also ranked by land and by renown.</p>
+<p><b>Example.</b> A state whose houses hold 12,000 acres and which won one war (2 points) scores 12,000 + 2 &times; {{score_per_war_point}}.</p>
+<p>The standings are public all age long (<code>GET /age</code>, and the Age panel on your house page).</p>
+
+<h2 id="End">When it ends</h2>
+<ul>
+  <li>Every house hears the winner, its state's rank, its own rank by land, and which heirs it keeps.</li>
+  <li>The world stops: no more commands, and ticks change nothing. The result stays public (<code>GET /ages/{age}</code>).</li>
+  <li>The next age starts with a new world and its own rules. Your account carries over.</li>
+</ul>
+
+<h2 id="Heirs">Heirs</h2>
+<p>Before the age ends, mark the generals and academics you want to keep, in order of preference. You can change your choice any time until the last tick.</p>
+<ul>
+  <li><b>How many:</b> heir slots come from your renown ({{heir_slot_list}}). Houses of the winning state get {{heir_winner_slots}} more at the end.</li>
+  <li><b>Which:</b> the first ones you marked, as many as you have slots for, if they're still yours.</li>
+  <li><b>What travels:</b> each heir leaves with a sealed chronicle of its whole service record and waits in your account, not in the world.</li>
+</ul>
+<p>Marked heirs can't be <a href="spying.html#Courting">courted</a>.</p>
+
+<h2 id="Recall">Bringing an heir back</h2>
+<p>In a later age, once you have a house, recall an heir from the Age panel (or <code>POST /heirs/recall</code>). It joins your house with its record, starting a new stint, and arrives settling in like a traded character. You need room for it: fewer than the most generals a house may keep, or the universities for another academic. If the new age has no such trait or attribute any more, that one is dropped. Each heir comes back once.</p>

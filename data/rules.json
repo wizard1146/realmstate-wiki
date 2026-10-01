@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "f480910da63582a1",
+      "hash": "985370f8a5d30760",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -910,6 +910,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "age_ticks": 1680,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
         "attacks": [
@@ -1883,6 +1884,9 @@
           ]
         ],
         "scientist_spawn_milli": 100,
+        "score_per_100_renown": 0,
+        "score_per_acre": 1,
+        "score_per_war_point": 500,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,
@@ -4191,7 +4195,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "d306da5732ca88b8",
+      "hash": "90c2f5b1282af1b6",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4303,6 +4307,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "age_ticks": 1680,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
         "attacks": [
@@ -5276,6 +5281,9 @@
           ]
         ],
         "scientist_spawn_milli": 100,
+        "score_per_100_renown": 0,
+        "score_per_acre": 1,
+        "score_per_war_point": 500,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,

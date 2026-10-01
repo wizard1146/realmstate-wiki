@@ -97,6 +97,10 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
+    ("age_ticks", "Age: length in ticks", "n"),
+    ("score_per_acre", "Age: score per acre of a state's land", "n"),
+    ("score_per_war_point", "Age: score per war point", "n"),
+    ("score_per_100_renown", "Age: score per 100 renown", "n"),
     ("false_flag_nerve_bp", "Spying: extra Nerve for a False Flag", "pct"),
     ("waver_ticks", "Spying: how long a courted character wavers (ticks)", "n"),
     ("reassure_gold", "Spying: gold to reassure a wavering character", "n"),
@@ -939,6 +943,9 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    if "age_ticks" in p:
+        values["age_weeks"] = f'{p["age_ticks"] * p["tick_ms"] / 3_600_000 / 168:g}'
+    values["heir_slot_list"] = ", ".join(f'{n} at {r:,} renown' for n, r in enumerate(p.get("heir_slots_renown", []), 1))
     for mat in latest.get("materials", []):
         if mat["key"]["identity"] == "bauxite":
             # Worked example for trade.html: one bauxite state with an equal share and a full roster.
@@ -960,7 +967,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "attacks", "operations", "hit_protection", "rites", "vigils", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

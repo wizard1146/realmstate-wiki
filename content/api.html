@@ -18,6 +18,10 @@ updated: 2026-09-29
 <tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /hall</code></td><td>The Hall of Deeds: every listing, with the character's profile and record, and auction state</td></tr>
 <tr><td><code>GET /offers</code></td><td>Offers you've made and offers on your characters (signed in)</td></tr>
+<tr><td><code>GET /age</code></td><td>The age: tick, ticks left, scoring weights, live state standings, and the result once it has ended</td></tr>
+<tr><td><code>GET /ages/{age}</code></td><td>An ended age's result: winner, state scores, house rankings, heirs kept</td></tr>
+<tr><td><code>GET /heirs</code></td><td>Your heirs waiting in your account, across ages (signed in)</td></tr>
+<tr><td><code>POST /heirs/recall</code></td><td>Bring one into your house this age: <code>{"uid": "1-G4"}</code> (signed in)</td></tr>
 <tr><td><code>GET /wars</code></td><td>Wars under way, ceasefires, tribute, war points and past wars</td></tr>
 <tr><td><code>GET /relations</code></td><td>Your state's hostility meters both ways, ceasefire proposals and land ratios; your state's war (signed in)</td></tr>
 <tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
