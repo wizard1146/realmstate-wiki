@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "985370f8a5d30760",
+      "hash": "a43d367e7efbb536",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1226,6 +1226,12 @@
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
+        "might_character": 500,
+        "might_chariot": 3,
+        "might_horse": 1,
+        "might_medic": 2,
+        "might_per_100_books": 1,
+        "might_unit_pct": 75,
         "nerve_fail_extra_bp": 5000,
         "nerve_regen_bp": 400,
         "offer_ticks": 24,
@@ -1884,9 +1890,9 @@
           ]
         ],
         "scientist_spawn_milli": 100,
-        "score_per_100_renown": 0,
-        "score_per_acre": 1,
-        "score_per_war_point": 500,
+        "score_land_bp": 5000,
+        "score_might_bp": 5000,
+        "score_per_war_point": 200,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,
@@ -4195,7 +4201,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "90c2f5b1282af1b6",
+      "hash": "558c6abe1ccff1ba",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4623,6 +4629,12 @@
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
+        "might_character": 500,
+        "might_chariot": 3,
+        "might_horse": 1,
+        "might_medic": 2,
+        "might_per_100_books": 1,
+        "might_unit_pct": 75,
         "nerve_fail_extra_bp": 5000,
         "nerve_regen_bp": 400,
         "offer_ticks": 24,
@@ -5281,9 +5293,9 @@
           ]
         ],
         "scientist_spawn_milli": 100,
-        "score_per_100_renown": 0,
-        "score_per_acre": 1,
-        "score_per_war_point": 500,
+        "score_land_bp": 5000,
+        "score_might_bp": 5000,
+        "score_per_war_point": 200,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,

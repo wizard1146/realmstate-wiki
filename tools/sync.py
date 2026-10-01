@@ -98,9 +98,15 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
     ("age_ticks", "Age: length in ticks", "n"),
-    ("score_per_acre", "Age: score per acre of a state's land", "n"),
-    ("score_per_war_point", "Age: score per war point", "n"),
-    ("score_per_100_renown", "Age: score per 100 renown", "n"),
+    ("score_land_bp", "Age: score for the most land (out of 100)", "pct"),
+    ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),
+    ("score_per_war_point", "Age: score per war point (out of 100)", "pct"),
+    ("might_unit_pct", "Age: might per troop, as a share of its offense plus defense", "n"),
+    ("might_medic", "Age: might per medic", "n"),
+    ("might_horse", "Age: might per horse", "n"),
+    ("might_chariot", "Age: might per chariot", "n"),
+    ("might_character", "Age: might per general or academic", "n"),
+    ("might_per_100_books", "Age: might per 100 science books invested", "n"),
     ("false_flag_nerve_bp", "Spying: extra Nerve for a False Flag", "pct"),
     ("waver_ticks", "Spying: how long a courted character wavers (ticks)", "n"),
     ("reassure_gold", "Spying: gold to reassure a wavering character", "n"),
@@ -945,6 +951,9 @@ def generate(rules):
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
     if "age_ticks" in p:
         values["age_weeks"] = f'{p["age_ticks"] * p["tick_ms"] / 3_600_000 / 168:g}'
+    if "score_per_war_point" in p:
+        values["score_war_point_pts"] = f'{p["score_per_war_point"] / 100:g}'
+        values["might_unit_factor"] = f'{p["might_unit_pct"] / 100:g}'
     values["heir_slot_list"] = ", ".join(f'{n} at {r:,} renown' for n, r in enumerate(p.get("heir_slots_renown", []), 1))
     for mat in latest.get("materials", []):
         if mat["key"]["identity"] == "bauxite":
