@@ -97,6 +97,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_base_success_bp", "Spying: chance with equal thieves per acre", "pct"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
+    ("protection_ticks", "Age: new-house protection (ticks)", "n"),
     ("age_ticks", "Age: length in ticks", "n"),
     ("score_land_bp", "Age: score for the most land (out of 100)", "pct"),
     ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),

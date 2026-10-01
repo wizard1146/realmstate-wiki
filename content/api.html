@@ -22,6 +22,9 @@ updated: 2026-09-29
 <tr><td><code>GET /ages/{age}</code></td><td>An ended age's result: winner, state scores, house rankings, heirs kept</td></tr>
 <tr><td><code>GET /heirs</code></td><td>Your heirs waiting in your account, across ages (signed in)</td></tr>
 <tr><td><code>POST /heirs/recall</code></td><td>Bring one into your house this age: <code>{"uid": "1-G4"}</code> (signed in)</td></tr>
+<tr><td><code>GET /state/messages</code></td><td>Your state's chat: the last 200 messages, or those after <code>?after={id}</code> (signed in)</td></tr>
+<tr><td><code>POST /state/messages</code></td><td>Post to your state's chat: <code>{"text": "..."}</code>, 1-1,000 characters (signed in)</td></tr>
+<tr><td><code>GET /live</code></td><td>A WebSocket of live updates: your house's news, your state's chat, and every tick (signed in, with a house). Each message is JSON with a <code>type</code>: <code>news</code>, <code>chat</code>, <code>tick</code>, or <code>resync</code> (reload what you show)</td></tr>
 <tr><td><code>GET /wars</code></td><td>Wars under way, ceasefires, tribute, war points and past wars</td></tr>
 <tr><td><code>GET /relations</code></td><td>Your state's hostility meters both ways, ceasefire proposals and land ratios; your state's war (signed in)</td></tr>
 <tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
@@ -54,6 +57,7 @@ updated: 2026-09-29
 {"type": "contribute", "house": 0, "category": "economy", "books": 1000}
 {"type": "spy", "house": 0, "target": 5, "thieves": 20}
 {"type": "operation", "house": 0, "target": 5, "op": "survey", "thieves": 20}
+{"type": "leave_protection", "house": 0}
 {"type": "cast", "house": 0, "rite": "war_hymns"}
 {"type": "cast", "house": 0, "rite": "rot", "target": 5}
 {"type": "operation", "house": 0, "target": 5, "op": "strongbox", "thieves": 50, "frame": [6, 2]}

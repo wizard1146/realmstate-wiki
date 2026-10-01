@@ -116,6 +116,7 @@
   "paper_cap_pct": "100",
   "paper_material": "paper",
   "peasant_growth_pct": "3",
+  "protection_ticks": 72,
   "raze_cost_base": 300,
   "realms": 13,
   "reassure_fee_pct": "2",
