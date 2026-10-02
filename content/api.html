@@ -18,7 +18,7 @@ updated: 2026-09-29
 <tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /hall</code></td><td>The Hall of Deeds: every listing, with the character's profile and record, and auction state</td></tr>
 <tr><td><code>GET /offers</code></td><td>Offers you've made and offers on your characters (signed in)</td></tr>
-<tr><td><code>GET /age</code></td><td>The age: tick, ticks left, scoring weights, live state standings, and the result once it has ended</td></tr>
+<tr><td><code>GET /age</code></td><td>The age: tick, when the next tick is due (<code>next_tick_at</code>, ms) and the tick length (<code>tick_ms</code>), ticks left, scoring weights, live state standings, and the result once it has ended</td></tr>
 <tr><td><code>GET /ages/{age}</code></td><td>An ended age's result: winner, state scores, house rankings, heirs kept</td></tr>
 <tr><td><code>GET /heirs</code></td><td>Your heirs waiting in your account, across ages (signed in)</td></tr>
 <tr><td><code>POST /heirs/recall</code></td><td>Bring one into your house this age: <code>{"uid": "1-G4"}</code> (signed in)</td></tr>
