@@ -14,7 +14,7 @@ updated: 2026-09-29
 <tr><td><code>GET /states/{realm}/{state}</code></td><td>A state's houses (public facts)</td></tr>
 <tr><td><code>GET /market</code></td><td>Every material: producing realms, last clearing price and volume, open orders by price</td></tr>
 <tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count and leader</td></tr>
-<tr><td><code>GET /state</code></td><td>Your state: members, leader, vote counts, treasury (signed in)</td></tr>
+<tr><td><code>GET /state</code></td><td>Your state: members, leader, vote counts, treasury, war <code>recovery</code> (<code>{"share_bp", "until_tick"}</code> or null) and <code>peace_dividend</code> (<code>{"from_tick", "active"}</code>, or null while at war) (signed in)</td></tr>
 <tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /hall</code></td><td>The Hall of Deeds: every listing, with the character's profile and record, and auction state</td></tr>
 <tr><td><code>GET /offers</code></td><td>Offers you've made and offers on your characters (signed in)</td></tr>

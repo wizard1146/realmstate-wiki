@@ -68,6 +68,14 @@ updated: 2026-09-29
 </ul>
 <p><b>Example.</b> Two states in realm 4 each hold a {{equal_share_pct}}% share. The first wins an intra-realm war, so its share rises by {{share_transfer_pct}} points and the loser's falls by {{share_transfer_pct}}.</p>
 
+<h2 id="Recovery">Recovery after a war</h2>
+<p>A beaten state gets help to rebuild. For {{recovery_ticks}} ticks after losing a war, every house in it has {{recovery_effects}}, and its peasants regrow {{recovery_growth_pct}}% faster.</p>
+<p>A war that ends in peace gives both sides {{recovery_peace_share_pct}}% of that. The winner of a war gets none. Recovery doesn't shield a state from attack: only the ceasefire after the war does that, and only against the state it fought.</p>
+
+<h2 id="PeaceDividend">The peace dividend</h2>
+<p>A state that stays out of war for {{peace_dividend_ticks}} ticks earns the peace dividend: every house in it has {{peace_dividend_effects}}. The count starts at the beginning of the age, or when the state's last war ended. The dividend stops the moment the state is at war again, whether it declared or was declared on.</p>
+<p>Peace is not a hiding place. The <a href="#Meter">hostility meter</a> still works, so a peaceful state can still be attacked, and it still gains extra land from a state that has been attacking it.</p>
+
 <h2 id="Ceasefires">Ceasefires</h2>
 <p>Leaders can also agree a ceasefire without a war. One leader proposes a length of {{ceasefire_min_ticks}} to {{ceasefire_max_ticks}} ticks. The other accepts by proposing the same length; a different length is a counter-proposal.</p>
 <p>A ceasefire blocks attacks and spying between the two states, and clears the meters between them. Either leader may break an agreed ceasefire once {{ceasefire_min_ticks}} ticks have passed. The ceasefire after a war can't be broken.</p>

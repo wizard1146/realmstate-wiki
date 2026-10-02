@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "756bacec06edf280",
+      "hash": "03f188c0f41598d1",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1571,6 +1571,17 @@
         "out_of_realm_bp": 1000,
         "paper_cap_bp": 10000,
         "paper_material": "paper",
+        "peace_dividend_mods": [
+          {
+            "bp": 300,
+            "stat": "income"
+          },
+          {
+            "bp": 500,
+            "stat": "book_production"
+          }
+        ],
+        "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
         "protection_ticks": 72,
         "raze_cost_base": 300,
@@ -1578,6 +1589,19 @@
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
+        "recovery_growth_bp": 5000,
+        "recovery_mods": [
+          {
+            "bp": -2500,
+            "stat": "construction_cost"
+          },
+          {
+            "bp": -2500,
+            "stat": "construction_time"
+          }
+        ],
+        "recovery_peace_share_bp": 5000,
+        "recovery_ticks": 72,
         "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
@@ -4202,7 +4226,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "5bee88d9d364bc7b",
+      "hash": "d5c5345249810b90",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4975,6 +4999,17 @@
         "out_of_realm_bp": 1000,
         "paper_cap_bp": 10000,
         "paper_material": "paper",
+        "peace_dividend_mods": [
+          {
+            "bp": 300,
+            "stat": "income"
+          },
+          {
+            "bp": 500,
+            "stat": "book_production"
+          }
+        ],
+        "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
         "protection_ticks": 72,
         "raze_cost_base": 300,
@@ -4982,6 +5017,19 @@
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
+        "recovery_growth_bp": 5000,
+        "recovery_mods": [
+          {
+            "bp": -2500,
+            "stat": "construction_cost"
+          },
+          {
+            "bp": -2500,
+            "stat": "construction_time"
+          }
+        ],
+        "recovery_peace_share_bp": 5000,
+        "recovery_ticks": 72,
         "renown_per_thousand_books": 1,
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,

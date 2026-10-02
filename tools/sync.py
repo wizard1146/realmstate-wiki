@@ -98,6 +98,10 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
     ("protection_ticks", "Age: new-house protection (ticks)", "n"),
+    ("recovery_ticks", "War: recovery after losing (ticks)", "n"),
+    ("recovery_growth_bp", "War: faster peasant regrowth in recovery", "pct"),
+    ("recovery_peace_share_bp", "War: share of recovery each side gets from a peace", "pct"),
+    ("peace_dividend_ticks", "War: ticks out of war before the peace dividend", "n"),
     ("age_ticks", "Age: length in ticks", "n"),
     ("score_land_bp", "Age: score for the most land (out of 100)", "pct"),
     ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),
@@ -950,6 +954,9 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    mods_text = lambda mods: ", ".join(f'{"+" if m["bp"] > 0 else "−"}{pct(abs(m["bp"]))}% {STAT_TEXT.get(m["stat"], m["stat"]).lower()}' for m in mods)
+    values["recovery_effects"] = mods_text(p.get("recovery_mods", []))
+    values["peace_dividend_effects"] = mods_text(p.get("peace_dividend_mods", []))
     if "age_ticks" in p:
         values["age_weeks"] = f'{p["age_ticks"] * p["tick_ms"] / 3_600_000 / 168:g}'
     if "score_per_war_point" in p:
@@ -977,7 +984,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "recovery_mods", "peace_dividend_mods", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
