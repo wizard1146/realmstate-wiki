@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "3b1e65446004bc3d",
+      "hash": "8c1a969ccc700a7d",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -928,7 +928,7 @@
             "name": "Assault",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": true,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -954,7 +954,7 @@
             "name": "Breach",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": true,
             "requires_building": "ancestral_hall",
             "requires_inactive_ticks": 0,
@@ -1006,7 +1006,7 @@
             "name": "Torch",
             "overkill_max_bp": 25000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -1048,7 +1048,7 @@
             "name": "Sack",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -1080,7 +1080,7 @@
             "name": "Massacre",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -1106,7 +1106,7 @@
             "name": "Blockade",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -1930,6 +1930,28 @@
         "settling_ticks": 24,
         "share_floor_bp": 700,
         "share_transfer_bp": 300,
+        "size_gains": [
+          [
+            2500,
+            200
+          ],
+          [
+            4000,
+            1000
+          ],
+          [
+            5000,
+            2500
+          ],
+          [
+            6000,
+            5000
+          ],
+          [
+            7500,
+            10000
+          ]
+        ],
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
@@ -4273,7 +4295,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "00d8d24c4fd16cd5",
+      "hash": "784487f7e0306f53",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4403,7 +4425,7 @@
             "name": "Assault",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": true,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -4429,7 +4451,7 @@
             "name": "Breach",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": true,
             "requires_building": "ancestral_hall",
             "requires_inactive_ticks": 0,
@@ -4481,7 +4503,7 @@
             "name": "Torch",
             "overkill_max_bp": 25000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -4523,7 +4545,7 @@
             "name": "Sack",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -4555,7 +4577,7 @@
             "name": "Massacre",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -4581,7 +4603,7 @@
             "name": "Blockade",
             "overkill_max_bp": 10000,
             "own_state": false,
-            "range_min_bp": 7500,
+            "range_min_bp": 0,
             "renown": false,
             "requires_building": null,
             "requires_inactive_ticks": 0,
@@ -5405,6 +5427,28 @@
         "settling_ticks": 24,
         "share_floor_bp": 700,
         "share_transfer_bp": 300,
+        "size_gains": [
+          [
+            2500,
+            200
+          ],
+          [
+            4000,
+            1000
+          ],
+          [
+            5000,
+            2500
+          ],
+          [
+            6000,
+            5000
+          ],
+          [
+            7500,
+            10000
+          ]
+        ],
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,

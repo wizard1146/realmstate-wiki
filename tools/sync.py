@@ -854,6 +854,15 @@ def generate(rules):
             left = max(hp["floor_bp"], left * (10_000 - hp["step_bp"]) // 10_000 if hp["kind"] == "compound" else left - hp["step_bp"])
     elif hp.get("kind") == "table":
         shares = [f'<td class="cell-num">{pct(hp["shares_bp"][min(n, len(hp["shares_bp"]) - 1)])}%</td>' for n in range(6)]
+    sg = lp.get("size_gains") or []
+    size_section = ""
+    if sg:
+        size_section = ('<h2 id="size">Target size</h2>\n<p>You can attack a house of any size, but a smaller one yields much less. '
+                        "The share of the usual gains depends on the target's land as a share of yours, in straight lines between these points "
+                        "(flat beyond the ends). It scales land, plunder, kills, blockade pressure and renown, on top of protection from repeated hits.</p>\n"
+                        '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Their land, of yours</th>'
+                        + "".join(f'<th class="cell-num">{pct(x)}%</th>' for x, _ in sg)
+                        + '</tr>\n<tr><td>Share of the usual gains</td>' + "".join(f'<td class="cell-num">{pct(y)}%</td>' for _, y in sg) + "</tr>\n</table></div>\n")
     if attack_rows:
         pages["attacks.html"] = header("Attacks", "Rules") + (
             '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. '
@@ -868,6 +877,7 @@ def generate(rules):
             "This is applied last, after every other bonus. " + (", ".join(k["name"] for k in kinds if k.get("ignores_protection")) or "No attack") + " neither count as hits nor are reduced.</p>\n"
             + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recent hits</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
+            + size_section
             + source_note(latest))
 
     # Rites.
@@ -1056,7 +1066,7 @@ def generate(rules):
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "recovery_mods", "peace_dividend_mods", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
