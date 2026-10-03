@@ -48,3 +48,4 @@ updated: 2026-09-29
 
 <h2 id="Downtime">If the server stops</h2>
 <p>Technical detail. The world is saved after every action, so stopping the server loses nothing. Game time keeps running while it's stopped: on restart, the server catches up every tick it missed at once, in order, as if it had never stopped. For example, three hours down at one-hour ticks means three ticks of income, growth and drafting the moment it comes back, and anything due meanwhile (land arriving, troops trained, armies home) happens at its proper time in that catch-up.</p>
+<p>For planned maintenance the server can instead be restarted <b>paused</b>: game time stops while it's down. The next tick, and everything under way (land arriving, troops training, armies away, auctions and offers), moves later by exactly the time it was down, so the world carries on where it stopped and nothing happens at once. After a crash the server catches up, so nobody loses time they were owed.</p>
