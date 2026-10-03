@@ -6,7 +6,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c82246c63e4acd19",
+          "hash": "287977042fc43d97",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -51,6 +51,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -60,7 +61,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "86888dbe2ed11221",
+          "hash": "1ea274127868e2d3",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -105,6 +106,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -114,7 +116,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "df4a9de2cc2dbe81",
+          "hash": "789535e560d7389f",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -159,6 +161,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -168,7 +171,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "25dbd824fc8ca90b",
+          "hash": "0779bba5bf85c918",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -213,6 +216,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -222,7 +226,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "224d9535d118ab1f",
+          "hash": "cad809534aee0e8b",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -252,6 +256,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -818,7 +823,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "532a0bc25a137b95",
+      "hash": "d8787ad192c859f8",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2109,7 +2114,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "b28f7bb169b3735b",
+          "hash": "220b1e71eccf892a",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -2117,6 +2122,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -2163,7 +2169,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "b07a9664f58c1097",
+          "hash": "036f09a49e89039b",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -2208,6 +2214,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -2217,7 +2224,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "74af98a25fa77718",
+          "hash": "60c68c9a0a465096",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -2226,6 +2233,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -2510,7 +2518,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2926107825173cb3",
+          "hash": "76040c6287d464c2",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -2518,6 +2526,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -2625,7 +2634,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "d44929a245dad558",
+          "hash": "37613936465a54cd",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -2638,6 +2647,7 @@
             0,
             1000,
             -500,
+            0,
             0,
             0,
             0,
@@ -2740,7 +2750,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "9b149947d28e412a",
+          "hash": "56badf833dd115d5",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -2753,6 +2763,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -2860,7 +2871,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8621c610a3f4b86f",
+          "hash": "419fc894e11947d3",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -2876,6 +2887,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -2975,7 +2987,7 @@
         {
           "conditional": [],
           "flags": 1,
-          "hash": "0bdfc566291dd74b",
+          "hash": "2c3262d5c1b212c1",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -2984,6 +2996,7 @@
           "mods_bp": [
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -3376,7 +3389,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "525762875b7135c3",
+          "hash": "4ba017984a983d42",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -3421,6 +3434,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -3430,7 +3444,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "186e8b535c8318d1",
+          "hash": "60a9bec1c473ceaf",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -3475,6 +3489,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -3484,7 +3499,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "6a6a8a2b5918e9a1",
+          "hash": "6c257776dda5b3f9",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -3529,6 +3544,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -3538,7 +3554,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2cb7ed9e86464e03",
+          "hash": "fc0a0668b2017637",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -3583,6 +3599,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -3592,7 +3609,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "be40eee46c9227b9",
+          "hash": "f327cabd31293645",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -3637,6 +3654,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -3651,7 +3669,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c82246c63e4acd19",
+          "hash": "287977042fc43d97",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -3696,6 +3714,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -3705,7 +3724,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "86888dbe2ed11221",
+          "hash": "1ea274127868e2d3",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -3750,6 +3769,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -3759,7 +3779,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "df4a9de2cc2dbe81",
+          "hash": "789535e560d7389f",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -3804,6 +3824,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -3813,7 +3834,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "25dbd824fc8ca90b",
+          "hash": "0779bba5bf85c918",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -3858,6 +3879,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -3867,7 +3889,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "224d9535d118ab1f",
+          "hash": "cad809534aee0e8b",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -3897,6 +3919,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -4488,7 +4511,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "1bf1fa62ddf196a9",
+      "hash": "f5e0093958d90a20",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5779,7 +5802,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "b28f7bb169b3735b",
+          "hash": "220b1e71eccf892a",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -5787,6 +5810,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -5833,7 +5857,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "b07a9664f58c1097",
+          "hash": "036f09a49e89039b",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -5878,6 +5902,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -5887,7 +5912,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "74af98a25fa77718",
+          "hash": "60c68c9a0a465096",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -5896,6 +5921,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -5946,7 +5972,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "4fdfcd0d9b58b64d",
+          "hash": "da86ad1d28cceb07",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -5960,6 +5986,7 @@
             0,
             0,
             -2000,
+            0,
             0,
             0,
             0,
@@ -6233,7 +6260,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2926107825173cb3",
+          "hash": "76040c6287d464c2",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -6241,6 +6268,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -6348,7 +6376,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "e06b7ef66b1b7473",
+          "hash": "353c6d4473bf29c2",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -6363,6 +6391,7 @@
             -500,
             0,
             -500,
+            0,
             0,
             0,
             0,
@@ -6463,7 +6492,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "9b149947d28e412a",
+          "hash": "56badf833dd115d5",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -6476,6 +6505,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -6583,7 +6613,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8621c610a3f4b86f",
+          "hash": "419fc894e11947d3",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -6599,6 +6629,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -6701,7 +6732,7 @@
         {
           "conditional": [],
           "flags": 3,
-          "hash": "c31ab94424b8d5d7",
+          "hash": "e2b3cc20d305e777",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -6710,6 +6741,7 @@
           "mods_bp": [
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -7099,7 +7131,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "525762875b7135c3",
+          "hash": "4ba017984a983d42",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -7144,6 +7176,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -7153,7 +7186,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "186e8b535c8318d1",
+          "hash": "60a9bec1c473ceaf",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -7198,6 +7231,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -7207,7 +7241,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "6a6a8a2b5918e9a1",
+          "hash": "6c257776dda5b3f9",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -7252,6 +7286,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -7261,7 +7296,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2cb7ed9e86464e03",
+          "hash": "fc0a0668b2017637",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -7306,6 +7341,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -7315,7 +7351,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "be40eee46c9227b9",
+          "hash": "f327cabd31293645",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -7332,6 +7368,7 @@
             0,
             0,
             1000,
+            0,
             0,
             0,
             0,
@@ -7565,7 +7602,8 @@
       "ward",
       "casualties_attacking",
       "casualties_defending",
-      "attack_gains"
+      "attack_gains",
+      "mercenary_cost"
     ],
     "unit_slots": [
       "soldier",

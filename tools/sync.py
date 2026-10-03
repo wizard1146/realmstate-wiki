@@ -63,6 +63,7 @@ STAT_TEXT = {
     "casualties_attacking": "Your troops killed in battle when you attack",
     "casualties_defending": "Your troops killed in battle when you defend",
     "attack_gains": "Everything your attacks take (land, plunder, kills)",
+    "mercenary_cost": "Gold paid for mercenaries",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
