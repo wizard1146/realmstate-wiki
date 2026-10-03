@@ -65,6 +65,7 @@ PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "r
 FLAG_TEXT = {
     "no_food": "The house's people and troops eat nothing.",
     "no_explore": "The house cannot explore for land.",
+    "elite_plus_plus": "Elite+ can be upgraded once more, into elite++.",
 }
 UNLOCK_TEXT = {
     "spell": "Grants a spell. Spells do nothing yet: they are not rites, and every house can already cast every rite.",
@@ -933,7 +934,7 @@ def generate(rules):
     ops = lp.get("operations", [])
     op_kind = {"survey": "Intel", "muster": "Intel", "ledgers": "Intel", "archives": "Intel", "couriers": "Intel", "dossier": "Intel",
                "steal_gold": "Theft", "steal_food": "Theft", "steal_material": "Theft", "steal_horses": "Theft", "steal_books": "Theft",
-               "undermine": "Sabotage", "set_fires": "Sabotage", "cut_throats": "Sabotage",
+               "undermine": "Sabotage", "set_fires": "Sabotage", "cut_throats": "Sabotage", "propaganda": "Subversion", "kidnap": "Theft",
                "foul_forges": "Sabotage", "poison_wells": "Sabotage", "silence_adepts": "Sabotage",
                "forge_orders": "Subversion", "unsettle_general": "Subversion", "court_general": "Subversion",
                "court_scholar": "Subversion", "stir_unrest": "Subversion"}
@@ -952,6 +953,8 @@ def generate(rules):
         "undermine": lambda o: f'Delays everything they are building by {o["delay_ticks"]} ticks',
         "set_fires": lambda o: f'Burns {pct(o["amount_bp"])}% of one building type you name, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
         "cut_throats": lambda o: f'Kills {pct(o["amount_bp"])}% of their troops at home, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "propaganda": lambda o: f'{pct(o["amount_bp"])}% of their soldiers at home defect to you, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
+        "kidnap": lambda o: f'Carries off {pct(o["amount_bp"])}% of their peasants to your lands, at most {o["cap_per_100_thieves"]:,} per 100 thieves',
         "foul_forges": lambda o: f'Delays their troops and medics in training by {o["delay_ticks"]} ticks',
         "poison_wells": lambda o: f'Stops their peasant growth for {o["delay_ticks"]} ticks',
         "silence_adepts": lambda o: f'Kills {pct(o["amount_bp"])}% of their adepts, at most {o["cap_per_100_thieves"]:,} per 100 thieves',

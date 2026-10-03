@@ -34,7 +34,7 @@ updated: 2026-09-29
 </ul>
 
 <h2 id="Upgrades">Upgrades</h2>
-<p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers. Offense+ also gains {{upgrade_cross_point}} defense, and defense+ {{upgrade_cross_point}} offense.</p>
+<p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers. Offense+ also gains {{upgrade_cross_point}} defense, and defense+ {{upgrade_cross_point}} offense. Races with <a href="effects.html#elite_plus_plus">elite_plus_plus</a> can upgrade elite+ once more, into elite++ (another {{upgrade_bonus_pct}}% on both stats).</p>
 <ul>
   <li>Cost: {{upgrade_cost}} {{upgrade_material}} per unit, {{upgrade_cost_elite}} per elite. See <a href="materials.html">Materials</a>.</li>
   <li>The units are in training for {{train_ticks}} hours, then return upgraded.</li>
@@ -58,6 +58,7 @@ updated: 2026-09-29
 
 <h2 id="Attacking">Attacking</h2>
 <p>You choose how many troops of each unit slot to send, and the <a href="attacks.html">kind of attack</a>: an Assault for land (the default), or Breach, Reclaim, Torch, Sack, Massacre or Blockade; within your own state, only Raze, for clearing out idle houses. Every kind fights the same battle; they differ in what a win takes and what they need. The battle resolves at once.</p>
+<p><b>Mercenaries.</b> You can hire {{mercenary_name}} for an attack: {{mercenary_gold}} gold each, at most one for every {{mercenary_ratio}} of your own troops sent. They fight at {{mercenary_off}} offense, die like the rest, and the survivors leave after the battle instead of coming home.</p>
 <ol>
   <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
   <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>

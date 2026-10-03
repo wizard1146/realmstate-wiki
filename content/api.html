@@ -36,7 +36,7 @@ updated: 2026-09-29
 </table></div>
 
 <h2 id="Commands">Commands</h2>
-<p>Unit slots, wherever a command or reply lists units: 0 soldiers, 1 offense, 2 defense, 3 elite, 4 thieves, 5 offense+, 6 defense+, 7 elite+. A <code>train</code> uses soldiers unless <code>direct</code> recruits straight from peasants. Spy reports show troops by kind instead: <code>{"soldiers", "offense", "defense", "elites"}</code>, base and upgraded together, thieves not shown.</p>
+<p>Unit slots, wherever a command or reply lists units: 0 soldiers, 1 offense, 2 defense, 3 elite, 4 thieves, 5 offense+, 6 defense+, 7 elite+, 8 mercenaries, 9 elite++. A shorter list means 0 for the rest. In an <code>attack</code>, <code>units[8]</code> hires that many mercenaries for the attack (see <a href="military.html#Attacking">Military</a>). A <code>train</code> uses soldiers unless <code>direct</code> recruits straight from peasants. Spy reports show troops by kind instead: <code>{"soldiers", "offense", "defense", "elites"}</code>, base and upgraded together, thieves not shown.</p>
 <pre><code>{"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage"}
 {"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage", "realm": 4, "state": 2}
 {"type": "explore", "house": 0, "acres": 20}

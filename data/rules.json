@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "923e0c255529bd2c",
+      "hash": "1eeccbc3aead8517",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1233,6 +1233,11 @@
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
+        "mercenary_def": 0,
+        "mercenary_gold": 150,
+        "mercenary_name": "Mercenaries",
+        "mercenary_off": 3,
+        "mercenary_ratio": 5,
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
@@ -1442,6 +1447,36 @@
             "war_bonus_bp": 100
           },
           {
+            "amount_bp": 200,
+            "cap_per_100_thieves": 20,
+            "chance_bp": 5500,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "propaganda",
+            "hostility_bp": 80000,
+            "id": "propaganda",
+            "name": "Propaganda",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 100
+          },
+          {
+            "amount_bp": 150,
+            "cap_per_100_thieves": 30,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "kidnap",
+            "hostility_bp": 60000,
+            "id": "kidnap",
+            "name": "Kidnapping",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 100
+          },
+          {
             "amount_bp": 150,
             "cap_per_100_thieves": 50,
             "chance_bp": 6000,
@@ -1524,8 +1559,8 @@
             "delay_ticks": 12,
             "effect": "unsettle_general",
             "hostility_bp": 60000,
-            "id": "unsettle",
-            "name": "Unsettle a General",
+            "id": "bribe",
+            "name": "Bribe a General",
             "nerve_bp": 1500,
             "thieves_per_material": 0,
             "vigilance_bp": 1200,
@@ -2535,6 +2570,18 @@
               "gold": 900,
               "name": "Knights+",
               "off": 10
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 8,
+              "gold": 900,
+              "name": "Knights++",
+              "off": 13
             }
           ],
           "unlocks": []
@@ -2634,6 +2681,18 @@
               "gold": 1000,
               "name": "Warlords+",
               "off": 14
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 4,
+              "gold": 1000,
+              "name": "Warlords++",
+              "off": 18
             }
           ],
           "unlocks": []
@@ -2733,6 +2792,18 @@
               "gold": 950,
               "name": "Bladedancers+",
               "off": 9
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 10,
+              "gold": 950,
+              "name": "Bladedancers++",
+              "off": 11
             }
           ],
           "unlocks": [
@@ -2837,6 +2908,18 @@
               "gold": 1100,
               "name": "Ironclads+",
               "off": 11
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 11,
+              "gold": 1100,
+              "name": "Ironclads++",
+              "off": 14
             }
           ],
           "unlocks": []
@@ -2936,6 +3019,18 @@
               "gold": 1000,
               "name": "Wights+",
               "off": 13
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 5,
+              "gold": 1000,
+              "name": "Wights++",
+              "off": 16
             }
           ],
           "unlocks": []
@@ -4301,7 +4396,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "04c76a46afb778af",
+      "hash": "0e8a60f99eaeef8e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4736,6 +4831,11 @@
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
+        "mercenary_def": 0,
+        "mercenary_gold": 150,
+        "mercenary_name": "Mercenaries",
+        "mercenary_off": 3,
+        "mercenary_ratio": 5,
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
@@ -4945,6 +5045,36 @@
             "war_bonus_bp": 100
           },
           {
+            "amount_bp": 200,
+            "cap_per_100_thieves": 20,
+            "chance_bp": 5500,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "propaganda",
+            "hostility_bp": 80000,
+            "id": "propaganda",
+            "name": "Propaganda",
+            "nerve_bp": 2000,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1500,
+            "war_bonus_bp": 100
+          },
+          {
+            "amount_bp": 150,
+            "cap_per_100_thieves": 30,
+            "chance_bp": 6000,
+            "cost_material": null,
+            "delay_ticks": 0,
+            "effect": "kidnap",
+            "hostility_bp": 60000,
+            "id": "kidnap",
+            "name": "Kidnapping",
+            "nerve_bp": 1500,
+            "thieves_per_material": 0,
+            "vigilance_bp": 1200,
+            "war_bonus_bp": 100
+          },
+          {
             "amount_bp": 150,
             "cap_per_100_thieves": 50,
             "chance_bp": 6000,
@@ -5027,8 +5157,8 @@
             "delay_ticks": 12,
             "effect": "unsettle_general",
             "hostility_bp": 60000,
-            "id": "unsettle",
-            "name": "Unsettle a General",
+            "id": "bribe",
+            "name": "Bribe a General",
             "nerve_bp": 1500,
             "thieves_per_material": 0,
             "vigilance_bp": 1200,
@@ -6087,6 +6217,18 @@
               "gold": 900,
               "name": "Knights+",
               "off": 10
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 8,
+              "gold": 900,
+              "name": "Knights++",
+              "off": 13
             }
           ],
           "unlocks": []
@@ -6186,6 +6328,18 @@
               "gold": 950,
               "name": "Warlords+",
               "off": 14
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 4,
+              "gold": 950,
+              "name": "Warlords++",
+              "off": 18
             }
           ],
           "unlocks": []
@@ -6285,6 +6439,18 @@
               "gold": 950,
               "name": "Bladedancers+",
               "off": 9
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 10,
+              "gold": 950,
+              "name": "Bladedancers++",
+              "off": 11
             }
           ],
           "unlocks": [
@@ -6389,6 +6555,18 @@
               "gold": 1100,
               "name": "Ironclads+",
               "off": 11
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 11,
+              "gold": 1100,
+              "name": "Ironclads++",
+              "off": 14
             }
           ],
           "unlocks": []
@@ -6491,6 +6669,18 @@
               "gold": 1050,
               "name": "Dreadknights+",
               "off": 13
+            },
+            {
+              "def": 0,
+              "gold": 150,
+              "name": "Mercenaries",
+              "off": 3
+            },
+            {
+              "def": 6,
+              "gold": 1050,
+              "name": "Dreadknights++",
+              "off": 16
             }
           ],
           "unlocks": []
@@ -7185,7 +7375,8 @@
   "vocabulary": {
     "flags": [
       "no_food",
-      "no_explore"
+      "no_explore",
+      "elite_plus_plus"
     ],
     "stats": [
       "income",
@@ -7233,7 +7424,9 @@
       "thief",
       "offense+",
       "defense+",
-      "elite+"
+      "elite+",
+      "mercenary",
+      "elite++"
     ],
     "unlock_kinds": [
       "spell",
