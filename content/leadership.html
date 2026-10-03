@@ -28,7 +28,7 @@ updated: 2026-10-04
 <p>The leader can rename the state at most once every {{state_rename_ticks}} ticks. A name is 1 to 40 characters, and no two states can share one (capitals don't count as different). Every house in the state hears about the change.</p>
 
 <h2 id="Chat">State chat</h2>
-<p>Every state has its own chat, for its members only. Messages arrive live on your house page. It keeps the age's whole conversation.</p>
+<p>Every state has its own chat, for its members only. Messages arrive live on your house page. It keeps its newest 1,000 messages for the rest of the age; see <a href="chat.html">Chat</a> for the limits.</p>
 
 <h2 id="Tax">Tax</h2>
 <p>Each tick, the state takes a share of every member's income and pays it into the treasury. The leader sets the rate anywhere from {{tax_min_pct}}% to {{tax_max_pct}}%; a new state starts at {{tax_default_pct}}%. A change applies from the next tick, and every member's news reports it.</p>
