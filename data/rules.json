@@ -823,7 +823,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "d8787ad192c859f8",
+      "hash": "d9b281f9e7ddca5a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2029,6 +2029,7 @@
         "starvation_elites_bp": 100,
         "starvation_soldiers_bp": 300,
         "starvation_specialists_bp": 200,
+        "state_rename_ticks": 24,
         "states_per_realm": 7,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
@@ -4511,7 +4512,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "f5e0093958d90a20",
+      "hash": "6fe0b05ccb670512",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5717,6 +5718,7 @@
         "starvation_elites_bp": 100,
         "starvation_soldiers_bp": 300,
         "starvation_specialists_bp": 200,
+        "state_rename_ticks": 24,
         "states_per_realm": 7,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,

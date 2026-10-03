@@ -154,6 +154,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("house_split_bp", "Economy: part of a state's output shared among its houses", "pct"),
     ("tax_min_bp", "Economy: lowest state tax on house income", "pct"),
     ("tax_max_bp", "Economy: highest state tax on house income", "pct"),
+    ("state_rename_ticks", "Economy: ticks between a leader's renames of the state", "n"),
     ("tax_default_bp", "Economy: tax a new state starts with", "pct"),
     ("upgrade_bonus_bp", "Upgrades: extra main stat of an upgraded unit (unless the race sets it)", "pct"),
     ("upgrade_material", "Upgrades: material spent", "text"),

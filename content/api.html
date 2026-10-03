@@ -1,7 +1,7 @@
 <!--
 title: API for Tools
 category: Tools
-updated: 2026-09-29
+updated: 2026-10-04
 -->
 <p>The game has an official HTTP API, so tools never need to scrape pages. It sends and receives JSON.</p>
 
@@ -79,6 +79,7 @@ updated: 2026-09-29
 {"type": "donate", "house": 0, "material": "bauxite", "amount": 25}
 {"type": "grant", "house": 0, "to": 3, "amount": 1000}
 {"type": "set_tax", "house": 0, "rate_bp": 300}
+{"type": "rename_state", "house": 0, "name": "The Ashen Reach"}
 {"type": "recruit_academic", "house": 0, "name": "Orla", "category": "economy"}
 {"type": "list", "house": 0, "character": {"kind": "general", "id": 1}, "reserve": 5000, "ticks": 24}
 {"type": "list", "house": 0, "character": {"kind": "academic", "id": 2}}
@@ -93,7 +94,7 @@ updated: 2026-09-29
 {"type": "withdraw", "house": 0}
 {"type": "propose_ceasefire", "house": 0, "realm": 6, "state": 3, "ticks": 48}
 {"type": "break_ceasefire", "house": 0, "realm": 6, "state": 3}</code></pre>
-<p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders, <code>grant</code>, <code>set_tax</code>, <code>set_research</code> and the <a href="war.html">war</a> commands are for the state leader only. A <code>list</code> without <code>reserve</code> and <code>ticks</code> takes offers instead of running an auction. Rates are in basis points: 300 means 3%.</p>
+<p>Leave out <code>material</code> in <code>donate</code> and <code>grant</code> to move gold. <code>treasury</code> orders, <code>grant</code>, <code>set_tax</code>, <code>rename_state</code>, <code>set_research</code> and the <a href="war.html">war</a> commands are for the state leader only. A <code>list</code> without <code>reserve</code> and <code>ticks</code> takes offers instead of running an auction. Rates are in basis points: 300 means 3%.</p>
 <p>Races and personalities are named by identity. Units are numbered by slot: 0 offense, 1 defense, 2 elite, 3 thief, 4 offense+, 5 defense+, 6 elite+; <code>units</code> lists all seven. <code>medics</code>, <code>general</code>, <code>horses</code>, <code>chariots</code> and <code>kind</code> (an id from <a href="attacks.html">Attacks</a>; default <code>assault</code>) are optional in an attack. Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 
 <h2 id="Answers">Answers</h2>
