@@ -60,6 +60,9 @@ STAT_TEXT = {
     "refine_yield": "What refining makes",
     "paper_books": "Books each paper adds",
     "ward": "Resistance to hexes and divinations against you, and to storm damage",
+    "casualties_attacking": "Your troops killed in battle when you attack",
+    "casualties_defending": "Your troops killed in battle when you defend",
+    "attack_gains": "Everything your attacks take (land, plunder, kills)",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
@@ -303,6 +306,15 @@ def effects_list(d, stats):
             cls = "cell-good" if (bp > 0) != (stats[i] in ("food_consumption", "explore_cost", "training_cost", "return_time")) else "cell-bad"
             items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
                          f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>')
+    for c in d.get("conditional", []):
+        s, bp = c["stat"], c["bp"]
+        sign = "+" if bp > 0 else ""
+        cls = "cell-good" if (bp > 0) != (s in ("food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking", "casualties_defending")) else "cell-bad"
+        when = [{True: "at war", False: "out of war"}[c["at_war"]]] if c.get("at_war") is not None else []
+        when += [f'against {c["vs"]}'] if c.get("vs") else []
+        when += [f'on {c["attack"]} attacks'] if c.get("attack") else []
+        items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(s, s).lower())} <b>{e(", ".join(when))}</b> '
+                     f'(<a href="effects.html#{s}"><code>{s}</code></a>, <a href="effects.html#conditions">conditional</a>)</li>')
     return items
 
 
@@ -1004,6 +1016,10 @@ def generate(rules):
         "rule files combine them. A race and a personality's modifiers on the same stat add together.</p>\n"
         '<h2 id="modifiers">Modifiers</h2>\n<p>Change a stat by a percentage.</p>\n'
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Stat</th><th>What it changes</th></tr>\n' + stat_rows + "</table></div>\n"
+        '<h2 id="conditions">Conditional modifiers</h2>\n<p>A modifier can hold only under conditions, all of which must hold: '
+        '<code>when = "war"</code> (only while your state is at war) or <code>when = "peace"</code> (only while it isn\'t); '
+        '<code>vs = "troll"</code> (only in battles against a house of that race); <code>attack = "massacre"</code> (only on that kind of attack). '
+        'Race pages show the conditions next to each modifier.</p>\n'
         '<h2 id="stacking">How modifiers stack</h2>\n'
         "<p>Every modifier on a stat adds together: race, personality, buildings, sciences, Colloquium projects, academics, "
         "rites, vigils and war standing. The total is applied once.</p>\n<ul>\n"
