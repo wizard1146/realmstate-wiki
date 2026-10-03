@@ -67,10 +67,11 @@ FLAG_TEXT = {
     "no_explore": "The house cannot explore for land.",
 }
 UNLOCK_TEXT = {
-    "spell": "Grants a spell (spells arrive in a later milestone).",
-    "operation": "Grants a thievery or spy operation (later milestone).",
-    "building": "Grants a building (later milestone).",
+    "spell": "Grants a spell. Spells do nothing yet: they are not rites, and every house can already cast every rite.",
+    "operation": "Grants a thievery or spy operation. Nothing uses this yet: every house can run every operation.",
+    "building": "Grants a building. Nothing uses this yet: every house can build every building.",
 }
+UNLOCK_LIVE = set()   # unlock kinds the engine acts on; the rest show "no effect yet" on race and personality pages
 UNIT_ROLE = {"offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief",
              "offense+": "Offense specialist, upgraded", "defense+": "Defense specialist, upgraded", "elite+": "Elite, upgraded"}
 PARAM_TEXT = [  # (key, label, how to show it)
@@ -285,13 +286,50 @@ def effects_list(d, stats):
     return items
 
 
+def unlock_note(kind):
+    return "" if kind in UNLOCK_LIVE else ' <span class="cell-muted">(no effect yet)</span>'
+
+
+def material_uses(a):
+    """{material identity: [what spends it, as HTML]}, read from the age's rules so it can't go stale."""
+    p, uses = a["params"], {m["key"]["identity"]: [] for m in a.get("materials", [])}
+    ident = list(uses)
+
+    def add(m, text):
+        if m in uses and text not in uses[m]: uses[m].append(text)
+    add(p.get("upgrade_material"), '<a href="military.html#Upgrades">unit upgrades</a>')
+    add(p.get("medic_material"), '<a href="military.html#Medics">medics</a>')
+    add(p.get("general_material"), '<a href="generals.html">generals</a>')
+    add(p.get("chariot_material"), '<a href="military.html#Mounts">chariots</a>')
+    add(p.get("paper_material"), '<a href="science.html#Paper">science</a>')
+    add(p.get("academic_material"), '<a href="academics.html">academics</a>')
+    if any(r.get("incense") for r in p.get("rites", [])):
+        add(p.get("rite_material"), '<a href="rite-list.html">hexes</a>')
+    if any(v.get("incense") for v in p.get("vigils", [])):
+        add(p.get("rite_material"), '<a href="rites.html#Vigils">vigils</a>')
+    for b in a.get("buildings", []):
+        for m, _ in b["materials"]:
+            add(ident[m], f'<a href="buildings.html#{b["key"]["identity"]}">{e(b["name"] if b["max_count"] == 1 else b["name"].lower())}</a>')
+    for k in p.get("attacks", []):
+        if k.get("cost_material"): add(k["cost_material"], f'the <a href="attacks.html#{k["id"]}">{e(k["name"])}</a> attack')
+    for o in p.get("operations", []):
+        if o.get("cost_material"): add(o["cost_material"], f'the <a href="operations.html#{o["id"]}">{e(o["name"])}</a> operation')
+    made = {}
+    for r in a.get("recipes", []):
+        for m, _ in r["inputs"]:
+            made.setdefault(ident[m], []).append(e(a["materials"][r["output"]]["name"].lower()))
+    for m, outs in made.items():
+        add(m, f'<a href="#refining">refining</a> into {" or ".join(outs)}')
+    return uses
+
+
 def def_effects_html(d, vocab):
     items = effects_list(d, vocab["stats"])
     for n, name in enumerate(vocab["flags"]):
         if d["flags"] & (1 << n):
             items.append(f'<li>{e(FLAG_TEXT.get(name, name))} (<a href="effects.html#{name}"><code>{name}</code></a>)</li>')
     for kind, ident in d.get("unlocks", []):
-        items.append(f'<li>Unlocks {e(kind)} <b>{e(ident)}</b> (<a href="effects.html#unlock-{kind}"><code>{kind}</code></a>)</li>')
+        items.append(f'<li>Unlocks {e(kind)} <b>{e(ident)}</b>{unlock_note(kind)} (<a href="effects.html#unlock-{kind}"><code>{kind}</code></a>)</li>')
     if not items:
         return "<p>No special effects.</p>\n"
     return '<ul>\n' + "\n".join(items) + "\n</ul>\n"
@@ -329,7 +367,7 @@ def split_effects(d, vocab):
     for li in effects_list(d, vocab["stats"]):
         (good if 'class="cell-good"' in li else bad).append(li)
     other = [f'<li>{e(FLAG_TEXT.get(name, name))}</li>' for n, name in enumerate(vocab["flags"]) if d["flags"] & (1 << n)]
-    other += [f'<li>Unlocks {e(kind)} <b>{e(ident)}</b></li>' for kind, ident in d.get("unlocks", [])]
+    other += [f'<li>Unlocks {e(kind)} <b>{e(ident)}</b>{unlock_note(kind)}</li>' for kind, ident in d.get("unlocks", [])]
     return good, bad, other
 
 
@@ -584,6 +622,14 @@ def generate(rules):
     refined_from = {r["output"]: r["inputs"][0][0] for r in latest.get("recipes", []) if r["inputs"]}
     refined_from = {out: src for out, src in refined_from.items()
                      if not any(x == out for x in latest["realm_material"])}
+    uses = material_uses(latest)
+
+    def used_for(mat):
+        u = uses.get(mat["key"]["identity"])
+        if not u: return e(mat["description"])
+        text = ", ".join(u) + "."
+        i = text.index(">") + 1 if text.startswith("<") else 0   # capitalise the first word, inside its link
+        return text[:i] + text[i].upper() + text[i + 1:]
     mat_rows = []
     for m, mat in enumerate(mats):
         if m in refined_from: continue
@@ -591,17 +637,17 @@ def generate(rules):
             mat, ident = mats[n], mats[n]["key"]["identity"]
             if n == m:
                 realms = [str(r + 1) for r, x in enumerate(latest["realm_material"]) if x == m]
-                mat_rows.append(f'<tr id="{ident}"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
+                mat_rows.append(f'<tr id="{ident}"><td><b>{e(mat["name"])}</b></td><td>{used_for(mat)}</td>'
                                 f'<td>{", ".join(realms)}</td><td class="cell-num">{mat["output_per_tick"]:,}</td>'
                                 f'<td class="cell-num">{mat["output_per_tick"] * len(realms):,}</td></tr>')
             else:
-                mat_rows.append(f'<tr id="{ident}" class="row-sub"><td><b>{e(mat["name"])}</b></td><td>{e(mat["description"])}</td>'
+                mat_rows.append(f'<tr id="{ident}" class="row-sub"><td><b>{e(mat["name"])}</b></td><td>{used_for(mat)}</td>'
                                 f'<td>Refined from {e(mats[m]["name"])}</td><td class="cell-num cell-muted">–</td>'
                                 f'<td class="cell-num cell-muted">–</td></tr>')
     pages["materials.html"] = header("Materials", "Rules, Economy") + (
         "<p>Every realm produces its own signature material each tick. No material comes from just one realm, "
         "so nobody can corner the market. See "
-        '<a href="trade.html">Materials and Trade</a> for how production is shared and sold.</p>\n'
+        '<a href="trade.html">Trade</a> for how production is shared and sold.</p>\n'
         f'<h2 id="current">In {e(latest["name"])}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
         '<tr><th>Material</th><th>Used for</th><th>Made in realms</th><th class="cell-num">Per realm, per tick</th>'
         '<th class="cell-num">World total, per tick</th></tr>\n' + "\n".join(mat_rows) + "\n</table></div>\n" + source_note(latest))
@@ -926,12 +972,24 @@ def generate(rules):
         "rule files combine them. A race and a personality's modifiers on the same stat add together.</p>\n"
         '<h2 id="modifiers">Modifiers</h2>\n<p>Change a stat by a percentage.</p>\n'
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Stat</th><th>What it changes</th></tr>\n' + stat_rows + "</table></div>\n"
+        '<h2 id="stacking">How modifiers stack</h2>\n'
+        "<p>Every modifier on a stat adds together: race, personality, buildings, sciences, Colloquium projects, academics, "
+        "rites, vigils and war standing. The total is applied once.</p>\n<ul>\n"
+        "<li><b>Floor.</b> A total below &minus;100% counts as &minus;100%. The value falls to zero, never below. "
+        "Construction can cost no gold at all, but a building's extra gold (the Ancestral Hall's, say) is never reduced.</li>\n"
+        '<li><b>Building caps.</b> Each building caps its own bonus (see <a href="buildings.html">Buildings</a>). '
+        "Building efficiency then multiplies it, so efficiency above 100% can pass the cap.</li>\n"
+        "<li><b>No other caps on the total</b>, except these results: at most 80% of a target's "
+        '<a href="#ward"><code>ward</code></a> counts; rite and operation chances stay between 1% and 95%; '
+        '<a href="#trade_bonus"><code>trade_bonus</code></a> never goes below zero; and times never fall below an instant.</li>\n'
+        "</ul>\n"
         '<h2 id="flags">Flags</h2>\n<p>Switch a rule on.</p>\n'
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Flag</th><th>Effect</th></tr>\n' + flag_rows + "</table></div>\n"
         '<h2 id="unlocks">Unlocks</h2>\n'
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Kind</th><th>Effect</th></tr>\n' + unlock_rows + "</table></div>\n"
-        '<h2 id="units">Unit slots</h2>\n<p>Every race fills the same four unit slots: '
-        + ", ".join(e(UNIT_ROLE.get(u, u)).lower() for u in vocab["unit_slots"]) + ".</p>\n" + source_note(latest))
+        '<h2 id="units">Unit slots</h2>\n<p>Every race fills the same ' + str(len(vocab["unit_slots"])) + ' unit slots: '
+        + ", ".join(e(UNIT_ROLE.get(u, u)).lower() for u in vocab["unit_slots"]) + ". A race names four base units; "
+        "the upgraded slots are those units after an upgrade. Thieves have no upgrade.</p>\n" + source_note(latest))
 
     # Values for hand-written pages: the latest age's numbers.
     p = latest["params"]

@@ -45,6 +45,13 @@ generated: tools/sync.py
 <tr id="paper_books"><td><code>paper_books</code></td><td>Books each paper adds</td></tr>
 <tr id="ward"><td><code>ward</code></td><td>Resistance to hexes and divinations against you, and to storm damage</td></tr>
 </table></div>
+<h2 id="stacking">How modifiers stack</h2>
+<p>Every modifier on a stat adds together: race, personality, buildings, sciences, Colloquium projects, academics, rites, vigils and war standing. The total is applied once.</p>
+<ul>
+<li><b>Floor.</b> A total below &minus;100% counts as &minus;100%. The value falls to zero, never below. Construction can cost no gold at all, but a building's extra gold (the Ancestral Hall's, say) is never reduced.</li>
+<li><b>Building caps.</b> Each building caps its own bonus (see <a href="buildings.html">Buildings</a>). Building efficiency then multiplies it, so efficiency above 100% can pass the cap.</li>
+<li><b>No other caps on the total</b>, except these results: at most 80% of a target's <a href="#ward"><code>ward</code></a> counts; rite and operation chances stay between 1% and 95%; <a href="#trade_bonus"><code>trade_bonus</code></a> never goes below zero; and times never fall below an instant.</li>
+</ul>
 <h2 id="flags">Flags</h2>
 <p>Switch a rule on.</p>
 <div class="table-scroll" data-updated="none"><table>
@@ -55,10 +62,10 @@ generated: tools/sync.py
 <h2 id="unlocks">Unlocks</h2>
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>Kind</th><th>Effect</th></tr>
-<tr id="unlock-spell"><td><code>spell</code></td><td>Grants a spell (spells arrive in a later milestone).</td></tr>
-<tr id="unlock-operation"><td><code>operation</code></td><td>Grants a thievery or spy operation (later milestone).</td></tr>
-<tr id="unlock-building"><td><code>building</code></td><td>Grants a building (later milestone).</td></tr>
+<tr id="unlock-spell"><td><code>spell</code></td><td>Grants a spell. Spells do nothing yet: they are not rites, and every house can already cast every rite.</td></tr>
+<tr id="unlock-operation"><td><code>operation</code></td><td>Grants a thievery or spy operation. Nothing uses this yet: every house can run every operation.</td></tr>
+<tr id="unlock-building"><td><code>building</code></td><td>Grants a building. Nothing uses this yet: every house can build every building.</td></tr>
 </table></div>
 <h2 id="units">Unit slots</h2>
-<p>Every race fills the same four unit slots: offense specialist, defense specialist, elite, thief, offense specialist, upgraded, defense specialist, upgraded, elite, upgraded.</p>
+<p>Every race fills the same 7 unit slots: offense specialist, defense specialist, elite, thief, offense specialist, upgraded, defense specialist, upgraded, elite, upgraded. A race names four base units; the upgraded slots are those units after an upgrade. Thieves have no upgrade.</p>
 <p class="data-note">Generated from the game's rule files: Age 2, ruleset <code>d5c5345249810b90</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

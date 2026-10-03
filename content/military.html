@@ -51,7 +51,21 @@ updated: 2026-09-29
 <p>You can't attack houses in your own state (except to <a href="attacks.html#raze">raze</a> an idle one), across a ceasefire, or while either house is under <a href="getting-started.html#Protection">protection</a>. Every attack raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours.</p>
 
 <h2 id="Renown">Renown</h2>
-<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more, and winning a war gives every house in the state {{war_win_renown}}. Renown unlocks better <a href="generals.html">generals</a>.</p>
+<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more.</p>
+<p>Renown is never spent. Where it comes from:</p>
+<ul>
+  <li><b>Attacks:</b> a winning assault, breach or reclaim (above). Other kinds of attack earn none.</li>
+  <li><b>Wars:</b> winning a war gives every house in the state {{war_win_renown}}; a peace gives both sides {{war_peace_renown}}; the loser gets none.</li>
+  <li><b><a href="colloquium.html">Colloquium</a>:</b> {{renown_per_thousand_books}} for every 1,000 books you give to a project.</li>
+  <li><b><a href="buildings.html#ancestral_hall">Ancestral Hall</a>:</b> renown every tick.</li>
+</ul>
+<p>The <a href="effects.html#renown_gain">renown gain</a> modifier (from race, personality and the <a href="projects.html#heraldry">Heraldry</a> project) raises renown from attacks, the Colloquium and the Ancestral Hall, but not from wars.</p>
+<p>What it does:</p>
+<ul>
+  <li>More trait slots for your <a href="generals.html">generals</a> (at {{general_trait_renown}} renown), and the right to choose traits instead of drawing them at {{general_pick_renown}}.</li>
+  <li><a href="end-of-age.html#Heirs">Heir slots</a> at the end of the age ({{heir_slot_list}}).</li>
+  <li>Rankings: houses are ranked by renown at the end of the age. It doesn't count toward the state's score.</li>
+</ul>
 
 <h2 id="What_You_Learn">What you learn</h2>
 <p>You see your own offense, whether you won, the land taken and the losses on both sides, but never the defender's defense. The defender's news tells them who attacked and what they lost. To size up a target first, <a href="spying.html">spy</a> on it.</p>

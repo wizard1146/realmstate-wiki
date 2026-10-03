@@ -1,12 +1,12 @@
 <!--
-title: Materials and Trade
+title: Trade
 category: Mechanics, Economy
 updated: 2026-09-29
 -->
 <p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
 
 <h2 id="Shares">Shares</h2>
-<p>A realm's output is divided among its {{states_per_realm}} states by share. Shares start equal, about {{equal_share_pct}}% each, and never fall below {{share_floor_pct}}%. Wars inside a realm will move shares (a later milestone).</p>
+<p>A realm's output is divided among its {{states_per_realm}} states by share. Shares start equal, about {{equal_share_pct}}% each, and never fall below {{share_floor_pct}}%. Winning an <a href="war.html#Outcomes">intra-realm war</a> moves share from the loser to the winner.</p>
 
 <h2 id="Split">Houses and treasury</h2>
 <p>Of each state's part, {{house_split_pct}}% is shared equally among its houses. The rest goes to the state's treasury, which only the <a href="leadership.html">state leader</a> can use. The split is set per age.</p>
@@ -20,7 +20,8 @@ updated: 2026-09-29
   <li>Better-priced orders fill first, then older ones. Whatever doesn't trade stays open.</li>
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
-<p><a href="buildings.html#trading_houses">Trading houses</a> add a premium to the gold you receive when you sell (not for treasury sales).</p>
+<p>The market takes no fee: a seller gets the full clearing price, and no share goes to the seller's state. (The {{trade_fee_pct}}% fee to the seller's state applies only to selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
+<p><a href="buildings.html#trading_houses">Trading houses</a> add a premium to the gold you receive when you sell (not for treasury sales). The game pays the premium as new gold; the buyer still pays only the clearing price.</p>
 <p>States that make the same material may agree on prices between themselves. The game doesn't enforce such agreements; keeping them is up to the players.</p>
 
 <h2 id="Uses">What materials are for</h2>
@@ -28,8 +29,10 @@ updated: 2026-09-29
   <li><b>{{upgrade_material}}</b>: <a href="military.html#Upgrades">upgrading units</a>.</li>
   <li><b>{{medic_material}}</b>: <a href="military.html#Medics">medics</a>.</li>
   <li><b>{{general_material}}</b>: <a href="generals.html">generals</a>.</li>
-  <li><b>pine</b>: <a href="materials.html#refining">refined</a> into timber (chariots, with stables later) or resin (magic incense, later).</li>
-  <li><b>limestone</b> and <b>paper</b>: buildings and science, in later milestones.</li>
+  <li><b>pine</b>: <a href="materials.html#refining">refined</a> into timber (<a href="military.html#Mounts">chariots</a>) or resin (incense for <a href="rite-list.html">hexes</a> and <a href="rites.html#Vigils">vigils</a>, and the <a href="attacks.html#torch">Torch</a> attack).</li>
+  <li><b>limestone</b>: forts, castles, watchstones and the Ancestral Hall (see <a href="buildings.html">Buildings</a>).</li>
+  <li><b>paper</b>: extra books in <a href="science.html#Paper">science</a>, and <a href="academics.html">academics</a>.</li>
+  <li><b>sulfur</b> also pays for the <a href="operations.html#fires">Set Fires</a> operation, and <b>amber</b> for the Ancestral Hall.</li>
 </ul>
 
 <h2 id="Giving">Giving and granting</h2>

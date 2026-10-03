@@ -10,22 +10,36 @@ updated: 2026-09-29
 <tr><td>Name, address, race</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
 <tr><td>Land</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
 <tr><td>Renown, <a href="end-of-age.html#Might">might</a> (one number for troops, mounts, characters and science)</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
-<tr><td>Personality</td><td class="cell-yes">Yes</td><td>Spy report only</td></tr>
-<tr><td>Peasants, gold, food</td><td class="cell-yes">Yes</td><td>Spy report only</td></tr>
-<tr><td>Troops at home, away, in training</td><td class="cell-yes">Yes</td><td>Spy report only</td></tr>
-<tr><td>Incoming land</td><td class="cell-yes">Yes</td><td>Spy report only</td></tr>
+<tr><td>Whether it is under protection</td><td class="cell-yes">Yes</td><td class="cell-yes">Yes</td></tr>
+<tr><td>Land, buildings, buildings under way</td><td class="cell-yes">Yes</td><td><a href="operations.html#survey">Survey the Estate</a></td></tr>
+<tr><td>Troops at home, away, in training; medics, horses, chariots; generals; armies on the road</td><td class="cell-yes">Yes</td><td><a href="operations.html#muster">Read the Muster Roll</a></td></tr>
+<tr><td>Gold, food, materials, open market orders</td><td class="cell-yes">Yes</td><td><a href="operations.html#ledgers">Read the Ledgers</a></td></tr>
+<tr><td>Books per science, scientists, academics</td><td class="cell-yes">Yes</td><td><a href="operations.html#archives">Copy the Archives</a></td></tr>
+<tr><td>Its own news, last 24 ticks</td><td class="cell-yes">Yes</td><td><a href="operations.html#couriers">Intercept Couriers</a></td></tr>
+<tr><td>Personality, peasants, incoming land, adepts; also troops, generals, buildings, gold, food, materials and academics</td><td class="cell-yes">Yes</td><td><a href="operations.html#dossier">Full Dossier</a></td></tr>
+<tr><td>Land, peasants, gold, food, troops at home</td><td class="cell-yes">Yes</td><td><a href="rite-list.html">Scrying Pool</a></td></tr>
+<tr><td>Rites and hexes in force on it</td><td class="cell-yes">Yes</td><td><a href="rite-list.html">Read the Omens</a></td></tr>
+<tr><td>Armies on the road, and whose land they carry</td><td class="cell-yes">Yes</td><td><a href="rite-list.html">Watch the Roads</a></td></tr>
 </table></div>
+<p>The first six intel sources are <a href="operations.html">thieves' operations</a>; the last three are divinations (<a href="rite-list.html">rites</a>).</p>
 
 <h2 id="News">Your news</h2>
-<p>Your house keeps a news feed that only you see:</p>
-<ul>
-  <li>Another house attacked you: who, whether they won, the land you lost and the troops you lost.</li>
-  <li>You caught thieves: how many, and which house sent them.</li>
-  <li>Explored land arrived, troops finished training, your army came home.</li>
-</ul>
+<p>Your house keeps a news feed that only you see. There is no public news; wars, rankings and the <a href="hall-of-deeds.html">Hall of Deeds</a> are public instead.</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>What happened to you</th><th>Your news says</th><th>Names who did it?</th></tr>
+<tr><td>Attacked</td><td>Whether they won, land and troops lost, what was taken</td><td>Yes, unless they cast Veil</td></tr>
+<tr><td>Theft or sabotage worked</td><td>What happened and what was taken (and, with False Flag, the state framed)</td><td>No</td></tr>
+<tr><td>Intel operation worked</td><td>Nothing</td><td>&ndash;</td></tr>
+<tr><td>Any operation failed</td><td>How many thieves were caught, and which operation</td><td>Yes</td></tr>
+<tr><td>Hexed</td><td>Which hex, what it took, how long it lasts, and whether it was reflected</td><td>No</td></tr>
+<tr><td>Divined</td><td>Nothing</td><td>&ndash;</td></tr>
+<tr><td>A hex or divination failed</td><td>That you resisted it</td><td>Yes</td></tr>
+<tr><td>A character is courted</td><td>Every house in your state hears that it is wavering, and what reassuring it costs</td><td>No; if it goes to auction, the courter has first refusal</td></tr>
+</table></div>
+<p>Your news also says when explored land arrives, troops finish training and your army comes home.</p>
 
-<h2 id="Reports">Your state's spy reports</h2>
-<p>Every successful <a href="spying.html">spy</a> operation by anyone in your state is shared with the whole state.</p>
+<h2 id="Reports">Your state's reports</h2>
+<p>Every successful intel operation or divination by anyone in your state is shared with the whole state. Thefts, sabotage and hexes make no report. Tools read them at <code>GET /reports</code> (see <a href="api.html">API</a>): each has a <code>kind</code> of <code>survey</code>, <code>muster</code>, <code>ledgers</code>, <code>archives</code>, <code>couriers</code>, <code>dossier</code>, <code>scrying</code>, <code>omens</code> or <code>roads</code>.</p>
 
 <h2 id="Battles">After a battle</h2>
 <p>An attacker learns its own offense, whether it won, the land taken and both sides' losses. It never learns the defender's defense.</p>
