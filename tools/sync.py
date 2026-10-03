@@ -87,6 +87,9 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
     ("food_per_person_milli", "Food eaten per person per tick", "milli"),
     ("starvation_bp", "Peasants lost per tick without food", "pct"),
+    ("starvation_soldiers_bp", "Soldiers lost per tick without food", "pct"),
+    ("starvation_specialists_bp", "Specialists and thieves lost per tick without food", "pct"),
+    ("starvation_elites_bp", "Elites lost per tick without food", "pct"),
     ("explore_gold_per_acre", "Gold to explore one acre (base)", "n"),
     ("explore_gold_per_land_milli", "Exploring: extra gold an acre per 1,000 acres you have", "n"),
     ("explore_soldiers_per_land_milli", "Exploring: soldiers an acre per 1,000 acres you have", "n"),
@@ -217,7 +220,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
 PARAM_GROUPS = [
     ("World", {"realms", "states_per_realm", "houses_per_state", "tick_ms"}, ()),
     ("Starting a house", {"starting_land", "starting_peasants", "starting_gold", "starting_food"}, ()),
-    ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp"}, ()),
+    ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp", "starvation_soldiers_bp", "starvation_specialists_bp", "starvation_elites_bp"}, ()),
     ("Land and construction", {"explore_gold_per_acre", "explore_gold_per_land_milli", "explore_soldiers_per_land_milli", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
     ("Economy", set(), ("Economy",)),
     ("Trading", set(), ("Trading",)),

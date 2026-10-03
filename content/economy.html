@@ -11,7 +11,7 @@ updated: 2026-09-29
 <h2 id="Food">Food</h2>
 <p>Food grown each tick = what your <a href="buildings.html#farms">farms</a> grow (times <a href="construction.html#Efficiency">building efficiency</a>) plus {{barren_food}} for each barren acre, times your <a href="effects.html#food_production">food production</a> modifier.</p>
 <p>Food eaten each tick = people &times; {{food_per_person}} &times; your <a href="effects.html#food_consumption">food consumption</a> modifier. People means peasants plus every troop: at home, away, or in training. Races with <a href="effects.html#no_food">no_food</a> eat nothing.</p>
-<p>If food runs out, it stays at zero and you lose {{starvation_pct}}% of your peasants each tick until it recovers.</p>
+<p>If food runs out, it stays at zero and your house starves each tick until it recovers: you lose {{starvation_pct}}% of your peasants, {{starvation_soldiers_pct}}% of your soldiers, {{starvation_specialists_pct}}% of your specialists and thieves (with their upgrades) and {{starvation_elites_pct}}% of your elites at home, and no new peasants are born. Your news tells you each tick.</p>
 
 <h2 id="Population">Population</h2>
 <p>Your land holds the living space of every building (see <a href="buildings.html">Buildings</a>; homes hold the most), plus {{barren_living}} people per barren acre and {{constructing_living}} per acre under construction, times your <a href="effects.html#population">population</a> modifier.</p>

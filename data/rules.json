@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "3f7fc9caa8267dbb",
+      "hash": "9484e526eb11d033",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1964,7 +1964,10 @@
         "starting_land": 400,
         "starting_peasants": 8000,
         "starting_scientists": 6,
-        "starvation_bp": 200,
+        "starvation_bp": 100,
+        "starvation_elites_bp": 100,
+        "starvation_soldiers_bp": 300,
+        "starvation_specialists_bp": 200,
         "states_per_realm": 7,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
@@ -4297,7 +4300,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "f108a273dd6bb669",
+      "hash": "28bb92a7e0285bd9",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5463,7 +5466,10 @@
         "starting_land": 400,
         "starting_peasants": 8000,
         "starting_scientists": 6,
-        "starvation_bp": 200,
+        "starvation_bp": 100,
+        "starvation_elites_bp": 100,
+        "starvation_soldiers_bp": 300,
+        "starvation_specialists_bp": 200,
         "states_per_realm": 7,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
