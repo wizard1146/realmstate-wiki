@@ -798,7 +798,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "8c1a969ccc700a7d",
+      "hash": "3f7fc9caa8267dbb",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1186,7 +1186,9 @@
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
         "eowcf_ticks": 96,
-        "explore_gold_per_acre": 600,
+        "explore_gold_per_acre": 300,
+        "explore_gold_per_land_milli": 750,
+        "explore_soldiers_per_land_milli": 5,
         "explore_ticks": 12,
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,
@@ -4295,7 +4297,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "784487f7e0306f53",
+      "hash": "f108a273dd6bb669",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4683,7 +4685,9 @@
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
         "eowcf_ticks": 96,
-        "explore_gold_per_acre": 600,
+        "explore_gold_per_acre": 300,
+        "explore_gold_per_land_milli": 750,
+        "explore_soldiers_per_land_milli": 5,
         "explore_ticks": 12,
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,

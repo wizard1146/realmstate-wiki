@@ -3,9 +3,11 @@ title: Exploring
 category: Mechanics
 updated: 2026-09-29
 -->
-<p>Exploring buys new land with gold. It is the peaceful way to grow.</p>
+<p>Exploring buys new land with gold and soldiers. It is the peaceful way to grow, and it gets dearer the bigger you are.</p>
 <ul>
-  <li>Cost: acres &times; {{explore_gold_per_acre}} gold, times your <a href="effects.html#explore_cost">explore cost</a> modifier.</li>
+  <li><b>Gold:</b> {{explore_gold_per_acre}} an acre, plus {{explore_gold_land_each}} for every acre you already have, times your <a href="effects.html#explore_cost">explore cost</a> modifier.</li>
+  <li><b>Soldiers:</b> {{explore_soldiers_land_each}} for every acre you already have, per acre explored (rounded up over the order). They settle the land and don't come back. See <a href="military.html#Draft">the draft</a>.</li>
+  <li>For example, {{explore_examples}}.</li>
   <li>From 1 to 1,000 acres at a time.</li>
   <li>The land arrives exactly {{explore_ticks}} hours later. Until then it shows as incoming land.</li>
   <li>Races with <a href="effects.html#no_explore">no_explore</a> can't explore and must grow by attacking.</li>

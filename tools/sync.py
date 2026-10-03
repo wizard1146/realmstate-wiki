@@ -87,7 +87,9 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
     ("food_per_person_milli", "Food eaten per person per tick", "milli"),
     ("starvation_bp", "Peasants lost per tick without food", "pct"),
-    ("explore_gold_per_acre", "Gold to explore one acre", "n"),
+    ("explore_gold_per_acre", "Gold to explore one acre (base)", "n"),
+    ("explore_gold_per_land_milli", "Exploring: extra gold an acre per 1,000 acres you have", "n"),
+    ("explore_soldiers_per_land_milli", "Exploring: soldiers an acre per 1,000 acres you have", "n"),
     ("explore_ticks", "Explored land arrives after (ticks)", "n"),
     ("train_ticks", "Troops finish training after (ticks)", "n"),
     ("attack_return_ticks", "Armies return after (ticks)", "n"),
@@ -216,7 +218,7 @@ PARAM_GROUPS = [
     ("World", {"realms", "states_per_realm", "houses_per_state", "tick_ms"}, ()),
     ("Starting a house", {"starting_land", "starting_peasants", "starting_gold", "starting_food"}, ()),
     ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp"}, ()),
-    ("Land and construction", {"explore_gold_per_acre", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
+    ("Land and construction", {"explore_gold_per_acre", "explore_gold_per_land_milli", "explore_soldiers_per_land_milli", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
     ("Economy", set(), ("Economy",)),
     ("Trading", set(), ("Trading",)),
     ("War", {"train_ticks", "attack_return_ticks", "land_gain_bp", "attacker_loss_bp", "defender_loss_bp", "luck_bp", "renown_per_win"},
@@ -1035,6 +1037,11 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000
+    xs = lambda land: land * p.get("explore_soldiers_per_land_milli", 0) / 1000
+    values["explore_gold_land_each"] = f'{p.get("explore_gold_per_land_milli", 0) / 1000:g}'
+    values["explore_soldiers_land_each"] = f'{p.get("explore_soldiers_per_land_milli", 0) / 1000:g}'
+    values["explore_examples"] = "; ".join(f'{land:,} acres: {xg(land):,} gold and {xs(land):g} soldiers an acre' for land in (p["starting_land"], 1000, 2000, 4000))
     values["train_general_per_1000_pct"] = f'{p.get("train_general_cbp", 0) * 1000 / 10_000:g}'   # chance per 1,000 elites trained
     mods_text = lambda mods: ", ".join(f'{"+" if m["bp"] > 0 else "−"}{pct(abs(m["bp"]))}% {STAT_TEXT.get(m["stat"], m["stat"]).lower()}' for m in mods)
     values["recovery_effects"] = mods_text(p.get("recovery_mods", []))
