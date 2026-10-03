@@ -80,7 +80,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("houses_per_state", "Houses each state can hold", "n"),
     ("tick_ms", "Length of a tick", "hours"),
     ("starting_land", "Starting land (acres)", "n"),
-    ("starting_peasants", "Starting peasants", "n"),
+    ("starting_peasants", "Starting people (peasants and soldiers)", "n"),
+    ("starting_soldiers", "Of those, starting soldiers", "n"),
     ("starting_gold", "Starting gold", "n"),
     ("starting_food", "Starting food", "n"),
     ("peasant_growth_bp", "Peasant growth per tick", "pct"),
@@ -219,7 +220,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
 # The prefix is dropped from the label when it just repeats the group's name. Anything unmatched lands in "Other".
 PARAM_GROUPS = [
     ("World", {"realms", "states_per_realm", "houses_per_state", "tick_ms"}, ()),
-    ("Starting a house", {"starting_land", "starting_peasants", "starting_gold", "starting_food"}, ()),
+    ("Starting a house", {"starting_land", "starting_peasants", "starting_soldiers", "starting_gold", "starting_food"}, ()),
     ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp", "starvation_soldiers_bp", "starvation_specialists_bp", "starvation_elites_bp"}, ()),
     ("Land and construction", {"explore_gold_per_acre", "explore_gold_per_land_milli", "explore_soldiers_per_land_milli", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
     ("Economy", set(), ("Economy",)),
@@ -1045,6 +1046,7 @@ def generate(rules):
     values["explore_gold_land_each"] = f'{p.get("explore_gold_per_land_milli", 0) / 1000:g}'
     values["explore_soldiers_land_each"] = f'{p.get("explore_soldiers_per_land_milli", 0) / 1000:g}'
     values["explore_examples"] = "; ".join(f'{land:,} acres: {xg(land):,} gold and {xs(land):g} soldiers an acre' for land in (p["starting_land"], 1000, 2000, 4000))
+    values["starting_peasants_only"] = f'{p["starting_peasants"] - p.get("starting_soldiers", 0):,}'
     values["train_general_per_1000_pct"] = f'{p.get("train_general_cbp", 0) * 1000 / 10_000:g}'   # chance per 1,000 elites trained
     mods_text = lambda mods: ", ".join(f'{"+" if m["bp"] > 0 else "−"}{pct(abs(m["bp"]))}% {STAT_TEXT.get(m["stat"], m["stat"]).lower()}' for m in mods)
     values["recovery_effects"] = mods_text(p.get("recovery_mods", []))
