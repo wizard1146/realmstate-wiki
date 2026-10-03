@@ -22,9 +22,10 @@ updated: 2026-09-29
 <tr><td><code>GET /ages/{age}</code></td><td>An ended age's result: winner, state scores, house rankings, heirs kept</td></tr>
 <tr><td><code>GET /heirs</code></td><td>Your heirs waiting in your account, across ages (signed in)</td></tr>
 <tr><td><code>POST /heirs/recall</code></td><td>Bring one into your house this age: <code>{"uid": "1-G4"}</code> (signed in)</td></tr>
-<tr><td><code>GET /state/messages</code></td><td>Your state's chat: the last 200 messages, or those after <code>?after={id}</code> (signed in)</td></tr>
-<tr><td><code>POST /state/messages</code></td><td>Post to your state's chat: <code>{"text": "..."}</code>, 1-1,000 characters (signed in)</td></tr>
-<tr><td><code>GET /live</code></td><td>A WebSocket of live updates: your house's news, your state's chat, and every tick (signed in, with a house). Each message is JSON with a <code>type</code>: <code>news</code>, <code>chat</code>, <code>tick</code>, or <code>resync</code> (reload what you show)</td></tr>
+<tr><td><code>GET /chat/{channel}</code></td><td>Chat on <code>world</code>, <code>realm</code> (yours) or <code>state</code> (yours): the last 200 messages, or those after <code>?after={id}</code>. Each has <code>channel</code> and the sender's address in <code>from</code> (signed in)</td></tr>
+<tr><td><code>POST /chat/{channel}</code></td><td>Post to a channel: <code>{"text": "..."}</code>, 1-1,000 characters (signed in). <code>/state/messages</code> is the old name for the state channel.</td></tr>
+<tr><td><code>GET /ticks</code></td><td>What each of your house's last 48 ticks changed, newest first: gold, food, peasants, soldiers, troops, land, incoming land, books, renown, horses (signed in)</td></tr>
+<tr><td><code>GET /live</code></td><td>A WebSocket of live updates: your house's news, chat on your three channels, and every tick with what it changed for your house as <code>report</code> (signed in, with a house). Each message is JSON with a <code>type</code>: <code>news</code>, <code>chat</code>, <code>tick</code>, or <code>resync</code> (reload what you show)</td></tr>
 <tr><td><code>GET /wars</code></td><td>Wars under way, ceasefires, tribute, war points and past wars</td></tr>
 <tr><td><code>GET /relations</code></td><td>Your state's hostility meters both ways, ceasefire proposals and land ratios; your state's war (signed in)</td></tr>
 <tr><td><code>GET /orders</code></td><td>Your open orders and your state's treasury orders (signed in)</td></tr>
@@ -35,13 +36,16 @@ updated: 2026-09-29
 </table></div>
 
 <h2 id="Commands">Commands</h2>
+<p>Unit slots, wherever a command or reply lists units: 0 soldiers, 1 offense, 2 defense, 3 elite, 4 thieves, 5 offense+, 6 defense+, 7 elite+. A <code>train</code> uses soldiers unless <code>direct</code> recruits straight from peasants. Spy reports show troops by kind instead: <code>{"soldiers", "offense", "defense", "elites"}</code>, base and upgraded together, thieves not shown.</p>
 <pre><code>{"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage"}
 {"type": "create_house", "name": "House Vale", "race": "dwarf", "personality": "sage", "realm": 4, "state": 2}
 {"type": "explore", "house": 0, "acres": 20}
-{"type": "train", "house": 0, "unit": 2, "count": 100}
-{"type": "attack", "attacker": 0, "target": 5, "units": [100, 0, 50, 0, 0, 0, 20], "medics": 10, "general": 1}
-{"type": "attack", "attacker": 0, "target": 5, "units": [0, 0, 80, 0, 0, 0, 0], "kind": "sack"}
-{"type": "upgrade", "house": 0, "unit": 2, "count": 20}
+{"type": "set_draft", "house": 0, "rate_bp": 2500}
+{"type": "train", "house": 0, "unit": 3, "count": 100}
+{"type": "train", "house": 0, "unit": 1, "count": 100, "direct": true}
+{"type": "attack", "attacker": 0, "target": 5, "units": [0, 100, 0, 50, 0, 0, 0, 20], "medics": 10, "general": 1}
+{"type": "attack", "attacker": 0, "target": 5, "units": [0, 0, 0, 80, 0, 0, 0, 0], "kind": "sack"}
+{"type": "upgrade", "house": 0, "unit": 3, "count": 20}
 {"type": "train_medics", "house": 0, "count": 30}
 {"type": "refine", "house": 0, "recipe": "timber", "times": 4}
 {"type": "recruit_general", "house": 0, "name": "Vess"}

@@ -72,7 +72,7 @@ UNLOCK_TEXT = {
     "building": "Grants a building. Nothing uses this yet: every house can build every building.",
 }
 UNLOCK_LIVE = set()   # unlock kinds the engine acts on; the rest show "no effect yet" on race and personality pages
-UNIT_ROLE = {"offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief",
+UNIT_ROLE = {"soldier": "Soldiers (drafted)", "offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief",
              "offense+": "Offense specialist, upgraded", "defense+": "Defense specialist, upgraded", "elite+": "Elite, upgraded"}
 PARAM_TEXT = [  # (key, label, how to show it)
     ("realms", "Realms in the world", "n"),
@@ -99,6 +99,19 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
     ("protection_ticks", "Age: new-house protection (ticks)", "n"),
+    ("draft_default_bp", "Military: draft rate a new house starts with", "pct"),
+    ("draft_max_bp", "Military: highest draft rate", "pct"),
+    ("draft_speed_bp", "Military: peasants drafted a tick, at most", "pct"),
+    ("upgrade_cross_point", "Military: offense+ defense / defense+ offense bonus (points)", "n"),
+    ("train_spread_ticks", "Military: training spread either side of the average (ticks)", "n"),
+    ("train_fail_bp", "Military: trainees who fail (back to soldiers)", "pct"),
+    ("train_death_bp", "Military: trainees who die", "pct"),
+    ("train_plus_bp", "Military: trainees who come out upgraded", "pct"),
+    ("direct_cost_bp", "Military: direct recruits cost more by", "pct"),
+    ("direct_time_bp", "Military: direct recruits take longer by", "pct"),
+    ("direct_spread_ticks", "Military: direct recruits' spread either side (ticks)", "n"),
+    ("direct_fail_bp", "Military: direct recruits who fail (back to peasants)", "pct"),
+    ("direct_death_bp", "Military: direct recruits who die", "pct"),
     ("recovery_ticks", "War: recovery after losing (ticks)", "n"),
     ("recovery_growth_bp", "War: faster peasant regrowth in recovery", "pct"),
     ("recovery_peace_share_bp", "War: share of recovery each side gets from a peace", "pct"),
@@ -338,14 +351,14 @@ def def_effects_html(d, vocab):
 def units_table(d, vocab):
     rows = "".join(
         f'<tr><td>{e(UNIT_ROLE.get(role, role))}</td><td>{e(u["name"])}</td>'
-        f'<td class="cell-num">{u["off"]}</td><td class="cell-num">{u["def"]}</td><td class="cell-num">{u["gold"]:,}</td></tr>\n'
+        f'<td class="cell-num">{u["off"]}</td><td class="cell-num">{u["def"]}</td><td class="cell-num">{"drafted" if role == "soldier" else f"{u['gold']:,}"}</td></tr>\n'
         for role, u in zip(vocab["unit_slots"], d["units"]))
     return ('<div class="table-scroll" data-updated="none"><table>\n'
             '<tr><th>Unit slot</th><th>Unit</th><th class="cell-num">Offense</th><th class="cell-num">Defense</th><th class="cell-num">Gold</th></tr>\n'
             f"{rows}</table></div>\n")
 
 
-UNIT_SHORT = {"offense": "Offense spec.", "defense": "Defense spec.", "elite": "Elite", "thief": "Thief",
+UNIT_SHORT = {"soldier": "Soldiers", "offense": "Offense spec.", "defense": "Defense spec.", "elite": "Elite", "thief": "Thief",
               "offense+": "Offense spec.+", "defense+": "Defense spec.+", "elite+": "Elite+"}
 AGE_DATES = CONTENT / "_age-dates.json"   # hand-edited: {"2": {"from": "2026-10-01", "to": "2026-12-31"}}; the game has no dates
 
@@ -427,7 +440,7 @@ def current_age_body(ages, vocab):
     slots = vocab["unit_slots"]
     cols = []
     for k, role in enumerate(slots):
-        if role.endswith("+"): continue
+        if role.endswith("+") or role == "soldier": continue   # soldiers are the same for every race
         up = slots.index(role + "+") if role + "+" in slots else None
         units = lambda r: [r["units"][k]] + ([r["units"][up]] if up is not None else [])
         stats = [s_ for s_ in ("off", "def", "gold") if any(u[s_] for r in races for u in units(r))]
@@ -1012,6 +1025,7 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    values["train_general_per_1000_pct"] = f'{p.get("train_general_cbp", 0) * 1000 / 10_000:g}'   # chance per 1,000 elites trained
     mods_text = lambda mods: ", ".join(f'{"+" if m["bp"] > 0 else "−"}{pct(abs(m["bp"]))}% {STAT_TEXT.get(m["stat"], m["stat"]).lower()}' for m in mods)
     values["recovery_effects"] = mods_text(p.get("recovery_mods", []))
     values["peace_dividend_effects"] = mods_text(p.get("peace_dividend_mods", []))

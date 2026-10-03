@@ -3,17 +3,38 @@ title: Military
 category: Mechanics
 updated: 2026-09-29
 -->
-<p>Every race has an offense specialist, a defense specialist, an elite and a thief, plus upgraded offense+, defense+ and elite+ units. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
+<p>Every house has soldiers, drafted from its peasants. Every race also has an offense specialist, a defense specialist, an elite and a thief, plus upgraded offense+, defense+ and elite+ units. Unit slots run in that order: soldiers, offense, defense, elite, thief, then the three upgrades. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
+
+<h2 id="Draft">Soldiers and the draft</h2>
+<p>{{soldier_name}} fight at {{soldier_off}} offense and {{soldier_def}} defense, the same for every race, and cost nothing: they're drafted from your peasants.</p>
+<ul>
+  <li>Your <b>draft rate</b> is the share of your population you want under arms: troops at home, away and in training, soldiers included. New houses start at {{draft_default_pct}}%; you can set 0 to {{draft_max_pct}}%.</li>
+  <li>Each tick, while you're below your rate, up to {{draft_speed_pct}}% of your peasants are drafted, never past the rate. Set 0 to stop drafting.</li>
+  <li>Drafted peasants no longer pay gold, so a high rate costs income.</li>
+</ul>
 
 <h2 id="Training">Training</h2>
+<p>Soldiers train into specialists, elites and thieves.</p>
 <ul>
-  <li>Each unit costs gold (its price, times your <a href="effects.html#training_cost">training cost</a> modifier) and one peasant.</li>
-  <li>Troops are ready exactly {{train_ticks}} hours later. While training they still eat.</li>
+  <li>Each costs gold (its price, times your <a href="effects.html#training_cost">training cost</a> modifier) and one soldier.</li>
+  <li><b>Timing is a bell.</b> Most trainees are ready after {{train_ticks}} ticks. The rest finish spread up to {{train_spread_ticks}} ticks earlier or later; the fewer, the further from the middle. Trainees still eat.</li>
+  <li><b>Not everyone makes it.</b> {{train_fail_pct}}% fail and go back to being soldiers; their gold is lost. {{train_death_pct}}% die in training.</li>
+  <li><b>Some excel.</b> {{train_plus_pct}}% of trainees into offense, defense or elite units come out as the upgraded (+) unit at once, at no extra cost.</li>
+  <li><b>A general from the ranks.</b> Training elites has a very small chance ({{train_general_per_1000_pct}}% per 1,000 elites) of raising a general for free, if you have room for one. No elites are retired for it.</li>
   <li>Up to 1,000,000 at a time.</li>
 </ul>
 
+<h2 id="Direct">Recruiting straight from peasants</h2>
+<p>You can skip the draft and recruit specialists, elites and thieves straight from your peasants, at a price:</p>
+<ul>
+  <li>{{direct_cost_pct}}% more gold, and {{direct_time_pct}}% longer to train.</li>
+  <li>A wider bell: up to {{direct_spread_ticks}} ticks either side of the average.</li>
+  <li>{{direct_fail_pct}}% fail (back to peasants, the gold lost) and {{direct_death_pct}}% die.</li>
+  <li>None come out upgraded.</li>
+</ul>
+
 <h2 id="Upgrades">Upgrades</h2>
-<p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers.</p>
+<p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers. Offense+ also gains {{upgrade_cross_point}} defense, and defense+ {{upgrade_cross_point}} offense.</p>
 <ul>
   <li>Cost: {{upgrade_cost}} {{upgrade_material}} per unit, {{upgrade_cost_elite}} per elite. See <a href="materials.html">Materials</a>.</li>
   <li>The units are in training for {{train_ticks}} hours, then return upgraded.</li>
