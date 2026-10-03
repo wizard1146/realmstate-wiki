@@ -50,15 +50,17 @@
           else { var a = nav.querySelector('[aria-current="page"]'); if (a) nav.scrollTop = a.offsetTop - nav.clientHeight / 2 + a.offsetHeight / 2; }
         } catch (e) {}
       })();
-      /* Keep the shield level with the current page's row as the nav scrolls; hide it while the row is scrolled out of view. */
+      /* Keep the shield level with the current page's row as the nav scrolls. Once the row is scrolled out of view, the shield
+         sticks to the nav's top or bottom edge, on the side the row went. */
       (function () {
         var nav = document.getElementById('site-nav'), mark = document.getElementById('nav-marker'),
             a = nav.querySelector('[aria-current="page"]'), side = nav.parentNode;
         if (!a) return;
         function place() {
-          var r = a.getBoundingClientRect(), n = nav.getBoundingClientRect(), mid = r.top + r.height / 2;
+          var r = a.getBoundingClientRect(), n = nav.getBoundingClientRect(), half = mark.offsetHeight / 2,
+              mid = Math.min(Math.max(r.top + r.height / 2, n.top + half), n.bottom - half);
           mark.style.top = (mid - side.getBoundingClientRect().top) + 'px';
-          mark.classList.toggle('is-shown', mid > n.top + 4 && mid < n.bottom - 4);
+          mark.classList.add('is-shown');
         }
         place();
         nav.addEventListener('scroll', place, { passive: true });
