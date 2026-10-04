@@ -8447,7 +8447,7 @@
           "to": "unlithian@v1"
         }
       ],
-      "hash": "4f7426248f5f80dc",
+      "hash": "08c81288ab45160c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10642,7 +10642,7 @@
             }
           ],
           "flags": 0,
-          "hash": "57ccd77f944ce6cb",
+          "hash": "ee04eb1ae67383ef",
           "key": {
             "identity": "peridian",
             "version": "v1"
@@ -10696,7 +10696,7 @@
           "name": "Peridians",
           "race": {
             "citizens": {
-              "defense_bp": 10000
+              "defense_bp": 2000
             },
             "promote": {
               "bp": 50,
