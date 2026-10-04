@@ -523,39 +523,64 @@ def other_changes(prev, cur):
     return rows
 
 
-def current_age_body(ages, vocab):
-    cur = ages[-1]
-    prev = ages[-2] if len(ages) > 1 else None
+def units_summary(a, vocab, changes):
+    """One row per race. Each specialist and the elite get Off / Def / Gold, then their upgraded (+) unit's
+    Off+ / Def+ / Cost, where Cost is the material to upgrade one unit. Thieves and mercenaries are left out;
+    a race that can go on to elite++ is marked with an asterisk."""
+    races = [d for d in a["races"] if d]
+    slots = vocab["unit_slots"]
+    p = a["params"]
+    mat = p.get("upgrade_material", "")
+    mat_name = next((m["name"] for m in a.get("materials", []) if m["key"]["identity"] == mat), mat)
+    cost_i = vocab["stats"].index("upgrade_cost") if "upgrade_cost" in vocab["stats"] else None
+    pp = vocab["flags"].index("elite_plus_plus") if "elite_plus_plus" in vocab["flags"] else None
+    groups = [(role, role + "+", "upgrade_cost_elite" if role == "elite" else "upgrade_cost")
+              for role in ("offense", "defense", "elite") if role in slots and role + "+" in slots]
+
+    def cost(d, key):
+        # The age's material per unit, times the race's upgrade_cost modifier (basis points).
+        bp = d["mods_bp"][cost_i] if cost_i is not None else 0
+        v = p.get(key, 0) * (10000 + bp) / 10000
+        return f"{v:,.0f}" if v == int(v) else f"{v:,.2f}".rstrip("0")
+
+    def name(d):
+        star = pp is not None and d["flags"] & (1 << pp)
+        return (f'<a href="race-{d["key"]["identity"]}.html"><b>{e(d["name"])}</b></a>' + ("*" if star else "")
+                + change_tag(changes, "race", d["key"]["identity"]))
+
+    head1 = "".join(f'<th colspan="6">{e(UNIT_ROLE.get(role, role))}</th>' for role, _, _ in groups)
+    head2 = "".join('<th class="cell-num">Off</th><th class="cell-num">Def</th><th class="cell-num">Gold</th>'
+                    f'<th class="cell-num cell-up">Off+</th><th class="cell-num cell-up">Def+</th><th class="cell-num cell-up" title="{e(mat_name)} per unit">Cost</th>'
+                    for _ in groups)
+    rows = []
+    for d in races:
+        cells = []
+        for role, plus, key in groups:
+            u, v = d["units"][slots.index(role)], d["units"][slots.index(plus)]
+            cells += [f'<td class="cell-num">{u["off"]:,}</td>', f'<td class="cell-num">{u["def"]:,}</td>',
+                      f'<td class="cell-num cell-muted">{u["gold"]:,}</td>',
+                      f'<td class="cell-num cell-up">{v["off"]:,}</td>', f'<td class="cell-num cell-up">{v["def"]:,}</td>',
+                      f'<td class="cell-num cell-up cell-muted">{cost(d, key)}</td>']
+        rows.append(f'<tr><td>{name(d)}</td>{"".join(cells)}</tr>\n')
+    starred = [d for d in races if pp is not None and d["flags"] & (1 << pp)]
+    note = (f'<p class="table-note">* Can upgrade elite+ once more, into elite++ '
+            f'(<a href="effects.html#elite_plus_plus">elite_plus_plus</a>); see the race page.</p>\n') if starred else ""
+    return ('<h2 id="units">Race units</h2>\n<p>Offense, defense and gold cost of each unit, then its upgraded (+) unit. '
+            f'Cost is the {e(mat_name.lower())} it takes to upgrade one unit. Thieves and mercenaries are on each race\'s page. '
+            'How upgrading works: <a href="military.html#Upgrades">Military</a>.</p>\n'
+            '<div class="table-scroll" data-updated="none"><table class="table--sticky-first table--hover table--unit-summary">\n'
+            f'<tr><th rowspan="2">Race</th>{head1}</tr>\n<tr>{head2}</tr>\n{"".join(rows)}</table></div>\n' + note)
+
+
+def age_summary(ages, n, vocab):
+    """Age n's races, personalities and what changed since the age before it. The Current Age page and the
+    age's own page both show this, built from that age's rules, so an age keeps its tables after it ends."""
+    cur = ages[n]
+    prev = ages[n - 1] if n > 0 else None
     changes = cur.get("changes_from_previous")
     races = [d for d in cur["races"] if d]
     pers = [d for d in cur["personalities"] if d]
-    link = f'<a href="age-{cur["age"]}.html">{e(cur["name"])}</a>'
-    out = [f'<p>The current age is {link} ({age_dates(cur)}). This page sums up its races, personalities and what changed'
-           + (f' since <a href="age-{prev["age"]}.html">{e(prev["name"])}</a>' if prev else "") + '. Full numbers are on the ' + link + ' page.</p>\n']
-
-    # Units: one row per race. Each upgraded unit (+) shares its base unit's columns as "5 → 6"; a stat no race has is left out.
-    slots = vocab["unit_slots"]
-    cols = []
-    for k, role in enumerate(slots):
-        if role.endswith("+") or role == "soldier": continue   # soldiers are the same for every race
-        up = slots.index(role + "+") if role + "+" in slots else None
-        units = lambda r: [r["units"][k]] + ([r["units"][up]] if up is not None else [])
-        stats = [s_ for s_ in ("off", "def", "gold") if any(u[s_] for r in races for u in units(r))]
-        if stats: cols.append((k, up, role, stats))
-    def cell(r, k, up, s_):
-        v = r["units"][k][s_]
-        w = r["units"][up][s_] if up is not None else v
-        return f'{v:,}' + (f' <span class="upgrade">&rarr;&nbsp;{w:,}</span>' if w != v else "")
-    head1 = "".join(f'<th colspan="{len(st)}">{e(UNIT_ROLE.get(role, role))}</th>' for k, up, role, st in cols)
-    head2 = "".join(f'<th class="cell-num">{ {"off": "Off", "def": "Def", "gold": "Gold"}[s_] }</th>' for k, up, role, st in cols for s_ in st)
-    body = "".join(
-        f'<tr><td><a href="race-{r["key"]["identity"]}.html"><b>{e(r["name"])}</b></a>{change_tag(changes, "race", r["key"]["identity"])}</td>'
-        + "".join(f'<td class="cell-num{" cell-muted" if s_ == "gold" else ""}">{cell(r, k, up, s_)}</td>' for k, up, role, st in cols for s_ in st)
-        + "</tr>\n" for r in races)
-    out.append('<h2 id="units">Race units</h2>\n<p>Offense, defense and gold cost of each unit. After the arrow: the upgraded unit (+), '
-               'where it differs. How upgrading works: <a href="military.html">Military</a>.</p>\n'
-               '<div class="table-scroll" data-updated="none"><table class="table--sticky-first table--hover table--unit-summary">\n'
-               f'<tr><th rowspan="2">Race</th>{head1}</tr>\n<tr>{head2}</tr>\n{body}</table></div>\n')
+    out = [units_summary(cur, vocab, changes)]
 
     def effects_table(defs, kind, singular):
         """Bonuses / Penalties / Other per definition. A column empty for every row is left out; a cell is shaded only when it has something."""
@@ -593,7 +618,16 @@ def current_age_body(ages, vocab):
                        f'<tr><th>What</th><th class="cell-num">{e(prev["name"])}</th><th class="cell-num">{e(cur["name"])}</th></tr>\n{body}</table></div>\n')
         else:
             out.append("<p>Nothing else changed.</p>\n")
-    return "".join(out) + source_note(cur)
+    return "".join(out)
+
+
+def current_age_body(ages, vocab):
+    cur = ages[-1]
+    prev = ages[-2] if len(ages) > 1 else None
+    link = f'<a href="age-{cur["age"]}.html">{e(cur["name"])}</a>'
+    intro = (f'<p>The current age is {link} ({age_dates(cur)}). This page sums up its races, personalities and what changed'
+             + (f' since <a href="age-{prev["age"]}.html">{e(prev["name"])}</a>' if prev else "") + '. Full numbers are on the ' + link + ' page.</p>\n')
+    return intro + age_summary(ages, len(ages) - 1, vocab) + source_note(cur)
 
 
 def generate(rules):
@@ -729,11 +763,12 @@ def generate(rules):
             notes = "<ul>\n" + "\n".join(items) + "\n</ul>\n"
         prev = f' (compared with <a href="age-{ages[n - 1]["age"]}.html">{e(ages[n - 1]["name"])}</a>)' if n else ""
         body = (f'<p>Ruleset fingerprint <code>{e(a["hash"])}</code>.</p>\n'
-                f'<h2 id="changes">What changed{prev}</h2>\n{notes}'
+                f'<h2 id="what-changed">What changed{prev}</h2>\n{notes}'
+                + age_summary(ages, n, vocab) +
                 '<h2 id="numbers">Numbers</h2>\n<div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">\n'
                 f'<tr><th>Rule</th><th class="cell-num">Value</th></tr>\n{params}</table></div>\n'
-                f'<h2 id="races">Races</h2>\n{slots("races", "race")}'
-                f'<h2 id="personalities">Personalities</h2>\n{slots("personalities", "personality")}' + materials_html + source_note(a))
+                f'<h2 id="race-slots">Race slots</h2>\n{slots("races", "race")}'
+                f'<h2 id="personality-slots">Personality slots</h2>\n{slots("personalities", "personality")}' + materials_html + source_note(a))
         pages[f"age-{a['age']}.html"] = header(a["name"], "Ages") + body
 
     # Current age: one summary page, linked from "Current Age" in the sidebar.
