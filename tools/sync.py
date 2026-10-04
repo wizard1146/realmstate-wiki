@@ -657,13 +657,14 @@ def generate(rules):
         except (OSError, ValueError): art = {}
         for ident, i in known.items():
             parts = []
-            if singular == "race" and art.get(ident):
-                a = art[ident]
-                if not (ROOT / "site" / "assets" / "races" / a["file"]).exists():
-                    problems.append(f'content/_race-art.json: site/assets/races/{a["file"]} is missing')
-                parts.append(f'<figure class="race-art"><img src="assets/races/{e(a["file"])}" alt="{e(a["alt"])}" width="1000" height="1000"></figure>\n')
-            if singular == "race" and lore.get(ident):
-                parts.append('<h2 id="lore">Lore</h2>\n' + "".join(f"<p>{e(p)}</p>\n" for p in lore[ident]))
+            if singular == "race" and (lore.get(ident) or art.get(ident)):
+                # The lore, with the race's picture (if any) floated right for the text to wrap around.
+                pic = ""
+                if (a := art.get(ident)):
+                    if not (ROOT / "site" / "assets" / "races" / a["file"]).exists():
+                        problems.append(f'content/_race-art.json: site/assets/races/{a["file"]} is missing')
+                    pic = f'<figure class="race-art"><img src="assets/races/{e(a["file"])}" alt="{e(a["alt"])}" width="1000" height="1000"></figure>\n'
+                parts.append('<h2 id="lore">Lore</h2>\n<div class="race-lore">\n' + pic + "".join(f"<p>{e(p)}</p>\n" for p in lore.get(ident, [])) + "</div>\n")
             if i["lineage_from"]:
                 src = known.get(i["lineage_from"], {"name": i["lineage_from"]})
                 parts.append(f'<p>A rework of <a href="{singular}-{i["lineage_from"]}.html">{e(src["name"])}</a>. '
