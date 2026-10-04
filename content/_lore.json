@@ -1,0 +1,41 @@
+{
+  "_note": "Hand-written lore for each race page (tools/sync.py adds it as the page's Lore section). WY's text, from Races of the World. Keys are race identities; each value is a list of paragraphs (plain text).",
+  "ashcliffe": [
+    "Born of the tragic volcanic eruption of Mount Ishiraki, the Ashcliffe were displaced and now traverse the Realms of the World. Known also as the Wanderers, they are a hardy bunch of survivors, relying on their keen sense of camaraderie and huntsmanship to bolster their presence. Faint memories of the technology they once possessed help them conquer lands faster."
+  ],
+  "echolalian": [
+    "Out of the School of the Khaphiiri, a single tribe of the jungles rose to uncontested dominance. The Tribe of Mahwe violently extinguished all its competitors and bred its innate thirst for violence into all descendant lines of its sister Tribes. Henceforth, all Junglers bowed to the wisdom of the Khaphiirian Hegemon. In their arrogance, the Hegemon unleashed a devastating curse on their entire people, causing them to rapidly lose their cultural memory. The Junglers adapted, and simply reflect back the cultures, fighting styles and vicissitudes of those who interact with them, earning them the nickname Echolalians."
+  ],
+  "saltborn": [
+    "The Great Host of the Saltborn crossed the Undying Ocean to conquer new worlds; little did they expect such resistance from the native inhabitants. Mighty and in possession of great arsenals, the Saltborn seek to subjugate all who stand in their way."
+  ],
+  "peridian": [
+    "To the Peridian, the State is everything: the State is Father, Mother, Family and Child. All Peridians are near incorruptible and require no oaths of fealty; they bleed purple, and will bleed to death for their State and Realm without question. Skilled with long-range weapons, they prefer to inflict mass casualties on their foes before going in for the kill."
+  ],
+  "freehomes": [
+    "In the aftermath of the sack of Ruikhire, the homeless of the once-great city rose up to take over its rubble. They established a set of rules for themselves: land belongs to those who stand on it, those who bled for it, and those who thrive in it. For the people of the new Freehomes movement, buildings are a suggestion. They organise quickly and are deadly when cornered, but overt wealth has historically eroded their principles and bred complacency. Their leaders are wise to this, and perpetually keep their men and women on edge to further the purposes of the movement."
+  ],
+  "unlithian": [
+    "All Unlithians acknowledge one Truth: everything has a price, and for most peoples, that price is Gold. The politics of an Unlithian State is steeped in the flow of money, and so of trade. Theirs is a world of clinking coins and secret handshakes. Even when they make war, their armies are paid so handsomely that their foes falter, knowing the cost they will pay."
+  ],
+  "troll": [
+    "The Trolls are the oldest living people of the western shore. They make their homes in the sea-cliffs between Cape Harrow and the Gull Reaches, where they sleep for long seasons in the rock. A sleeping Troll grows a crust of lichen and barnacle, and for generations the fisherfolk of the coast took the great grey shapes on the headlands for boulders.",
+    "In the spring of the Saltborn landing, the Great Host came ashore at Harrow Sound and began to cut a road into the cliffs. The noise of their siege engines carried through the stone for three days and woke the Troll-kin of the whole cape. On the fourth night their elder, Grausk Seawall, led them down onto the beachhead. The Host lost eleven ships' companies before it fell back to the open water.",
+    "Trolls heal from wounds that would kill a man, and a Troll struck down in battle will often rise again before the field is cleared. They are slow to muster and slow to march, so their chieftains choose their wars with care. Since Harrow Sound the Troll-kin have stayed awake, and they guard the coast as their own."
+  ],
+  "drow": [
+    "A thousand years ago, the Drow were a hill people of the eastern ranges. When the Long Winter came and the snows did not lift for a generation, they followed the warmth downward. Deep beneath Mount Ishiraki they built Vael Nhur, around a lake of black water lit by fungus-lamps and the glow of the deep forges. Their smiths worked iron on the mountain's own heat, and Drow deepsteel reached the surface through traders who kept its source secret.",
+    "The Forge-Wardens of Vael Nhur always wanted more heat, and each generation cut the vents deeper. In the reign of Warden Sarith Var, they broke through into the mountain's heart, and Mount Ishiraki erupted. Vael Nhur burned for a month.",
+    "Sarith's daughter, Ilith Var, led the survivors up onto the scorched slopes, where they met the Ashcliffe, also fleeing the fire. To protect her father's name, Ilith declared that the Ashcliffe had angered the mountain. The two peoples have fought over the ash-lands ever since, and only the Wardens' line knows the truth."
+  ],
+  "mycellian": [
+    "When Ruikhire was sacked by the First Transgression of the Saltborn, a surprise defender turned up to repel their vassal remnants. A pale growth, sentient and enraged, rose up to swallow these pretenders. The Freehomers said it spoke to many of them, calling itself the Root of Ruikhire. It knew the names of the streets, the faces of the dead and the old songs of the city.",
+    "The Mycellians share one mind across many bodies. When they lose land, the growth beneath it often survives and sends up new bodies in time. Both the Freehomes and the Mycellians claim Ruikhire, and the dispute has led to open fighting in the Ward of Bells and along the Lower Quays.",
+    "In time, the Mycellians spread across the World, seeking out the Saltborn and exterminating what they can find."
+  ],
+  "daemon": [
+    "Four centuries ago, the sorcerer-kings of Unlith summoned the Daemons, tall horned beings of smoke and living flame who neither age nor sleep, from beyond the stars to fight their wars, binding each one with a contract written in silver ink. The Daemons served for a hundred years, and in that time they studied every line.",
+    "Each contract forbade a Daemon to harm the king who bound it, but none forbade it to harm another king. On the Night of Silver, the Daemon Vashkarre arranged the exchange: every Daemon slew a neighbour's master, and by dawn every sorcerer-king of Unlith lay dead in his tower. The Daemons took the contracts from the vaults and rewrote them in blood, with mortal names where their own had been.",
+    "A Daemon's rank is now measured by the souls it holds. Their great lords keep ledgers of thousands of mortals, each bound by a debt of gold, years of life or a firstborn child, and they call their purpose the Great Tithe: every soul in the Realms, bound and accounted for."
+  ]
+}
