@@ -1,0 +1,11 @@
+{
+  "_note": "A picture at the top of a race's page: files live in site/assets/races/ (web-sized; originals in content/assets/). Keys are race identities.",
+  "ashcliffe": {
+    "file": "ashcliffe.jpg",
+    "alt": "Ashcliffe wanderers in furs and red cloaks, with spears and bows, stand on a ridge as Mount Ishiraki erupts behind them."
+  },
+  "echolalian": {
+    "file": "echolalian.jpg",
+    "alt": "Echolalian warriors in feathers and white face paint, with spears and round shields, stand in the jungle before waterfalls and overgrown ruins."
+  }
+}

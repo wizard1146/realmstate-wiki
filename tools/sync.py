@@ -456,6 +456,7 @@ def units_table(d, vocab):
 UNIT_SHORT = {"soldier": "Soldiers", "offense": "Offense spec.", "defense": "Defense spec.", "elite": "Elite", "thief": "Thief",
               "offense+": "Offense spec.+", "defense+": "Defense spec.+", "elite+": "Elite+"}
 LORE = CONTENT / "_lore.json"   # hand-written: {"troll": ["paragraph", ...]}; WY's lore for each race page
+RACE_ART = CONTENT / "_race-art.json"   # hand-written: {"troll": {"file", "alt"}}; files in site/assets/races/
 AGE_DATES = CONTENT / "_age-dates.json"   # hand-edited: {"2": {"from": "2026-10-01", "to": "2026-12-31"}}; the game has no dates
 
 
@@ -652,8 +653,15 @@ def generate(rules):
         # ages it was used in.
         try: lore = {k: v for k, v in json.loads(LORE.read_text(encoding="utf-8")).items() if not k.startswith("_")}
         except (OSError, ValueError): lore = {}
+        try: art = {k: v for k, v in json.loads(RACE_ART.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+        except (OSError, ValueError): art = {}
         for ident, i in known.items():
             parts = []
+            if singular == "race" and art.get(ident):
+                a = art[ident]
+                if not (ROOT / "site" / "assets" / "races" / a["file"]).exists():
+                    problems.append(f'content/_race-art.json: site/assets/races/{a["file"]} is missing')
+                parts.append(f'<figure class="race-art"><img src="assets/races/{e(a["file"])}" alt="{e(a["alt"])}" width="1000" height="1000"></figure>\n')
             if singular == "race" and lore.get(ident):
                 parts.append('<h2 id="lore">Lore</h2>\n' + "".join(f"<p>{e(p)}</p>\n" for p in lore[ident]))
             if i["lineage_from"]:

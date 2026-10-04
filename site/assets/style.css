@@ -208,6 +208,8 @@ a:visited { color: var(--link-visited); }
 .page__body h3 { margin: 1.5rem 0 .4rem; font-size: 1.2rem; }
 .page__body h4 { margin: 1.2rem 0 .3rem; }
 .page__body img { max-width: 100%; height: auto; }
+.race-art { margin: 0 0 1.5rem; }                                      /* a race's picture, at the top of its page */
+.race-art img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 28%; border: 1px solid var(--border); border-radius: .35rem; }   /* a wide banner, cropped around the figures' faces, so the lore shows on the first screen */
 .page__body sub { color: var(--muted); }
 /* pre: wraps instead of scrolling sideways. Add class="pre-scroll" for a block that must keep its exact columns. */
 .page__body pre { white-space: pre-wrap; overflow-wrap: anywhere; padding: .8rem; background: var(--band-bg); border-radius: .4rem; font-size: .9rem; }
