@@ -1,0 +1,224 @@
+<!--
+title: Age 3
+category: Ages
+generated: tools/sync.py
+-->
+<p>Ruleset fingerprint <code>ba1d1237dc415593</code>.</p>
+<h2 id="changes">What changed (compared with <a href="age-2.html">Age 2</a>)</h2>
+<ul>
+<li><a href="race-ashcliffe.html">ashcliffe</a> added (<code>ashcliffe@v1</code>)</li>
+<li><a href="race-dwarf.html">dwarf</a> removed</li>
+<li><a href="race-echolalian.html">echolalian</a> added (<code>echolalian@v1</code>)</li>
+<li><a href="race-elf.html">elf</a> removed</li>
+<li><a href="race-freehomes.html">freehomes</a> added (<code>freehomes@v1</code>)</li>
+<li><a href="race-human.html">human</a> removed</li>
+<li><a href="race-orc.html">orc</a> removed</li>
+<li><a href="race-peridian.html">peridian</a> added (<code>peridian@v1</code>)</li>
+<li><a href="race-revenant.html">revenant</a> removed</li>
+<li><a href="race-saltborn.html">saltborn</a> added (<code>saltborn@v1</code>)</li>
+<li><a href="race-unlithian.html">unlithian</a> added (<code>unlithian@v1</code>)</li>
+</ul>
+<h2 id="numbers">Numbers</h2>
+<div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">
+<tr><th>Rule</th><th class="cell-num">Value</th></tr>
+<tr class="row-group" id="numbers-world"><th colspan="2" scope="colgroup">World</th></tr>
+<tr><td>Realms in the world</td><td class="cell-num">13</td></tr>
+<tr><td>States in each realm</td><td class="cell-num">7</td></tr>
+<tr><td>Houses each state can hold</td><td class="cell-num">15</td></tr>
+<tr><td>Length of a tick</td><td class="cell-num">1 hour(s)</td></tr>
+<tr class="row-group" id="numbers-starting-a-house"><th colspan="2" scope="colgroup">Starting a house</th></tr>
+<tr><td>Starting land (acres)</td><td class="cell-num">400</td></tr>
+<tr><td>Starting people (peasants and soldiers)</td><td class="cell-num">8,000</td></tr>
+<tr><td>Of those, starting soldiers</td><td class="cell-num">400</td></tr>
+<tr><td>Starting gold</td><td class="cell-num">150,000</td></tr>
+<tr><td>Starting food</td><td class="cell-num">60,000</td></tr>
+<tr class="row-group" id="numbers-population-and-food"><th colspan="2" scope="colgroup">Population and food</th></tr>
+<tr><td>Peasant growth per tick</td><td class="cell-num">3%</td></tr>
+<tr><td>Gold per peasant per tick</td><td class="cell-num">3</td></tr>
+<tr><td>Food eaten per person per tick</td><td class="cell-num">0.25</td></tr>
+<tr><td>Peasants lost per tick without food</td><td class="cell-num">1%</td></tr>
+<tr><td>Soldiers lost per tick without food</td><td class="cell-num">3%</td></tr>
+<tr><td>Specialists and thieves lost per tick without food</td><td class="cell-num">2%</td></tr>
+<tr><td>Elites lost per tick without food</td><td class="cell-num">1%</td></tr>
+<tr class="row-group" id="numbers-land-and-construction"><th colspan="2" scope="colgroup">Land and construction</th></tr>
+<tr><td>Gold to explore one acre (base)</td><td class="cell-num">300</td></tr>
+<tr><td>Exploring: extra gold an acre per 1,000 acres you have</td><td class="cell-num">750</td></tr>
+<tr><td>Exploring: soldiers an acre per 1,000 acres you have</td><td class="cell-num">5</td></tr>
+<tr><td>Explored land arrives after (ticks)</td><td class="cell-num">12</td></tr>
+<tr><td>Land: people each barren acre houses</td><td class="cell-num">15</td></tr>
+<tr><td>Land: food each barren acre grows per tick</td><td class="cell-num">2</td></tr>
+<tr><td>Land: people each acre under construction houses</td><td class="cell-num">15</td></tr>
+<tr><td>Construction: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
+<tr><td>Construction: land added before costing</td><td class="cell-num">10,000</td></tr>
+<tr><td>Construction: ticks to build</td><td class="cell-num">16</td></tr>
+<tr><td>Razing: base gold per building</td><td class="cell-num">300</td></tr>
+<tr><td>Razing: gold per acre of land, thousandths</td><td class="cell-num">50</td></tr>
+<tr><td>Efficiency: peasants needed, as a share of jobs</td><td class="cell-num">67%</td></tr>
+<tr class="row-group" id="numbers-economy"><th colspan="2" scope="colgroup">Economy</th></tr>
+<tr><td>Lowest share a state can fall to</td><td class="cell-num">7%</td></tr>
+<tr><td>Part of a state&#x27;s output shared among its houses</td><td class="cell-num">50%</td></tr>
+<tr><td>Lowest state tax on house income</td><td class="cell-num">0%</td></tr>
+<tr><td>Highest state tax on house income</td><td class="cell-num">10%</td></tr>
+<tr><td>Ticks between a leader&#x27;s renames of the state</td><td class="cell-num">24</td></tr>
+<tr><td>Tax a new state starts with</td><td class="cell-num">2%</td></tr>
+<tr class="row-group" id="numbers-trading"><th colspan="2" scope="colgroup">Trading</th></tr>
+<tr><td>Share of a sale paid to the seller&#x27;s state</td><td class="cell-num">5%</td></tr>
+<tr><td>Extra an out-of-realm buyer pays</td><td class="cell-num">10%</td></tr>
+<tr><td>Shortest auction, ticks</td><td class="cell-num">12</td></tr>
+<tr><td>Longest auction, ticks</td><td class="cell-num">48</td></tr>
+<tr><td>Each bid must beat the last by</td><td class="cell-num">5%</td></tr>
+<tr><td>An offer lapses after, ticks</td><td class="cell-num">24</td></tr>
+<tr><td>No trading again for, ticks</td><td class="cell-num">72</td></tr>
+<tr><td>Settling in lasts, ticks</td><td class="cell-num">24</td></tr>
+<tr><td>Penalty while settling in</td><td class="cell-num">-5%</td></tr>
+<tr class="row-group" id="numbers-war"><th colspan="2" scope="colgroup">War</th></tr>
+<tr><td>Troops finish training after (ticks)</td><td class="cell-num">9</td></tr>
+<tr><td>Armies return after (ticks)</td><td class="cell-num">12</td></tr>
+<tr><td>Land taken on a successful attack</td><td class="cell-num">10%</td></tr>
+<tr><td>Attacker&#x27;s troops lost</td><td class="cell-num">8%</td></tr>
+<tr><td>Defender&#x27;s troops lost</td><td class="cell-num">6%</td></tr>
+<tr><td>Battle luck (offense varies by up to)</td><td class="cell-num">&plusmn;5%</td></tr>
+<tr><td>Upgrades: extra main stat of an upgraded unit (unless the race sets it)</td><td class="cell-num">25%</td></tr>
+<tr><td>Upgrades: material spent</td><td class="cell-num">bauxite</td></tr>
+<tr><td>Upgrades: material per unit</td><td class="cell-num">1</td></tr>
+<tr><td>Upgrades: material per elite</td><td class="cell-num">2</td></tr>
+<tr><td>Medics: material spent</td><td class="cell-num">sulfur</td></tr>
+<tr><td>Medics: material per medic</td><td class="cell-num">1</td></tr>
+<tr><td>Medics: gold per medic</td><td class="cell-num">250</td></tr>
+<tr><td>Medics: deaths saved per medic per 100 troops</td><td class="cell-num">2%</td></tr>
+<tr><td>Medics: most deaths saved</td><td class="cell-num">50%</td></tr>
+<tr><td>Renown for a successful attack (scaled by how close it was)</td><td class="cell-num">20</td></tr>
+<tr><td>Mounts: offense a horse adds</td><td class="cell-num">1</td></tr>
+<tr><td>Mounts: offense a chariot adds</td><td class="cell-num">2</td></tr>
+<tr><td>Chariots: horses per chariot</td><td class="cell-num">1</td></tr>
+<tr><td>Chariots: material used</td><td class="cell-num">timber</td></tr>
+<tr><td>Chariots: material per chariot</td><td class="cell-num">1</td></tr>
+<tr><td>Chariots: gold per chariot</td><td class="cell-num">100</td></tr>
+<tr class="row-group" id="numbers-generals"><th colspan="2" scope="colgroup">Generals</th></tr>
+<tr><td>Material paid</td><td class="cell-num">amber</td></tr>
+<tr><td>Elites retired to raise one</td><td class="cell-num">100</td></tr>
+<tr><td>Material per trait</td><td class="cell-num">50</td></tr>
+<tr><td>Renown for 1st, 2nd, 3rd... trait</td><td class="cell-num">0, 200, 500</td></tr>
+<tr><td>Renown to choose traits</td><td class="cell-num">300</td></tr>
+<tr><td>Most a house can keep</td><td class="cell-num">5</td></tr>
+<tr><td>Chance of dying leading a failed attack</td><td class="cell-num">5%</td></tr>
+<tr class="row-group" id="numbers-spying"><th colspan="2" scope="colgroup">Spying</th></tr>
+<tr><td>Chance with equal thieves per acre</td><td class="cell-num">50%</td></tr>
+<tr><td>Thieves caught when it fails</td><td class="cell-num">5%</td></tr>
+<tr><td>Nerve recovered a tick</td><td class="cell-num">4%</td></tr>
+<tr><td>Extra Nerve for a False Flag</td><td class="cell-num">10%</td></tr>
+<tr><td>How long a courted character wavers (ticks)</td><td class="cell-num">24</td></tr>
+<tr><td>Gold to reassure a wavering character</td><td class="cell-num">500</td></tr>
+<tr><td>Plus this share of its highest transfer fee</td><td class="cell-num">2%</td></tr>
+<tr><td>Loyalty after reassuring (ticks)</td><td class="cell-num">72</td></tr>
+<tr><td>Auction length for a character left wavering (ticks)</td><td class="cell-num">24</td></tr>
+<tr><td>That auction&#x27;s lowest reserve</td><td class="cell-num">2,000</td></tr>
+<tr><td>The courting house&#x27;s first refusal (ticks)</td><td class="cell-num">6</td></tr>
+<tr><td>Extra Nerve a failure costs (share of the operation&#x27;s cost)</td><td class="cell-num">50%</td></tr>
+<tr><td>Most Vigilance a house can have</td><td class="cell-num">80%</td></tr>
+<tr><td>Vigilance fading a tick</td><td class="cell-num">4%</td></tr>
+<tr class="row-group" id="numbers-science"><th colspan="2" scope="colgroup">Science</th></tr>
+<tr><td>Scientists a new house starts with</td><td class="cell-num">6</td></tr>
+<tr><td>New scientists per tick, thousandths</td><td class="cell-num">100</td></tr>
+<tr><td>Ranks as [books written per scientist, books a tick]</td><td class="cell-num">0: 60, 1,440: 80, 5,280: 100, 12,480: 120</td></tr>
+<tr><td>Material that speeds research</td><td class="cell-num">paper</td></tr>
+<tr><td>Books each paper adds</td><td class="cell-num">5</td></tr>
+<tr><td>Most extra books from paper, share of the base</td><td class="cell-num">100%</td></tr>
+<tr><td>Learning by doing: books for a close win</td><td class="cell-num">200</td></tr>
+<tr><td>Learning by doing: books for a successful operation</td><td class="cell-num">50</td></tr>
+<tr><td>Learning by doing: books per building built</td><td class="cell-num">5</td></tr>
+<tr><td>Learning by doing: books per 1,000 gold traded</td><td class="cell-num">10</td></tr>
+<tr><td>Lost texts: chance an exploration finds books</td><td class="cell-num">15%</td></tr>
+<tr><td>Lost texts: books per acre explored</td><td class="cell-num">20</td></tr>
+<tr><td>Colloquium: knowledge lost per tick at first</td><td class="cell-num">0.02%</td></tr>
+<tr><td>Colloquium: extra loss per tick without a contribution</td><td class="cell-num">0.01%</td></tr>
+<tr><td>Colloquium: most knowledge lost per tick</td><td class="cell-num">1%</td></tr>
+<tr><td>Colloquium: renown per 1,000 books contributed</td><td class="cell-num">1</td></tr>
+<tr><td>Academics: building that supports them</td><td class="cell-num">universities</td></tr>
+<tr><td>Academics: buildings needed per academic</td><td class="cell-num">100</td></tr>
+<tr><td>Academics: books to recruit one</td><td class="cell-num">5,000</td></tr>
+<tr><td>Academics: material paid per attribute</td><td class="cell-num">paper</td></tr>
+<tr><td>Academics: material per attribute</td><td class="cell-num">50</td></tr>
+<tr><td>Academics: books invested for 1st, 2nd, 3rd attribute</td><td class="cell-num">0, 50,000, 200,000</td></tr>
+<tr><td>Academics: books invested to choose attributes</td><td class="cell-num">100,000</td></tr>
+<tr class="row-group" id="numbers-other"><th colspan="2" scope="colgroup">Other</th></tr>
+<tr><td>Age: new-house protection (ticks)</td><td class="cell-num">72</td></tr>
+<tr><td>Military: draft rate a new house starts with</td><td class="cell-num">20%</td></tr>
+<tr><td>Military: highest draft rate</td><td class="cell-num">90%</td></tr>
+<tr><td>Military: peasants drafted a tick, at most</td><td class="cell-num">1%</td></tr>
+<tr><td>Military: offense+ defense / defense+ offense bonus (points)</td><td class="cell-num">1</td></tr>
+<tr><td>Military: training spread either side of the average (ticks)</td><td class="cell-num">2</td></tr>
+<tr><td>Military: trainees who fail (back to soldiers)</td><td class="cell-num">2%</td></tr>
+<tr><td>Military: trainees who die</td><td class="cell-num">0.5%</td></tr>
+<tr><td>Military: trainees who come out upgraded</td><td class="cell-num">3%</td></tr>
+<tr><td>Military: direct recruits cost more by</td><td class="cell-num">30%</td></tr>
+<tr><td>Military: direct recruits take longer by</td><td class="cell-num">50%</td></tr>
+<tr><td>Military: direct recruits&#x27; spread either side (ticks)</td><td class="cell-num">3</td></tr>
+<tr><td>Military: direct recruits who fail (back to peasants)</td><td class="cell-num">6%</td></tr>
+<tr><td>Military: direct recruits who die</td><td class="cell-num">2%</td></tr>
+<tr><td>War: recovery after losing (ticks)</td><td class="cell-num">72</td></tr>
+<tr><td>War: faster peasant regrowth in recovery</td><td class="cell-num">50%</td></tr>
+<tr><td>War: share of recovery each side gets from a peace</td><td class="cell-num">50%</td></tr>
+<tr><td>War: ticks out of war before the peace dividend</td><td class="cell-num">168</td></tr>
+<tr><td>Age: length in ticks</td><td class="cell-num">1,680</td></tr>
+<tr><td>Age: score for the most land (out of 100)</td><td class="cell-num">50%</td></tr>
+<tr><td>Age: score for the most might (out of 100)</td><td class="cell-num">50%</td></tr>
+<tr><td>Age: score per war point (out of 100)</td><td class="cell-num">2%</td></tr>
+<tr><td>Age: might per troop, as a share of its offense plus defense</td><td class="cell-num">75</td></tr>
+<tr><td>Age: might per medic</td><td class="cell-num">2</td></tr>
+<tr><td>Age: might per horse</td><td class="cell-num">1</td></tr>
+<tr><td>Age: might per chariot</td><td class="cell-num">3</td></tr>
+<tr><td>Age: might per general or academic</td><td class="cell-num">500</td></tr>
+<tr><td>Age: might per 100 science books invested</td><td class="cell-num">1</td></tr>
+<tr><td>Rites: chance of a divination or hex with equal adepts per acre</td><td class="cell-num">50%</td></tr>
+<tr><td>Rites: material hexes burn as incense</td><td class="cell-num">resin</td></tr>
+</table></div>
+<h2 id="races">Races</h2>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th class="cell-num">Slot</th><th>Race</th><th>Definition</th></tr>
+<tr><td class="cell-num">0</td><td><a href="race-ashcliffe.html#v1">Ashcliffe</a></td><td><code>ashcliffe@v1</code></td></tr>
+<tr><td class="cell-num">1</td><td><a href="race-echolalian.html#v1">Echolalians</a></td><td><code>echolalian@v1</code></td></tr>
+<tr><td class="cell-num">2</td><td><a href="race-saltborn.html#v1">Saltborn</a></td><td><code>saltborn@v1</code></td></tr>
+<tr><td class="cell-num">3</td><td><a href="race-peridian.html#v1">Peridians</a></td><td><code>peridian@v1</code></td></tr>
+<tr><td class="cell-num">4</td><td><a href="race-freehomes.html#v1">Freehomes</a></td><td><code>freehomes@v1</code></td></tr>
+<tr><td class="cell-num">5</td><td><a href="race-unlithian.html#v1">Unlithians</a></td><td><code>unlithian@v1</code></td></tr>
+<tr class="cell-muted"><td class="cell-num">6</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">7</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">8</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">9</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">10</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">11</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">12</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">13</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">14</td><td colspan="2">unused</td></tr>
+</table></div>
+<h2 id="personalities">Personalities</h2>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th class="cell-num">Slot</th><th>Personality</th><th>Definition</th></tr>
+<tr><td class="cell-num">0</td><td><a href="personality-merchant.html#v1">The Merchant</a></td><td><code>merchant@v1</code></td></tr>
+<tr><td class="cell-num">1</td><td><a href="personality-warrior.html#v1">The Warrior</a></td><td><code>warrior@v1</code></td></tr>
+<tr><td class="cell-num">2</td><td><a href="personality-sage.html#v1">The Sage</a></td><td><code>sage@v1</code></td></tr>
+<tr><td class="cell-num">3</td><td><a href="personality-explorer.html#v1">The Explorer</a></td><td><code>explorer@v1</code></td></tr>
+<tr class="cell-muted"><td class="cell-num">4</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">5</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">6</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">7</td><td colspan="2">unused</td></tr>
+</table></div>
+<h2 id="materials">Materials</h2>
+<div class="table-scroll" data-updated="none"><table class="table--fit">
+<tr><th class="cell-num">Realm</th><th>Material</th></tr>
+<tr><td class="cell-num">1</td><td><a href="materials.html#bauxite">Bauxite</a></td></tr>
+<tr><td class="cell-num">2</td><td><a href="materials.html#limestone">Limestone</a></td></tr>
+<tr><td class="cell-num">3</td><td><a href="materials.html#amber">Amber</a></td></tr>
+<tr><td class="cell-num">4</td><td><a href="materials.html#sulfur">Sulfur</a></td></tr>
+<tr><td class="cell-num">5</td><td><a href="materials.html#pine">Pine</a></td></tr>
+<tr><td class="cell-num">6</td><td><a href="materials.html#bauxite">Bauxite</a></td></tr>
+<tr><td class="cell-num">7</td><td><a href="materials.html#paper">Paper</a></td></tr>
+<tr><td class="cell-num">8</td><td><a href="materials.html#limestone">Limestone</a></td></tr>
+<tr><td class="cell-num">9</td><td><a href="materials.html#amber">Amber</a></td></tr>
+<tr><td class="cell-num">10</td><td><a href="materials.html#sulfur">Sulfur</a></td></tr>
+<tr><td class="cell-num">11</td><td><a href="materials.html#bauxite">Bauxite</a></td></tr>
+<tr><td class="cell-num">12</td><td><a href="materials.html#pine">Pine</a></td></tr>
+<tr><td class="cell-num">13</td><td><a href="materials.html#paper">Paper</a></td></tr>
+</table></div>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>ba1d1237dc415593</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

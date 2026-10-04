@@ -78,7 +78,8 @@ UNLOCK_TEXT = {
 }
 UNLOCK_LIVE = set()   # unlock kinds the engine acts on; the rest show "no effect yet" on race and personality pages
 UNIT_ROLE = {"soldier": "Soldiers (drafted)", "offense": "Offense specialist", "defense": "Defense specialist", "elite": "Elite", "thief": "Thief",
-             "offense+": "Offense specialist, upgraded", "defense+": "Defense specialist, upgraded", "elite+": "Elite, upgraded"}
+             "offense+": "Offense specialist, upgraded", "defense+": "Defense specialist, upgraded", "elite+": "Elite, upgraded",
+             "mercenary": "Mercenaries (hired per attack)", "elite++": "Elite, upgraded twice"}
 PARAM_TEXT = [  # (key, label, how to show it)
     ("realms", "Realms in the world", "n"),
     ("states_per_realm", "States in each realm", "n"),
@@ -315,6 +316,7 @@ def effects_list(d, stats):
         when = [{True: "at war", False: "out of war"}[c["at_war"]]] if c.get("at_war") is not None else []
         when += [f'against {c["vs"]}'] if c.get("vs") else []
         when += [f'on {c["attack"]} attacks'] if c.get("attack") else []
+        when += [{"overpopulated": "while overpopulated", "well_fed": "while well fed"}.get(c["when"], c["when"])] if c.get("when") else []
         items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(s, s).lower())} <b>{e(", ".join(when))}</b> '
                      f'(<a href="effects.html#{s}"><code>{s}</code></a>, <a href="effects.html#conditions">conditional</a>)</li>')
     return items
@@ -357,8 +359,52 @@ def material_uses(a):
     return uses
 
 
+GROUP_TEXT = {"offense": "offensive specialists", "defense": "defensive specialists", "elite": "elites", "military": "every fighting unit"}
+WHEN_TEXT = {"war": "at war", "peace": "out of war", "overpopulated": "while overpopulated", "well_fed": "while well fed"}
+
+
+def race_rules_items(d):
+    """A race's own rules (see the game's realm_rules::race::RaceRules), each as plain words in an <li>."""
+    r, items = d.get("race") or {}, []
+    signed = lambda n: f"+{n}" if n > 0 else str(n)
+    o = r.get("overrides", {})
+    if "mercenary_ratio" in o:
+        items.append(f'One <a href="military.html#Mercenaries">mercenary</a> for every {o["mercenary_ratio"]} of your own troops sent.')
+    if "upgrade_cross_point" in o:
+        items.append(f'Upgraded units gain {o["upgrade_cross_point"]} in their other stat.')
+    for b in r.get("unit_bonuses", []):
+        parts = [f'{signed(b[k])} {"offense" if k == "off" else "defense"}' for k in ("off", "def") if b.get(k)]
+        when = f' {WHEN_TEXT[b["when"]]}' if b.get("when") else ""
+        items.append(f'{GROUP_TEXT[b["units"]].capitalize()} fight with {" and ".join(parts)} each{when}.')
+    if r.get("well_fed_per_acre"):
+        items.append(f'Well fed means more than {r["well_fed_per_acre"]} food an acre.')
+    for op, bp in sorted(r.get("resist_bp", {}).items()):
+        link = f'<a href="operations.html#{op}">{e(op)}</a>'
+        items.append(f'Immune to {link}: it can\'t be tried on them.' if bp >= 10000
+                     else f'{link} is {pct(abs(bp))}% {"less" if bp > 0 else "more"} likely to work on them.')
+    if r.get("no_elite_training"):
+        items.append("Can't train elites.")
+    if (w := r.get("war_elites")):
+        items.append(f'A won battle turns {pct(w["bp"])}% of the surviving offensive specialists into elites.')
+    if (m := r.get("mercenaries_stay")):
+        items.append(f'{pct(m["bp"])}% of the mercenaries who survive a battle stay, as offensive specialists.')
+    if r.get("mercenary_upgrades"):
+        items.append('Mercenaries can be hired upgraded, for the upgrade material.')
+    if (h := r.get("homes")):
+        items.append(f'{e(h["building"]).capitalize()} house {h["living"]} people each, and each 1% of the land in them grows peasants {pct(h["growth_bp_per_pct"])}% faster.')
+    if (m := r.get("mirror")):
+        items.append(f'Can fight with the unit stats of any of the last {m["attackers"]} houses that attacked them, changing at most every {m["every_ticks"]} ticks.')
+    if (c := r.get("citizens")):
+        items.append(f'Every peasant at home defends as {"a soldier does" if c["defense_bp"] >= 10000 else f"{pct(c["defense_bp"])}% of a soldier"}.')
+    if (p := r.get("promote")):
+        items.append(f'Every {p["every_ticks"]} ticks, {pct(p["bp"])}% of the soldiers become {GROUP_TEXT[p["into"]]}, free.')
+    if (a := r.get("activity")):
+        items.append(f'Training takes {a["training_ticks"]} ticks less while, within the last {a["window_ticks"]} ticks, the house explored, took land, or started buildings on {pct(a["build_bp"])}% of its land.')
+    return [f"<li>{i}</li>" for i in items]
+
+
 def def_effects_html(d, vocab):
-    items = effects_list(d, vocab["stats"])
+    items = effects_list(d, vocab["stats"]) + race_rules_items(d)
     for n, name in enumerate(vocab["flags"]):
         if d["flags"] & (1 << n):
             items.append(f'<li>{e(FLAG_TEXT.get(name, name))} (<a href="effects.html#{name}"><code>{name}</code></a>)</li>')
@@ -1020,8 +1066,13 @@ def generate(rules):
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Stat</th><th>What it changes</th></tr>\n' + stat_rows + "</table></div>\n"
         '<h2 id="conditions">Conditional modifiers</h2>\n<p>A modifier can hold only under conditions, all of which must hold: '
         '<code>when = "war"</code> (only while your state is at war) or <code>when = "peace"</code> (only while it isn\'t); '
+        'for races, also <code>when = "overpopulated"</code> (more people than the house has room for) or <code>when = "well_fed"</code> (more food an acre than the race\'s limit); '
         '<code>vs = "troll"</code> (only in battles against a house of that race); <code>attack = "massacre"</code> (only on that kind of attack). '
         'Race pages show the conditions next to each modifier.</p>\n'
+        '<h2 id="race-rules">Race rules</h2>\n<p>Beyond modifiers, a race can carry rules of its own: its name for soldiers, '
+        'age settings it plays by differently (the mercenary ratio, what upgrades add), flat bonuses for some units, resistance or immunity to thieves\' '
+        'operations, and signature mechanics (mirroring attackers, citizens who defend, promotions, activity, elites from war). '
+        'Each race page lists its rules in plain words.</p>\n'
         '<h2 id="stacking">How modifiers stack</h2>\n'
         "<p>Every modifier on a stat adds together: race, personality, buildings, sciences, Colloquium projects, academics, "
         "rites, vigils and war standing. The total is applied once.</p>\n<ul>\n"
