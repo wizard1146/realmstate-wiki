@@ -290,16 +290,24 @@ a:visited { color: var(--link-visited); }
 .page__body table.table--units col.col-w-num { width: 3.25rem; }
 .page__body table.table--units col.col-w-cost { width: 5.5rem; }   /* wide enough that the "Cost (gc)" header stays on one line */
 .page__body table.table--units .cell-num { padding-left: .25rem; padding-right: .75rem; }   /* tighter than the default so 4-digit costs still fit the narrow columns */
-/* table--unit-summary: one row per race, each unit's stats across (Current Age and each age's page). Each unit has
-   Off / Def / Gold, then its upgraded unit's Off+ / Def+ / Cost in tinted columns (.cell-up); a rule starts each unit. */
+/* table--unit-summary: one row per race, each unit's Off / Def / Gold (Current Age and each age's page). Every cell
+   holds the base number (.u-base) and the upgraded one (.u-plus); the .unit-switch radios above swap which shows.
+   No script: :has() reads the checked radio. */
 .page__body table.table--unit-summary { width: auto; }
 .page__body table.table--unit-summary td:first-child { white-space: nowrap; }
-.page__body table.table--unit-summary .cell-num { white-space: nowrap; }
-.page__body table .upgrade { color: var(--muted); font-size: .85em; }
+.page__body table.table--unit-summary .cell-num { white-space: nowrap; min-width: 4.2rem; }   /* wide enough for "Off+" and "Cost", so swapping never shifts the table */
 .page__body table.table--unit-summary .status-badge { margin-left: .4rem; }
-.page__body table.table--unit-summary td.cell-up, .page__body table.table--unit-summary th.cell-up { background: color-mix(in srgb, var(--border) 28%, transparent); }
-.page__body table.table--unit-summary tr:first-child th:nth-child(n + 2), .page__body table.table--unit-summary tr:nth-child(2) th:nth-child(6n + 1),
-.page__body table.table--unit-summary td:nth-child(6n + 2) { border-left: 2px solid var(--border); }
+.page__body table.table--unit-summary tr:first-child th:nth-child(n + 2), .page__body table.table--unit-summary tr:nth-child(2) th:nth-child(3n + 1),
+.page__body table.table--unit-summary td:nth-child(3n + 2) { border-left: 2px solid var(--border); }
+.page__body .unit-summary .u-plus { display: none; }
+.page__body .unit-summary:has(input[value="plus"]:checked) .u-plus { display: inline; }
+.page__body .unit-summary:has(input[value="plus"]:checked) .u-base { display: none; }
+.page__body .unit-switch { display: inline-flex; border: 1px solid var(--border); border-radius: 999px; padding: 2px; margin: 0 0 .6rem; gap: 2px; }
+.page__body .unit-switch legend { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.page__body .unit-switch label { padding: .2rem .8rem; border-radius: 999px; cursor: pointer; }
+.page__body .unit-switch input { position: absolute; opacity: 0; pointer-events: none; }
+.page__body .unit-switch label:has(:checked) { background: var(--text); color: var(--bg); }
+.page__body .unit-switch label:has(:focus-visible) { outline: 2px solid var(--text); outline-offset: 2px; }
 .page__body p.table-note { font-size: .9em; color: var(--muted); margin-top: .4rem; }
 
 /* table--grouped: a long table split into topics by row-group header rows (<tr class="row-group"><th colspan="…">Topic</th></tr>).

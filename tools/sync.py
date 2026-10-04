@@ -524,9 +524,10 @@ def other_changes(prev, cur):
 
 
 def units_summary(a, vocab, changes):
-    """One row per race. Each specialist and the elite get Off / Def / Gold, then their upgraded (+) unit's
-    Off+ / Def+ / Cost, where Cost is the material to upgrade one unit. Thieves and mercenaries are left out;
-    a race that can go on to elite++ is marked with an asterisk."""
+    """One row per race: each specialist's and the elite's Off / Def / Gold. A switch above the table (two radio
+    buttons and CSS, no script) shows the upgraded (+) units instead: Off+ / Def+, and Cost, the material to
+    upgrade one unit. Thieves and mercenaries are left to the race pages; a race that can go on to elite++ is
+    marked with an asterisk."""
     races = [d for d in a["races"] if d]
     slots = vocab["unit_slots"]
     p = a["params"]
@@ -548,28 +549,32 @@ def units_summary(a, vocab, changes):
         return (f'<a href="race-{d["key"]["identity"]}.html"><b>{e(d["name"])}</b></a>' + ("*" if star else "")
                 + change_tag(changes, "race", d["key"]["identity"]))
 
-    head1 = "".join(f'<th colspan="6">{e(UNIT_ROLE.get(role, role))}</th>' for role, _, _ in groups)
-    head2 = "".join('<th class="cell-num">Off</th><th class="cell-num">Def</th><th class="cell-num">Gold</th>'
-                    f'<th class="cell-num cell-up">Off+</th><th class="cell-num cell-up">Def+</th><th class="cell-num cell-up" title="{e(mat_name)} per unit">Cost</th>'
+    both = lambda base, plus: f'<span class="u-base">{base}</span><span class="u-plus">{plus}</span>'
+    head1 = "".join(f'<th colspan="3">{e(UNIT_ROLE.get(role, role))}</th>' for role, _, _ in groups)
+    head2 = "".join(f'<th class="cell-num">{both("Off", "Off+")}</th><th class="cell-num">{both("Def", "Def+")}</th>'
+                    f'<th class="cell-num">{both("Gold", f"<abbr title={chr(34)}{e(mat_name)} to upgrade one unit{chr(34)}>Cost</abbr>")}</th>'
                     for _ in groups)
     rows = []
     for d in races:
         cells = []
         for role, plus, key in groups:
             u, v = d["units"][slots.index(role)], d["units"][slots.index(plus)]
-            cells += [f'<td class="cell-num">{u["off"]:,}</td>', f'<td class="cell-num">{u["def"]:,}</td>',
-                      f'<td class="cell-num cell-muted">{u["gold"]:,}</td>',
-                      f'<td class="cell-num cell-up">{v["off"]:,}</td>', f'<td class="cell-num cell-up">{v["def"]:,}</td>',
-                      f'<td class="cell-num cell-up cell-muted">{cost(d, key)}</td>']
+            cells += [f'<td class="cell-num">{both(f"{u[s]:,}", f"{v[s]:,}")}</td>' for s in ("off", "def")]
+            cells.append(f'<td class="cell-num cell-muted">{both(f"{u['gold']:,}", cost(d, key))}</td>')
         rows.append(f'<tr><td>{name(d)}</td>{"".join(cells)}</tr>\n')
     starred = [d for d in races if pp is not None and d["flags"] & (1 << pp)]
-    note = (f'<p class="table-note">* Can upgrade elite+ once more, into elite++ '
-            f'(<a href="effects.html#elite_plus_plus">elite_plus_plus</a>); see the race page.</p>\n') if starred else ""
-    return ('<h2 id="units">Race units</h2>\n<p>Offense, defense and gold cost of each unit, then its upgraded (+) unit. '
-            f'Cost is the {e(mat_name.lower())} it takes to upgrade one unit. Thieves and mercenaries are on each race\'s page. '
-            'How upgrading works: <a href="military.html#Upgrades">Military</a>.</p>\n'
+    note = ('<p class="table-note">* Can upgrade elite+ once more, into elite++ '
+            '(<a href="effects.html#elite_plus_plus">elite_plus_plus</a>); see the race page.</p>\n') if starred else ""
+    group = f"units-{a['age']}"
+    switch = (f'<fieldset class="unit-switch"><legend>Show</legend>'
+              f'<label><input type="radio" name="{group}" value="base" checked> Base units</label>'
+              f'<label><input type="radio" name="{group}" value="plus"> Upgraded (+)</label></fieldset>\n')
+    return ('<h2 id="units">Race units</h2>\n<p>Offense, defense and gold cost of each race\'s units. Switch to <b>Upgraded (+)</b> '
+            f'for the upgraded units; their Cost is the {e(mat_name.lower())} it takes to upgrade one. Thieves and mercenaries are on '
+            'each race\'s page. How upgrading works: <a href="military.html#Upgrades">Military</a>.</p>\n'
+            f'<div class="unit-summary">{switch}'
             '<div class="table-scroll" data-updated="none"><table class="table--sticky-first table--hover table--unit-summary">\n'
-            f'<tr><th rowspan="2">Race</th>{head1}</tr>\n<tr>{head2}</tr>\n{"".join(rows)}</table></div>\n' + note)
+            f'<tr><th rowspan="2">Race</th>{head1}</tr>\n<tr>{head2}</tr>\n{"".join(rows)}</table></div></div>\n' + note)
 
 
 def age_summary(ages, n, vocab):
