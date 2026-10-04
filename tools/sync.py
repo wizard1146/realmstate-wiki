@@ -64,6 +64,9 @@ STAT_TEXT = {
     "casualties_defending": "Your troops killed in battle when you defend",
     "attack_gains": "Everything your attacks take (land, plunder, kills)",
     "mercenary_cost": "Gold paid for mercenaries",
+    "peasant_growth": "The rate peasants are born at",
+    "aether_production": "Aether gathered each tick",
+    "aether_cost": "Aether rites cost",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
@@ -310,7 +313,8 @@ def effects_list(d, stats):
             items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
                          f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>')
     for c in d.get("conditional", []):
-        s, bp = c["stat"], c["bp"]
+        # The export writes a conditional's stat by its Rust name ("CasualtiesAttacking").
+        s, bp = re.sub(r"(?<!^)([A-Z])", r"_\1", c["stat"]).lower(), c["bp"]
         sign = "+" if bp > 0 else ""
         cls = "cell-good" if (bp > 0) != (s in ("food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking", "casualties_defending")) else "cell-bad"
         when = [{True: "at war", False: "out of war"}[c["at_war"]]] if c.get("at_war") is not None else []
@@ -398,6 +402,30 @@ def race_rules_items(d):
         items.append(f'Every peasant at home defends as {"a soldier does" if c["defense_bp"] >= 10000 else f"{pct(c["defense_bp"])}% of a soldier"}.')
     if (p := r.get("promote")):
         items.append(f'Every {p["every_ticks"]} ticks, {pct(p["bp"])}% of the soldiers become {GROUP_TEXT[p["into"]]}, free.')
+    if "general_elites" in o:
+        items.append(f'Raising a <a href="generals.html">general</a> retires {o["general_elites"]} elites.')
+    for c in r.get("unit_casualties", []):
+        when = f' {WHEN_TEXT[c["when"]]}' if c.get("when") else ""
+        items.append(f'{GROUP_TEXT[c["units"]].capitalize()} die {pct(abs(c["bp"]))}% {"less" if c["bp"] < 0 else "more"} in battle{when}.')
+    for k in r.get("immune_attacks", []):
+        items.append(f'Immune to the <a href="attacks.html#{e(k)}">{e(k)}</a> attack.')
+    for k in r.get("immune_rites", []):
+        items.append(f'Immune to the <a href="rite-list.html#{e(k)}">{e(k)}</a> hex.')
+    if r.get("building_losses_bp"):
+        items.append(f'Lose {pct(abs(r["building_losses_bp"]))}% {"fewer" if r["building_losses_bp"] < 0 else "more"} buildings in attacks (barren land goes instead).')
+    for k, bp in sorted(r.get("building_losses_by_attack", {}).items()):
+        items.append(f'{e(k).capitalize()} attacks take {pct(abs(bp))}% {"fewer" if bp < 0 else "more"} buildings still.')
+    if (c := r.get("casualties_return")):
+        items.append(f'{pct(c["bp"])}% of their battle dead come back after {c["ticks"]} ticks.')
+    if (a := r.get("afflict")):
+        mods = ", ".join(f'{"+" if bp > 0 else ""}{pct(bp)}% {e(STAT_TEXT.get(s, s).lower())}' for s, bp in a["mods"])
+        items.append(f'<b>{e(a["name"])}</b>: a {pct(a["chance_bp"])}% chance on every attack to afflict the target for {a["ticks"]} ticks: {mods}.')
+    if (d := r.get("double_strike")):
+        items.append(f'At war, an army led by a general with {d["general_traits"]}+ traits can be sent ready to strike twice: within {d["window_ticks"]} ticks it strikes again at {pct(d["strength_bp"])}% of its offense, killing {pct(d["kill_bp"])}% of the target\'s specialists and taking no land. The general is then spent for {d["spent_ticks"]} ticks.')
+    if (x := r.get("roots")):
+        items.append(f'At war, they can take back up to {pct(x["share_bp"])}% of the land an attack took from them, before the army carrying it gets home, for {x["elites_per_acre"]} elites an acre.')
+    if (m := r.get("momentum")):
+        items.append(f'At war, offense rises {pct(m["gain_bp"])}% every {m["every_ticks"]} ticks, up to {pct(m["max_bp"])}%, and falls {pct(m["drop_bp"])}% for every {m["drop_every_ticks"]} ticks in which they were hit.')
     if (a := r.get("activity")):
         items.append(f'Training takes {a["training_ticks"]} ticks less while, within the last {a["window_ticks"]} ticks, the house explored, took land, or started buildings on {pct(a["build_bp"])}% of its land.')
     return [f"<li>{i}</li>" for i in items]
