@@ -304,19 +304,27 @@ def source_note(age):
             f'ruleset <code>{e(age["hash"])}</code>. Edit the game\'s rules, then run <code>tools/sync.py</code>.</p>\n')
 
 
-def effects_list(d, stats):
+# Stats where a lower number is better for the house (fewer dead, cheaper, faster). Everything else: higher is better.
+LOWER_IS_BETTER = {"food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking",
+                   "casualties_defending", "land_loss", "construction_cost", "construction_time", "training_time", "thief_losses",
+                   "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost"}
+
+
+def effects_list(d, stats, conditional=True):
+    """A definition's modifiers as <li>, green when good for the house and red when bad. `conditional` False leaves
+    out the ones that only apply sometimes (at war, against a race...)."""
     items = []
     for i, bp in enumerate(d["mods_bp"]):
         if bp:
             sign = "+" if bp > 0 else ""
-            cls = "cell-good" if (bp > 0) != (stats[i] in ("food_consumption", "explore_cost", "training_cost", "return_time")) else "cell-bad"
+            cls = "cell-good" if (bp > 0) != (stats[i] in LOWER_IS_BETTER) else "cell-bad"
             items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
                          f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>')
-    for c in d.get("conditional", []):
+    for c in d.get("conditional", []) if conditional else []:
         # The export writes a conditional's stat by its Rust name ("CasualtiesAttacking").
         s, bp = re.sub(r"(?<!^)([A-Z])", r"_\1", c["stat"]).lower(), c["bp"]
         sign = "+" if bp > 0 else ""
-        cls = "cell-good" if (bp > 0) != (s in ("food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking", "casualties_defending")) else "cell-bad"
+        cls = "cell-good" if (bp > 0) != (s in LOWER_IS_BETTER) else "cell-bad"
         when = [{True: "at war", False: "out of war"}[c["at_war"]]] if c.get("at_war") is not None else []
         when += [f'against {c["vs"]}'] if c.get("vs") else []
         when += [f'on {c["attack"]} attacks'] if c.get("attack") else []
@@ -367,8 +375,16 @@ GROUP_TEXT = {"offense": "offensive specialists", "defense": "defensive speciali
 WHEN_TEXT = {"war": "at war", "peace": "out of war", "overpopulated": "while overpopulated", "well_fed": "while well fed"}
 
 
-def race_rules_items(d):
-    """A race's own rules (see the game's realm_rules::race::RaceRules), each as plain words in an <li>."""
+def homes_rule(d):
+    """A race whose homes only raise the birth rate, in plain words, or None."""
+    h = (d.get("race") or {}).get("homes")
+    return (f'{e(h["building"]).capitalize()} only raise the birth rate: they house {h["living"]} people each, '
+            f'and each 1% of the land in them grows peasants {pct(h["growth_bp_per_pct"])}% faster.') if h else None
+
+
+def race_rules_items(d, homes=True):
+    """A race's own rules (see the game's realm_rules::race::RaceRules), each as plain words in an <li>.
+    `homes` False leaves out the homes rule (the summary tables list it as a penalty)."""
     r, items = d.get("race") or {}, []
     signed = lambda n: f"+{n}" if n > 0 else str(n)
     o = r.get("overrides", {})
@@ -394,8 +410,8 @@ def race_rules_items(d):
         items.append(f'{pct(m["bp"])}% of the mercenaries who survive a battle stay, as offensive specialists.')
     if r.get("mercenary_upgrades"):
         items.append('Mercenaries can be hired upgraded, for the upgrade material.')
-    if (h := r.get("homes")):
-        items.append(f'{e(h["building"]).capitalize()} house {h["living"]} people each, and each 1% of the land in them grows peasants {pct(h["growth_bp_per_pct"])}% faster.')
+    if homes and (h := homes_rule(d)):
+        items.append(h)
     if (m := r.get("mirror")):
         items.append(f'Can fight with the unit stats of any of the last {m["attackers"]} houses that attacked them, changing at most every {m["every_ticks"]} ticks.')
     if (c := r.get("citizens")):
@@ -474,9 +490,14 @@ def age_dates(age):
 def split_effects(d, vocab):
     """A definition's effects as (bonuses, penalties, other) lists of <li>."""
     good, bad = [], []
-    for li in effects_list(d, vocab["stats"]):
+    for li in effects_list(d, vocab["stats"], conditional=False):
         (good if 'class="cell-good"' in li else bad).append(li)
-    other = [f'<li>{e(FLAG_TEXT.get(name, name))}</li>' for n, name in enumerate(vocab["flags"]) if d["flags"] & (1 << n)]
+    if (h := homes_rule(d)):
+        bad.append(f'<li>{h}</li>')
+    # Specials: modifiers that apply only sometimes (at war, against a race...), then the race's own rules.
+    other = [li for li in effects_list(d, vocab["stats"]) if 'href="effects.html#conditions"' in li]
+    other += [li if li.startswith("<li") else f'<li>{li}</li>' for li in race_rules_items(d, homes=False)]
+    other += [f'<li>{e(FLAG_TEXT.get(name, name))}</li>' for n, name in enumerate(vocab["flags"]) if d["flags"] & (1 << n)]
     other += [f'<li>Unlocks {e(kind)} <b>{e(ident)}</b>{unlock_note(kind)}</li>' for kind, ident in d.get("unlocks", [])]
     return good, bad, other
 
