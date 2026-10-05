@@ -838,7 +838,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "a8f44309545b5edf",
+      "hash": "cb409fa280404380",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1224,6 +1224,9 @@
         "decay_start_bp": 2,
         "declare_either_points": 6000,
         "defender_loss_bp": 600,
+        "depletion": false,
+        "depletion_floor_bp": 0,
+        "depletion_reserve_ticks": 0,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -2020,6 +2023,9 @@
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
+        "season_curve_bp": [],
+        "season_offsets": {},
+        "season_ticks": 0,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,
@@ -2049,6 +2055,11 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "spoil_free": 0,
+        "spoil_free_per_acre": 0,
+        "spoil_max_bp": 0,
+        "spoil_step_bp": 0,
+        "spoil_treasury_free": 0,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
         "starting_food": 60000,
@@ -4603,7 +4614,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "502c1a94eb3240ae",
+      "hash": "d3adc06e2b5cafc0",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4989,6 +5000,9 @@
         "decay_start_bp": 2,
         "declare_either_points": 6000,
         "defender_loss_bp": 600,
+        "depletion": false,
+        "depletion_floor_bp": 0,
+        "depletion_reserve_ticks": 0,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -5785,6 +5799,9 @@
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
+        "season_curve_bp": [],
+        "season_offsets": {},
+        "season_ticks": 0,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,
@@ -5814,6 +5831,11 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "spoil_free": 0,
+        "spoil_free_per_acre": 0,
+        "spoil_max_bp": 0,
+        "spoil_step_bp": 0,
+        "spoil_treasury_free": 0,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
         "starting_food": 60000,
@@ -8527,48 +8549,78 @@
           "to": "zealot@v1"
         },
         {
+          "from": "amber@v1",
+          "identity": "amber",
+          "kind": "material",
+          "to": "amber@v2"
+        },
+        {
+          "from": "bauxite@v1",
+          "identity": "bauxite",
+          "kind": "material",
+          "to": "bauxite@v2"
+        },
+        {
+          "from": "limestone@v1",
+          "identity": "limestone",
+          "kind": "material",
+          "to": "limestone@v2"
+        },
+        {
+          "from": "pine@v1",
+          "identity": "pine",
+          "kind": "material",
+          "to": "pine@v2"
+        },
+        {
+          "from": "sulfur@v1",
+          "identity": "sulfur",
+          "kind": "material",
+          "to": "sulfur@v2"
+        },
+        {
           "from": "banks@v1",
           "identity": "banks",
           "kind": "building",
           "to": "banks@v2"
         }
       ],
-      "hash": "b4583cd6487e7de3",
+      "hash": "956a4a07269d6292",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
-          "hash": "ab9ab51b4b511b37",
+          "hash": "94ce13c988911e1a",
           "key": {
             "identity": "amber",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Amber",
-          "output_per_tick": 1200,
+          "output_per_tick": 300,
           "produced": true
         },
         {
           "description": "Lightweight weaponry. Used to arm troops for offense.",
-          "hash": "226b702987e78fc2",
+          "hash": "cae20443fe85d3d8",
           "key": {
             "identity": "bauxite",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Bauxite",
-          "output_per_tick": 800,
+          "output_per_tick": 1400,
           "produced": true
         },
         {
           "description": "Construction. Used for buildings (a later milestone).",
-          "hash": "c2ed1be64dd2d99d",
+          "hash": "c3e7affec186abdf",
           "key": {
             "identity": "limestone",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Limestone",
-          "output_per_tick": 1200,
+          "output_per_tick": 500,
           "produced": true
         },
         {
@@ -8585,14 +8637,14 @@
         },
         {
           "description": "Speed. Used to bring armies home sooner.",
-          "hash": "6e8cdd4bc37a1b95",
+          "hash": "b238fd46da5c60ee",
           "key": {
             "identity": "pine",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Pine",
-          "output_per_tick": 1200,
+          "output_per_tick": 600,
           "produced": true
         },
         {
@@ -8609,14 +8661,14 @@
         },
         {
           "description": "Healing. Used to save troops from dying in battle.",
-          "hash": "f6b347615346175a",
+          "hash": "1c48a84cab4421ad",
           "key": {
             "identity": "sulfur",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Sulfur",
-          "output_per_tick": 1200,
+          "output_per_tick": 400,
           "produced": true
         },
         {
@@ -8927,6 +8979,9 @@
         "decay_start_bp": 2,
         "declare_either_points": 6000,
         "defender_loss_bp": 600,
+        "depletion": false,
+        "depletion_floor_bp": 2500,
+        "depletion_reserve_ticks": 2520,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -9723,6 +9778,25 @@
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
+        "season_curve_bp": [
+          6000,
+          8000,
+          10000,
+          12000,
+          14000,
+          12000,
+          10000,
+          8000
+        ],
+        "season_offsets": {
+          "amber": 140,
+          "bauxite": 0,
+          "limestone": 70,
+          "paper": 350,
+          "pine": 280,
+          "sulfur": 210
+        },
+        "season_ticks": 420,
         "settling_penalty_bp": -500,
         "settling_ticks": 24,
         "share_floor_bp": 700,
@@ -9752,6 +9826,11 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "spoil_free": 50,
+        "spoil_free_per_acre": 1,
+        "spoil_max_bp": 500,
+        "spoil_step_bp": 100,
+        "spoil_treasury_free": 1000,
         "spy_base_success_bp": 5000,
         "spy_loss_bp": 500,
         "starting_food": 60000,
@@ -12670,7 +12749,8 @@
       "lineage_from": null,
       "name": "Amber",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {
@@ -12678,7 +12758,8 @@
       "lineage_from": null,
       "name": "Bauxite",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {
@@ -12686,7 +12767,8 @@
       "lineage_from": null,
       "name": "Limestone",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {
@@ -12702,7 +12784,8 @@
       "lineage_from": null,
       "name": "Pine",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {
@@ -12718,7 +12801,8 @@
       "lineage_from": null,
       "name": "Sulfur",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {

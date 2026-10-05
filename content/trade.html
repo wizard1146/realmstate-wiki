@@ -1,7 +1,7 @@
 <!--
 title: Trade
 category: Mechanics, Economy
-updated: 2026-10-05
+updated: 2026-10-06
 -->
 <p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
 
@@ -11,6 +11,20 @@ updated: 2026-10-05
 <h2 id="Split">Houses and treasury</h2>
 <p>Of each state's part, {{house_split_pct}}% is shared equally among its houses. The rest goes to the state's treasury, which only the <a href="leadership.html">state leader</a> can use. The split is set per age.</p>
 <p><b>Worked example.</b> A bauxite realm makes {{bauxite_output}} units a tick. A state with a {{equal_share_pct}}% share gets about {{example_state_output}} a tick. {{house_split_pct}}% of that, {{example_houses_part}}, is shared among the state's houses, and {{example_treasury_part}} goes to the treasury. With {{houses_per_state}} houses, each gets about {{example_per_house}} a tick; leftovers carry over, so no unit is ever lost.</p>
+
+<h2 id="Seasons">Seasons</h2>
+<p>Output isn't steady. Each material runs through seasons: over {{season_ticks}} ticks its output goes {{season_curve_pct}} of its base, and then round again. On average it makes its base output.</p>
+<p>The materials are out of step: each runs some ticks ahead of the start ({{season_offsets}}). So while one material is scarce, another is plentiful. Buying in a glut and selling in a shortage pays, if you can store the goods.</p>
+<p>The market page shows each material's output this tick and its season.</p>
+
+<h2 id="Spoilage">Spoilage</h2>
+<p>Goods don't keep forever. Each tick, a house may hold {{spoil_free}} units of each material, plus {{spoil_free_per_acre}} per acre of land, without loss. A treasury may hold {{spoil_treasury_free}} of each.</p>
+<p>Beyond that, the excess spoils. You lose {{spoil_step_pct}}% of it for every free allowance's worth you're over, up to {{spoil_max_pct}}% a tick. A little over costs almost nothing; a big hoard melts fast.</p>
+<p><b>Worked example.</b> A house of 400 acres may keep 450 of each material. With 900 bauxite it's 450 over, one allowance's worth, so it loses 1% of 450: 4 units. With 4,950 it's 4,500 over, ten allowances' worth, so the {{spoil_max_pct}}% cap applies: 225 units a tick.</p>
+<p>Goods in your sell orders count, so an order at a price nobody pays won't protect them. They spoil after your stock, starting with your highest-priced order. Your house page shows what would spoil next tick.</p>
+
+<h2 id="Depletion">Depletion</h2>
+<p>Some ages switch depletion on (this age: {{depletion}}). Then each realm's deposit holds {{depletion_reserve_ticks}} ticks of its base output. As the deposit is worked, output falls with the square of the share used up: hardly at first, steeply near the end. It never falls below {{depletion_floor_pct}}% of the base. Materials are plentiful early in such an age and scarce late.</p>
 
 <h2 id="Market">The market</h2>
 <ul>

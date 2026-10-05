@@ -3,7 +3,7 @@ title: Age 3
 category: Ages
 generated: tools/sync.py
 -->
-<p>Ruleset fingerprint <code>b4583cd6487e7de3</code>.</p>
+<p>Ruleset fingerprint <code>956a4a07269d6292</code>.</p>
 <h2 id="what-changed">What changed (compared with <a href="age-2.html">Age 2</a>)</h2>
 <ul>
 <li><a href="race-ashcliffe.html">ashcliffe</a> added (<code>ashcliffe@v1</code>)</li>
@@ -27,7 +27,12 @@ generated: tools/sync.py
 <li><a href="personality-quartermaster.html">quartermaster</a> added (<code>quartermaster@v1</code>)</li>
 <li><a href="personality-spymaster.html">spymaster</a> added (<code>spymaster@v1</code>)</li>
 <li><a href="personality-zealot.html">zealot</a> added (<code>zealot@v1</code>)</li>
-<li><a href="building-banks.html">banks</a> rebalanced: <code>banks@v1</code> &rarr; <code>banks@v2</code></li>
+<li><a href="materials.html#amber">amber</a> rebalanced: <code>amber@v1</code> &rarr; <code>amber@v2</code></li>
+<li><a href="materials.html#bauxite">bauxite</a> rebalanced: <code>bauxite@v1</code> &rarr; <code>bauxite@v2</code></li>
+<li><a href="materials.html#limestone">limestone</a> rebalanced: <code>limestone@v1</code> &rarr; <code>limestone@v2</code></li>
+<li><a href="materials.html#pine">pine</a> rebalanced: <code>pine@v1</code> &rarr; <code>pine@v2</code></li>
+<li><a href="materials.html#sulfur">sulfur</a> rebalanced: <code>sulfur@v1</code> &rarr; <code>sulfur@v2</code></li>
+<li><a href="buildings.html#banks">banks</a> rebalanced: <code>banks@v1</code> &rarr; <code>banks@v2</code></li>
 </ul>
 <h2 id="units">Race units</h2>
 <p>Offense, defense and gold cost of each unit, then its upgraded (+) unit. Cost is the bauxite it takes to upgrade one unit. The switch shows only the base or only the upgraded units. Thieves and mercenaries are on each race's page. How upgrading works: <a href="military.html#Upgrades">Military</a>.</p>
@@ -98,8 +103,24 @@ generated: tools/sync.py
 <tr><td>Aid tax for each gold-value an acre beyond that</td><td class="cell-num cell-muted">0%</td><td class="cell-num">0.5%</td></tr>
 <tr><td>Aid tax at most</td><td class="cell-num cell-muted">0%</td><td class="cell-num">60%</td></tr>
 <tr><td>Aid balances fade each tick</td><td class="cell-num cell-muted">0%</td><td class="cell-num">1%</td></tr>
+<tr><td>Spoilage: units of each material a house keeps free</td><td class="cell-num cell-muted">0</td><td class="cell-num">50</td></tr>
+<tr><td>Spoilage: more free units per acre of land</td><td class="cell-num cell-muted">0</td><td class="cell-num">1</td></tr>
+<tr><td>Spoilage: units of each material a treasury keeps free</td><td class="cell-num cell-muted">0</td><td class="cell-num">1,000</td></tr>
+<tr><td>Spoilage: lost per tick for each free allowance&#x27;s worth over it</td><td class="cell-num cell-muted">0%</td><td class="cell-num">1%</td></tr>
+<tr><td>Spoilage: most lost per tick (0% = no spoilage)</td><td class="cell-num cell-muted">0%</td><td class="cell-num">5%</td></tr>
+<tr><td>Seasons: ticks in one cycle (0 = no seasons)</td><td class="cell-num cell-muted">0</td><td class="cell-num">420</td></tr>
+<tr><td>Seasons: output through the cycle, as a share of the base</td><td class="cell-num cell-muted"></td><td class="cell-num">60% &rarr; 80% &rarr; 100% &rarr; 120% &rarr; 140% &rarr; 120% &rarr; 100% &rarr; 80%</td></tr>
+<tr><td>Seasons: how many ticks ahead each material runs</td><td class="cell-num cell-muted"></td><td class="cell-num">bauxite 0, limestone 70, amber 140, sulfur 210, pine 280, paper 350</td></tr>
+<tr><td>Depletion: a deposit holds this many ticks of base output</td><td class="cell-num cell-muted">0</td><td class="cell-num">2,520</td></tr>
+<tr><td>Depletion: output never falls below</td><td class="cell-num cell-muted">0%</td><td class="cell-num">25%</td></tr>
 <tr class="row-group"><th colspan="3" scope="colgroup">Buildings</th></tr>
 <tr><td>Banks</td><td class="cell-num cell-muted"><code>banks@v1</code></td><td class="cell-num"><code>banks@v2</code></td></tr>
+<tr class="row-group"><th colspan="3" scope="colgroup">Materials</th></tr>
+<tr><td>Amber</td><td class="cell-num cell-muted"><code>amber@v1</code></td><td class="cell-num"><code>amber@v2</code></td></tr>
+<tr><td>Bauxite</td><td class="cell-num cell-muted"><code>bauxite@v1</code></td><td class="cell-num"><code>bauxite@v2</code></td></tr>
+<tr><td>Limestone</td><td class="cell-num cell-muted"><code>limestone@v1</code></td><td class="cell-num"><code>limestone@v2</code></td></tr>
+<tr><td>Pine</td><td class="cell-num cell-muted"><code>pine@v1</code></td><td class="cell-num"><code>pine@v2</code></td></tr>
+<tr><td>Sulfur</td><td class="cell-num cell-muted"><code>sulfur@v1</code></td><td class="cell-num"><code>sulfur@v2</code></td></tr>
 </table></div>
 <h2 id="numbers">Numbers</h2>
 <div class="table-scroll" data-updated="none"><table class="table--hover table--grouped">
@@ -272,6 +293,17 @@ generated: tools/sync.py
 <tr><td>Rites: chance of a divination or hex with equal adepts per acre</td><td class="cell-num">50%</td></tr>
 <tr><td>Rites: material hexes burn as incense</td><td class="cell-num">resin</td></tr>
 <tr><td>Market: share of every sale&#x27;s gold destroyed as a fee</td><td class="cell-num">5%</td></tr>
+<tr><td>Spoilage: units of each material a house keeps free</td><td class="cell-num">50</td></tr>
+<tr><td>Spoilage: more free units per acre of land</td><td class="cell-num">1</td></tr>
+<tr><td>Spoilage: units of each material a treasury keeps free</td><td class="cell-num">1,000</td></tr>
+<tr><td>Spoilage: lost per tick for each free allowance&#x27;s worth over it</td><td class="cell-num">1%</td></tr>
+<tr><td>Spoilage: most lost per tick (0% = no spoilage)</td><td class="cell-num">5%</td></tr>
+<tr><td>Seasons: ticks in one cycle (0 = no seasons)</td><td class="cell-num">420</td></tr>
+<tr><td>Seasons: output through the cycle, as a share of the base</td><td class="cell-num">60% &rarr; 80% &rarr; 100% &rarr; 120% &rarr; 140% &rarr; 120% &rarr; 100% &rarr; 80%</td></tr>
+<tr><td>Seasons: how many ticks ahead each material runs</td><td class="cell-num">bauxite 0, limestone 70, amber 140, sulfur 210, pine 280, paper 350</td></tr>
+<tr><td>Depletion: switched on this age</td><td class="cell-num">no</td></tr>
+<tr><td>Depletion: a deposit holds this many ticks of base output</td><td class="cell-num">2,520</td></tr>
+<tr><td>Depletion: output never falls below</td><td class="cell-num">25%</td></tr>
 </table></div>
 <h2 id="race-slots">Race slots</h2>
 <div class="table-scroll" data-updated="none"><table>
@@ -325,4 +357,4 @@ generated: tools/sync.py
 <tr><td class="cell-num">12</td><td><a href="materials.html#pine">Pine</a></td></tr>
 <tr><td class="cell-num">13</td><td><a href="materials.html#paper">Paper</a></td></tr>
 </table></div>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>b4583cd6487e7de3</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>956a4a07269d6292</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

@@ -234,6 +234,17 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("trade_fee_bp", "Trading: share of a sale paid to the seller's state", "pct"),
     ("out_of_realm_bp", "Trading: extra an out-of-realm buyer pays", "pct"),
     ("market_fee_bp", "Market: share of every sale's gold destroyed as a fee", "pct"),
+    ("spoil_free", "Spoilage: units of each material a house keeps free", "n"),
+    ("spoil_free_per_acre", "Spoilage: more free units per acre of land", "n"),
+    ("spoil_treasury_free", "Spoilage: units of each material a treasury keeps free", "n"),
+    ("spoil_step_bp", "Spoilage: lost per tick for each free allowance's worth over it", "pct"),
+    ("spoil_max_bp", "Spoilage: most lost per tick (0% = no spoilage)", "pct"),
+    ("season_ticks", "Seasons: ticks in one cycle (0 = no seasons)", "n"),
+    ("season_curve_bp", "Seasons: output through the cycle, as a share of the base", "pctlist"),
+    ("season_offsets", "Seasons: how many ticks ahead each material runs", "map"),
+    ("depletion", "Depletion: switched on this age", "yesno"),
+    ("depletion_reserve_ticks", "Depletion: a deposit holds this many ticks of base output", "n"),
+    ("depletion_floor_bp", "Depletion: output never falls below", "pct"),
     ("auction_min_ticks", "Trading: shortest auction, ticks", "n"),
     ("auction_max_ticks", "Trading: longest auction, ticks", "n"),
     ("bid_step_bp", "Trading: each bid must beat the last by", "pct"),
@@ -293,6 +304,12 @@ def show_param(value, how):
         return e(str(value))
     if how == "list":
         return ", ".join(f"{v:,}" for v in value)
+    if how == "pctlist":
+        return " &rarr; ".join(f"{pct(v)}%" for v in value)
+    if how == "map":
+        return ", ".join(f"{e(str(k))} {v:,}" for k, v in sorted(value.items(), key=lambda kv: kv[1]))
+    if how == "yesno":
+        return "yes" if value else "no"
     if how == "pairs":
         return ", ".join(f"{a:,}: {b}" for a, b in value)
     return f"{value:,}"
@@ -918,7 +935,10 @@ def generate(rules):
         else:
             items = []
             for c in changes:
-                page = f'{c["kind"]}-{c["identity"]}.html'
+                # Races and personalities have pages of their own; anything else (a building, a
+                # material) is a row on its kind's page.
+                own = c["kind"] in ("race", "personality")
+                page = f'{c["kind"]}-{c["identity"]}.html' if own else f'{c["kind"]}s.html#{c["identity"]}'
                 if c["from"] and c["to"]:
                     items.append(f'<li><a href="{page}">{e(c["identity"])}</a> rebalanced: <code>{e(c["from"])}</code> &rarr; <code>{e(c["to"])}</code></li>')
                 elif c["to"]:
@@ -1408,8 +1428,14 @@ def generate(rules):
     for k, v in p.items():
         if k in meter:
             values[k] = f"{v / 100:g}"
+        elif k.endswith("_bp") and isinstance(v, list):
+            values[k[:-3] + "_pct"] = " → ".join(f"{pct(x)}%" for x in v)
         elif k.endswith("_bp"):
             values[k[:-3] + "_pct"] = pct(v)
+        elif isinstance(v, bool):
+            values[k] = "on" if v else "off"
+        elif isinstance(v, dict) and k == "season_offsets":
+            values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
         elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
