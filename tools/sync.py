@@ -1359,11 +1359,15 @@ def generate(rules):
     # Explorable acres a tick at a size (the engine's curve: the square of the way left).
     def ex_tick(land):
         lo, hi = p.get("explorable_from_land", 1), p.get("explorable_to_land", 2)
-        span = max(1, hi - lo); left = min(max(hi - land, 0), span)
-        rate_mbp = p.get("explorable_min_bp", 0) * 1000 + (p.get("explorable_max_bp", 0) - p.get("explorable_min_bp", 0)) * 1000 * left * left // (span * span)
-        return land * rate_mbp // 10000 / 1000
+        span = max(1, hi - lo)
+        def at(land):
+            left = min(max(hi - land, 0), span)
+            rate_mbp = p.get("explorable_min_bp", 0) * 1000 + (p.get("explorable_max_bp", 0) - p.get("explorable_min_bp", 0)) * 1000 * left * left // (span * span)
+            return land * rate_mbp // 10000
+        # In acres a tick a bigger house never gets more (as the engine does).
+        return min(at(min(land, hi)), at(lo)) / 1000
     if p.get("explorable_max_bp", 0):
-        values["explorable_examples"] = "; ".join(f'{land:,} acres: {ex_tick(land):g} a tick, up to {ex_tick(land) * p["explorable_bank_ticks"]:g} banked' for land in (p["starting_land"], 800, 1200, 2000, 4000))
+        values["explorable_examples"] = "; ".join(f'{land:,} acres: {ex_tick(land):.2g} a tick, up to {int(ex_tick(land) * p["explorable_bank_ticks"])} banked' for land in (p["starting_land"], 800, 1200, 2000, 4000))
         values["explorable_bank_days"] = f'{p["explorable_bank_ticks"] * p["tick_ms"] / 86_400_000:g}'
     if p.get("aid_ticks", 0):
         values["aid_tax_step_pct"] = pct(p["aid_tax_bp_per_acre_value"])

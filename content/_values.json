@@ -20,7 +20,7 @@
   "starting_built": 200,
   "starting_barren": 200,
   "equal_share_pct": "14.3",
-  "explorable_examples": "400 acres: 1 a tick, up to 48 banked; 800 acres: 0.857 a tick, up to 41.136 banked; 1,200 acres: 0.334 a tick, up to 16.032 banked; 2,000 acres: 0.2 a tick, up to 9.6 banked; 4,000 acres: 0.4 a tick, up to 19.2 banked",
+  "explorable_examples": "400 acres: 1 a tick, up to 48 banked; 800 acres: 0.86 a tick, up to 41 banked; 1,200 acres: 0.33 a tick, up to 16 banked; 2,000 acres: 0.15 a tick, up to 7 banked; 4,000 acres: 0.15 a tick, up to 7 banked",
   "explorable_bank_days": "2",
   "aid_tax_step_pct": "0.5",
   "aid_value_list": "explorable 300, soldiers 40, horses 30, material 15, aether 10, food 1, gold 1",
