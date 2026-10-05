@@ -699,13 +699,13 @@
         {
           "capacity": [],
           "construction_ticks": 0,
-          "description": "Merchants add a premium to what you sell on the market.",
+          "description": "Merchants cut the market fee on what you sell.",
           "extra_gold": 0,
-          "hash": "23836802d88e1c76",
+          "hash": "ba4c013a7fe91c1c",
           "jobs": 25,
           "key": {
             "identity": "trading_houses",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "living": 25,
@@ -713,9 +713,9 @@
           "max_count": 0,
           "mods": [
             {
-              "base_bp": 100,
-              "max_bp": 2500,
-              "stat": "TradeBonus"
+              "base_bp": -400,
+              "max_bp": -10000,
+              "stat": "MarketFee"
             }
           ],
           "name": "Trading Houses",
@@ -838,7 +838,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "c18edac51c2fd0ed",
+      "hash": "a8f44309545b5edf",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1205,7 +1205,7 @@
         "books_per_explored_acre": 20,
         "books_per_paper": 5,
         "books_per_spy": 50,
-        "books_per_thousand_traded": 10,
+        "books_per_thousand_fee": 100,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -1285,6 +1285,7 @@
         "lost_text_chance_bp": 1500,
         "loyal_ticks": 72,
         "luck_bp": 500,
+        "market_fee_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
@@ -1996,6 +1997,7 @@
             "war_bonus_bp": 0
           }
         ],
+        "science_cap_bp": 0,
         "science_ranks": [
           [
             0,
@@ -2071,6 +2073,7 @@
         "train_fail_bp": 200,
         "train_general_cbp": 20,
         "train_plus_bp": 300,
+        "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
         "tribute_bp": 2000,
@@ -4436,13 +4439,13 @@
         {
           "capacity": [],
           "construction_ticks": 0,
-          "description": "Merchants add a premium to what you sell on the market.",
+          "description": "Merchants cut the market fee on what you sell.",
           "extra_gold": 0,
-          "hash": "23836802d88e1c76",
+          "hash": "ba4c013a7fe91c1c",
           "jobs": 25,
           "key": {
             "identity": "trading_houses",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "living": 25,
@@ -4450,9 +4453,9 @@
           "max_count": 0,
           "mods": [
             {
-              "base_bp": 100,
-              "max_bp": 2500,
-              "stat": "TradeBonus"
+              "base_bp": -400,
+              "max_bp": -10000,
+              "stat": "MarketFee"
             }
           ],
           "name": "Trading Houses",
@@ -4600,7 +4603,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "3ca9302a96222d6f",
+      "hash": "502c1a94eb3240ae",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4967,7 +4970,7 @@
         "books_per_explored_acre": 20,
         "books_per_paper": 5,
         "books_per_spy": 50,
-        "books_per_thousand_traded": 10,
+        "books_per_thousand_fee": 100,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -5047,6 +5050,7 @@
         "lost_text_chance_bp": 1500,
         "loyal_ticks": 72,
         "luck_bp": 500,
+        "market_fee_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
@@ -5758,6 +5762,7 @@
             "war_bonus_bp": 0
           }
         ],
+        "science_cap_bp": 0,
         "science_ranks": [
           [
             0,
@@ -5833,6 +5838,7 @@
         "train_fail_bp": 200,
         "train_general_cbp": 20,
         "train_plus_bp": 300,
+        "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
         "tribute_bp": 2000,
@@ -7916,11 +7922,11 @@
           "construction_ticks": 0,
           "description": "Make gold and raise income.",
           "extra_gold": 0,
-          "hash": "1b705a1ab8c4949e",
+          "hash": "47a7721c92f55da6",
           "jobs": 25,
           "key": {
             "identity": "banks",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "living": 25,
@@ -7928,8 +7934,8 @@
           "max_count": 0,
           "mods": [
             {
-              "base_bp": 150,
-              "max_bp": 3750,
+              "base_bp": 100,
+              "max_bp": 2500,
               "stat": "Income"
             }
           ],
@@ -7937,7 +7943,7 @@
           "produce": [
             [
               "gold",
-              25
+              10
             ]
           ],
           "trait_slots": 0
@@ -8255,13 +8261,13 @@
         {
           "capacity": [],
           "construction_ticks": 0,
-          "description": "Merchants add a premium to what you sell on the market.",
+          "description": "Merchants cut the market fee on what you sell.",
           "extra_gold": 0,
-          "hash": "23836802d88e1c76",
+          "hash": "ba4c013a7fe91c1c",
           "jobs": 25,
           "key": {
             "identity": "trading_houses",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "living": 25,
@@ -8269,9 +8275,9 @@
           "max_count": 0,
           "mods": [
             {
-              "base_bp": 100,
-              "max_bp": 2500,
-              "stat": "TradeBonus"
+              "base_bp": -400,
+              "max_bp": -10000,
+              "stat": "MarketFee"
             }
           ],
           "name": "Trading Houses",
@@ -8519,9 +8525,15 @@
           "identity": "zealot",
           "kind": "personality",
           "to": "zealot@v1"
+        },
+        {
+          "from": "banks@v1",
+          "identity": "banks",
+          "kind": "building",
+          "to": "banks@v2"
         }
       ],
-      "hash": "06a006fd8e42c7a8",
+      "hash": "b4583cd6487e7de3",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -8896,7 +8908,7 @@
         "books_per_explored_acre": 20,
         "books_per_paper": 5,
         "books_per_spy": 50,
-        "books_per_thousand_traded": 10,
+        "books_per_thousand_fee": 100,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -8950,7 +8962,7 @@
           200,
           500
         ],
-        "gold_per_peasant": 3,
+        "gold_per_peasant": 2,
         "heir_slots_renown": [
           500,
           2000,
@@ -8976,6 +8988,7 @@
         "lost_text_chance_bp": 1500,
         "loyal_ticks": 72,
         "luck_bp": 500,
+        "market_fee_bp": 500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
@@ -9687,6 +9700,7 @@
             "war_bonus_bp": 0
           }
         ],
+        "science_cap_bp": 2500,
         "science_ranks": [
           [
             0,
@@ -9762,6 +9776,7 @@
         "train_fail_bp": 200,
         "train_general_cbp": 20,
         "train_plus_bp": 300,
+        "train_price_bp": 20000,
         "train_spread_ticks": 2,
         "train_ticks": 9,
         "tribute_bp": 2000,
@@ -10741,43 +10756,43 @@
             },
             {
               "def": 0,
-              "gold": 300,
+              "gold": 600,
               "name": "Ashstalker",
               "off": 5
             },
             {
               "def": 5,
-              "gold": 320,
+              "gold": 640,
               "name": "Cinderwarden",
               "off": 0
             },
             {
               "def": 5,
-              "gold": 900,
+              "gold": 1800,
               "name": "Emberwright",
               "off": 8
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Smokewalker",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 300,
+              "gold": 600,
               "name": "Ashstalker+",
               "off": 6
             },
             {
               "def": 6,
-              "gold": 320,
+              "gold": 640,
               "name": "Cinderwarden+",
               "off": 1
             },
             {
               "def": 6,
-              "gold": 900,
+              "gold": 1800,
               "name": "Emberwright+",
               "off": 10
             },
@@ -10789,7 +10804,7 @@
             },
             {
               "def": 8,
-              "gold": 900,
+              "gold": 1800,
               "name": "Emberwright++",
               "off": 13
             }
@@ -10891,43 +10906,43 @@
             },
             {
               "def": 0,
-              "gold": 320,
+              "gold": 640,
               "name": "Mirrorblade",
               "off": 6
             },
             {
               "def": 4,
-              "gold": 300,
+              "gold": 600,
               "name": "Hollow Guard",
               "off": 0
             },
             {
               "def": 4,
-              "gold": 950,
+              "gold": 1900,
               "name": "Voice of the Hegemon",
               "off": 9
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Whisperer",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 320,
+              "gold": 640,
               "name": "Mirrorblade+",
               "off": 8
             },
             {
               "def": 5,
-              "gold": 300,
+              "gold": 600,
               "name": "Hollow Guard+",
               "off": 1
             },
             {
               "def": 5,
-              "gold": 950,
+              "gold": 1900,
               "name": "Voice of the Hegemon+",
               "off": 11
             },
@@ -10939,7 +10954,7 @@
             },
             {
               "def": 6,
-              "gold": 950,
+              "gold": 1900,
               "name": "Voice of the Hegemon++",
               "off": 14
             }
@@ -11030,43 +11045,43 @@
             },
             {
               "def": 0,
-              "gold": 300,
+              "gold": 600,
               "name": "Corsair",
               "off": 5
             },
             {
               "def": 6,
-              "gold": 360,
+              "gold": 720,
               "name": "Brineguard",
               "off": 0
             },
             {
               "def": 6,
-              "gold": 1050,
+              "gold": 2100,
               "name": "Admiralty Guard",
               "off": 9
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Wrecker",
               "off": 0
             },
             {
               "def": 2,
-              "gold": 300,
+              "gold": 600,
               "name": "Corsair+",
               "off": 6
             },
             {
               "def": 8,
-              "gold": 360,
+              "gold": 720,
               "name": "Brineguard+",
               "off": 2
             },
             {
               "def": 8,
-              "gold": 1050,
+              "gold": 2100,
               "name": "Admiralty Guard+",
               "off": 11
             },
@@ -11078,7 +11093,7 @@
             },
             {
               "def": 10,
-              "gold": 1050,
+              "gold": 2100,
               "name": "Admiralty Guard++",
               "off": 14
             }
@@ -11171,43 +11186,43 @@
             },
             {
               "def": 0,
-              "gold": 300,
+              "gold": 600,
               "name": "Arbalist",
               "off": 5
             },
             {
               "def": 5,
-              "gold": 320,
+              "gold": 640,
               "name": "Longwall",
               "off": 0
             },
             {
               "def": 4,
-              "gold": 950,
+              "gold": 1900,
               "name": "Scorpion Crew",
               "off": 9
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Informant",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 300,
+              "gold": 600,
               "name": "Arbalist+",
               "off": 6
             },
             {
               "def": 6,
-              "gold": 320,
+              "gold": 640,
               "name": "Longwall+",
               "off": 1
             },
             {
               "def": 5,
-              "gold": 950,
+              "gold": 1900,
               "name": "Scorpion Crew+",
               "off": 11
             },
@@ -11219,7 +11234,7 @@
             },
             {
               "def": 6,
-              "gold": 950,
+              "gold": 1900,
               "name": "Scorpion Crew++",
               "off": 14
             }
@@ -11318,43 +11333,43 @@
             },
             {
               "def": 0,
-              "gold": 280,
+              "gold": 560,
               "name": "Rubble Raider",
               "off": 5
             },
             {
               "def": 6,
-              "gold": 330,
+              "gold": 660,
               "name": "Holdfast",
               "off": 0
             },
             {
               "def": 5,
-              "gold": 880,
+              "gold": 1760,
               "name": "Firebrand",
               "off": 8
             },
             {
               "def": 0,
-              "gold": 380,
+              "gold": 760,
               "name": "Lookout",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 280,
+              "gold": 560,
               "name": "Rubble Raider+",
               "off": 6
             },
             {
               "def": 8,
-              "gold": 330,
+              "gold": 660,
               "name": "Holdfast+",
               "off": 1
             },
             {
               "def": 6,
-              "gold": 880,
+              "gold": 1760,
               "name": "Firebrand+",
               "off": 10
             },
@@ -11366,7 +11381,7 @@
             },
             {
               "def": 8,
-              "gold": 880,
+              "gold": 1760,
               "name": "Firebrand++",
               "off": 13
             }
@@ -11451,43 +11466,43 @@
             },
             {
               "def": 0,
-              "gold": 330,
+              "gold": 660,
               "name": "Sellsword",
               "off": 6
             },
             {
               "def": 5,
-              "gold": 330,
+              "gold": 660,
               "name": "Bonded Guard",
               "off": 0
             },
             {
               "def": 5,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Gilded Company",
               "off": 9
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Factor",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 330,
+              "gold": 660,
               "name": "Sellsword+",
               "off": 8
             },
             {
               "def": 6,
-              "gold": 330,
+              "gold": 660,
               "name": "Bonded Guard+",
               "off": 1
             },
             {
               "def": 6,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Gilded Company+",
               "off": 11
             },
@@ -11499,7 +11514,7 @@
             },
             {
               "def": 8,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Gilded Company++",
               "off": 14
             }
@@ -11591,43 +11606,43 @@
             },
             {
               "def": 0,
-              "gold": 340,
+              "gold": 680,
               "name": "Breakwall",
               "off": 6
             },
             {
               "def": 7,
-              "gold": 380,
+              "gold": 760,
               "name": "Two Stones",
               "off": 0
             },
             {
               "def": 8,
-              "gold": 1200,
+              "gold": 2400,
               "name": "Old Stone",
               "off": 10
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Pebblefoot",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 340,
+              "gold": 680,
               "name": "Breakwall+",
               "off": 8
             },
             {
               "def": 9,
-              "gold": 380,
+              "gold": 760,
               "name": "Two Stones+",
               "off": 1
             },
             {
               "def": 10,
-              "gold": 1200,
+              "gold": 2400,
               "name": "Old Stone+",
               "off": 13
             },
@@ -11639,7 +11654,7 @@
             },
             {
               "def": 13,
-              "gold": 1200,
+              "gold": 2400,
               "name": "Old Stone++",
               "off": 16
             }
@@ -11729,43 +11744,43 @@
             },
             {
               "def": 0,
-              "gold": 330,
+              "gold": 660,
               "name": "Gloomblade",
               "off": 6
             },
             {
               "def": 5,
-              "gold": 330,
+              "gold": 660,
               "name": "Stillwarden",
               "off": 0
             },
             {
               "def": 5,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Deepcaller",
               "off": 9
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Whisperknife",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 330,
+              "gold": 660,
               "name": "Gloomblade+",
               "off": 8
             },
             {
               "def": 6,
-              "gold": 330,
+              "gold": 660,
               "name": "Stillwarden+",
               "off": 1
             },
             {
               "def": 6,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Deepcaller+",
               "off": 11
             },
@@ -11777,7 +11792,7 @@
             },
             {
               "def": 8,
-              "gold": 1000,
+              "gold": 2000,
               "name": "Deepcaller++",
               "off": 14
             }
@@ -11891,43 +11906,43 @@
             },
             {
               "def": 0,
-              "gold": 300,
+              "gold": 600,
               "name": "Rotreaver",
               "off": 5
             },
             {
               "def": 6,
-              "gold": 340,
+              "gold": 680,
               "name": "Mycowall",
               "off": 0
             },
             {
               "def": 6,
-              "gold": 950,
+              "gold": 1900,
               "name": "Bloomwarden",
               "off": 8
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Creeper",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 300,
+              "gold": 600,
               "name": "Rotreaver+",
               "off": 6
             },
             {
               "def": 8,
-              "gold": 340,
+              "gold": 680,
               "name": "Mycowall+",
               "off": 1
             },
             {
               "def": 8,
-              "gold": 950,
+              "gold": 1900,
               "name": "Bloomwarden+",
               "off": 10
             },
@@ -11939,7 +11954,7 @@
             },
             {
               "def": 10,
-              "gold": 950,
+              "gold": 1900,
               "name": "Bloomwarden++",
               "off": 13
             }
@@ -12020,43 +12035,43 @@
             },
             {
               "def": 0,
-              "gold": 360,
+              "gold": 720,
               "name": "Reaver",
               "off": 7
             },
             {
               "def": 5,
-              "gold": 340,
+              "gold": 680,
               "name": "Sealkeeper",
               "off": 0
             },
             {
               "def": 5,
-              "gold": 1100,
+              "gold": 2200,
               "name": "Hellbound",
               "off": 10
             },
             {
               "def": 0,
-              "gold": 400,
+              "gold": 800,
               "name": "Tithetaker",
               "off": 0
             },
             {
               "def": 1,
-              "gold": 360,
+              "gold": 720,
               "name": "Reaver+",
               "off": 9
             },
             {
               "def": 6,
-              "gold": 340,
+              "gold": 680,
               "name": "Sealkeeper+",
               "off": 1
             },
             {
               "def": 6,
-              "gold": 1100,
+              "gold": 2200,
               "name": "Hellbound+",
               "off": 13
             },
@@ -12068,7 +12083,7 @@
             },
             {
               "def": 8,
-              "gold": 1100,
+              "gold": 2200,
               "name": "Hellbound++",
               "off": 16
             }
@@ -12951,7 +12966,7 @@
       "construction_cost",
       "thief_strength",
       "thief_defense",
-      "trade_bonus",
+      "market_fee",
       "building_efficiency",
       "construction_time",
       "land_gain",

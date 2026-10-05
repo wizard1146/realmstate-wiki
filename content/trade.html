@@ -1,7 +1,7 @@
 <!--
 title: Trade
 category: Mechanics, Economy
-updated: 2026-09-29
+updated: 2026-10-05
 -->
 <p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
 
@@ -20,9 +20,10 @@ updated: 2026-09-29
   <li>Better-priced orders fill first, then older ones. Whatever doesn't trade stays open.</li>
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
-<p>The market takes no fee: a seller gets the full clearing price, and no share goes to the seller's state. (The {{trade_fee_pct}}% fee to the seller's state applies only to selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
-<p><a href="buildings.html#trading_houses">Trading houses</a> add a premium to the gold you receive when you sell (not for treasury sales). The game pays the premium as new gold; the buyer still pays only the clearing price.</p>
-<p>You can't trade with yourself: while you have an open sell order for a material you can't place a buy order for it, and the other way round. Cancel one first. For a state's leader, their own house and the treasury count as one trader.</p>
+<p>Every sale pays the market fee: {{market_fee_pct}}% of the gold it receives. The fee is destroyed; it goes to no one. Treasury sales pay it too. Buying is free. (The {{trade_fee_pct}}% fee to the seller's state is a separate one, for selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
+<p><a href="buildings.html#trading_houses">Trading houses</a> cut your fee, down to nothing with enough of them. The fee never goes below zero, so a sale never pays out more gold than the buyer paid. Trading back and forth with a friend can only lose gold.</p>
+<p><b>Worked example.</b> You sell 100 units at 50 gold. The buyer pays 5,000 gold. With no trading houses you pay a {{market_fee_pct}}% fee and receive the rest. Your news shows the fee for each sale.</p>
+<p>You can buy and sell the same material at once, as a market maker does: for example, buy bauxite at 9 and sell it at 11. You just can't trade with yourself, so your buy must be priced below your own sell. A buy at or above it is refused, because at the single clearing price it could fill against your own sell. For a state's leader, their own house and the treasury count as one trader. If a house becomes leader while its orders already cross the treasury's, the treasury's orders wait out each clearing until one side is cancelled.</p>
 <p>States that make the same material may agree on prices between themselves. The game doesn't enforce such agreements; keeping them is up to the players.</p>
 
 <h2 id="Uses">What materials are for</h2>

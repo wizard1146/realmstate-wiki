@@ -40,7 +40,7 @@ STAT_TEXT = {
     "construction_cost": "Gold cost of construction",
     "thief_strength": "Strength of your thieves when spying",
     "thief_defense": "Strength of your thieves against enemy spies",
-    "trade_bonus": "Extra gold on your market sales",
+    "market_fee": "The market fee on your sales",
     "building_efficiency": "Building efficiency (can pass 100%)",
     "construction_time": "Time to build",
     "land_gain": "Land taken on a successful attack",
@@ -95,6 +95,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("starting_food", "Starting food", "n"),
     ("peasant_growth_bp", "Peasant growth per tick", "pct"),
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
+    ("train_price_bp", "Training prices, as a share of the race files' unit prices", "pct"),
+    ("science_cap_bp", "The most one science adds to a stat (before science efficiency)", "pct"),
     ("food_per_person_milli", "Food eaten per person per tick", "milli"),
     ("starvation_bp", "Peasants lost per tick without food", "pct"),
     ("starvation_soldiers_bp", "Soldiers lost per tick without food", "pct"),
@@ -215,7 +217,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("books_per_close_win", "Learning by doing: books for a close win", "n"),
     ("books_per_spy", "Learning by doing: books for a successful operation", "n"),
     ("books_per_building", "Learning by doing: books per building built", "n"),
-    ("books_per_thousand_traded", "Learning by doing: books per 1,000 gold traded", "n"),
+    ("books_per_thousand_fee", "Learning by doing: books per 1,000 gold of market fee a seller pays", "n"),
     ("lost_text_chance_bp", "Lost texts: chance an exploration finds books", "pct"),
     ("books_per_explored_acre", "Lost texts: books per acre explored", "n"),
     ("decay_start_bp", "Colloquium: knowledge lost per tick at first", "pct"),
@@ -231,6 +233,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("academic_pick_books", "Academics: books invested to choose attributes", "n"),
     ("trade_fee_bp", "Trading: share of a sale paid to the seller's state", "pct"),
     ("out_of_realm_bp", "Trading: extra an out-of-realm buyer pays", "pct"),
+    ("market_fee_bp", "Market: share of every sale's gold destroyed as a fee", "pct"),
     ("auction_min_ticks", "Trading: shortest auction, ticks", "n"),
     ("auction_max_ticks", "Trading: longest auction, ticks", "n"),
     ("bid_step_bp", "Trading: each bid must beat the last by", "pct"),
@@ -324,7 +327,7 @@ STAT_SHORT = {
     "offense": "Offense", "defense": "Defense", "explore_cost": "Explore Cost", "training_cost": "Training Cost",
     "return_time": "Attack Time", "elite_offense": "Elite Offense", "elite_defense": "Elite Defense", "casualties": "Military Losses",
     "land_loss": "Land Lost", "construction_cost": "Construction Cost", "thief_strength": "Thievery Strength",
-    "thief_defense": "Thievery Defense", "trade_bonus": "Market Sales", "building_efficiency": "Building Efficiency",
+    "thief_defense": "Thievery Defense", "market_fee": "Market Fee", "building_efficiency": "Building Efficiency",
     "construction_time": "Construction Time", "land_gain": "Land Gains", "training_time": "Training Time",
     "thief_losses": "Thief Losses", "science_efficiency": "Science Efficiency", "scientist_spawn": "Scientist Arrivals",
     "book_production": "Book Production", "general_effect": "General Strength", "renown_gain": "Renown Gains",
@@ -1322,7 +1325,7 @@ def generate(rules):
         "Building efficiency then multiplies it, so efficiency above 100% can pass the cap.</li>\n"
         "<li><b>No other caps on the total</b>, except these results: at most 80% of a target's "
         '<a href="#ward"><code>ward</code></a> counts; rite and operation chances stay between 1% and 95%; '
-        '<a href="#trade_bonus"><code>trade_bonus</code></a> never goes below zero; and times never fall below an instant.</li>\n'
+        'the <a href="#market_fee"><code>market_fee</code></a> never goes below zero; and times never fall below an instant.</li>\n'
         "</ul>\n"
         '<h2 id="flags">Flags</h2>\n<p>Switch a rule on.</p>\n'
         '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Flag</th><th>Effect</th></tr>\n' + flag_rows + "</table></div>\n"

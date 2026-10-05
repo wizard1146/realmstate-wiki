@@ -24,7 +24,7 @@ generated: tools/sync.py
 <tr id="construction_cost"><td><code>construction_cost</code></td><td>Gold cost of construction</td></tr>
 <tr id="thief_strength"><td><code>thief_strength</code></td><td>Strength of your thieves when spying</td></tr>
 <tr id="thief_defense"><td><code>thief_defense</code></td><td>Strength of your thieves against enemy spies</td></tr>
-<tr id="trade_bonus"><td><code>trade_bonus</code></td><td>Extra gold on your market sales</td></tr>
+<tr id="market_fee"><td><code>market_fee</code></td><td>The market fee on your sales</td></tr>
 <tr id="building_efficiency"><td><code>building_efficiency</code></td><td>Building efficiency (can pass 100%)</td></tr>
 <tr id="construction_time"><td><code>construction_time</code></td><td>Time to build</td></tr>
 <tr id="land_gain"><td><code>land_gain</code></td><td>Land taken on a successful attack</td></tr>
@@ -61,7 +61,7 @@ generated: tools/sync.py
 <ul>
 <li><b>Floor.</b> A total below &minus;100% counts as &minus;100%. The value falls to zero, never below. Construction can cost no gold at all, but a building's extra gold (the Ancestral Hall's, say) is never reduced.</li>
 <li><b>Building caps.</b> Each building caps its own bonus (see <a href="buildings.html">Buildings</a>). Building efficiency then multiplies it, so efficiency above 100% can pass the cap.</li>
-<li><b>No other caps on the total</b>, except these results: at most 80% of a target's <a href="#ward"><code>ward</code></a> counts; rite and operation chances stay between 1% and 95%; <a href="#trade_bonus"><code>trade_bonus</code></a> never goes below zero; and times never fall below an instant.</li>
+<li><b>No other caps on the total</b>, except these results: at most 80% of a target's <a href="#ward"><code>ward</code></a> counts; rite and operation chances stay between 1% and 95%; the <a href="#market_fee"><code>market_fee</code></a> never goes below zero; and times never fall below an instant.</li>
 </ul>
 <h2 id="flags">Flags</h2>
 <p>Switch a rule on.</p>
@@ -80,4 +80,4 @@ generated: tools/sync.py
 </table></div>
 <h2 id="units">Unit slots</h2>
 <p>Every race fills the same 10 unit slots: soldiers (drafted), offense specialist, defense specialist, elite, thief, offense specialist, upgraded, defense specialist, upgraded, elite, upgraded, mercenaries (hired per attack), elite, upgraded twice. A race names four base units; the upgraded slots are those units after an upgrade. Thieves have no upgrade.</p>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>06a006fd8e42c7a8</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>b4583cd6487e7de3</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
