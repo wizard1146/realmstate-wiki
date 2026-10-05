@@ -454,7 +454,8 @@ def race_rules(d, params):
     if (x := r.get("roots")):
         add("roots", "good", f'At war, they can take back up to {pct(x["share_bp"])}% of the land an attack took from them, before the army carrying it gets home, for {x["elites_per_acre"]} elites an acre.')
     if (m := r.get("momentum")):
-        add("momentum", "good", f'At war, offense rises {pct(m["gain_bp"])}% every {m["every_ticks"]} ticks, up to {pct(m["max_bp"])}%, and falls {pct(m["drop_bp"])}% for every {m["drop_every_ticks"]} ticks in which they were hit.')
+        drop = f', and falls {pct(m["drop_bp"])}% for every {m["drop_every_ticks"]} ticks in which they were hit' if m["drop_bp"] else ""
+        add("momentum", "good", f'At war, offense rises {pct(m["gain_bp"])}% every {m["every_ticks"]} ticks, up to {pct(m["max_bp"])}%{drop}.')
     if (a := r.get("activity")):
         add("activity", "good", f'Training takes {a["training_ticks"]} ticks less while, within the last {a["window_ticks"]} ticks, the house explored, took land, or started buildings on {pct(a["build_bp"])}% of its land.')
     return out
