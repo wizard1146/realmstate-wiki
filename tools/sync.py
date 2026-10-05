@@ -310,28 +310,41 @@ LOWER_IS_BETTER = {"food_consumption", "explore_cost", "training_cost", "return_
                    "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost"}
 
 
-def effects_list(d, stats, conditional=True):
-    """A definition's modifiers as <li>, green when good for the house and red when bad. `conditional` False leaves
-    out the ones that only apply sometimes (at war, against a race...)."""
-    items = []
+def effect_entries(d, stats):
+    """A definition's modifiers as (key, "good" | "bad", <li>): green when good for the house, red when bad. The key
+    names the modifier for content/_specials.json: "mod:income", or "cond:offense@attack-massacre" for one that
+    holds only sometimes (at war, against a race, on an attack, while well fed...)."""
+    out = []
     for i, bp in enumerate(d["mods_bp"]):
         if bp:
             sign = "+" if bp > 0 else ""
-            cls = "cell-good" if (bp > 0) != (stats[i] in LOWER_IS_BETTER) else "cell-bad"
-            items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
-                         f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>')
-    for c in d.get("conditional", []) if conditional else []:
+            good = (bp > 0) != (stats[i] in LOWER_IS_BETTER)
+            out.append((f"mod:{stats[i]}", "good" if good else "bad",
+                        f'<li><span class="{"cell-good" if good else "cell-bad"}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
+                        f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>'))
+    for c in d.get("conditional", []):
         # The export writes a conditional's stat by its Rust name ("CasualtiesAttacking").
         s, bp = re.sub(r"(?<!^)([A-Z])", r"_\1", c["stat"]).lower(), c["bp"]
         sign = "+" if bp > 0 else ""
-        cls = "cell-good" if (bp > 0) != (s in LOWER_IS_BETTER) else "cell-bad"
-        when = [{True: "at war", False: "out of war"}[c["at_war"]]] if c.get("at_war") is not None else []
-        when += [f'against {c["vs"]}'] if c.get("vs") else []
-        when += [f'on {c["attack"]} attacks'] if c.get("attack") else []
-        when += [{"overpopulated": "while overpopulated", "well_fed": "while well fed"}.get(c["when"], c["when"])] if c.get("when") else []
-        items.append(f'<li><span class="{cls}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(s, s).lower())} <b>{e(", ".join(when))}</b> '
-                     f'(<a href="effects.html#{s}"><code>{s}</code></a>, <a href="effects.html#conditions">conditional</a>)</li>')
-    return items
+        good = (bp > 0) != (s in LOWER_IS_BETTER)
+        when, key = [], []
+        if c.get("at_war") is not None:
+            when.append("at war" if c["at_war"] else "out of war"); key.append("war" if c["at_war"] else "peace")
+        if c.get("vs"):
+            when.append(f'against {c["vs"]}'); key.append(f'vs-{c["vs"]}')
+        if c.get("attack"):
+            when.append(f'on {c["attack"]} attacks'); key.append(f'attack-{c["attack"]}')
+        if c.get("when"):
+            when.append(WHEN_TEXT.get(c["when"], c["when"])); key.append(c["when"])
+        out.append((f'cond:{s}@{"+".join(key)}', "good" if good else "bad",
+                    f'<li><span class="{"cell-good" if good else "cell-bad"}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(s, s).lower())} <b>{e(", ".join(when))}</b> '
+                    f'(<a href="effects.html#{s}"><code>{s}</code></a>, <a href="effects.html#conditions">conditional</a>)</li>'))
+    return out
+
+
+def effects_list(d, stats, conditional=True):
+    """A definition's modifiers as <li>. `conditional` False leaves out the ones that hold only sometimes."""
+    return [li for key, _, li in effect_entries(d, stats) if conditional or key.startswith("mod:")]
 
 
 def unlock_note(kind):
@@ -371,89 +384,124 @@ def material_uses(a):
     return uses
 
 
-GROUP_TEXT = {"offense": "offensive specialists", "defense": "defensive specialists", "elite": "elites", "military": "every fighting unit"}
+GROUP_TEXT = {"offense": "offensive specialists", "defense": "defensive specialists", "elite": "elites", "military": "all fighting units"}
 WHEN_TEXT = {"war": "at war", "peace": "out of war", "overpopulated": "while overpopulated", "well_fed": "while well fed"}
 
 
-def homes_rule(d):
-    """A race whose homes only raise the birth rate, in plain words, or None."""
-    h = (d.get("race") or {}).get("homes")
-    return (f'{e(h["building"]).capitalize()} only raise the birth rate: they house {h["living"]} people each, '
-            f'and each 1% of the land in them grows peasants {pct(h["growth_bp_per_pct"])}% faster.') if h else None
-
-
-def race_rules_items(d, homes=True):
-    """A race's own rules (see the game's realm_rules::race::RaceRules), each as plain words in an <li>.
-    `homes` False leaves out the homes rule (the summary tables list it as a penalty)."""
-    r, items = d.get("race") or {}, []
+def race_rules(d, params):
+    """A race's own rules (see the game's realm_rules::race::RaceRules) as (key, "good" | "bad" | "other", plain
+    words). The key names the rule for content/_specials.json. `params` is the age's, to tell whether an override
+    is better or worse than the age's own number."""
+    r, p, out = d.get("race") or {}, params, []
+    add = lambda key, kind, text: out.append((key, kind, text))
+    name = lambda kind, ident: e(next((x["name"] for x in p.get(kind, []) if x.get("id") == ident), ident))
+    # "Well fed" only defines the threshold: it goes with the modifiers it switches on.
+    fed = [c["bp"] for c in d.get("conditional", []) if c.get("when") == "well_fed"]
+    well_fed = "other" if not fed else ("bad" if sum(fed) < 0 else "good")
     signed = lambda n: f"+{n}" if n > 0 else str(n)
     o = r.get("overrides", {})
     if "mercenary_ratio" in o:
-        items.append(f'One <a href="military.html#Mercenaries">mercenary</a> for every {o["mercenary_ratio"]} of your own troops sent.')
+        add("override:mercenary_ratio", "good" if o["mercenary_ratio"] < p.get("mercenary_ratio", 0) else "bad", f'One <a href="military.html#Mercenaries">mercenary</a> for every {o["mercenary_ratio"]} of your own troops sent.')
     if "upgrade_cross_point" in o:
-        items.append(f'Upgraded units gain {o["upgrade_cross_point"]} in their other stat.')
+        add("override:upgrade_cross_point", "good" if o["upgrade_cross_point"] > p.get("upgrade_cross_point", 0) else "bad", f'Upgraded units gain {o["upgrade_cross_point"]} in their other stat.')
     for b in r.get("unit_bonuses", []):
         parts = [f'{signed(b[k])} {"offense" if k == "off" else "defense"}' for k in ("off", "def") if b.get(k)]
         when = f' {WHEN_TEXT[b["when"]]}' if b.get("when") else ""
-        items.append(f'{GROUP_TEXT[b["units"]].capitalize()} fight with {" and ".join(parts)} each{when}.')
+        add(f'unit_bonus:{b["units"]}@{b.get("when") or "always"}', "good" if b.get("off", 0) + b.get("def", 0) > 0 else "bad", f'{GROUP_TEXT[b["units"]].capitalize()} fight with {" and ".join(parts)} each{when}.')
     if r.get("well_fed_per_acre"):
-        items.append(f'Well fed means more than {r["well_fed_per_acre"]} food an acre.')
+        add("well_fed_per_acre", well_fed, f'Well fed means more than {r["well_fed_per_acre"]} food an acre.')
     for op, bp in sorted(r.get("resist_bp", {}).items()):
-        link = f'<a href="operations.html#{op}">{e(op)}</a>'
-        items.append(f'Immune to {link}: it can\'t be tried on them.' if bp >= 10000
+        link = f'<a href="operations.html#{op}">{name("operations", op)}</a>'
+        add(f'resist:{op}', "good" if bp > 0 else "bad", f'Immune to {link}: it can\'t be tried on them.' if bp >= 10000
                      else f'{link} is {pct(abs(bp))}% {"less" if bp > 0 else "more"} likely to work on them.')
     if r.get("no_elite_training"):
-        items.append("Can't train elites.")
+        add("no_elite_training", "bad", "Can't train elites.")
     if (w := r.get("war_elites")):
-        items.append(f'A won battle turns {pct(w["bp"])}% of the surviving offensive specialists into elites.')
+        add("war_elites", "bad" if r.get("no_elite_training") else "good", f'A won battle turns {pct(w["bp"])}% of the surviving offensive specialists into elites.')
     if (m := r.get("mercenaries_stay")):
-        items.append(f'{pct(m["bp"])}% of the mercenaries who survive a battle stay, as offensive specialists.')
+        add("mercenaries_stay", "good", f'{pct(m["bp"])}% of the mercenaries who survive a battle stay, as offensive specialists.')
     if r.get("mercenary_upgrades"):
-        items.append('Mercenaries can be hired upgraded, for the upgrade material.')
-    if homes and (h := homes_rule(d)):
-        items.append(h)
+        add("mercenary_upgrades", "good", 'Mercenaries can be hired upgraded, for the upgrade material.')
+    if (h := r.get("homes")):
+        add("homes", "bad", f'{e(h["building"]).capitalize()} only raise the birth rate: they house {h["living"]} people each, '
+            f'and each 1% of the land in them grows peasants {pct(h["growth_bp_per_pct"])}% faster.')
     if (m := r.get("mirror")):
-        items.append(f'Can fight with the unit stats of any of the last {m["attackers"]} houses that attacked them, changing at most every {m["every_ticks"]} ticks.')
+        add("mirror", "good", f'Can fight with the unit stats of any of the last {m["attackers"]} houses that attacked them, changing at most every {m["every_ticks"]} ticks.')
     if (c := r.get("citizens")):
-        items.append(f'Every peasant at home defends as {"a soldier does" if c["defense_bp"] >= 10000 else f"{pct(c["defense_bp"])}% of a soldier"}.')
-    if (p := r.get("promote")):
-        items.append(f'Every {p["every_ticks"]} ticks, {pct(p["bp"])}% of the soldiers become {GROUP_TEXT[p["into"]]}, free.')
+        add("citizens", "good", f'Every peasant at home defends as {"a soldier does" if c["defense_bp"] >= 10000 else f"{pct(c["defense_bp"])}% of a soldier"}.')
+    if (pr := r.get("promote")):
+        add("promote", "good", f'Every {pr["every_ticks"]} ticks, {pct(pr["bp"])}% of the soldiers become {GROUP_TEXT[pr["into"]]}, free.')
     if "general_elites" in o:
-        items.append(f'Raising a <a href="generals.html">general</a> retires {o["general_elites"]} elites.')
+        add("override:general_elites", "bad", f'Raising a <a href="generals.html">general</a> retires {o["general_elites"]} elites.')
     for c in r.get("unit_casualties", []):
         when = f' {WHEN_TEXT[c["when"]]}' if c.get("when") else ""
-        items.append(f'{GROUP_TEXT[c["units"]].capitalize()} die {pct(abs(c["bp"]))}% {"less" if c["bp"] < 0 else "more"} in battle{when}.')
+        add(f'unit_casualties:{c["units"]}@{c.get("when") or "always"}', "good" if c["bp"] < 0 else "bad", f'{GROUP_TEXT[c["units"]].capitalize()} die {pct(abs(c["bp"]))}% {"less" if c["bp"] < 0 else "more"} in battle{when}.')
     for k in r.get("immune_attacks", []):
-        items.append(f'Immune to the <a href="attacks.html#{e(k)}">{e(k)}</a> attack.')
+        add(f'immune_attack:{k}', "good", f'Immune to the <a href="attacks.html#{e(k)}">{name("attacks", k)}</a> attack.')
     for k in r.get("immune_rites", []):
-        items.append(f'Immune to the <a href="rite-list.html#{e(k)}">{e(k)}</a> hex.')
+        add(f'immune_rite:{k}', "good", f'Immune to the <a href="rite-list.html#{e(k)}">{name("rites", k)}</a> hex.')
     if r.get("building_losses_bp"):
-        items.append(f'Lose {pct(abs(r["building_losses_bp"]))}% {"fewer" if r["building_losses_bp"] < 0 else "more"} buildings in attacks (barren land goes instead).')
+        add("building_losses", "good" if r["building_losses_bp"] < 0 else "bad", f'Lose {pct(abs(r["building_losses_bp"]))}% {"fewer" if r["building_losses_bp"] < 0 else "more"} buildings in attacks (barren land goes instead).')
     for k, bp in sorted(r.get("building_losses_by_attack", {}).items()):
-        items.append(f'{e(k).capitalize()} attacks take {pct(abs(bp))}% {"fewer" if bp < 0 else "more"} buildings still.')
+        add(f'building_losses:{k}', "good" if bp < 0 else "bad", f'{name("attacks", k)} attacks take {pct(abs(bp))}% {"fewer" if bp < 0 else "more"} buildings still.')
     if (c := r.get("casualties_return")):
-        items.append(f'{pct(c["bp"])}% of their battle dead come back after {c["ticks"]} ticks.')
+        add("casualties_return", "good", f'{pct(c["bp"])}% of their battle dead come back after {c["ticks"]} ticks.')
     if (a := r.get("afflict")):
         mods = ", ".join(f'{"+" if bp > 0 else ""}{pct(bp)}% {e(STAT_TEXT.get(s, s).lower())}' for s, bp in a["mods"])
-        items.append(f'<b>{e(a["name"])}</b>: a {pct(a["chance_bp"])}% chance on every attack to afflict the target for {a["ticks"]} ticks: {mods}.')
+        add("afflict", "good", f'A {pct(a["chance_bp"])}% chance on every attack to afflict the target with {e(a["name"])} for {a["ticks"]} ticks: {mods}.')
     if (d := r.get("double_strike")):
-        items.append(f'At war, an army led by a general with {d["general_traits"]}+ traits can be sent ready to strike twice: within {d["window_ticks"]} ticks it strikes again at {pct(d["strength_bp"])}% of its offense, killing {pct(d["kill_bp"])}% of the target\'s specialists and taking no land. The general is then spent for {d["spent_ticks"]} ticks.')
+        add("double_strike", "good", f'At war, an army led by a general with {d["general_traits"]}+ traits can be sent ready to strike twice: within {d["window_ticks"]} ticks it strikes again at {pct(d["strength_bp"])}% of its offense, killing {pct(d["kill_bp"])}% of the target\'s specialists and taking no land. The general is then spent for {d["spent_ticks"]} ticks.')
     if (x := r.get("roots")):
-        items.append(f'At war, they can take back up to {pct(x["share_bp"])}% of the land an attack took from them, before the army carrying it gets home, for {x["elites_per_acre"]} elites an acre.')
+        add("roots", "good", f'At war, they can take back up to {pct(x["share_bp"])}% of the land an attack took from them, before the army carrying it gets home, for {x["elites_per_acre"]} elites an acre.')
     if (m := r.get("momentum")):
-        items.append(f'At war, offense rises {pct(m["gain_bp"])}% every {m["every_ticks"]} ticks, up to {pct(m["max_bp"])}%, and falls {pct(m["drop_bp"])}% for every {m["drop_every_ticks"]} ticks in which they were hit.')
+        add("momentum", "good", f'At war, offense rises {pct(m["gain_bp"])}% every {m["every_ticks"]} ticks, up to {pct(m["max_bp"])}%, and falls {pct(m["drop_bp"])}% for every {m["drop_every_ticks"]} ticks in which they were hit.')
     if (a := r.get("activity")):
-        items.append(f'Training takes {a["training_ticks"]} ticks less while, within the last {a["window_ticks"]} ticks, the house explored, took land, or started buildings on {pct(a["build_bp"])}% of its land.')
-    return [f"<li>{i}</li>" for i in items]
+        add("activity", "good", f'Training takes {a["training_ticks"]} ticks less while, within the last {a["window_ticks"]} ticks, the house explored, took land, or started buildings on {pct(a["build_bp"])}% of its land.')
+    return out
 
 
-def def_effects_html(d, vocab):
-    items = effects_list(d, vocab["stats"]) + race_rules_items(d)
-    for n, name in enumerate(vocab["flags"]):
-        if d["flags"] & (1 << n):
-            items.append(f'<li>{e(FLAG_TEXT.get(name, name))} (<a href="effects.html#{name}"><code>{name}</code></a>)</li>')
-    for kind, ident in d.get("unlocks", []):
-        items.append(f'<li>Unlocks {e(kind)} <b>{e(ident)}</b>{unlock_note(kind)} (<a href="effects.html#unlock-{kind}"><code>{kind}</code></a>)</li>')
+
+
+def race_rules_items(d, params):
+    """A race's own rules, each as plain words in an <li>."""
+    return [f"<li>{text}</li>" for _, _, text in race_rules(d, params)]
+
+
+# Whether a flag is good or bad for the house, for the bonuses and penalties columns. Unlisted: "other".
+FLAG_KIND = {"no_food": "good", "no_explore": "bad", "elite_plus_plus": "good"}
+SPECIALS = CONTENT / "_specials.json"   # hand-written: {"troll": [{"name": "Stone is Forever", "covers": [keys]}]}
+
+
+def load_specials():
+    try: return {k: v for k, v in json.loads(SPECIALS.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    except OSError: return {}
+
+
+def effect_groups(d, vocab, params, specials):
+    """A definition's effects as (bonuses, penalties, other, problems). Named specials (content/_specials.json) are
+    one <li> each in other, "<b>Name:</b> what it does"; flags and unlocks go in other too; every other modifier
+    and race rule is a bonus or a penalty. problems lists keys in _specials.json this definition doesn't have."""
+    entries = [(k, kind, li[4:-5]) for k, kind, li in effect_entries(d, vocab["stats"])]
+    entries += race_rules(d, params)
+    entries += [(f"flag:{n}", FLAG_KIND.get(n, "other"), f'{e(FLAG_TEXT.get(n, n))} (<a href="effects.html#{n}"><code>{n}</code></a>)')
+                for i, n in enumerate(vocab["flags"]) if d["flags"] & (1 << i)]
+    entries += [(f"unlock:{k}:{x}", "other", f'Unlocks {e(k)} <b>{e(x)}</b>{unlock_note(k)} (<a href="effects.html#unlock-{k}"><code>{k}</code></a>)')
+                for k, x in d.get("unlocks", [])]
+    claimed, named, problems = set(), [], []
+    for sp in specials.get(d["key"]["identity"], []):
+        texts = [t for k, _, t in entries if k in sp["covers"]]
+        problems += [f'content/_specials.json: {d["key"]["identity"]} "{sp["name"]}" covers {k}, which it doesn\'t have'
+                     for k in sp["covers"] if not any(k == x for x, _, _ in entries)]
+        claimed.update(sp["covers"])
+        if texts:
+            named.append(f'<li><b>{e(sp["name"])}:</b> {"; ".join(t.rstrip(".") for t in texts)}.</li>')
+    li = lambda kind: [f"<li>{t}</li>" for k, kd, t in entries if kd == kind and k not in claimed]
+    return li("good"), li("bad"), named + li("other"), problems
+
+
+def def_effects_html(d, vocab, params, specials):
+    good, bad, other, _ = effect_groups(d, vocab, params, specials)
+    items = good + bad + other
     if not items:
         return "<p>No special effects.</p>\n"
     return '<ul>\n' + "\n".join(items) + "\n</ul>\n"
@@ -487,19 +535,9 @@ def age_dates(age):
     return f"{left} &ndash; {b.day} {b:%b %Y}"
 
 
-def split_effects(d, vocab):
+def split_effects(d, vocab, params, specials):
     """A definition's effects as (bonuses, penalties, other) lists of <li>."""
-    good, bad = [], []
-    for li in effects_list(d, vocab["stats"], conditional=False):
-        (good if 'class="cell-good"' in li else bad).append(li)
-    if (h := homes_rule(d)):
-        bad.append(f'<li>{h}</li>')
-    # Specials: modifiers that apply only sometimes (at war, against a race...), then the race's own rules.
-    other = [li for li in effects_list(d, vocab["stats"]) if 'href="effects.html#conditions"' in li]
-    other += [li if li.startswith("<li") else f'<li>{li}</li>' for li in race_rules_items(d, homes=False)]
-    other += [f'<li>{e(FLAG_TEXT.get(name, name))}</li>' for n, name in enumerate(vocab["flags"]) if d["flags"] & (1 << n)]
-    other += [f'<li>Unlocks {e(kind)} <b>{e(ident)}</b>{unlock_note(kind)}</li>' for kind, ident in d.get("unlocks", [])]
-    return good, bad, other
+    return effect_groups(d, vocab, params, specials)[:3]
 
 
 def change_tag(changes, kind, ident):
@@ -615,7 +653,7 @@ def age_summary(ages, n, vocab):
 
     def effects_table(defs, kind, singular):
         """Bonuses / Penalties / Other per definition. A column empty for every row is left out; a cell is shaded only when it has something."""
-        split = [(d, *split_effects(d, vocab)) for d in defs]
+        split = [(d, *split_effects(d, vocab, cur["params"], load_specials())) for d in defs]
         columns = [(n, label, cls, width) for n, label, cls, width in ((1, "Bonuses", "cell-good", ""), (2, "Penalties", "cell-bad", ""), (3, "Other", "", ' class="col-md"'))
                    if any(row[n] for row in split)]
         ul = lambda items: f'<ul class="list-plain list-spaced">{"".join(items)}</ul>' if items else '<span class="cell-muted">None</span>'
@@ -672,6 +710,10 @@ def generate(rules):
         if f not in FLAG_TEXT: problems.append(f"flag '{f}' has no description in tools/sync.py FLAG_TEXT")
     for u in vocab["unlock_kinds"]:
         if u not in UNLOCK_TEXT: problems.append(f"unlock kind '{u}' has no description in tools/sync.py UNLOCK_TEXT")
+    # Named specials must match the current age's rules, so a rules change can't leave one pointing at nothing.
+    specials = load_specials()
+    for d in latest["races"] + latest["personalities"]:
+        if d: problems += effect_groups(d, vocab, latest["params"], specials)[3]
 
     pages = {}
 
@@ -747,7 +789,7 @@ def generate(rules):
                              f'<p>Played in: {label}. Rules fingerprint <code>{e(h)}</code>.</p>')
                 if d["units"]:
                     parts.append(units_table(d, vocab))
-                parts.append("<h3>Effects</h3>\n" + def_effects_html(d, vocab))
+                parts.append("<h3>Effects</h3>\n" + def_effects_html(d, vocab, used_in[-1]["params"], specials))
             pages[f"{singular}-{ident}.html"] = header(i["name"], title) + "\n".join(parts) + "\n" + source_note(latest)
 
     # Ages: index + one page each, with the age's numbers, slots and patch notes.
