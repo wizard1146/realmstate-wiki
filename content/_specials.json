@@ -8,6 +8,6 @@
   "unlithian": [{"name": "Everything Has a Price", "covers": ["mercenary_upgrades"]}],
   "troll": [{"name": "Stone is Forever", "covers": ["immune_attack:torch", "immune_rite:storm", "resist:fires", "resist:undermine", "building_losses"]}],
   "drow": [{"name": "Double Strike", "covers": ["double_strike"]}],
-  "mycellian": [{"name": "Biohazard", "covers": ["afflict"]}, {"name": "Their Roots go Deep", "covers": ["roots"]}],
+  "mycellian": [{"name": "Their Roots go Deep", "covers": ["roots"]}],
   "daemon": [{"name": "Keep Your Friends Closer", "covers": ["momentum"]}]
 }

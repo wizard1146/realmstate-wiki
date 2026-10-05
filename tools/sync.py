@@ -448,7 +448,7 @@ def race_rules(d, params):
         add("casualties_return", "good", f'{pct(c["bp"])}% of their battle dead come back after {c["ticks"]} ticks.')
     if (a := r.get("afflict")):
         mods = ", ".join(f'{"+" if bp > 0 else ""}{pct(bp)}% {e(STAT_TEXT.get(s, s).lower())}' for s, bp in a["mods"])
-        add("afflict", "good", f'A {pct(a["chance_bp"])}% chance on every attack to afflict the target with {e(a["name"])} for {a["ticks"]} ticks: {mods}.')
+        add("afflict", "good", f'<b>{e(a["name"])}</b>: a {pct(a["chance_bp"])}% chance on every attack to afflict the target for {a["ticks"]} ticks: {mods}.')
     if (d := r.get("double_strike")):
         add("double_strike", "good", f'At war, an army led by a general with {d["general_traits"]}+ traits can be sent ready to strike twice: within {d["window_ticks"]} ticks it strikes again at {pct(d["strength_bp"])}% of its offense, killing {pct(d["kill_bp"])}% of the target\'s specialists and taking no land. The general is then spent for {d["spent_ticks"]} ticks.')
     if (x := r.get("roots")):
