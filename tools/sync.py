@@ -304,13 +304,32 @@ def source_note(age):
             f'ruleset <code>{e(age["hash"])}</code>. Edit the game\'s rules, then run <code>tools/sync.py</code>.</p>\n')
 
 
+# Short names for the summary tables ("-25% Attack Time"), Scriptorium-style. STAT_TEXT has the full wording.
+STAT_SHORT = {
+    "income": "Income", "population": "Population", "food_production": "Food Production", "food_consumption": "Food Eaten",
+    "offense": "Offense", "defense": "Defense", "explore_cost": "Explore Cost", "training_cost": "Training Cost",
+    "return_time": "Attack Time", "elite_offense": "Elite Offense", "elite_defense": "Elite Defense", "casualties": "Military Losses",
+    "land_loss": "Land Lost", "construction_cost": "Construction Cost", "thief_strength": "Thievery Strength",
+    "thief_defense": "Thievery Defense", "trade_bonus": "Market Sales", "building_efficiency": "Building Efficiency",
+    "construction_time": "Construction Time", "land_gain": "Land Gains", "training_time": "Training Time",
+    "thief_losses": "Thief Losses", "science_efficiency": "Science Efficiency", "scientist_spawn": "Scientist Arrivals",
+    "book_production": "Book Production", "general_effect": "General Strength", "renown_gain": "Renown Gains",
+    "practice_books": "Practice Books", "material_output": "Realm Material Output", "upgrade_cost": "Upgrade Cost",
+    "building_materials": "Building Materials", "general_cost": "General Cost", "rescue": "Medic Rescues",
+    "refine_yield": "Refining Yield", "paper_books": "Books per Paper", "ward": "Ward", "casualties_attacking": "Offensive Losses",
+    "casualties_defending": "Defensive Losses", "attack_gains": "Attack Gains", "mercenary_cost": "Mercenary Cost",
+    "peasant_growth": "Birth Rate", "aether_production": "Aether Production", "aether_cost": "Rite Cost",
+}
+SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"}
+
+
 # Stats where a lower number is better for the house (fewer dead, cheaper, faster). Everything else: higher is better.
 LOWER_IS_BETTER = {"food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking",
                    "casualties_defending", "land_loss", "construction_cost", "construction_time", "training_time", "thief_losses",
                    "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost"}
 
 
-def effect_entries(d, stats):
+def effect_entries(d, stats, short=False, params=None):
     """A definition's modifiers as (key, "good" | "bad", <li>): green when good for the house, red when bad. The key
     names the modifier for content/_specials.json: "mod:income", or "cond:offense@attack-massacre" for one that
     holds only sometimes (at war, against a race, on an attack, while well fed...)."""
@@ -320,6 +339,7 @@ def effect_entries(d, stats):
             sign = "+" if bp > 0 else ""
             good = (bp > 0) != (stats[i] in LOWER_IS_BETTER)
             out.append((f"mod:{stats[i]}", "good" if good else "bad",
+                        f'<li><span class="num">{sign}{pct(bp)}%</span> {e(STAT_SHORT.get(stats[i], stats[i]))}</li>' if short else
                         f'<li><span class="{"cell-good" if good else "cell-bad"}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(stats[i], stats[i]).lower())} '
                         f'(<a href="effects.html#{stats[i]}"><code>{stats[i]}</code></a>)</li>'))
     for c in d.get("conditional", []):
@@ -327,16 +347,19 @@ def effect_entries(d, stats):
         s, bp = re.sub(r"(?<!^)([A-Z])", r"_\1", c["stat"]).lower(), c["bp"]
         sign = "+" if bp > 0 else ""
         good = (bp > 0) != (s in LOWER_IS_BETTER)
-        when, key = [], []
+        when, key, brief = [], [], []
+        attack = lambda k: next((x["name"] for x in (params or {}).get("attacks", []) if x.get("id") == k), k.title())
         if c.get("at_war") is not None:
             when.append("at war" if c["at_war"] else "out of war"); key.append("war" if c["at_war"] else "peace")
+            brief.append("in War" if c["at_war"] else "out of War")
         if c.get("vs"):
-            when.append(f'against {c["vs"]}'); key.append(f'vs-{c["vs"]}')
+            when.append(f'against {c["vs"]}'); key.append(f'vs-{c["vs"]}'); brief.append(f'vs {c["vs"].title()}')
         if c.get("attack"):
-            when.append(f'on {c["attack"]} attacks'); key.append(f'attack-{c["attack"]}')
+            when.append(f'on {c["attack"]} attacks'); key.append(f'attack-{c["attack"]}'); brief.append(f'on {attack(c["attack"])}')
         if c.get("when"):
-            when.append(WHEN_TEXT.get(c["when"], c["when"])); key.append(c["when"])
+            when.append(WHEN_TEXT.get(c["when"], c["when"])); key.append(c["when"]); brief.append(SHORT_WHEN.get(c["when"], c["when"]))
         out.append((f'cond:{s}@{"+".join(key)}', "good" if good else "bad",
+                    f'<li><span class="num">{sign}{pct(bp)}%</span> {e(STAT_SHORT.get(s, s))} {e(" ".join(brief))}</li>' if short else
                     f'<li><span class="{"cell-good" if good else "cell-bad"}">{sign}{pct(bp)}%</span> {e(STAT_TEXT.get(s, s).lower())} <b>{e(", ".join(when))}</b> '
                     f'(<a href="effects.html#{s}"><code>{s}</code></a>, <a href="effects.html#conditions">conditional</a>)</li>'))
     return out
@@ -478,25 +501,76 @@ def load_specials():
     except OSError: return {}
 
 
-def effect_groups(d, vocab, params, specials):
+UNIT_GROUP_SHORT = {"offense": "Offensive Specialists", "defense": "Defensive Specialists", "elite": "Elites", "military": "All Units"}
+UNIT_ONE_SHORT = {"offense": "Offensive Specialist", "defense": "Defensive Specialist", "elite": "Elite", "military": "Military"}
+WHEN_SHORT = {"war": " in War", "peace": " out of War", "overpopulated": " when Overpopulated", "well_fed": " when Well Fed", None: ""}
+
+
+def rule_brief(key, d, params):
+    """A race rule in a few words for the summary tables ("Immune to Torch"), or None to keep the full text."""
+    r, o, n = d.get("race") or {}, (d.get("race") or {}).get("overrides", {}), lambda v: f'<span class="num">{v}</span>'
+    name = lambda kind, ident: e(next((x["name"] for x in params.get(kind, []) if x.get("id") == ident), ident))
+    signed = lambda v: f"+{v}" if v > 0 else str(v)
+    sp = lambda bp: ("+" if bp > 0 else "") + pct(bp) + "%"   # signed percent from basis points
+    kind, _, arg = key.partition(":")
+    if kind == "override" and arg == "mercenary_ratio": return f'{n(1)} Mercenary per {n(o["mercenary_ratio"])} Troops Sent'
+    if kind == "override" and arg == "upgrade_cross_point": return f'Upgrades add {n(signed(o["upgrade_cross_point"]))} to the Other Stat'
+    if kind == "override" and arg == "general_elites": return f'Raising a General retires {n(o["general_elites"])} Elites'
+    if kind in ("unit_bonus", "unit_casualties"):
+        units, _, when = arg.partition("@")
+        b = next(x for x in r.get("unit_bonuses" if kind == "unit_bonus" else "unit_casualties", [])
+                 if x["units"] == units and (x.get("when") or "always") == when)
+        tail = f' {UNIT_GROUP_SHORT[units]}{WHEN_SHORT[b.get("when")]}'
+        if kind == "unit_casualties": return f'{n(sp(b["bp"]))} {UNIT_ONE_SHORT[units]} Losses{WHEN_SHORT[b.get("when")]}'
+        return " / ".join(f'{n(signed(b[k]))} {"Off" if k == "off" else "Def"}' for k in ("off", "def") if b.get(k)) + tail
+    if kind == "resist":
+        bp = r["resist_bp"][arg]
+        return (f'Immune to {name("operations", arg)}' if bp >= 10000
+                else f'{n(sp(bp))} Resistance to {name("operations", arg)}')
+    if kind == "immune_attack": return f'Immune to {name("attacks", arg)}'
+    if kind == "immune_rite": return f'Immune to {name("rites", arg)}'
+    if kind == "building_losses" and arg: return f'{n(sp(r["building_losses_by_attack"][arg]))} Buildings Lost to {name("attacks", arg)}'
+    if kind == "building_losses": return f'{n(sp(r["building_losses_bp"]))} Buildings Lost in Attacks'
+    if kind == "homes": return f'Homes raise Birth Rate only ({n(r["homes"]["living"])} people each)'
+    if kind == "well_fed_per_acre": return f'Well Fed is over {n(r["well_fed_per_acre"])} Food per Acre'
+    if kind == "no_elite_training": return "Cannot Train Elites"
+    if kind == "war_elites": return f'{n(pct(r["war_elites"]["bp"]) + "%")} of surviving Offensive Specialists become Elites on a win'
+    if kind == "mercenaries_stay": return f'{n(pct(r["mercenaries_stay"]["bp"]) + "%")} of surviving Mercenaries stay'
+    if kind == "mercenary_upgrades": return "Mercenaries can be hired Upgraded"
+    if kind == "citizens": return f'Peasants defend at {n(pct(r["citizens"]["defense_bp"]) + "%")} of a Soldier'
+    if kind == "afflict":
+        a = r["afflict"]
+        mods = ", ".join(f'{n(sp(bp))} {e(STAT_SHORT.get(st, st))}' for st, bp in a["mods"])
+        return f'<b>{e(a["name"])}:</b> {n(pct(a["chance_bp"]) + "%")} chance per attack, {n(a["ticks"])} Ticks: {mods}'
+    if kind == "casualties_return": return f'{n(pct(r["casualties_return"]["bp"]) + "%")} of the Dead return after {n(r["casualties_return"]["ticks"])} Ticks'
+    return None
+
+
+def effect_groups(d, vocab, params, specials, short=False):
     """A definition's effects as (bonuses, penalties, other, problems). Named specials (content/_specials.json) are
     one <li> each in other, "<b>Name:</b> what it does"; flags and unlocks go in other too; every other modifier
     and race rule is a bonus or a penalty. problems lists keys in _specials.json this definition doesn't have."""
-    entries = [(k, kind, li[4:-5]) for k, kind, li in effect_entries(d, vocab["stats"])]
+    entries = [(k, kind, li[4:-5]) for k, kind, li in effect_entries(d, vocab["stats"], short, params)]
     entries += race_rules(d, params)
     entries += [(f"flag:{n}", FLAG_KIND.get(n, "other"), f'{e(FLAG_TEXT.get(n, n))} (<a href="effects.html#{n}"><code>{n}</code></a>)')
                 for i, n in enumerate(vocab["flags"]) if d["flags"] & (1 << i)]
     entries += [(f"unlock:{k}:{x}", "other", f'Unlocks {e(k)} <b>{e(x)}</b>{unlock_note(k)} (<a href="effects.html#unlock-{k}"><code>{k}</code></a>)')
                 for k, x in d.get("unlocks", [])]
+    if short:   # summary tables: plain text, no links or code, no closing full stop (Scriptorium's style)
+        plain = lambda t: re.sub(r"\s*\(<a [^)]*\)", "", t) if "<code>" in t else t
+        entries = [(k, kind, re.sub(r"</?a[^>]*>", "", plain(t)).rstrip(".")) for k, kind, t in entries]
     claimed, named, problems = set(), [], []
     for sp in specials.get(d["key"]["identity"], []):
-        texts = [t for k, _, t in entries if k in sp["covers"]]
+        texts = [(rule_brief(k, d, params) or t) if short else t for k, _, t in entries if k in sp["covers"]]
         problems += [f'content/_specials.json: {d["key"]["identity"]} "{sp["name"]}" covers {k}, which it doesn\'t have'
                      for k in sp["covers"] if not any(k == x for x, _, _ in entries)]
         claimed.update(sp["covers"])
-        if texts:
+        if texts and short:
+            named.append(f'<li><b class="ability">{e(sp["name"])}</b><br>{"; ".join(t.rstrip(".") for t in texts)}</li>')
+        elif texts:
             named.append(f'<li><b>{e(sp["name"])}:</b> {"; ".join(t.rstrip(".") for t in texts)}.</li>')
-    li = lambda kind: [f"<li>{t}</li>" for k, kd, t in entries if kd == kind and k not in claimed]
+    show = lambda k, t: (rule_brief(k, d, params) or t) if short else t
+    li = lambda kind: [f"<li>{show(k, t)}</li>" for k, kd, t in entries if kd == kind and k not in claimed]
     return li("good"), li("bad"), named + li("other"), problems
 
 
@@ -538,7 +612,7 @@ def age_dates(age):
 
 def split_effects(d, vocab, params, specials):
     """A definition's effects as (bonuses, penalties, other) lists of <li>."""
-    return effect_groups(d, vocab, params, specials)[:3]
+    return effect_groups(d, vocab, params, specials, short=True)[:3]
 
 
 def change_tag(changes, kind, ident):
@@ -655,7 +729,7 @@ def age_summary(ages, n, vocab):
     def effects_table(defs, kind, singular):
         """Bonuses / Penalties / Other per definition. A column empty for every row is left out; a cell is shaded only when it has something."""
         split = [(d, *split_effects(d, vocab, cur["params"], load_specials())) for d in defs]
-        columns = [(n, label, cls, width) for n, label, cls, width in ((1, "Bonuses", "cell-good", ""), (2, "Penalties", "cell-bad", ""), (3, "Other", "", ' class="col-md"'))
+        columns = [(n, label, cls, width) for n, label, cls, width in ((1, "Bonuses", "cell-good", ""), (2, "Penalties", "cell-bad", ""), (3, "Special", "", ""))
                    if any(row[n] for row in split)]
         ul = lambda items: f'<ul class="list-plain list-spaced">{"".join(items)}</ul>' if items else '<span class="cell-muted">None</span>'
         rows = "".join(
@@ -663,7 +737,7 @@ def age_summary(ages, n, vocab):
             + "".join(f'<td{f" class={chr(34)}{cls}{chr(34)}" if cls and row[n] else ""} data-label="{label}">{ul(row[n])}</td>' for n, label, cls, _ in columns)
             + "</tr>\n" for row in split for d in [row[0]])
         heads = "".join(f"<th{w}>{label}</th>" for _, label, _, w in columns)
-        return ('<div class="table-scroll" data-updated="none"><table class="table--fixed table--cards table--hover table--wide">\n'
+        return ('<div class="table-scroll" data-updated="none"><table class="table--mono table--fixed table--cards table--hover">\n'
                 f'<tr><th class="col-sm">{e(kind)}</th>{heads}</tr>\n{rows}</table></div>\n')
     out.append('<h2 id="race-effects">Race bonuses and penalties</h2>\n' + effects_table(races, "Race", "race"))
     out.append('<h2 id="personalities">Personalities</h2>\n' + effects_table(pers, "Personality", "personality"))
