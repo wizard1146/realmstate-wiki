@@ -1,0 +1,23 @@
+<!--
+title: Aid
+category: Economy
+-->
+<p>A house can send <b>aid</b> to another house of its own state: gold, food, materials, soldiers, horses, aether or <a href="exploring.html#Explorable">explorable acres</a>. It is how a state helps a member who is short, or builds one up.</p>
+
+<h2 id="Sending">Sending aid</h2>
+<ul>
+  <li>Aid leaves your house at once and arrives <b>{{aid_ticks}} ticks</b> later.</li>
+  <li><b>{{aid_loss_pct}}%</b> is lost on the way.</li>
+  <li>Only to a house of your own state.</li>
+  <li>The order form shows exactly how much will arrive before you send it.</li>
+</ul>
+
+<h2 id="Tax">The aid tax</h2>
+<p>To stop a state pouring everything into one house, a house that has received more aid than it gave pays a tax on what it receives. Every house keeps an <b>aid balance</b>: what it has given minus what it has received, counted in gold-value. Goods are valued at {{aid_value_list}} gold-value each.</p>
+<ul>
+  <li>A house can receive up to <b>{{aid_free_per_acre}}</b> gold-value an acre more than it has given without any tax.</li>
+  <li>Beyond that, each further gold-value an acre adds <b>{{aid_tax_step_pct}}%</b> of tax, up to <b>{{aid_tax_max_pct}}%</b>.</li>
+  <li>Giving builds credit: a house that has given more than it received can later receive that much back tax-free.</li>
+  <li>Balances fade by <b>{{aid_fade_pct}}%</b> every tick, so old aid matters less and less.</li>
+</ul>
+<p>Tools can ask for a quote with <code>GET /aid/quote</code> and send with the <code>send_aid</code> command (see <a href="api.html">API for Tools</a>).</p>

@@ -104,6 +104,20 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("explore_gold_per_land_milli", "Exploring: extra gold an acre per 1,000 acres you have", "n"),
     ("explore_soldiers_per_land_milli", "Exploring: soldiers an acre per 1,000 acres you have", "n"),
     ("explore_ticks", "Explored land arrives after (ticks)", "n"),
+    ("explore_gold_square", "Exploring: extra gold an acre per (land beyond the start)² / 1,000,000", "n"),
+    ("explore_soldiers_square_milli", "Exploring: extra soldiers an acre (thousandths) per (land beyond the start)² / 1,000,000", "n"),
+    ("explore_square_from", "Exploring: the extra starts beyond (acres)", "n"),
+    ("explorable_max_bp", "Explorable acres a tick, as a share of land, for small houses", "pct"),
+    ("explorable_min_bp", "Explorable acres a tick, as a share of land, for big houses", "pct"),
+    ("explorable_from_land", "Explorable acres: the highest rate up to (acres)", "n"),
+    ("explorable_to_land", "Explorable acres: the lowest rate from (acres)", "n"),
+    ("explorable_bank_ticks", "Explorable acres bank up to (ticks of growth)", "n"),
+    ("aid_ticks", "Aid arrives after (ticks)", "n"),
+    ("aid_loss_bp", "Aid lost on the way", "pct"),
+    ("aid_free_per_acre", "Aid: net gold-value an acre received tax-free", "n"),
+    ("aid_tax_bp_per_acre_value", "Aid tax for each gold-value an acre beyond that", "pct"),
+    ("aid_tax_max_bp", "Aid tax at most", "pct"),
+    ("aid_fade_bp", "Aid balances fade each tick", "pct"),
     ("train_ticks", "Troops finish training after (ticks)", "n"),
     ("attack_return_ticks", "Armies return after (ticks)", "n"),
     ("land_gain_bp", "Land taken on a successful attack", "pct"),
@@ -1339,8 +1353,21 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
-    xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000
-    xs = lambda land: land * p.get("explore_soldiers_per_land_milli", 0) / 1000
+    sq = lambda land: max(0, land - p.get("explore_square_from", 0)) ** 2 // 1000
+    xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000 + sq(land) * p.get("explore_gold_square", 0) // 1000
+    xs = lambda land: (land * p.get("explore_soldiers_per_land_milli", 0) + sq(land) * p.get("explore_soldiers_square_milli", 0)) / 1000
+    # Explorable acres a tick at a size (the engine's curve: the square of the way left).
+    def ex_tick(land):
+        lo, hi = p.get("explorable_from_land", 1), p.get("explorable_to_land", 2)
+        span = max(1, hi - lo); left = min(max(hi - land, 0), span)
+        rate_mbp = p.get("explorable_min_bp", 0) * 1000 + (p.get("explorable_max_bp", 0) - p.get("explorable_min_bp", 0)) * 1000 * left * left // (span * span)
+        return land * rate_mbp // 10000 / 1000
+    if p.get("explorable_max_bp", 0):
+        values["explorable_examples"] = "; ".join(f'{land:,} acres: {ex_tick(land):g} a tick, up to {ex_tick(land) * p["explorable_bank_ticks"]:g} banked' for land in (p["starting_land"], 800, 1200, 2000, 4000))
+        values["explorable_bank_days"] = f'{p["explorable_bank_ticks"] * p["tick_ms"] / 86_400_000:g}'
+    if p.get("aid_ticks", 0):
+        values["aid_tax_step_pct"] = pct(p["aid_tax_bp_per_acre_value"])
+        values["aid_value_list"] = ", ".join(f'{k} {v:,}' for k, v in sorted(p.get("aid_values", {}).items(), key=lambda kv: -kv[1]))
     values["explore_gold_land_each"] = f'{p.get("explore_gold_per_land_milli", 0) / 1000:g}'
     values["explore_soldiers_land_each"] = f'{p.get("explore_soldiers_per_land_milli", 0) / 1000:g}'
     values["explore_examples"] = "; ".join(f'{land:,} acres: {xg(land):,} gold and {xs(land):g} soldiers an acre' for land in (p["starting_land"], 1000, 2000, 4000))
