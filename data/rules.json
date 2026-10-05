@@ -838,7 +838,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "70f3223ed3b75c09",
+      "hash": "dc4881f0aa0d1ac2",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2306,6 +2306,10 @@
             ]
           ]
         },
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -4581,7 +4585,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "f9dbe11a90738320",
+      "hash": "96501438adcd0ef2",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6107,6 +6111,10 @@
           "units": [],
           "unlocks": []
         },
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -8445,9 +8453,45 @@
           "identity": "unlithian",
           "kind": "race",
           "to": "unlithian@v1"
+        },
+        {
+          "from": null,
+          "identity": "herald",
+          "kind": "personality",
+          "to": "herald@v1"
+        },
+        {
+          "from": null,
+          "identity": "mystic",
+          "kind": "personality",
+          "to": "mystic@v1"
+        },
+        {
+          "from": null,
+          "identity": "prospector",
+          "kind": "personality",
+          "to": "prospector@v1"
+        },
+        {
+          "from": null,
+          "identity": "quartermaster",
+          "kind": "personality",
+          "to": "quartermaster@v1"
+        },
+        {
+          "from": null,
+          "identity": "spymaster",
+          "kind": "personality",
+          "to": "spymaster@v1"
+        },
+        {
+          "from": null,
+          "identity": "zealot",
+          "kind": "personality",
+          "to": "zealot@v1"
         }
       ],
-      "hash": "08c81288ab45160c",
+      "hash": "db0854e121f1240a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9973,8 +10017,363 @@
           "units": [],
           "unlocks": []
         },
-        null,
-        null,
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "9ce3647baa872edd",
+          "key": {
+            "identity": "spymaster",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -2000,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Spymaster",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "7dc433d54a0e386b",
+          "key": {
+            "identity": "mystic",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1500,
+            -1000
+          ],
+          "name": "The Mystic",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "10eaaf2a7938a5cf",
+          "key": {
+            "identity": "quartermaster",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -2500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            -2000,
+            0,
+            0,
+            0
+          ],
+          "name": "The Quartermaster",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "1d65d4a0c72ac2f4",
+          "key": {
+            "identity": "prospector",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            -500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            1500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Prospector",
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "68165e9843bd283d",
+          "key": {
+            "identity": "zealot",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Zealot",
+          "race": {
+            "momentum": {
+              "drop_bp": 0,
+              "drop_every_ticks": 36,
+              "every_ticks": 24,
+              "gain_bp": 100,
+              "max_bp": 800
+            }
+          },
+          "units": [],
+          "unlocks": []
+        },
+        {
+          "conditional": [],
+          "flags": 0,
+          "hash": "6c8ef29a984b187d",
+          "key": {
+            "identity": "herald",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "mods_bp": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            500,
+            2500,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "name": "The Herald",
+          "units": [],
+          "unlocks": []
+        },
         null,
         null
       ],
@@ -12273,9 +12672,41 @@
       ]
     },
     {
+      "id": "herald",
+      "lineage_from": null,
+      "name": "The Herald",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
       "id": "merchant",
       "lineage_from": null,
       "name": "The Merchant",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "mystic",
+      "lineage_from": null,
+      "name": "The Mystic",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "prospector",
+      "lineage_from": null,
+      "name": "The Prospector",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "quartermaster",
+      "lineage_from": null,
+      "name": "The Quartermaster",
       "versions": [
         "v1"
       ]
@@ -12289,9 +12720,25 @@
       ]
     },
     {
+      "id": "spymaster",
+      "lineage_from": null,
+      "name": "The Spymaster",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
       "id": "warrior",
       "lineage_from": null,
       "name": "The Warrior",
+      "versions": [
+        "v1"
+      ]
+    },
+    {
+      "id": "zealot",
+      "lineage_from": null,
+      "name": "The Zealot",
       "versions": [
         "v1"
       ]

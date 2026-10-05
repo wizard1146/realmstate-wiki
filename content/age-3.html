@@ -3,7 +3,7 @@ title: Age 3
 category: Ages
 generated: tools/sync.py
 -->
-<p>Ruleset fingerprint <code>08c81288ab45160c</code>.</p>
+<p>Ruleset fingerprint <code>db0854e121f1240a</code>.</p>
 <h2 id="what-changed">What changed (compared with <a href="age-2.html">Age 2</a>)</h2>
 <ul>
 <li><a href="race-ashcliffe.html">ashcliffe</a> added (<code>ashcliffe@v1</code>)</li>
@@ -21,6 +21,12 @@ generated: tools/sync.py
 <li><a href="race-saltborn.html">saltborn</a> added (<code>saltborn@v1</code>)</li>
 <li><a href="race-troll.html">troll</a> added (<code>troll@v1</code>)</li>
 <li><a href="race-unlithian.html">unlithian</a> added (<code>unlithian@v1</code>)</li>
+<li><a href="personality-herald.html">herald</a> added (<code>herald@v1</code>)</li>
+<li><a href="personality-mystic.html">mystic</a> added (<code>mystic@v1</code>)</li>
+<li><a href="personality-prospector.html">prospector</a> added (<code>prospector@v1</code>)</li>
+<li><a href="personality-quartermaster.html">quartermaster</a> added (<code>quartermaster@v1</code>)</li>
+<li><a href="personality-spymaster.html">spymaster</a> added (<code>spymaster@v1</code>)</li>
+<li><a href="personality-zealot.html">zealot</a> added (<code>zealot@v1</code>)</li>
 </ul>
 <h2 id="units">Race units</h2>
 <p>Offense, defense and gold cost of each unit, then its upgraded (+) unit. Cost is the bauxite it takes to upgrade one unit. The switch shows only the base or only the upgraded units. Thieves and mercenaries are on each race's page. How upgrading works: <a href="military.html#Upgrades">Military</a>.</p>
@@ -56,11 +62,17 @@ generated: tools/sync.py
 </table></div>
 <h2 id="personalities">Personalities</h2>
 <div class="table-scroll" data-updated="none"><table class="table--fixed table--cards table--hover table--wide">
-<tr><th class="col-sm">Personality</th><th>Bonuses</th><th class="col-md">Other</th></tr>
-<tr><td><a href="personality-merchant.html"><b>The Merchant</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+10%</span> gold earned from peasants each tick (<a href="effects.html#income"><code>income</code></a>)</li></ul></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
-<tr><td><a href="personality-warrior.html"><b>The Warrior</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+5%</span> offense of troops sent on attacks (<a href="effects.html#offense"><code>offense</code></a>)</li><li><span class="cell-good">-10%</span> how long armies take to come home (<a href="effects.html#return_time"><code>return_time</code></a>)</li></ul></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
-<tr><td><a href="personality-sage.html"><b>The Sage</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+2%</span> how many people the land can hold (<a href="effects.html#population"><code>population</code></a>)</li></ul></td><td data-label="Other"><ul class="list-plain list-spaced"><li>Unlocks spell <b>clarity</b> <span class="cell-muted">(no effect yet)</span> (<a href="effects.html#unlock-spell"><code>spell</code></a>)</li></ul></td></tr>
-<tr><td><a href="personality-explorer.html"><b>The Explorer</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">-20%</span> gold cost of exploring (<a href="effects.html#explore_cost"><code>explore_cost</code></a>)</li></ul></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><th class="col-sm">Personality</th><th>Bonuses</th><th>Penalties</th><th class="col-md">Other</th></tr>
+<tr><td><a href="personality-merchant.html"><b>The Merchant</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+10%</span> gold earned from peasants each tick (<a href="effects.html#income"><code>income</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-warrior.html"><b>The Warrior</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+5%</span> offense of troops sent on attacks (<a href="effects.html#offense"><code>offense</code></a>)</li><li><span class="cell-good">-10%</span> how long armies take to come home (<a href="effects.html#return_time"><code>return_time</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-sage.html"><b>The Sage</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+2%</span> how many people the land can hold (<a href="effects.html#population"><code>population</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><ul class="list-plain list-spaced"><li>Unlocks spell <b>clarity</b> <span class="cell-muted">(no effect yet)</span> (<a href="effects.html#unlock-spell"><code>spell</code></a>)</li></ul></td></tr>
+<tr><td><a href="personality-explorer.html"><b>The Explorer</b></a></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">-20%</span> gold cost of exploring (<a href="effects.html#explore_cost"><code>explore_cost</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-spymaster.html"><b>The Spymaster</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+15%</span> strength of your thieves when spying (<a href="effects.html#thief_strength"><code>thief_strength</code></a>)</li><li><span class="cell-good">-20%</span> thieves lost when caught spying (<a href="effects.html#thief_losses"><code>thief_losses</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-mystic.html"><b>The Mystic</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+15%</span> aether gathered each tick (<a href="effects.html#aether_production"><code>aether_production</code></a>)</li><li><span class="cell-good">-10%</span> aether rites cost (<a href="effects.html#aether_cost"><code>aether_cost</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-quartermaster.html"><b>The Quartermaster</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">-25%</span> material spent on unit upgrades (<a href="effects.html#upgrade_cost"><code>upgrade_cost</code></a>)</li><li><span class="cell-good">-20%</span> gold paid for mercenaries (<a href="effects.html#mercenary_cost"><code>mercenary_cost</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-prospector.html"><b>The Prospector</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+15%</span> your state&#x27;s output of its realm&#x27;s material (<a href="effects.html#material_output"><code>material_output</code></a>)</li></ul></td><td class="cell-bad" data-label="Penalties"><ul class="list-plain list-spaced"><li><span class="cell-bad">-5%</span> food grown on land each tick (<a href="effects.html#food_production"><code>food_production</code></a>)</li></ul></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-zealot.html"><b>The Zealot</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li>At war, offense rises 1% every 24 ticks, up to 8%, and falls 0% for every 36 ticks in which they were hit.</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
+<tr><td><a href="personality-herald.html"><b>The Herald</b></a> <span class="status-badge status-badge--retired">new</span></td><td class="cell-good" data-label="Bonuses"><ul class="list-plain list-spaced"><li><span class="cell-good">+5%</span> strength of your generals&#x27; traits (<a href="effects.html#general_effect"><code>general_effect</code></a>)</li><li><span class="cell-good">+25%</span> renown earned (<a href="effects.html#renown_gain"><code>renown_gain</code></a>)</li></ul></td><td data-label="Penalties"><span class="cell-muted">None</span></td><td data-label="Other"><span class="cell-muted">None</span></td></tr>
 </table></div>
 <p>Retired since Age 2: <a href="race-dwarf.html">Dwarf</a> (race), <a href="race-elf.html">Elf</a> (race), <a href="race-human.html">Human</a> (race), <a href="race-orc.html">Orc</a> (race), <a href="race-revenant.html">Revenant</a> (race).</p>
 <h2 id="changes">Other changes since Age 2</h2>
@@ -246,10 +258,14 @@ generated: tools/sync.py
 <tr><td class="cell-num">1</td><td><a href="personality-warrior.html#v1">The Warrior</a></td><td><code>warrior@v1</code></td></tr>
 <tr><td class="cell-num">2</td><td><a href="personality-sage.html#v1">The Sage</a></td><td><code>sage@v1</code></td></tr>
 <tr><td class="cell-num">3</td><td><a href="personality-explorer.html#v1">The Explorer</a></td><td><code>explorer@v1</code></td></tr>
-<tr class="cell-muted"><td class="cell-num">4</td><td colspan="2">unused</td></tr>
-<tr class="cell-muted"><td class="cell-num">5</td><td colspan="2">unused</td></tr>
-<tr class="cell-muted"><td class="cell-num">6</td><td colspan="2">unused</td></tr>
-<tr class="cell-muted"><td class="cell-num">7</td><td colspan="2">unused</td></tr>
+<tr><td class="cell-num">4</td><td><a href="personality-spymaster.html#v1">The Spymaster</a></td><td><code>spymaster@v1</code></td></tr>
+<tr><td class="cell-num">5</td><td><a href="personality-mystic.html#v1">The Mystic</a></td><td><code>mystic@v1</code></td></tr>
+<tr><td class="cell-num">6</td><td><a href="personality-quartermaster.html#v1">The Quartermaster</a></td><td><code>quartermaster@v1</code></td></tr>
+<tr><td class="cell-num">7</td><td><a href="personality-prospector.html#v1">The Prospector</a></td><td><code>prospector@v1</code></td></tr>
+<tr><td class="cell-num">8</td><td><a href="personality-zealot.html#v1">The Zealot</a></td><td><code>zealot@v1</code></td></tr>
+<tr><td class="cell-num">9</td><td><a href="personality-herald.html#v1">The Herald</a></td><td><code>herald@v1</code></td></tr>
+<tr class="cell-muted"><td class="cell-num">10</td><td colspan="2">unused</td></tr>
+<tr class="cell-muted"><td class="cell-num">11</td><td colspan="2">unused</td></tr>
 </table></div>
 <h2 id="materials">Materials</h2>
 <div class="table-scroll" data-updated="none"><table class="table--fit">
@@ -268,4 +284,4 @@ generated: tools/sync.py
 <tr><td class="cell-num">12</td><td><a href="materials.html#pine">Pine</a></td></tr>
 <tr><td class="cell-num">13</td><td><a href="materials.html#paper">Paper</a></td></tr>
 </table></div>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>08c81288ab45160c</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>db0854e121f1240a</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
