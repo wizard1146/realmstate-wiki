@@ -1,0 +1,31 @@
+<!--
+title: Chat
+category: Tools
+updated: 2026-10-04
+-->
+<p>Every house can talk on three channels: the whole world, its realm, and its state. Messages arrive live on your house page and last until the age ends.</p>
+
+<h2 id="Channels">Channels</h2>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Channel</th><th>Who reads it</th></tr>
+<tr><td>World</td><td>Every house</td></tr>
+<tr><td>Realm</td><td>The houses in your realm</td></tr>
+<tr><td>State</td><td>The houses in your state</td></tr>
+</table></div>
+
+<h2 id="Limits">Limits</h2>
+<ul>
+  <li><b>Length:</b> 1 to 1,000 characters. Spaces at either end are trimmed.</li>
+  <li><b>Speed:</b> a burst of 5 messages, then one every 2 seconds. Faster messages are refused (<code>429</code>); wait a moment and send again.</li>
+  <li><b>Separate from orders:</b> chat has its own limit, so talking never slows your orders down, and orders never use up your chat.</li>
+</ul>
+
+<h2 id="History">How much is kept</h2>
+<ul>
+  <li>Each channel keeps its newest 1,000 messages. When a new one arrives on a full channel, the oldest is dropped.</li>
+  <li>Opening chat shows the last 200; tools can page through the rest with <code>?after={id}</code> (see <a href="api.html">API for Tools</a>).</li>
+  <li>Chat lasts one age. When the next age starts, every channel starts empty.</li>
+</ul>
+
+<h2 id="Why">Why the limits</h2>
+<p>Every message is sent at once to everyone on its channel, so one fast sender on world chat would reach every house many times a second. The cap per channel also keeps the server's storage small: even full channels of the longest messages come to about 150 MB for a whole world.</p>
