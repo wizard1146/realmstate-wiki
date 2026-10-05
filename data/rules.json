@@ -8521,7 +8521,7 @@
           "to": "zealot@v1"
         }
       ],
-      "hash": "51417123dd1f7074",
+      "hash": "06a006fd8e42c7a8",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -8927,8 +8927,8 @@
         "explorable_bank_ticks": 48,
         "explorable_from_land": 400,
         "explorable_max_bp": 25,
-        "explorable_min_bp": 3,
-        "explorable_to_land": 2000,
+        "explorable_min_bp": 1,
+        "explorable_to_land": 1500,
         "explore_gold_per_acre": 300,
         "explore_gold_per_land_milli": 750,
         "explore_gold_square": 1000,
