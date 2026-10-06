@@ -214,6 +214,7 @@
   "quest_min_land": 600,
   "quest_nothing_pct": "25",
   "quest_renown": 1000,
+  "quest_scientist_rank": 3,
   "raze_cost_base": 300,
   "realm_work_vote_pct": "66.67",
   "realms": 13,

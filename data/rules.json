@@ -858,7 +858,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "07fa0c95bbfef943",
+      "hash": "3b7a71d553778771",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1765,6 +1765,7 @@
         "quest_min_land": 0,
         "quest_nothing_bp": 0,
         "quest_renown": 0,
+        "quest_scientist_rank": null,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 0,
@@ -5090,7 +5091,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "07002aab615b2131",
+      "hash": "3e29b47cb944e7a8",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5997,6 +5998,7 @@
         "quest_min_land": 0,
         "quest_nothing_bp": 0,
         "quest_renown": 0,
+        "quest_scientist_rank": null,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 0,
@@ -9599,7 +9601,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "3e7769c5ba1234b1",
+      "hash": "17a61575030c890e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10589,6 +10591,7 @@
         "quest_min_land": 600,
         "quest_nothing_bp": 2500,
         "quest_renown": 1000,
+        "quest_scientist_rank": 3,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 6667,

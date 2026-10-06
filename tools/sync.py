@@ -1372,7 +1372,8 @@ def generate(rules):
             + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b>{truth_does(t["id"])}</li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
             + dragons + wonders_text
             + '<h2 id="quests">Quests</h2>\n<ul>\n'
-            f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, or a general with {lp.get("quest_general_traits", 0)}+ traits, '
+            f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, a general with {lp.get("quest_general_traits", 0)}+ traits'
+            + (f', or a house\'s scientists of one category at rank {lp["quest_scientist_rank"]} or better (one of them may die on the quest)' if lp.get("quest_scientist_rank") is not None else "") + ', '
             f'of a house with {lp.get("quest_min_land", 0):,}+ acres that is not protected and on no quest.</li>\n'
             f'<li><b>The invitation:</b> the world\'s chance starts at {pct(lp.get("quest_invite_bp", 0))}% a tick and rises, faster and faster, to certainty '
             f'{lp.get("quest_accrual_ticks", 0)} ticks after the last invitation. The Truth sought stays unnamed.</li>\n'
