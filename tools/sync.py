@@ -1301,6 +1301,22 @@ def generate(rules):
                + "</table></div>\n" if lp.get("vigils") else "")
             + source_note(latest))
 
+    # Realm works.
+    works = lp.get("realm_works", [])
+    if works:
+        mat_name = {m["key"]["identity"]: m["name"] for m in latest.get("materials", []) if isinstance(m, dict) and m.get("key")}
+        pages["realm-works.html"] = header("Realm Works", "Rules") + (
+            "<p>Specialised Materials Production: each realm may build the one work for its material, once a season. "
+            f'A state\'s leader proposes it, and its state votes yes. Each state\'s leader then votes. It passes once {pct(lp.get("realm_work_vote_bp", 0))}% '
+            "of the realm's states with houses say yes. Then any house in the realm funds it with gold and the realm's material; "
+            "a gift is capped at what is still needed. Once fully funded, the realm's output of its material rises for the rest of the season. "
+            "Every house in the realm hears when the work is proposed, passes and is done.</p>\n"
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Work</th><th>Material</th><th class="cell-num">Output</th><th class="cell-num">Funding</th></tr>\n'
+            + "".join(f'<tr id="{e(w["id"])}"><td><b>{e(w["name"])}</b><br><code>{e(w["id"])}</code></td><td><a href="materials.html#{e(w["material"])}">{e(mat_name.get(w["material"], w["material"]))}</a></td>'
+                      f'<td class="cell-num"><span class="cell-good">+{pct(w["output_bp"])}%</span></td><td class="cell-num">{w["gold"]:,} gold + {w["material_cost"]:,} {e(mat_name.get(w["material"], w["material"])).lower()}</td></tr>\n' for w in works)
+            + "</table></div>\n<p>Commands: <code>propose_work</code> and <code>vote_work</code> (leaders), <code>fund_work</code> (any house in the realm). "
+            'See <a href="api.html">API for Tools</a>.</p>\n' + source_note(latest))
+
     # Thieves' operations.
     ops = lp.get("operations", [])
     op_kind = {"survey": "Intel", "muster": "Intel", "ledgers": "Intel", "archives": "Intel", "couriers": "Intel", "dossier": "Intel",
@@ -1516,7 +1532,7 @@ def generate(rules):
             values[k] = "on" if v else "off"
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

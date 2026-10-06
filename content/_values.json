@@ -195,6 +195,7 @@
   "peasant_growth_pct": "3",
   "protection_ticks": 72,
   "raze_cost_base": 300,
+  "realm_work_vote_pct": "66.67",
   "realms": 13,
   "reassure_fee_pct": "2",
   "reassure_gold": 500,

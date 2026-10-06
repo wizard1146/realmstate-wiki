@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "a3b46117a3187d9c",
+      "hash": "347ab4879839686e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1709,6 +1709,8 @@
         "protection_ticks": 72,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
+        "realm_work_vote_bp": 0,
+        "realm_works": [],
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
@@ -4995,7 +4997,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "aa5ccdc4c8277d1b",
+      "hash": "c8c11a3d2391c7ef",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5851,6 +5853,8 @@
         "protection_ticks": 72,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
+        "realm_work_vote_bp": 0,
+        "realm_works": [],
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
@@ -9335,7 +9339,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "0793bec32e4db254",
+      "hash": "35cf214c91e60a07",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10199,6 +10203,57 @@
         "protection_ticks": 72,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
+        "realm_work_vote_bp": 6667,
+        "realm_works": [
+          {
+            "gold": 500000,
+            "id": "surface_mine",
+            "material": "bauxite",
+            "material_cost": 1000,
+            "name": "Surface Mine",
+            "output_bp": 200
+          },
+          {
+            "gold": 500000,
+            "id": "quarry",
+            "material": "limestone",
+            "material_cost": 1000,
+            "name": "Quarry",
+            "output_bp": 200
+          },
+          {
+            "gold": 500000,
+            "id": "ancient_digsite",
+            "material": "amber",
+            "material_cost": 1000,
+            "name": "Ancient Digsite",
+            "output_bp": 200
+          },
+          {
+            "gold": 500000,
+            "id": "volcanic_pit",
+            "material": "sulfur",
+            "material_cost": 1000,
+            "name": "Volcanic Pit",
+            "output_bp": 200
+          },
+          {
+            "gold": 500000,
+            "id": "forestry_camp",
+            "material": "pine",
+            "material_cost": 1000,
+            "name": "Forestry Camp",
+            "output_bp": 200
+          },
+          {
+            "gold": 500000,
+            "id": "lumber_yard",
+            "material": "paper",
+            "material_cost": 1000,
+            "name": "Lumber Yard",
+            "output_bp": 200
+          }
+        ],
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
