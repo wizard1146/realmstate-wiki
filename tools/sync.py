@@ -1322,9 +1322,34 @@ def generate(rules):
                                        f'Lesser rite (subscribers): {lp.get("transmute_lesser_in", 0)} to 1.',
             "flanked_ambush": 'The <a href="attacks.html#flanked_ambush">Flanked Ambush</a> attack. Lesser version (subscribers): <a href="attacks.html#lesser_ambush">Lesser Flanked Ambush</a>.',
         }.get(tid)
+        wonder = next((w for w in lp.get("wonders", []) if w["truth"] == tid), None)
+        if not text and wonder:
+            text = f'the plan for the <a href="#wonder-{e(wonder["id"])}">{e(wonder["name"])}</a> wonder.'
         if not text and tid in gated:
             text = f'<a href="buildings.html#{e(gated[tid])}">Dragon Walls</a> against <a href="#dragons">dragons</a>. Lesser version (subscribers): Lesser Dragon Walls.'
         return f": {text}" if text else ""
+    wonder_list = lp.get("wonders", [])
+    def wonder_does(w):
+        out = []
+        for m in w.get("mods", []):
+            out.append(f'<span class="cell-good">+{pct(m["bp"])}%</span> {e(STAT_TEXT.get(m["stat"], m["stat"])).lower()} for every house of the state')
+        if w.get("academic_books_bp"):
+            out.append(f'academics\' book production +{pct(w["academic_books_bp"])}% for every house of the state')
+        if w.get("resilience_gain_bp"):
+            out.append(f'<a href="rites.html#resilience">Spell Resilience</a> builds {(10_000 + w["resilience_gain_bp"]) / 10_000:g}&times; as fast, up to {pct(w["resilience_max_bp"])}%, for every house of the state')
+        if w.get("revive_ticks"):
+            out.append(f'once a season, the owner house may <code>revive</code> its army as it was {w["revive_ticks"]} ticks earlier, for {w["revive_renown"]:,} renown')
+        return "; ".join(out)
+    wonders_text = ('<h2 id="wonders">World Wonders</h2>\n<p>Each wonder can be built once per world, by a house that knows its plan (its Truth). '
+                    "The house starts it; houses of its state fund it with gold and its materials; once funded it takes the ticks below to finish. "
+                    "The first to finish owns it, and the world hears. Any other build of it stops"
+                    + (f', and {pct(lp.get("wonder_refund_bp", 0))}% of what it was given goes back to the house that started it' if lp.get("wonder_refund_bp") else "") + ".</p>\n"
+                    '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Wonder</th><th>Does</th><th class="cell-num">Costs</th><th class="cell-num">Takes</th><th class="cell-num">Renown</th></tr>\n'
+                    + "".join(f'<tr id="wonder-{e(w["id"])}"><td><b>{e(w["name"])}</b><br><code>{e(w["id"])}</code></td><td>{wonder_does(w)}</td>'
+                              f'<td class="cell-num">{w["gold"]:,} gold' + "".join(f' + {q:,} {e(m)}' for m, q in w.get("materials", {}).items()) + '</td>'
+                              f'<td class="cell-num">{w["ticks"]} ticks</td><td class="cell-num">{w["house_renown"]:,} to the house, {w["state_renown"]:,} to each house of its state</td></tr>\n' for w in wonder_list)
+                    + "</table></div>\n<p>Commands: <code>start_wonder</code>, <code>fund_wonder</code>, <code>revive</code>. Renown counts in the "
+                    '<a href="end-of-age.html#Scoring">age\'s score</a>.</p>\n') if wonder_list else ""
     dragons = (f'<h2 id="dragons">Dragons</h2>\n<p>From tick {lp.get("dragon_from_tick", 0)}, every {lp.get("dragon_every_ticks", 0)} ticks a dragon raids one house, '
                "chosen at random among the houses in the top third by land that are not protected. "
                f'Its strength is {lp.get("dragon_strength_bp", 0) / 10_000:g}&times; the median defense at home of those houses. A house whose defense beats it drives it off and earns '
@@ -1336,9 +1361,9 @@ def generate(rules):
         pages["truths.html"] = header("Truths and Quests", "Rules") + (
             f"<p>{len(truths)} Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, "
             f"and so may its state; {lp.get('truth_notice_ticks', 0)} ticks later every house hears which state uncovered it, and may use it too. "
-            "What each Truth does is on its own page as it is built.</p>\n"
+            "</p>\n"
             + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b>{truth_does(t["id"])}</li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
-            + dragons
+            + dragons + wonders_text
             + '<h2 id="quests">Quests</h2>\n<ul>\n'
             f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, or a general with {lp.get("quest_general_traits", 0)}+ traits, '
             f'of a house with {lp.get("quest_min_land", 0):,}+ acres that is not protected and on no quest.</li>\n'
@@ -1583,7 +1608,7 @@ def generate(rules):
             values[k] = "on" if v else "off"
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "wonders", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

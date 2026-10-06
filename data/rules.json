@@ -858,7 +858,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "a830d0b5d288e54f",
+      "hash": "ba18dc7fd1f83f4e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2372,6 +2372,7 @@
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
+        "score_renown_bp": 0,
         "season_curve_bp": [],
         "season_offsets": {},
         "season_ticks": 0,
@@ -2517,7 +2518,9 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
-        "waver_ticks": 24
+        "waver_ticks": 24,
+        "wonder_refund_bp": 0,
+        "wonders": []
       },
       "personalities": [
         {
@@ -5080,7 +5083,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "a15ccf0a61d9165a",
+      "hash": "8073dda563018495",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6594,6 +6597,7 @@
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
+        "score_renown_bp": 0,
         "season_curve_bp": [],
         "season_offsets": {},
         "season_ticks": 0,
@@ -6739,7 +6743,9 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
-        "waver_ticks": 24
+        "waver_ticks": 24,
+        "wonder_refund_bp": 0,
+        "wonders": []
       },
       "personalities": [
         {
@@ -9579,7 +9585,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "3a31000526e4517d",
+      "hash": "8258774a00efe6be",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11222,9 +11228,10 @@
           ]
         ],
         "scientist_spawn_milli": 100,
-        "score_land_bp": 5000,
-        "score_might_bp": 5000,
+        "score_land_bp": 4000,
+        "score_might_bp": 4000,
         "score_per_war_point": 200,
+        "score_renown_bp": 2000,
         "season_curve_bp": [
           6000,
           8000,
@@ -11667,7 +11674,91 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
-        "waver_ticks": 24
+        "waver_ticks": 24,
+        "wonder_refund_bp": 5000,
+        "wonders": [
+          {
+            "academic_books_bp": 5000,
+            "gold": 2000000,
+            "house_renown": 5000,
+            "id": "library_of_antiquity",
+            "materials": {
+              "amber": 2000,
+              "paper": 2000
+            },
+            "mods": [],
+            "name": "Library of Antiquity",
+            "resilience_gain_bp": 0,
+            "resilience_max_bp": 0,
+            "revive_renown": 0,
+            "revive_ticks": 0,
+            "state_renown": 1000,
+            "ticks": 168,
+            "truth": "library_of_antiquity"
+          },
+          {
+            "academic_books_bp": 0,
+            "gold": 2000000,
+            "house_renown": 5000,
+            "id": "halls_of_the_dead",
+            "materials": {
+              "amber": 2000,
+              "sulfur": 2000
+            },
+            "mods": [],
+            "name": "Halls of the Dead",
+            "resilience_gain_bp": 0,
+            "resilience_max_bp": 0,
+            "revive_renown": 2000,
+            "revive_ticks": 24,
+            "state_renown": 1000,
+            "ticks": 168,
+            "truth": "halls_of_the_dead"
+          },
+          {
+            "academic_books_bp": 0,
+            "gold": 2000000,
+            "house_renown": 5000,
+            "id": "deep_sea_haven",
+            "materials": {
+              "limestone": 2000,
+              "resin": 2000
+            },
+            "mods": [],
+            "name": "Deep Sea Haven",
+            "resilience_gain_bp": 10000,
+            "resilience_max_bp": 9500,
+            "revive_renown": 0,
+            "revive_ticks": 0,
+            "state_renown": 1000,
+            "ticks": 168,
+            "truth": "deep_sea_haven"
+          },
+          {
+            "academic_books_bp": 0,
+            "gold": 2000000,
+            "house_renown": 5000,
+            "id": "paradise_of_trees",
+            "materials": {
+              "pine": 2000,
+              "timber": 2000
+            },
+            "mods": [
+              {
+                "bp": 15000,
+                "stat": "food_production"
+              }
+            ],
+            "name": "Paradise of Trees",
+            "resilience_gain_bp": 0,
+            "resilience_max_bp": 0,
+            "revive_renown": 0,
+            "revive_ticks": 0,
+            "state_renown": 1000,
+            "ticks": 168,
+            "truth": "paradise_of_trees"
+          }
+        ]
       },
       "personalities": [
         {
