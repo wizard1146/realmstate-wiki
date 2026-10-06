@@ -361,6 +361,8 @@ a:visited { color: var(--link-visited); }
 .status-badge { display: inline-block; padding: 0 .5rem; margin-left: .35rem; border-radius: 1rem; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; vertical-align: .1em; }
 .status-badge--needs-update { background: var(--warn-bg); color: var(--warn-text); border: 1px solid var(--warn-border); }
 .status-badge--retired { background: var(--band-bg); color: var(--muted); border: 1px solid var(--border); }
+.status-badge--new { background: var(--good-bg); color: var(--text); border: 1px solid var(--border); }          /* a race or personality new this age */
+.status-badge--rebalanced { background: transparent; color: var(--accent); border: 1px solid var(--accent); }     /* changed since the last age */
 .page-list__note { color: var(--muted); font-size: .85rem; }
 
 /* toc: "On this page". Built by build.py when a page has enough h2/h3 headings (see TOC_MIN_HEADINGS).

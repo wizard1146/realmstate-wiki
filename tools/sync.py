@@ -681,7 +681,7 @@ def change_tag(changes, kind, ident):
     """' new' / ' rebalanced' tag for a race or personality that changed since the previous age."""
     for c in changes or []:
         if c["kind"] == kind and c["identity"] == ident and c["to"]:
-            return f' <span class="status-badge status-badge--retired">{"rebalanced" if c["from"] else "new"}</span>'
+            return f' <span class="status-badge status-badge--{"rebalanced" if c["from"] else "new"}">{"rebalanced" if c["from"] else "new"}</span>'
     return ""
 
 

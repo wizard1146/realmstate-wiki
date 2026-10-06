@@ -113,7 +113,7 @@ Add `status: needs-update` or `status: retired` to a page's header comment (opti
 | Name | What it is |
 |---|---|
 | `status-banner` (`--needs-update`, `--retired`) | Notice at the top of the page |
-| `status-badge` | Small pill next to the title in All pages and search results |
+| `status-badge` | Small pill next to the title in All pages and search results. `--new` / `--rebalanced` mark races and personalities on Current Age |
 | `needs-update.html`, `retired.html` | Auto-generated lists (linked from the nav). Retired pages rank below live pages in search. |
 
 ## Logo and icons
