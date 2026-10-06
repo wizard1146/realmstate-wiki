@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "59b151266f4e9b87",
+      "hash": "681a231f497521ab",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1243,6 +1243,7 @@
         "depletion": false,
         "depletion_floor_bp": 0,
         "depletion_reserve_ticks": 0,
+        "desertion_bp": 0,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -1688,6 +1689,7 @@
           }
         ],
         "optimal_workers_bp": 6700,
+        "order_min_life_ms": 600000,
         "out_of_realm_bp": 1000,
         "paper_cap_bp": 10000,
         "paper_material": "paper",
@@ -1709,6 +1711,7 @@
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
+        "recap_frames": 0,
         "recovery_growth_bp": 5000,
         "recovery_mods": [
           {
@@ -2288,6 +2291,7 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "soldier_wage_milli": 0,
         "spoil_free": 0,
         "spoil_free_per_acre": 0,
         "spoil_max_bp": 0,
@@ -2380,6 +2384,8 @@
             "ticks": 24
           }
         ],
+        "wage_milli": 0,
+        "war_end_margin_bp": 0,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -4935,7 +4941,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "30ed30f9dd865c98",
+      "hash": "43aced8d13590521",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5325,6 +5331,7 @@
         "depletion": false,
         "depletion_floor_bp": 0,
         "depletion_reserve_ticks": 0,
+        "desertion_bp": 0,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -5770,6 +5777,7 @@
           }
         ],
         "optimal_workers_bp": 6700,
+        "order_min_life_ms": 600000,
         "out_of_realm_bp": 1000,
         "paper_cap_bp": 10000,
         "paper_material": "paper",
@@ -5791,6 +5799,7 @@
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
+        "recap_frames": 0,
         "recovery_growth_bp": 5000,
         "recovery_mods": [
           {
@@ -6370,6 +6379,7 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "soldier_wage_milli": 0,
         "spoil_free": 0,
         "spoil_free_per_acre": 0,
         "spoil_max_bp": 0,
@@ -6462,6 +6472,8 @@
             "ticks": 24
           }
         ],
+        "wage_milli": 0,
+        "war_end_margin_bp": 0,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -9215,7 +9227,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "fcae31013cbeb48e",
+      "hash": "0dba81a622d2f3fe",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9613,6 +9625,7 @@
         "depletion": false,
         "depletion_floor_bp": 2500,
         "depletion_reserve_ticks": 2520,
+        "desertion_bp": 200,
         "direct_cost_bp": 3000,
         "direct_death_bp": 200,
         "direct_fail_bp": 600,
@@ -10058,6 +10071,7 @@
           }
         ],
         "optimal_workers_bp": 6700,
+        "order_min_life_ms": 600000,
         "out_of_realm_bp": 1000,
         "paper_cap_bp": 10000,
         "paper_material": "paper",
@@ -10079,6 +10093,7 @@
         "realms": 13,
         "reassure_fee_bp": 200,
         "reassure_gold": 500,
+        "recap_frames": 240,
         "recovery_growth_bp": 5000,
         "recovery_mods": [
           {
@@ -10674,6 +10689,7 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
+        "soldier_wage_milli": 500,
         "spoil_free": 50,
         "spoil_free_per_acre": 1,
         "spoil_max_bp": 500,
@@ -10766,6 +10782,8 @@
             "ticks": 24
           }
         ],
+        "wage_milli": 2,
+        "war_end_margin_bp": 300,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
