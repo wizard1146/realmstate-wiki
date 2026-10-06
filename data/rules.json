@@ -858,7 +858,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "ba18dc7fd1f83f4e",
+      "hash": "07fa0c95bbfef943",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1793,6 +1793,9 @@
         "resilience_decay_bp": 250,
         "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_chance_max_bp": 9500,
+        "rite_chance_min_bp": 100,
+        "rite_contest_min_bp": 500,
         "rite_cost_land": 400,
         "rite_cost_offset": 333,
         "rite_full_share_bp": 1500,
@@ -2412,6 +2415,9 @@
         "spoil_step_bp": 0,
         "spoil_treasury_free": 0,
         "spy_base_success_bp": 5000,
+        "spy_chance_max_bp": 9500,
+        "spy_chance_min_bp": 100,
+        "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
         "starting_food": 60000,
         "starting_gold": 150000,
@@ -2518,6 +2524,7 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
+        "ward_max_bp": 8000,
         "waver_ticks": 24,
         "wonder_refund_bp": 0,
         "wonders": []
@@ -5083,7 +5090,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "8073dda563018495",
+      "hash": "07002aab615b2131",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6018,6 +6025,9 @@
         "resilience_decay_bp": 250,
         "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_chance_max_bp": 9500,
+        "rite_chance_min_bp": 100,
+        "rite_contest_min_bp": 500,
         "rite_cost_land": 400,
         "rite_cost_offset": 333,
         "rite_full_share_bp": 1500,
@@ -6637,6 +6647,9 @@
         "spoil_step_bp": 0,
         "spoil_treasury_free": 0,
         "spy_base_success_bp": 5000,
+        "spy_chance_max_bp": 9500,
+        "spy_chance_min_bp": 100,
+        "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
         "starting_food": 60000,
         "starting_gold": 150000,
@@ -6743,6 +6756,7 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
+        "ward_max_bp": 8000,
         "waver_ticks": 24,
         "wonder_refund_bp": 0,
         "wonders": []
@@ -9585,7 +9599,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "8258774a00efe6be",
+      "hash": "3e7769c5ba1234b1",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10652,6 +10666,9 @@
         "resilience_decay_bp": 250,
         "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_chance_max_bp": 9500,
+        "rite_chance_min_bp": 100,
+        "rite_contest_min_bp": 500,
         "rite_cost_land": 400,
         "rite_cost_offset": 333,
         "rite_full_share_bp": 1500,
@@ -11287,6 +11304,9 @@
         "spoil_step_bp": 100,
         "spoil_treasury_free": 1000,
         "spy_base_success_bp": 5000,
+        "spy_chance_max_bp": 9500,
+        "spy_chance_min_bp": 100,
+        "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
         "starting_food": 60000,
         "starting_gold": 150000,
@@ -11674,6 +11694,7 @@
         "war_unique_attackers": 3,
         "war_win_points": 2,
         "war_win_renown": 100,
+        "ward_max_bp": 8000,
         "waver_ticks": 24,
         "wonder_refund_bp": 5000,
         "wonders": [

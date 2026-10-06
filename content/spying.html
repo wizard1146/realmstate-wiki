@@ -22,11 +22,11 @@ updated: 2026-10-06
 
 <h2 id="Chance">Chance of success</h2>
 <ol>
-  <li>Start from thieves per acre: yours sent, against theirs at home. Equal thieves per acre gives {{spy_base_success_pct}}%; formally {{spy_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs), kept within 5%-95%. <a href="buildings.html">Thieves' dens</a> make yours count for more; watch towers make theirs count for more.</li>
+  <li>Start from thieves per acre: yours sent, against theirs at home. Equal thieves per acre gives {{spy_base_success_pct}}%; formally {{spy_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs), kept within {{spy_contest_min_pct}}%-{{spy_chance_max_pct}}%. <a href="buildings.html">Thieves' dens</a> make yours count for more; watch towers make theirs count for more.</li>
   <li>Multiply by the operation's own chance (intel is easier than sabotage).</li>
   <li>Take off their Vigilance.</li>
 </ol>
-<p>The result is kept between 1% and 95%. Your operation's answer tells you the chance it had and the Nerve you have left.</p>
+<p>The result is kept between {{spy_chance_min_pct}}% and {{spy_chance_max_pct}}%. Your operation's answer tells you the chance it had and the Nerve you have left.</p>
 
 <h2 id="Success">If it works</h2>
 <ul>

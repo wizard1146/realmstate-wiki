@@ -229,6 +229,9 @@
   "resilience_decay_pct": "2.5",
   "resilience_max_pct": "75",
   "rite_base_success_pct": "50",
+  "rite_chance_max_pct": "95",
+  "rite_chance_min_pct": "1",
+  "rite_contest_min_pct": "5",
   "rite_cost_land": 400,
   "rite_cost_offset": 333,
   "rite_full_share_pct": "15",
@@ -257,6 +260,9 @@
   "spoil_step_pct": "1",
   "spoil_treasury_free": 1000,
   "spy_base_success_pct": "50",
+  "spy_chance_max_pct": "95",
+  "spy_chance_min_pct": "1",
+  "spy_contest_min_pct": "5",
   "spy_loss_pct": "5",
   "starting_food": "60,000",
   "starting_gold": "150,000",
@@ -316,6 +322,7 @@
   "war_unique_attackers": 3,
   "war_win_points": 2,
   "war_win_renown": 100,
+  "ward_max_pct": "80",
   "waver_ticks": 24,
   "wonder_refund_pct": "50"
 }
