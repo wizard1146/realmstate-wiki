@@ -24,7 +24,7 @@
   "explorable_bank_days": "2",
   "aid_tax_step_pct": "0.5",
   "aid_value_list": "explorable 300, soldiers 40, horses 30, material 15, aether 10, food 1, gold 1",
-  "rite_cost_examples": "400 acres: &times;1; 1,000 acres: &times;1.8; 2,000 acres: &times;3.2; 4,000 acres: &times;5.9",
+  "rite_cost_examples": "400 acres: \u00d71; 1,000 acres: \u00d71.8; 2,000 acres: \u00d73.2; 4,000 acres: \u00d75.9",
   "explore_gold_land_each": "0.75",
   "explore_soldiers_land_each": "0.005",
   "explore_examples": "400 acres: 600 gold and 2 soldiers an acre; 1,000 acres: 1,410 gold and 6.44 soldiers an acre; 2,000 acres: 4,360 gold and 20.24 soldiers an acre; 4,000 acres: 16,260 gold and 71.84 soldiers an acre",

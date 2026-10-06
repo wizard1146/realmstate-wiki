@@ -1241,6 +1241,8 @@ def generate(rules):
             "roads": lambda: "Reveals a house's armies on the road, when they return, and whose land they carry",
             "loss": lambda: f'{LOSS_TEXT[r["effect"]["of"]].format(pct(r["effect"]["bp"]))}{war}',
             "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}',
+            "seize": lambda: f'Captures {pct(r["effect"]["bp"])}% of their land{war} as barren land; smaller targets yield less',
+            "meteors": lambda: f'{pct(r["effect"]["bp"])}% of their peasants and troops at home die every tick{war}',
             "blight": lambda: f'{pct(r["effect"]["bp"])}% of their share of the realm material is lost{war}',
             "unravel": lambda: "Ends one of their rites (the one lasting longest)",
         }[t]()
@@ -1248,6 +1250,8 @@ def generate(rules):
                  "peasants": "{}% of their peasants die", "aether": "{}% of their aether drains away"}
     def rite_kind(r):
         t = r["effect"]["type"]
+        if r.get("needs"):
+            return f'Hex<br><span class="cell-muted">needs {"war" if r["needs"] == "war" else e(r["needs"]) + " or war"}</span>'
         return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Curse" if t == "curse" else "Hex"
     rite_rows = "".join(
         f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code></td><td>{rite_kind(r)}</td><td>{rite_does(r)}</td>'
@@ -1264,6 +1268,7 @@ def generate(rules):
             f"<p><b>Costs</b> are for a house of {lp.get('rite_cost_land', 0):,} acres; bigger houses pay more (see <a href=\"rites.html#cost\">Rites</a>). "
             f"<b>Lasts</b> is the full length, with shrines on {pct(lp.get('rite_full_share_bp', 0))}% of your land; fewer shrines shorten it. "
             "<b>Chance</b> scales the usual rite chance. <b>Resilience</b> is the Spell Resilience a landed hex gives its target. "
+            "<b>Needs</b>: a strong hex works only once your state feels that way toward theirs, or at war (see <a href=\"rites.html#needs\">Rites</a>). "
             "Casting a rite again renews it rather than stacking. Curses are hexes that weaken the target while they last.</p>\n"
             + ('<h2 id="vigils">State vigils</h2>\n<p>A state\'s leader opens a vigil; members give aether and ' + e(lp["rite_material"]) + '. '
                "Once both are met, every house in the state has it. One at a time; opening another while one is still being funded loses what was given.</p>\n"
@@ -1418,7 +1423,7 @@ def generate(rules):
         values["aid_value_list"] = ", ".join(f'{k} {v:,}' for k, v in sorted(p.get("aid_values", {}).items(), key=lambda kv: -kv[1]))
     if p.get("rite_cost_land"):
         rc = lambda land: (land + p["rite_cost_offset"]) / (p["rite_cost_land"] + p["rite_cost_offset"])
-        values["rite_cost_examples"] = "; ".join(f'{land:,} acres: &times;{rc(land):.2g}' for land in sorted({p["starting_land"], p["rite_cost_land"], 1000, 2000, 4000}))
+        values["rite_cost_examples"] = "; ".join(f'{land:,} acres: ×{rc(land):.2g}' for land in sorted({p["starting_land"], p["rite_cost_land"], 1000, 2000, 4000}))
     values["explore_gold_land_each"] = f'{p.get("explore_gold_per_land_milli", 0) / 1000:g}'
     values["explore_soldiers_land_each"] = f'{p.get("explore_soldiers_per_land_milli", 0) / 1000:g}'
     values["explore_examples"] = "; ".join(f'{land:,} acres: {xg(land):,} gold and {xs(land):g} soldiers an acre' for land in (p["starting_land"], 1000, 2000, 4000))
