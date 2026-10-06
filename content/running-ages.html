@@ -26,7 +26,7 @@ updated: 2026-10-06
 <ul>
   <li><b>Age file</b>: which rules the age runs, by the file's name in <code>rules/ages</code>, such as <code>age-3</code>. You can run the same age file again.</li>
   <li><b>Number</b>: the age's number. It must be higher than this age's and every earlier one's; leave it out to take the next free number. Results, heirs and chat are all kept by age number, so two ages never mix, even if they run the same rules.</li>
-  <li><b>Name</b>: optional. Without one, the age keeps the age file's name.</li>
+  <li><b>Name</b>: optional. Without one, the age keeps the age file's name; an age file named only "Age 3" gives "Age" and the new number instead.</li>
   <li><b>Start time</b>: when ticks begin. Until then, players can only found houses and bring back heirs. If the time has already passed when you open the age, it starts at once.</li>
   <li><b>Changed numbers</b>: any of the age's numbers (its params, as <code>GET /rules</code> lists them), for example a shorter age with <code>age_ticks</code>. Everything else comes from the age file.</li>
 </ul>
