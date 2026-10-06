@@ -9,6 +9,9 @@ remote `git@github-wizard1146:wizard1146/realmstate-wiki.git`.
 - Never hand-edit a page whose header says `generated: tools/sync.py`. Change the game's `rules/` (or
   `tools/sync.py` for wording), run `python3 tools/sync.py`, commit both the data and the pages.
 - Guide pages never type game numbers: use `{{name}}` from `content/_values.json` (written by sync.py).
+- Generated pages too: where sync.py prints a global setting, it writes `{{name}}`. Only per-row table data
+  (a unit's cost, an attack's gains) is printed directly. `_values.json` holds readable forms only, so
+  build.py's "unused values" note lists real gaps: a setting no page explains.
 - A new effect type in the game needs a description in `tools/sync.py` (STAT_TEXT / FLAG_TEXT / UNLOCK_TEXT);
   `--check` fails until it has one.
 - When a game mechanic changes (a formula in realm-engine), update the matching guide page in the same session.

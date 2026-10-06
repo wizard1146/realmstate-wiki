@@ -1156,7 +1156,7 @@ def generate(rules):
         "people": lambda k: f'{pct(k["amount_bp"])}% of their peasants and thieves, killed',
         "books": lambda k: f'{pct(k["amount_bp"])}% of their unspent books, carried home',
         "destroy": lambda k: f'destroys {pct(k["amount_bp"])}% of their land; nobody receives it',
-        "blockade": lambda k: f'+{pct(k["amount_bp"])}% blockade on their whole state\'s material output (up to {pct(lp["blockade_max_bp"])}%, lifting {lp["blockade_ticks"]} ticks after the last); the lost output is destroyed',
+        "blockade": lambda k: f'+{pct(k["amount_bp"])}% blockade on their whole state\'s material output (up to {{{{blockade_max_pct}}}}%, lifting {{{{blockade_ticks}}}} ticks after the last); the lost output is destroyed',
     }
 
     def attack_effects(k):
@@ -1248,7 +1248,7 @@ def generate(rules):
             "<p><b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two "
             "states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>\n"
             '<h2 id="protection">Protection from repeated hits</h2>\n'
-            f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {lp.get("hit_window_ticks", 0)} ticks, {curve}. '
+            f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {{{{hit_window_ticks}}}} ticks, {curve}. '
             "This is applied last, after every other bonus. " + (", ".join(k["name"] for k in kinds if k.get("ignores_protection")) or "No attack") + " neither count as hits nor are reduced.</p>\n"
             + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recent hits</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
@@ -1324,9 +1324,9 @@ def generate(rules):
     gated = {g["truth"]: b for b, g in lp.get("gated_buildings", {}).items() if not g.get("lesser")}
     def truth_does(tid):
         text = {
-            lp.get("chariots_truth"): f'Chariots may be built (a horse, {lp.get("chariot_material_cost", 0)} {e(lp.get("chariot_material", ""))} and {lp.get("chariot_gold", 0)} gold each; +{lp.get("chariot_offense", 0)} offense on attacks). Nobody can build them before.',
-            lp.get("transmute_truth"): f'The <code>transmute</code> command: {lp.get("transmute_in", 0)} of one material and {lp.get("transmute_aether", 0)} aether make 1 of another, up to {lp.get("transmute_max", 0)} a cast. '
-                                       f'Lesser rite (subscribers): {lp.get("transmute_lesser_in", 0)} to 1.',
+            lp.get("chariots_truth"): 'Chariots may be built (a horse, {{chariot_material_cost}} {{chariot_material}} and {{chariot_gold}} gold each; +{{chariot_offense}} offense on attacks). Nobody can build them before.',
+            lp.get("transmute_truth"): 'The <code>transmute</code> command: {{transmute_in}} of one material and {{transmute_aether}} aether make 1 of another, up to {{transmute_max}} a cast. '
+                                       'Lesser rite (subscribers): {{transmute_lesser_in}} to 1.',
             "flanked_ambush": 'The <a href="attacks.html#flanked_ambush">Flanked Ambush</a> attack. Lesser version (subscribers): <a href="attacks.html#lesser_ambush">Lesser Flanked Ambush</a>.',
         }.get(tid)
         wonder = next((w for w in lp.get("wonders", []) if w["truth"] == tid), None)
@@ -1350,38 +1350,38 @@ def generate(rules):
     wonders_text = ('<h2 id="wonders">World Wonders</h2>\n<p>Each wonder can be built once per world, by a house that knows its plan (its Truth). '
                     "The house starts it; houses of its state fund it with gold and its materials; once funded it takes the ticks below to finish. "
                     "The first to finish owns it, and the world hears. Any other build of it stops"
-                    + (f', and {pct(lp.get("wonder_refund_bp", 0))}% of what it was given goes back to the house that started it' if lp.get("wonder_refund_bp") else "") + ".</p>\n"
+                    + (', and {{wonder_refund_pct}}% of what it was given goes back to the house that started it' if lp.get("wonder_refund_bp") else "") + ".</p>\n"
                     '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Wonder</th><th>Does</th><th class="cell-num">Costs</th><th class="cell-num">Takes</th><th class="cell-num">Renown</th></tr>\n'
                     + "".join(f'<tr id="wonder-{e(w["id"])}"><td><b>{e(w["name"])}</b><br><code>{e(w["id"])}</code></td><td>{wonder_does(w)}</td>'
                               f'<td class="cell-num">{w["gold"]:,} gold' + "".join(f' + {q:,} {e(m)}' for m, q in w.get("materials", {}).items()) + '</td>'
                               f'<td class="cell-num">{w["ticks"]} ticks</td><td class="cell-num">{w["house_renown"]:,} to the house, {w["state_renown"]:,} to each house of its state</td></tr>\n' for w in wonder_list)
                     + "</table></div>\n<p>Commands: <code>start_wonder</code>, <code>fund_wonder</code>, <code>revive</code>. Renown counts in the "
                     '<a href="end-of-age.html#Scoring">age\'s score</a>.</p>\n') if wonder_list else ""
-    dragons = (f'<h2 id="dragons">Dragons</h2>\n<p>From tick {lp.get("dragon_from_tick", 0)}, every {lp.get("dragon_every_ticks", 0)} ticks a dragon raids one house, '
+    dragons = ('<h2 id="dragons">Dragons</h2>\n<p>From tick {{dragon_from_tick}}, every {{dragon_every_ticks}} ticks a dragon raids one house, '
                "chosen at random among the houses in the top third by land that are not protected. "
-               f'Its strength is {lp.get("dragon_strength_bp", 0) / 10_000:g}&times; the median defense at home of those houses. A house whose defense beats it drives it off and earns '
-               f'{lp.get("dragon_renown", 0)} renown. Otherwise it burns {pct(lp.get("dragon_buildings_bp", 0))}% of the buildings, {pct(lp.get("dragon_troops_bp", 0))}% of the troops at home '
-               f'and {pct(lp.get("dragon_peasants_bp", 0))}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). '
+               'Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense beats it drives it off and earns '
+               '{{dragon_renown}} renown. Otherwise it burns {{dragon_buildings_pct}}% of the buildings, {{dragon_troops_pct}}% of the troops at home '
+               'and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). '
                "Every other house hears which realm it struck.</p>\n") if lp.get("dragon_every_ticks") else ""
     if truths:
         kinds = (("breakthrough", "Breakthroughs"), ("wonder", "Wonder plans"))
         pages["truths.html"] = header("Truths and Quests", "Rules") + (
             f"<p>{len(truths)} Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, "
-            f"and so may its state; {lp.get('truth_notice_ticks', 0)} ticks later every house hears which state uncovered it, and may use it too. "
+            "and so may its state; {{truth_notice_ticks}} ticks later every house hears which state uncovered it, and may use it too. "
             "</p>\n"
             + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b>{truth_does(t["id"])}</li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
             + dragons + wonders_text
             + '<h2 id="quests">Quests</h2>\n<ul>\n'
-            f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, a general with {lp.get("quest_general_traits", 0)}+ traits'
-            + (f', or a house\'s scientists of one category at rank {lp["quest_scientist_rank"]} or better (one of them may die on the quest)' if lp.get("quest_scientist_rank") is not None else "") + ', '
-            f'of a house with {lp.get("quest_min_land", 0):,}+ acres that is not protected and on no quest.</li>\n'
-            f'<li><b>The invitation:</b> the world\'s chance starts at {pct(lp.get("quest_invite_bp", 0))}% a tick and rises, faster and faster, to certainty '
-            f'{lp.get("quest_accrual_ticks", 0)} ticks after the last invitation. The Truth sought stays unnamed.</li>\n'
-            f'<li><b>Episodes:</b> the seeker asks a cost (gold, a material, books, aether). Answer within {lp.get("quest_answer_ticks", 0)} ticks or the quest lapses; '
-            f'the next ask comes {lp.get("quest_episode_ticks", 0)} ticks later. The whole quest must end within {lp.get("quest_deadline_ticks", 0)} ticks.</li>\n'
-            f'<li><b>Risks:</b> each paid episode, the trail goes cold {pct(lp.get("quest_cold_bp", 0))}% of the time and the seeker dies {pct(lp.get("quest_death_bp", 0))}%. '
-            f'After the last, {pct(lp.get("quest_nothing_bp", 0))}% of quests find nothing.</li>\n'
-            f'<li><b>Success:</b> {lp.get("quest_renown", 0):,} renown, and the Truth.</li>\n</ul>\n'
+            '<li><b>Who may be invited:</b> an academic with {{quest_academic_attributes}}+ attributes, a general with {{quest_general_traits}}+ traits'
+            + (', or a house\'s scientists of one category at rank {{quest_scientist_rank}} or better (one of them may die on the quest)' if lp.get("quest_scientist_rank") is not None else "") + ', '
+            'of a house with {{quest_min_land}}+ acres that is not protected and on no quest.</li>\n'
+            '<li><b>The invitation:</b> the world\'s chance starts at {{quest_invite_pct}}% a tick and rises, faster and faster, to certainty '
+            '{{quest_accrual_ticks}} ticks after the last invitation. The Truth sought stays unnamed.</li>\n'
+            f'<li><b>Episodes:</b> the seeker asks a cost (gold, a material, books, aether). Answer within {{{{quest_answer_ticks}}}} ticks or the quest lapses; '
+            'the next ask comes {{quest_episode_ticks}} ticks later. The whole quest must end within {{quest_deadline_ticks}} ticks.</li>\n'
+            '<li><b>Risks:</b> each paid episode, the trail goes cold {{quest_cold_pct}}% of the time and the seeker dies {{quest_death_pct}}%. '
+            'After the last, {{quest_nothing_pct}}% of quests find nothing.</li>\n'
+            '<li><b>Success:</b> {{quest_renown}} renown, and the Truth.</li>\n</ul>\n'
             "<p>Subscribers may use lesser versions of some breakthroughs before they are uncovered. "
             'Command: <code>answer_quest</code> (see <a href="api.html">API for Tools</a>).</p>\n' + source_note(latest))
 
@@ -1391,7 +1391,7 @@ def generate(rules):
         mat_name = {m["key"]["identity"]: m["name"] for m in latest.get("materials", []) if isinstance(m, dict) and m.get("key")}
         pages["realm-works.html"] = header("Realm Works", "Rules") + (
             "<p>Specialised Materials Production: each realm may build the one work for its material, once a season. "
-            f'A state\'s leader proposes it, and its state votes yes. Each state\'s leader then votes. It passes once {pct(lp.get("realm_work_vote_bp", 0))}% '
+            f'A state\'s leader proposes it, and its state votes yes. Each state\'s leader then votes. It passes once {{{{realm_work_vote_pct}}}}% '
             "of the realm's states with houses say yes. Then any house in the realm funds it with gold and the realm's material; "
             "a gift is capped at what is still needed. Once fully funded, the realm's output of its material rises for the rest of the season. "
             "Every house in the realm hears when the work is proposed, passes and is done.</p>\n"
@@ -1605,7 +1605,19 @@ def generate(rules):
     # Hostility meters count hundredths of a point; pages show points.
     meter = ("hostility_attack_points", "hostility_failed_attack_points", "hostility_spy_points", "unfriendly_points",
              "hostile_points", "declare_either_points", "auto_war_points", "hostility_cap", "meter_decay_min_points")
+    # Settings pages never need as they are: each has a readable value above (or is already applied).
+    raw = {"wage_milli": "wage_pct", "soldier_wage_milli": "soldier_wage_gold", "order_min_life_ms": "order_lock_minutes",
+           "scientist_spawn_milli": "scientists_per_tick", "train_general_cbp": "train_general_per_1000_pct",
+           "might_unit_pct": "might_unit_factor", "score_per_war_point": "score_war_point_pts",
+           "settling_penalty_bp": "settling_penalty_size", "starting_peasants": "starting_peasants_only",
+           "aid_tax_bp_per_acre_value": "aid_tax_step_pct", "aid_values": "aid_value_list",
+           "explore_gold_per_land_milli": "explore_examples", "explore_gold_square": "explore_examples",
+           "explore_soldiers_per_land_milli": "explore_examples", "explore_soldiers_square_milli": "explore_examples",
+           "train_price_bp": "already in every unit's price", "mercenary_def": "mercenaries only attack",
+           "chariots_truth": "a Truth's id", "transmute_truth": "a Truth's id"}
     for k, v in p.items():
+        if k in raw:
+            continue
         if k in meter:
             values[k] = f"{v / 100:g}"
         elif k.endswith("_bp") and isinstance(v, list):
@@ -1617,7 +1629,7 @@ def generate(rules):
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
         elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "wonders", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
-            values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
+            values[k] = f"{v:,}" if isinstance(v, int) and not isinstance(v, bool) and abs(v) >= 1_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems
 

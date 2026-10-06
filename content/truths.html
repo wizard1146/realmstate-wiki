@@ -3,12 +3,12 @@ title: Truths and Quests
 category: Rules
 generated: tools/sync.py
 -->
-<p>8 Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, and so may its state; 16 ticks later every house hears which state uncovered it, and may use it too. </p>
+<p>8 Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, and so may its state; {{truth_notice_ticks}} ticks later every house hears which state uncovered it, and may use it too. </p>
 <h2 id="breakthrough">Breakthroughs</h2>
 <ul>
-<li id="chariots"><b>Chariots</b>: Chariots may be built (a horse, 1 timber and 100 gold each; +2 offense on attacks). Nobody can build them before.</li>
+<li id="chariots"><b>Chariots</b>: Chariots may be built (a horse, {{chariot_material_cost}} {{chariot_material}} and {{chariot_gold}} gold each; +{{chariot_offense}} offense on attacks). Nobody can build them before.</li>
 <li id="flanked_ambush"><b>Flanked Ambush</b>: The <a href="attacks.html#flanked_ambush">Flanked Ambush</a> attack. Lesser version (subscribers): <a href="attacks.html#lesser_ambush">Lesser Flanked Ambush</a>.</li>
-<li id="transmutation"><b>Transmutation Rite</b>: The <code>transmute</code> command: 4 of one material and 100 aether make 1 of another, up to 200 a cast. Lesser rite (subscribers): 8 to 1.</li>
+<li id="transmutation"><b>Transmutation Rite</b>: The <code>transmute</code> command: {{transmute_in}} of one material and {{transmute_aether}} aether make 1 of another, up to {{transmute_max}} a cast. Lesser rite (subscribers): {{transmute_lesser_in}} to 1.</li>
 <li id="dragon_wall"><b>Dragon Wall</b>: <a href="buildings.html#dragon_walls">Dragon Walls</a> against <a href="#dragons">dragons</a>. Lesser version (subscribers): Lesser Dragon Walls.</li>
 </ul>
 <h2 id="wonder">Wonder plans</h2>
@@ -19,9 +19,9 @@ generated: tools/sync.py
 <li id="paradise_of_trees"><b>Paradise of Trees</b>: the plan for the <a href="#wonder-paradise_of_trees">Paradise of Trees</a> wonder.</li>
 </ul>
 <h2 id="dragons">Dragons</h2>
-<p>From tick 280, every 36 ticks a dragon raids one house, chosen at random among the houses in the top third by land that are not protected. Its strength is 1.2&times; the median defense at home of those houses. A house whose defense beats it drives it off and earns 300 renown. Otherwise it burns 3% of the buildings, 4% of the troops at home and 2% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). Every other house hears which realm it struck.</p>
+<p>From tick {{dragon_from_tick}}, every {{dragon_every_ticks}} ticks a dragon raids one house, chosen at random among the houses in the top third by land that are not protected. Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense beats it drives it off and earns {{dragon_renown}} renown. Otherwise it burns {{dragon_buildings_pct}}% of the buildings, {{dragon_troops_pct}}% of the troops at home and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). Every other house hears which realm it struck.</p>
 <h2 id="wonders">World Wonders</h2>
-<p>Each wonder can be built once per world, by a house that knows its plan (its Truth). The house starts it; houses of its state fund it with gold and its materials; once funded it takes the ticks below to finish. The first to finish owns it, and the world hears. Any other build of it stops, and 50% of what it was given goes back to the house that started it.</p>
+<p>Each wonder can be built once per world, by a house that knows its plan (its Truth). The house starts it; houses of its state fund it with gold and its materials; once funded it takes the ticks below to finish. The first to finish owns it, and the world hears. Any other build of it stops, and {{wonder_refund_pct}}% of what it was given goes back to the house that started it.</p>
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>Wonder</th><th>Does</th><th class="cell-num">Costs</th><th class="cell-num">Takes</th><th class="cell-num">Renown</th></tr>
 <tr id="wonder-library_of_antiquity"><td><b>Library of Antiquity</b><br><code>library_of_antiquity</code></td><td>academics' book production +50% for every house of the state</td><td class="cell-num">2,000,000 gold + 2,000 amber + 2,000 paper</td><td class="cell-num">168 ticks</td><td class="cell-num">5,000 to the house, 1,000 to each house of its state</td></tr>
@@ -32,11 +32,11 @@ generated: tools/sync.py
 <p>Commands: <code>start_wonder</code>, <code>fund_wonder</code>, <code>revive</code>. Renown counts in the <a href="end-of-age.html#Scoring">age's score</a>.</p>
 <h2 id="quests">Quests</h2>
 <ul>
-<li><b>Who may be invited:</b> an academic with 2+ attributes, a general with 1+ traits, or a house's scientists of one category at rank 3 or better (one of them may die on the quest), of a house with 600+ acres that is not protected and on no quest.</li>
-<li><b>The invitation:</b> the world's chance starts at 0.05% a tick and rises, faster and faster, to certainty 140 ticks after the last invitation. The Truth sought stays unnamed.</li>
-<li><b>Episodes:</b> the seeker asks a cost (gold, a material, books, aether). Answer within 24 ticks or the quest lapses; the next ask comes 48 ticks later. The whole quest must end within 240 ticks.</li>
-<li><b>Risks:</b> each paid episode, the trail goes cold 8% of the time and the seeker dies 1%. After the last, 25% of quests find nothing.</li>
-<li><b>Success:</b> 1,000 renown, and the Truth.</li>
+<li><b>Who may be invited:</b> an academic with {{quest_academic_attributes}}+ attributes, a general with {{quest_general_traits}}+ traits, or a house's scientists of one category at rank {{quest_scientist_rank}} or better (one of them may die on the quest), of a house with {{quest_min_land}}+ acres that is not protected and on no quest.</li>
+<li><b>The invitation:</b> the world's chance starts at {{quest_invite_pct}}% a tick and rises, faster and faster, to certainty {{quest_accrual_ticks}} ticks after the last invitation. The Truth sought stays unnamed.</li>
+<li><b>Episodes:</b> the seeker asks a cost (gold, a material, books, aether). Answer within {{quest_answer_ticks}} ticks or the quest lapses; the next ask comes {{quest_episode_ticks}} ticks later. The whole quest must end within {{quest_deadline_ticks}} ticks.</li>
+<li><b>Risks:</b> each paid episode, the trail goes cold {{quest_cold_pct}}% of the time and the seeker dies {{quest_death_pct}}%. After the last, {{quest_nothing_pct}}% of quests find nothing.</li>
+<li><b>Success:</b> {{quest_renown}} renown, and the Truth.</li>
 </ul>
 <p>Subscribers may use lesser versions of some breakthroughs before they are uncovered. Command: <code>answer_quest</code> (see <a href="api.html">API for Tools</a>).</p>
 <p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>17a61575030c890e</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
