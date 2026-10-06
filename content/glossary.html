@@ -1,7 +1,7 @@
 <!--
 title: Glossary
 category: Guides
-updated: 2026-09-29
+updated: 2026-10-06
 -->
 <p>Terms grouped by topic, as in the sidebar. Link to a term with its name, such as <code>glossary.html#tick</code>.</p>
 
@@ -9,6 +9,8 @@ updated: 2026-09-29
 <dl class="glossary">
   <dt id="address">Address</dt><dd>Where a house sits, written realm:state:house, such as <code>4:2:1</code>.</dd>
   <dt id="house">House</dt><dd>What one player runs: land, peasants, gold, food and troops. One per account per age.</dd>
+  <dt id="personality">Personality</dt><dd>Your house's second choice after its race, with its own bonuses and penalties. See <a href="personalities.html">Personalities</a>.</dd>
+  <dt id="race">Race</dt><dd>The people your house belongs to. It sets your units and your bonuses and penalties. See <a href="races.html">Races</a>.</dd>
   <dt id="realm">Realm</dt><dd>A group of states ({{states_per_realm}} each). Realms are the top level of the world map. See <a href="world.html">The World</a>.</dd>
   <dt id="state">State</dt><dd>A group of houses (up to {{houses_per_state}}) that play together.</dd>
 </dl>
@@ -18,8 +20,12 @@ updated: 2026-09-29
   <dt id="barren-land">Barren land</dt><dd>Land with no building. It houses a few people and grows a little food.</dd>
   <dt id="building-efficiency">Building efficiency</dt><dd>How well your buildings are staffed, 50-100%. See <a href="construction.html#Efficiency">Land and Construction</a>.</dd>
   <dt id="clearing-price">Clearing price</dt><dd>The single price a market book trades at each tick.</dd>
+  <dt id="depletion">Depletion</dt><dd>In some ages, a realm's deposit of a material runs down as it is worked, so output falls late in the age. See <a href="trade.html#Depletion">Trade</a>.</dd>
+  <dt id="market-fee">Market fee</dt><dd>A share of the gold from every market sale, destroyed rather than paid to anyone. Trading houses cut it. See <a href="trade.html#Market">Trade</a>.</dd>
   <dt id="material">Material</dt><dd>A resource each realm produces every tick. See <a href="materials.html">Materials</a>.</dd>
+  <dt id="season">Season</dt><dd>The cycle each material's output runs through, rising above and falling below its base. Materials are out of step with each other. See <a href="trade.html#Seasons">Trade</a>.</dd>
   <dt id="share">Share</dt><dd>A state's part of its realm's production. See <a href="trade.html#Shares">Trade</a>.</dd>
+  <dt id="spoilage">Spoilage</dt><dd>Materials held beyond a free allowance waste away each tick, faster the bigger the hoard. See <a href="trade.html#Spoilage">Trade</a>.</dd>
   <dt id="treasury">Treasury</dt><dd>A state's own gold and materials, run by its <a href="leadership.html">leader</a>.</dd>
 </dl>
 
@@ -28,7 +34,6 @@ updated: 2026-09-29
   <dt id="academic">Academic</dt><dd>A named scholar with flat attributes that strengthen your science; one per {{academic_universities}} universities. See <a href="academics.html">Academics</a>.</dd>
   <dt id="books">Books</dt><dd>Science points, written by scientists and earned by learning by doing. See <a href="science.html">Science</a>.</dd>
   <dt id="colloquium">Colloquium</dt><dd>A state's shared research: the leader picks a project, members give books. See <a href="colloquium.html">Colloquium</a>.</dd>
-  <dt id="soldiers">Soldiers</dt><dd>Peasants drafted under arms ({{soldier_off}} offense, {{soldier_def}} defense). They train into specialists, elites and thieves. See <a href="military.html#Draft">Military</a>.</dd>
   <dt id="scientist">Scientist</dt><dd>Writes books every tick in the economy, military or arcane category, more as it gains rank.</dd>
 </dl>
 
@@ -37,17 +42,27 @@ updated: 2026-09-29
   <dt id="adept">Adept</dt><dd>A non-fighting unit, drawn from peasants at shrines, that works <a href="rites.html">rites</a>.</dd>
   <dt id="aether">Aether</dt><dd>What rites spend; shrines gather it every tick. See <a href="rites.html">Rites</a>.</dd>
   <dt id="ceasefire">Ceasefire</dt><dd>A period with no attacks or spying between two states. One follows every war. See <a href="war.html#Ceasefires">War</a>.</dd>
-  <dt id="general">General</dt><dd>A commander raised from elites, with flat <a href="traits.html">traits</a>; one per army.</dd>
-  <dt id="hex">Hex</dt><dd>A rite that harms another house. See <a href="rite-list.html">Rites and Hexes</a>.</dd>
-  <dt id="spell-resilience">Spell Resilience</dt><dd>How hard a house is to hex after hexes landed on it recently; it fades every tick. See <a href="rites.html#resilience">Rites</a>.</dd>
   <dt id="countercast-vengeance">Countercast Vengeance</dt><dd>Strength a house's own hexes gain against a state whose houses tried hexes on it; it fades every tick. See <a href="rites.html#vengeance">Rites</a>.</dd>
+  <dt id="draft-rate">Draft rate</dt><dd>The share of your population you want under arms; soldiers are drafted toward it each tick. See <a href="military.html#Draft">Military</a>.</dd>
+  <dt id="elite">Elite</dt><dd>A race's best troop, strong in both offense and defense. See <a href="military.html#Training">Military</a>.</dd>
+  <dt id="general">General</dt><dd>A commander raised from elites, with flat <a href="traits.html">traits</a>; one per army.</dd>
+  <dt id="hall-of-deeds">Hall of Deeds</dt><dd>The market where houses buy and sell generals and academics. See <a href="hall-of-deeds.html">Hall of Deeds</a>.</dd>
+  <dt id="hex">Hex</dt><dd>A rite that harms another house. See <a href="rite-list.html">Rites and Hexes</a>.</dd>
   <dt id="hostility-meter">Hostility meter</dt><dd>How hostile one state feels toward another, raised by that state's attacks and spying. Sets the relation: Normal, Unfriendly or Hostile. See <a href="war.html#Meter">War</a>.</dd>
   <dt id="medic">Medic</dt><dd>A non-fighting unit that saves battle deaths. See <a href="military.html#Medics">Military</a>.</dd>
+  <dt id="mercenaries">Mercenaries</dt><dd>Troops hired for a single attack. The survivors leave afterwards. See <a href="military.html#Attacking">Military</a>.</dd>
+  <dt id="mount">Mount</dt><dd>A horse or chariot that adds offense to the troop it carries. Bred in stables. See <a href="military.html#Mounts">Military</a>.</dd>
   <dt id="peace-dividend">Peace dividend</dt><dd>A bonus for a state that has stayed out of war for {{peace_dividend_ticks}} ticks. See <a href="war.html#PeaceDividend">War</a>.</dd>
   <dt id="protection">Protection</dt><dd>A new house's first {{protection_ticks}} ticks: nothing hostile in or out. See <a href="getting-started.html#Protection">Getting Started</a>.</dd>
   <dt id="recovery">Recovery</dt><dd>Cheaper, faster building and faster regrowth for {{recovery_ticks}} ticks after losing a war (half after a peace). See <a href="war.html#Recovery">War</a>.</dd>
+  <dt id="relation">Relation</dt><dd>How one state stands toward another, set by the hostility meter: Normal, Unfriendly or Hostile. Worse relations mean bigger gains when you attack. See <a href="war.html#Relations">War</a>.</dd>
   <dt id="renown">Renown</dt><dd>Public standing, won mostly in battle and never spent. Unlocks better <a href="generals.html">generals</a> and <a href="end-of-age.html#Heirs">heir</a> slots. See <a href="military.html#Renown">Military</a>.</dd>
+  <dt id="soldiers">Soldiers</dt><dd>Peasants drafted under arms ({{soldier_off}} offense, {{soldier_def}} defense). They train into specialists, elites and thieves. See <a href="military.html#Draft">Military</a>.</dd>
+  <dt id="specialist">Specialist</dt><dd>A troop trained for one job: offense specialists attack, defense specialists hold. See <a href="military.html#Training">Military</a>.</dd>
+  <dt id="spell-resilience">Spell Resilience</dt><dd>How hard a house is to hex after hexes landed on it recently; it fades every tick. See <a href="rites.html#resilience">Rites</a>.</dd>
+  <dt id="thief">Thief</dt><dd>A troop that carries out operations instead of fighting. See <a href="spying.html">Intrigue</a>.</dd>
   <dt id="tribute">Tribute</dt><dd>Part of a losing state's material output paid to the winner of a general war. See <a href="war.html#Outcomes">War</a>.</dd>
+  <dt id="upgrade">Upgrade</dt><dd>Turning a specialist or elite into its stronger + form, paid in a material. See <a href="military.html#Upgrades">Military</a>.</dd>
   <dt id="war-points">War points</dt><dd>A state's score from wars: {{war_win_points}} for a win, {{war_peace_points}} for peace. See <a href="war.html#Outcomes">War</a>.</dd>
 </dl>
 
@@ -55,14 +70,14 @@ updated: 2026-09-29
 <dl class="glossary">
   <dt id="courting">Courting</dt><dd>An operation that makes another house's general or academic waver; its owner can reassure it. See <a href="spying.html#Courting">Intrigue</a>.</dd>
   <dt id="false-flag">False Flag</dt><dd>Sending an operation under another state's colours. See <a href="spying.html#FalseFlag">Intrigue</a>.</dd>
-  <dt id="nerve">Nerve</dt><dd>What your thieves' operations spend; it recovers every tick. See <a href="spying.html#Nerve">Intrigue</a>.</dd>
   <dt id="might">Might</dt><dd>What a house has built up apart from land: troops, mounts, medics, generals, academics and science. Public, like land. See <a href="end-of-age.html#Might">The End of an Age</a>.</dd>
+  <dt id="nerve">Nerve</dt><dd>What your thieves' operations spend; it recovers every tick. See <a href="spying.html#Nerve">Intrigue</a>.</dd>
   <dt id="news">News</dt><dd>Your house's private feed of what happened to it. See <a href="visibility.html#News">What You Can See</a>.</dd>
   <dt id="operation">Operation</dt><dd>One thing your thieves do: intel, theft or sabotage. See <a href="operations.html">Thieves' Operations</a>.</dd>
   <dt id="spy-report">Spy report</dt><dd>What a successful intel <a href="spying.html">operation</a> learned about another house. Shared with your state.</dd>
   <dt id="vigil">Vigil</dt><dd>A rite a whole state funds together; every member gains while it lasts. See <a href="rite-list.html#vigils">Rites and Hexes</a>.</dd>
-  <dt id="ward">Ward</dt><dd>Resistance to hexes and divinations, from watchstones. See <a href="rites.html#Chance">Rites</a>.</dd>
   <dt id="vigilance">Vigilance</dt><dd>How alert a house is after recent operations against it; it lowers the next one's chance. See <a href="spying.html#Vigilance">Intrigue</a>.</dd>
+  <dt id="ward">Ward</dt><dd>Resistance to hexes and divinations, from watchstones. See <a href="rites.html#Chance">Rites</a>.</dd>
 </dl>
 
 <h2 id="time">Time and Ages</h2>
@@ -73,9 +88,18 @@ updated: 2026-09-29
   <dt id="tick">Tick</dt><dd>The hourly economy update: income, food and population. See <a href="how-time-works.html">How Time Works</a>.</dd>
 </dl>
 
+<h2 id="lore">Lore</h2>
+<dl class="glossary">
+  <dt id="age-of-ash-and-salt">Age of Ash and Salt</dt><dd>What the taverns call the current age. See <a href="lore.html#Current_Age">Lore</a>.</dd>
+  <dt id="first-transgression">First Transgression</dt><dd>The Saltborn invasion that sacked Ruikhire, giving rise to the Freehomes and the Mycellians. See <a href="lore.html#Fire_and_Salt">Lore</a>.</dd>
+  <dt id="long-winter">Long Winter</dt><dd>A generation of unbroken snow, about a thousand years ago, that drove the Drow underground. The Realms count their years from its thaw. See <a href="lore.html#Before_Memory">Lore</a>.</dd>
+  <dt id="mount-ishiraki">Mount Ishiraki</dt><dd>The volcano whose eruption burned the Drow city of Vael Nhur and scattered the Ashcliffe. See <a href="lore.html#Fire_and_Salt">Lore</a>.</dd>
+  <dt id="night-of-silver">Night of Silver</dt><dd>The night the Daemons slew every sorcerer-king of Unlith and took their contracts. See <a href="lore.html#Night_of_Silver">Lore</a>.</dd>
+  <dt id="ruikhire">Ruikhire</dt><dd>Once the World's greatest city, sacked by the Saltborn and now fought over by the Freehomes and the Mycellians. See <a href="lore.html#Old_Kingdoms">Lore</a>.</dd>
+</dl>
+
 <h2 id="rules-records">How the rules are recorded</h2>
 <dl class="glossary">
-  <dt id="draft-rate">Draft rate</dt><dd>The share of your population you want under arms; soldiers are drafted toward it each tick. See <a href="military.html#Draft">Military</a>.</dd>
   <dt id="definition">Definition</dt><dd>A race or personality's numbers and effects for an age, such as <code>orc@v2</code>. A rebalance is a new definition of the same identity.</dd>
   <dt id="effect">Effect</dt><dd>One building block of a race or personality: a modifier, a flag, an unlock or its unit slots. See <a href="effects.html">Effects</a>.</dd>
   <dt id="identity">Identity</dt><dd>A race or personality's permanent name, such as <code>orc</code>. It never changes, so history can follow it across ages.</dd>
