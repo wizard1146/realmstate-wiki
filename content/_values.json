@@ -110,7 +110,7 @@
   "construction_ticks": 16,
   "court_auction_ticks": 24,
   "court_reserve_gold": 2000,
-  "cross_realm_fee_pct": "10",
+  "cross_realm_fee_pct": "3",
   "decay_growth_pct": "0.01",
   "decay_max_pct": "1",
   "decay_start_pct": "0.02",

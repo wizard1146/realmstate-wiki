@@ -30,7 +30,7 @@ updated: 2026-10-06
   <li><b>Start time</b>: when ticks begin. Until then, players can only found houses and bring back heirs. If the time has already passed when you open the age, it starts at once.</li>
   <li><b>Changed numbers</b>: any of the age's numbers (its params, as <code>GET /rules</code> lists them), for example a shorter age with <code>age_ticks</code>. Everything else comes from the age file.</li>
 </ul>
-<p>The game compiles the plan the way it would make the world, and refuses it with every problem listed: an age file that doesn't exist, a number that isn't a param, a value the rules don't allow, or an age number that's too low. A plan that's accepted will start.</p>
+<p>The game compiles the plan the way it would make the world, and refuses it with every problem listed at once: an age file that doesn't exist, a number that isn't a param, a value the rules don't allow, or an age number that's too low. A plan that's accepted will start.</p>
 <p>Once there's a plan, everyone can see the next age's number, name and start time in <code>GET /age</code> (as <code>next</code>), so players can get ready. Planning again replaces the plan; dropping it takes it away.</p>
 <pre><code>POST /dev/age/plan
 {"ruleset": "age-3", "name": "The Age of Ash", "start_at": 1792000000000,

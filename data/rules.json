@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "347ab4879839686e",
+      "hash": "15833c6ef3539a75",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1235,7 +1235,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
-        "cross_realm_fee_bp": 1000,
+        "cross_realm_fee_bp": 300,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -4997,7 +4997,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "c8c11a3d2391c7ef",
+      "hash": "be4e1ccfe9cf4cd0",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5379,7 +5379,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
-        "cross_realm_fee_bp": 1000,
+        "cross_realm_fee_bp": 300,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -9339,7 +9339,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "35cf214c91e60a07",
+      "hash": "b05d71cb4de90d27",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9729,7 +9729,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
-        "cross_realm_fee_bp": 1000,
+        "cross_realm_fee_bp": 300,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
