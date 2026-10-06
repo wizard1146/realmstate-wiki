@@ -11,6 +11,7 @@ updated: 2026-10-06
 <h2 id="Split">Houses and treasury</h2>
 <p>Of each state's part, {{house_split_pct}}% is shared equally among its houses. The rest goes to the state's treasury, which only the <a href="leadership.html">state leader</a> can use. The split is set per age.</p>
 <p><b>Worked example.</b> A bauxite realm makes {{bauxite_output}} units a tick. A state with a {{equal_share_pct}}% share gets about {{example_state_output}} a tick. {{house_split_pct}}% of that, {{example_houses_part}}, is shared among the state's houses, and {{example_treasury_part}} goes to the treasury. With {{houses_per_state}} houses, each gets about {{example_per_house}} a tick; leftovers carry over, so no unit is ever lost.</p>
+<p>A treasury that fills past its allowance passes the excess on to the state's houses in ages with <a href="#Overflow">treasury overflow</a>.</p>
 
 <h2 id="Seasons">Seasons</h2>
 <p>Output isn't steady. Each material runs through seasons: over {{season_ticks}} ticks its output goes {{season_curve_pct}} of its base, and then round again. On average it makes its base output.</p>
@@ -22,6 +23,10 @@ updated: 2026-10-06
 <p>Beyond that, the excess spoils. You lose {{spoil_step_pct}}% of it for every free allowance's worth you're over, up to {{spoil_max_pct}}% a tick. A little over costs almost nothing; a big hoard melts fast.</p>
 <p><b>Worked example.</b> A house of 400 acres may keep 450 of each material. With 900 bauxite it's 450 over, one allowance's worth, so it loses 1% of 450: 4 units. With 4,950 it's 4,500 over, ten allowances' worth, so the {{spoil_max_pct}}% cap applies: 225 units a tick.</p>
 <p>Goods in your sell orders count, so an order at a price nobody pays won't protect them. They spoil after your stock, starting with your highest-priced order. Your house page shows what would spoil next tick.</p>
+<h3 id="Overflow">Treasury overflow</h3>
+<p>Some ages switch treasury overflow on (this age: {{treasury_overflow}}). Then, each tick before anything spoils, a treasury's stock beyond its {{spoil_treasury_free}} free units of a material is shared equally among the state's houses instead of spoiling. Units that don't divide evenly go to one house after another, a different one each tick, so nothing is made or lost and it all evens out. Each house's news says what it got.</p>
+<p>The houses' own spoilage then applies as usual, so a house already over its allowance loses some of its share. Goods in the treasury's sell orders count toward its allowance, but they are never handed out. A state with no houses has no one to share with: its treasury's excess still spoils.</p>
+<p><b>Worked example.</b> A treasury holds 302 limestone more than its allowance, and its state has 4 houses. Each house gets 75, and the 2 left over go to two of them (two others the next time). The treasury keeps exactly its allowance.</p>
 
 <h2 id="Depletion">Depletion</h2>
 <p>Some ages switch depletion on (this age: {{depletion}}). Then each realm's deposit holds {{depletion_reserve_ticks}} ticks of its base output. As the deposit is worked, output falls with the square of the share used up: hardly at first, steeply near the end. It never falls below {{depletion_floor_pct}}% of the base. Materials are plentiful early in such an age and scarce late.</p>
@@ -31,14 +36,17 @@ updated: 2026-10-06
   <li>Each material has one order book. You post a buy (the most you'll pay per unit) or a sell (the least you'll take).</li>
   <li><b>Orders fill as soon as they're placed.</b> A new order trades at once with waiting orders that meet its price: the best price first, then the oldest. Each trade is at the <b>waiting order's price</b>, so a buy at 8 that meets a sell at 6 pays 6.</li>
   <li>Whatever doesn't fill at once waits in the book at your price, until someone's order meets it or you cancel it.</li>
-  <li>Placing an order sets its goods or gold aside at once. A buy sets aside its price for every unit plus room for the fee; what it doesn't spend comes back straight away.</li>
+  <li>Placing an order sets its goods or gold aside at once. A buy sets aside its price for every unit plus room for the market fee and the <a href="#CrossRealm">cross-realm fee</a>; what it doesn't spend comes back straight away. A buy left waiting keeps room for the cross-realm fee, and gets it back for any units it buys from its own realm.</li>
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
 <h3 id="Fee">The market fee</h3>
 <p>The fee is paid by the order that <b>fills against a waiting order</b>: {{market_fee_pct}}% of the gold that trade is worth. A buyer pays it on top of the price; a seller has it taken from the gold received. The order that was waiting pays nothing. So posting an order and waiting is free, and taking what's already in the book costs the fee. Treasury orders pay it too.</p>
 <p>The fee is destroyed; it goes to no one. (The {{trade_fee_pct}}% fee to the seller's state is a separate one, for selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
 <p><a href="buildings.html#trading_houses">Trading houses</a> cut your fee, down to nothing with enough of them. The fee never goes below zero, so trading back and forth with a friend can only lose gold.</p>
-<p><b>Worked example.</b> The book has sells of 40 bauxite at 6 and 60 at 8. You place a buy of 120 at 8. At once you get 40 at 6 (240 gold) and 60 at 8 (480 gold): 720 gold, plus a {{market_fee_pct}}% fee on it if you have no trading houses. The other 20 wait in the book at 8. If a seller later fills them, you pay 160 gold and no fee. Your news shows each fill and its fee.</p>
+<h3 id="CrossRealm">The cross-realm fee</h3>
+<p>A buyer from another realm than the seller's pays {{cross_realm_fee_pct}}% of the trade's gold on top of the price. It's paid whether the buy filled at once or was waiting, and on top of any market fee. Like the market fee it's destroyed, but <a href="buildings.html#trading_houses">trading houses</a> don't cut it. A treasury trades from its state's realm. The seller never pays it.</p>
+<p>You can't tell from the book which realm a waiting order comes from, so a buy always sets aside room for this fee, and gets it back for whatever it buys from its own realm. Your news shows the cross-realm fee you paid on each fill, never who sold.</p>
+<p><b>Worked example.</b> The book has sells of 40 bauxite at 6 and 60 at 8. You place a buy of 120 at 8. At once you get 40 at 6 (240 gold) and 60 at 8 (480 gold): 720 gold, plus a {{market_fee_pct}}% fee on it if you have no trading houses. The other 20 wait in the book at 8. If a seller later fills them, you pay 160 gold and no fee. If the sellers are from another realm than yours, you also pay the {{cross_realm_fee_pct}}% cross-realm fee on each of those trades. Your news shows each fill and its fees.</p>
 <h3 id="Cancelling">Cancelling</h3>
 <p>An order stands for <b>{{order_lock_minutes}} minutes</b> after it's placed; only then can you cancel it. This keeps the book honest: a price you post is one others can actually trade against. Cancelling gives back the goods or gold the order still holds.</p>
 <h3 id="Yourself">Trading with yourself</h3>

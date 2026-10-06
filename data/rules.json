@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "3efb154450485b1a",
+      "hash": "a3b46117a3187d9c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1235,6 +1235,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
+        "cross_realm_fee_bp": 1000,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -2376,6 +2377,7 @@
         "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
         "unfriendly_gain_bp": 400,
@@ -4993,7 +4995,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "896144ac72de4081",
+      "hash": "aa5ccdc4c8277d1b",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5375,6 +5377,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
+        "cross_realm_fee_bp": 1000,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -6516,6 +6519,7 @@
         "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
         "unfriendly_gain_bp": 400,
@@ -9331,7 +9335,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "853d323c17f77965",
+      "hash": "0793bec32e4db254",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9721,6 +9725,7 @@
         "construction_ticks": 16,
         "court_auction_ticks": 24,
         "court_reserve_gold": 2000,
+        "cross_realm_fee_bp": 1000,
         "decay_growth_bp": 1,
         "decay_max_bp": 100,
         "decay_start_bp": 2,
@@ -10878,6 +10883,7 @@
         "train_price_bp": 20000,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "treasury_overflow": true,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
         "unfriendly_gain_bp": 400,
