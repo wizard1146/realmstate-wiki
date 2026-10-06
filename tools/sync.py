@@ -1255,9 +1255,13 @@ def generate(rules):
         return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divinations" if t in ("scry", "omens", "roads") else "Curses" if t == "curse" else "Hexes"
     def rite_needs(r):
         return f'<br><span class="cell-muted">needs {"war" if r["needs"] == "war" else e(r["needs"]) + " or war"}</span>' if r.get("needs") else ""
+    def rite_unfriendly(r):
+        bp = r.get("unfriendly_cost_bp", 10_000)
+        return f'<br><span class="cell-muted">{r["aether"] * bp // 10_000:,} aether while only unfriendly</span>' if bp != 10_000 else ""
     def rite_row(r):
         return (f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code>{rite_needs(r)}</td><td>{rite_does(r)}</td>'
-                f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
+                f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}'
+                f'{rite_unfriendly(r)}</td>'
                 f'<td class="cell-num">{str(r["ticks"]) + " ticks" if r.get("ticks") else "at once"}</td>'
                 f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td>'
                 f'<td class="cell-num">{pct(r["resilience_bp"]) + "%" if r.get("resilience_bp") else "&mdash;"}</td></tr>\n')
