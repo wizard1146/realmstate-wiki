@@ -1242,7 +1242,7 @@ def generate(rules):
             "loss": lambda: f'{LOSS_TEXT[r["effect"]["of"]].format(pct(r["effect"]["bp"]))}{war}',
             "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}',
             "seize": lambda: f'Captures {pct(r["effect"]["bp"])}% of their land{war} as barren land; smaller targets yield less',
-            "meteors": lambda: f'{pct(r["effect"]["bp"])}% of their peasants and troops at home die every tick{war}',
+            "hellfire": lambda: f'{pct(r["effect"]["bp"])}% of their peasants and troops at home die every tick{war}',
             "blight": lambda: f'{pct(r["effect"]["bp"])}% of their share of the realm material is lost{war}',
             "unravel": lambda: "Ends one of their rites (the one lasting longest)",
         }[t]()
@@ -1251,19 +1251,24 @@ def generate(rules):
     def rite_kind(r):
         t = r["effect"]["type"]
         if r.get("needs"):
-            return f'Hex<br><span class="cell-muted">needs {"war" if r["needs"] == "war" else e(r["needs"]) + " or war"}</span>'
-        return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Curse" if t == "curse" else "Hex"
+            return "Strong hexes"
+        return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divinations" if t in ("scry", "omens", "roads") else "Curses" if t == "curse" else "Hexes"
+    def rite_needs(r):
+        return f'<br><span class="cell-muted">needs {"war" if r["needs"] == "war" else e(r["needs"]) + " or war"}</span>' if r.get("needs") else ""
+    def rite_row(r):
+        return (f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code>{rite_needs(r)}</td><td>{rite_does(r)}</td>'
+                f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
+                f'<td class="cell-num">{str(r["ticks"]) + " ticks" if r.get("ticks") else "at once"}</td>'
+                f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td>'
+                f'<td class="cell-num">{pct(r["resilience_bp"]) + "%" if r.get("resilience_bp") else "&mdash;"}</td></tr>\n')
     rite_rows = "".join(
-        f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code></td><td>{rite_kind(r)}</td><td>{rite_does(r)}</td>'
-        f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
-        f'<td class="cell-num">{str(r["ticks"]) + " ticks" if r.get("ticks") else "at once"}</td>'
-        f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td>'
-        f'<td class="cell-num">{pct(r["resilience_bp"]) + "%" if r.get("resilience_bp") else "&mdash;"}</td></tr>\n'
-        for r in rites)
+        f'<tr class="row-group" id="kind-{kind.lower().replace(" ", "-")}"><th colspan="6" scope="colgroup">{kind}</th></tr>\n' + "".join(rite_row(r) for r in group)
+        for kind in ("On yourself", "Divinations", "Hexes", "Curses", "Strong hexes")
+        if (group := [r for r in rites if rite_kind(r) == kind]))
     if rites:
         pages["rite-list.html"] = header("Rites and Hexes", "Rules") + (
             '<p>Every rite this age. How adepts, aether, chance and ward work is on <a href="rites.html">Rites</a>.</p>\n'
-            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Rite</th><th>Kind</th><th>Does</th><th class="cell-num">Costs</th>'
+            '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Rite</th><th>Does</th><th class="cell-num">Costs</th>'
             '<th class="cell-num">Lasts</th><th class="cell-num">Chance</th><th class="cell-num"><a href="rites.html#resilience">Resilience</a></th></tr>\n' + rite_rows + "</table></div>\n"
             f"<p><b>Costs</b> are for a house of {lp.get('rite_cost_land', 0):,} acres; bigger houses pay more (see <a href=\"rites.html#cost\">Rites</a>). "
             f"<b>Lasts</b> is the full length, with shrines on {pct(lp.get('rite_full_share_bp', 0))}% of your land; fewer shrines shorten it. "

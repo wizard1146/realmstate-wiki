@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "323b62d4841f8fcb",
+      "hash": "59b151266f4e9b87",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2206,10 +2206,10 @@
               "type": "seize"
             },
             "hostility_bp": 100000,
-            "id": "land_lust",
+            "id": "siphon",
             "incense": 15,
             "mods": [],
-            "name": "Land Lust",
+            "name": "Siphon",
             "needs": "unfriendly",
             "resilience_bp": 3000,
             "ticks": 0,
@@ -2220,13 +2220,13 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 50,
-              "type": "meteors"
+              "type": "hellfire"
             },
             "hostility_bp": 100000,
-            "id": "meteor_showers",
+            "id": "hellfire",
             "incense": 15,
             "mods": [],
-            "name": "Meteor Showers",
+            "name": "Hellfire",
             "needs": "hostile",
             "resilience_bp": 3000,
             "ticks": 8,
@@ -4935,7 +4935,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "648e516331d10ca0",
+      "hash": "30ed30f9dd865c98",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6288,10 +6288,10 @@
               "type": "seize"
             },
             "hostility_bp": 100000,
-            "id": "land_lust",
+            "id": "siphon",
             "incense": 15,
             "mods": [],
-            "name": "Land Lust",
+            "name": "Siphon",
             "needs": "unfriendly",
             "resilience_bp": 3000,
             "ticks": 0,
@@ -6302,13 +6302,13 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 50,
-              "type": "meteors"
+              "type": "hellfire"
             },
             "hostility_bp": 100000,
-            "id": "meteor_showers",
+            "id": "hellfire",
             "incense": 15,
             "mods": [],
-            "name": "Meteor Showers",
+            "name": "Hellfire",
             "needs": "hostile",
             "resilience_bp": 3000,
             "ticks": 8,
@@ -9215,7 +9215,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "150f4e6d21b96eeb",
+      "hash": "fcae31013cbeb48e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10576,10 +10576,10 @@
               "type": "seize"
             },
             "hostility_bp": 100000,
-            "id": "land_lust",
+            "id": "siphon",
             "incense": 15,
             "mods": [],
-            "name": "Land Lust",
+            "name": "Siphon",
             "needs": "unfriendly",
             "resilience_bp": 3000,
             "ticks": 0,
@@ -10590,13 +10590,13 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 50,
-              "type": "meteors"
+              "type": "hellfire"
             },
             "hostility_bp": 100000,
-            "id": "meteor_showers",
+            "id": "hellfire",
             "incense": 15,
             "mods": [],
-            "name": "Meteor Showers",
+            "name": "Hellfire",
             "needs": "hostile",
             "resilience_bp": 3000,
             "ticks": 8,
