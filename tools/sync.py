@@ -145,11 +145,16 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("direct_spread_ticks", "Military: direct recruits' spread either side (ticks)", "n"),
     ("direct_fail_bp", "Military: direct recruits who fail (back to peasants)", "pct"),
     ("direct_death_bp", "Military: direct recruits who die", "pct"),
+    ("wage_milli", "Military: a trained unit's wage per tick, as a share of its training price", "millipct"),
+    ("soldier_wage_milli", "Military: a soldier's wage per tick (gold)", "milli"),
+    ("desertion_bp", "Military: troops at home who desert per tick when no wages are paid", "pct"),
     ("recovery_ticks", "War: recovery after losing (ticks)", "n"),
     ("recovery_growth_bp", "War: faster peasant regrowth in recovery", "pct"),
     ("recovery_peace_share_bp", "War: share of recovery each side gets from a peace", "pct"),
     ("peace_dividend_ticks", "War: ticks out of war before the peace dividend", "n"),
+    ("war_end_margin_bp", "War: extra land growth, as a share of its land, that wins a war still running at the age's end", "pct"),
     ("age_ticks", "Age: length in ticks", "n"),
+    ("recap_frames", "Age: snapshots of the standings kept for the recap", "n"),
     ("score_land_bp", "Age: score for the most land (out of 100)", "pct"),
     ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),
     ("score_per_war_point", "Age: score per war point (out of 100)", "pct"),
@@ -315,6 +320,8 @@ def show_param(value, how):
         return f"{pct(value)}%"
     if how == "pm":
         return f"&plusmn;{pct(value)}%"
+    if how == "millipct":
+        return f"{value / 10:g}%"
     if how == "milli":
         return f"{value / 1000:g}"
     if how == "text":
