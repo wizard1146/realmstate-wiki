@@ -1431,6 +1431,28 @@ def generate(rules):
     values["soldier_wage_gold"] = f'{p.get("soldier_wage_milli", 0) / 1000:g}'
     values["wage_example_elites"] = f'{1_000 * 2_000 * p.get("wage_milli", 0) // 1000:,}'
     values["wage_example_soldiers"] = f'{10_000 * p.get("soldier_wage_milli", 0) // 1000:,}'
+    # Construction: gold per acre of land, per building built or razed.
+    values["build_cost_per_land"] = f'{p.get("build_cost_per_land_milli", 0) / 1000:g}'
+    values["raze_cost_per_land"] = f'{p.get("raze_cost_per_land_milli", 0) / 1000:g}'
+    # Hall of Deeds example: a 10,000-gold sale to a buyer from another realm.
+    sale = 10_000
+    values["hod_example_buyer_pays"] = f'{sale + sale * p.get("out_of_realm_bp", 0) // 10_000:,}'
+    values["hod_example_state_gets"] = f'{sale * p.get("trade_fee_bp", 0) // 10_000:,}'
+    values["hod_example_seller_gets"] = f'{sale - sale * p.get("trade_fee_bp", 0) // 10_000:,}'
+    values["hod_example_transfer"] = f'{sale * p.get("out_of_realm_bp", 0) // 10_000:,}'
+    # Spoilage example for trade.html: a 400-acre house, a small excess and one ten allowances over.
+    allow = p.get("spoil_free", 0) + 400 * p.get("spoil_free_per_acre", 0)
+    def spoiled(over):
+        rate = min(p.get("spoil_step_bp", 0) * over // max(allow, 1), p.get("spoil_max_bp", 0))
+        return over * rate // 10_000
+    values["spoil_example_allowance"] = f'{allow:,}'
+    values["spoil_example_small_stock"] = f'{2 * allow:,}'
+    values["spoil_example_small_loss"] = f'{spoiled(allow):,}'
+    values["spoil_example_big_stock"] = f'{11 * allow:,}'
+    values["spoil_example_big_over"] = f'{10 * allow:,}'
+    values["spoil_example_big_loss"] = f'{spoiled(10 * allow):,}'
+    # Paper example for science.html: a budget of 10 paper.
+    values["paper_example_books"] = 10 * p.get("books_per_paper", 0)
     sq = lambda land: max(0, land - p.get("explore_square_from", 0)) ** 2 // 1000
     xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000 + sq(land) * p.get("explore_gold_square", 0) // 1000
     xs = lambda land: (land * p.get("explore_soldiers_per_land_milli", 0) + sq(land) * p.get("explore_soldiers_square_milli", 0)) / 1000

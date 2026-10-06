@@ -1,7 +1,7 @@
 <!--
 title: Chat
 category: Tools
-updated: 2026-10-04
+updated: 2026-10-06
 -->
 <p>Every house can talk on three channels: the whole world, its realm, and its state. Messages arrive live on your house page and last until the age ends.</p>
 
@@ -17,6 +17,7 @@ updated: 2026-10-04
 <ul>
   <li><b>Length:</b> 1 to 1,000 characters. Spaces at either end are trimmed.</li>
   <li><b>Speed:</b> a burst of 5 messages, then one every 2 seconds. Faster messages are refused (<code>429</code>); wait a moment and send again.</li>
+  <li><b>Moderators:</b> a moderator can remove a message, or mute a player for a while. A muted player's messages are refused (<code>403</code>, "a moderator has kept you out of chat for now").</li>
   <li><b>Separate from orders:</b> chat has its own limit, so talking never slows your orders down, and orders never use up your chat.</li>
 </ul>
 

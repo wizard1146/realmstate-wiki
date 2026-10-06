@@ -6,7 +6,7 @@ updated: 2026-10-06
 <p>Every house has soldiers, drafted from its peasants. Every race also has an offense specialist, a defense specialist, an elite and a thief, plus upgraded offense+, defense+ and elite+ units. Unit slots run in that order: soldiers, offense, defense, elite, thief, then the three upgrades. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
 
 <h2 id="Draft">Soldiers and the draft</h2>
-<p>{{soldier_name}} fight at {{soldier_off}} offense and {{soldier_def}} defense, the same for every race, and cost nothing: they're drafted from your peasants.</p>
+<p>{{soldier_name}} fight at {{soldier_off}} offense and {{soldier_def}} defense, the same for every race. They cost no gold to train: they're drafted from your peasants. They do draw {{soldier_wage_gold}} gold a tick each in <a href="#Wages">wages</a>.</p>
 <ul>
   <li>Your <b>draft rate</b> is the share of your population you want under arms: troops at home, away and in training, soldiers included. New houses start at {{draft_default_pct}}%; you can set 0 to {{draft_max_pct}}%.</li>
   <li>Each tick, while you're below your rate, up to {{draft_speed_pct}}% of your peasants are drafted, never past the rate. Set 0 to stop drafting.</li>
@@ -48,11 +48,11 @@ updated: 2026-10-06
 <p>You can upgrade offense specialists, defense specialists and elites you own into their + form. An upgraded unit's main stat is {{upgrade_bonus_pct}}% higher (offense+ in offense, defense+ in defense, elite+ in both), unless its race sets its own numbers. Offense+ also gains {{upgrade_cross_point}} defense, and defense+ {{upgrade_cross_point}} offense. Races with <a href="effects.html#elite_plus_plus">elite_plus_plus</a> can upgrade elite+ once more, into elite++ (another {{upgrade_bonus_pct}}% on both stats).</p>
 <ul>
   <li>Cost: {{upgrade_cost}} {{upgrade_material}} per unit, {{upgrade_cost_elite}} per elite. See <a href="materials.html">Materials</a>.</li>
-  <li>The units are in training for {{train_ticks}} hours, then return upgraded.</li>
+  <li>The units are in training for {{train_ticks}} ticks, then return upgraded.</li>
 </ul>
 
 <h2 id="Medics">Medics</h2>
-<p>Medics don't fight; they save troops who would die in battle. A medic costs {{medic_gold}} gold, {{medic_material_cost}} {{medic_material}} and a peasant, and is ready after {{train_ticks}} hours.</p>
+<p>Medics don't fight; they save troops who would die in battle. A medic costs {{medic_gold}} gold, {{medic_material_cost}} {{medic_material}} and a peasant, and is ready after {{train_ticks}} ticks.</p>
 <ul>
   <li>Each medic per 100 troops in a fight saves {{rescue_per_medic_pct}}% of that side's deaths, up to {{rescue_cap_pct}}%.</li>
   <li>Medics you send with an attack protect your attackers and come home with the army. Medics at home protect your defenders.</li>
@@ -69,7 +69,7 @@ updated: 2026-10-06
 
 <h2 id="Attacking">Attacking</h2>
 <p>You choose how many troops of each unit slot to send, and the <a href="attacks.html">kind of attack</a>: an Assault for land (the default), or Breach, Reclaim, Torch, Sack, Massacre or Blockade; within your own state, only Raze, for clearing out idle houses. Every kind fights the same battle; they differ in what a win takes and what they need. The battle resolves at once.</p>
-<p><b>Mercenaries.</b> You can hire {{mercenary_name}} for an attack: {{mercenary_gold}} gold each (times your <a href="effects.html#mercenary_cost">mercenary cost</a> modifier), at most one for every {{mercenary_ratio}} of your own troops sent. They fight at {{mercenary_off}} offense, die like the rest, and the survivors leave after the battle instead of coming home. Some races differ: the Unlithians hire one for every 3 troops, may hire them upgraded (<code>upgraded_mercenaries</code> in the attack, for the upgrade material), and keep some survivors as offensive specialists; see each <a href="races.html">race's page</a>.</p>
+<p id="Mercenaries"><b>Mercenaries.</b> You can hire {{mercenary_name}} for an attack: {{mercenary_gold}} gold each (times your <a href="effects.html#mercenary_cost">mercenary cost</a> modifier), at most one for every {{mercenary_ratio}} of your own troops sent. They fight at {{mercenary_off}} offense, die like the rest, and the survivors leave after the battle instead of coming home. Some races differ: the Unlithians hire one for every 3 troops, may hire them upgraded (<code>upgraded_mercenaries</code> in the attack, for the upgrade material), and keep some survivors as offensive specialists; see each <a href="races.html">race's page</a>.</p>
 <ol>
   <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
   <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>
@@ -78,13 +78,13 @@ updated: 2026-10-06
   <li>An assault, breach or reclaim that wins earns <a href="#Renown">renown</a>.</li>
   <li>Sacked goods travel home with the army and arrive when it does.</li>
   <li>A house hit often lately loses less to each new hit (see <a href="attacks.html#protection">protection from repeated hits</a>).</li>
-  <li>Your army comes home {{attack_return_ticks}} hours later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
+  <li>Your army comes home {{attack_return_ticks}} ticks later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
 </ol>
 <p>Troops that are away don't defend your house.</p>
 <p>You can't attack houses in your own state (except to <a href="attacks.html#raze">raze</a> an idle one), across a ceasefire, or while either house is under <a href="getting-started.html#Protection">protection</a>. Every attack raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours.</p>
 
 <h2 id="Renown">Renown</h2>
-<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more.</p>
+<p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Renown is also scaled down against a much smaller house, by the <a href="attacks.html#size">target size</a> curve. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more.</p>
 <p>Renown is never spent. Where it comes from:</p>
 <ul>
   <li><b>Attacks:</b> a winning assault, breach or reclaim (above). Other kinds of attack earn none.</li>
@@ -102,4 +102,4 @@ updated: 2026-10-06
 
 <h2 id="What_You_Learn">What you learn</h2>
 <p>You see your own offense, whether you won, the land taken and the losses on both sides, but never the defender's defense. The defender's news tells them who attacked and what they lost. To size up a target first, <a href="spying.html">spy</a> on it.</p>
-<p>Thieves, the fourth unit slot, don't fight. They are used for <a href="spying.html">spying</a>.</p>
+<p>Thieves don't fight. They are used for <a href="spying.html">spying</a>.</p>

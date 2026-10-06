@@ -1,7 +1,7 @@
 <!--
 title: Science
 category: Mechanics, Science
-updated: 2026-09-29
+updated: 2026-10-06
 -->
 <p>Science turns books into permanent bonuses. Books come mostly from your scientists, and paper, practice and exploring add more. You spend them on <a href="sciences.html">sciences</a>, or give them to your state's <a href="colloquium.html">Colloquium</a>.</p>
 
@@ -15,19 +15,19 @@ updated: 2026-09-29
 
 <h2 id="Paper">Paper speeds research</h2>
 <p>You don't need paper to do science, but it helps. Set how much {{paper_material}} your scientists may use each tick. Each unit used adds {{books_per_paper}} books, up to {{paper_cap_pct}}% more than they'd write without it. Only what adds books is used.</p>
-<p><b>Example.</b> A new house writes {{starting_books_per_tick}} books a tick. With a budget of 10 paper it writes 50 more. Past the cap, extra paper isn't spent.</p>
+<p><b>Example.</b> A new house writes {{starting_books_per_tick}} books a tick. With a budget of 10 paper it writes {{paper_example_books}} more. Past the cap, extra paper isn't spent.</p>
 
 <h2 id="Practice">Learning by doing</h2>
 <ul>
   <li>A successful attack earns up to {{books_per_close_win}} military books, more the closer the fight (defense &divide; offense), like <a href="military.html#Renown">renown</a>.</li>
   <li>A successful spy earns {{books_per_spy}} arcane books.</li>
   <li>Each building you start earns {{books_per_building}} economy books.</li>
-  <li>Every 1,000 gold of market fee you pay when you sell earns {{books_per_thousand_fee}} economy books. Buying earns none, and a sale with no fee earns none.</li>
+  <li>Every 1,000 gold of <a href="trade.html#Fee">market fee</a> you pay earns {{books_per_thousand_fee}} economy books. Only an order that fills at once pays the fee, buy or sell, so only that earns books. An order that waits in the book pays none and earns none.</li>
 </ul>
 
 <h2 id="Lost_Texts">Lost texts</h2>
 <p>Each time you explore there's a {{lost_text_chance_pct}}% chance your explorers find lost texts: {{books_per_explored_acre}} economy books for every acre explored.</p>
 
 <h2 id="Investing">Investing books</h2>
-<p>Books are spent on sciences in their own category, and take effect at once. A science's bonus grows with the square root of the books in it: four times the books gives twice the bonus. <a href="buildings.html#libraries">Libraries</a> strengthen every science.</p>
+<p>Books are spent on sciences in their own category, and take effect at once. A science's bonus grows with the square root of the books in it: four times the books gives twice the bonus. Each science's bonus is held to {{science_cap_pct}}% (a penalty too), however many books it holds. <a href="buildings.html#libraries">Libraries</a> and other science efficiency then strengthen every science, so the total can go past the cap.</p>
 <p>The square root keeps every result a whole number, identical on every machine.</p>

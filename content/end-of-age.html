@@ -6,14 +6,14 @@ updated: 2026-10-06
 <p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends: every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
 
 <h2 id="Scoring">Scoring</h2>
-<p>States are scored on two separate things, each measured against the leading state, so nothing is counted twice:</p>
+<p>States are scored on land and might, each measured against the leading state so nothing is counted twice, plus the war points they won:</p>
 <ul>
   <li><b>Land</b>: up to {{score_land_pct}} points. The state with the most land gets all of them; a state with half as much gets half.</li>
   <li><b>Might</b>: up to {{score_might_pct}} points, the same way. Might is what your houses have built up apart from land (see below).</li>
   <li><b>War</b>: {{score_war_point_pts}} more points for every <a href="war.html#Outcomes">war point</a> won this age.</li>
 </ul>
 <p>The state with the highest score wins the age. Houses are also ranked by land, by might and by renown.</p>
-<p><b>Example.</b> The leading state by land holds 12,000 acres and the mightiest state has 900,000 might. A state with 9,000 acres and 900,000 might, which won one war, scores {{score_land_pct}} &times; &frac34; + {{score_might_pct}} + 2 &times; {{score_war_point_pts}}.</p>
+<p><b>Example.</b> The leading state by land holds 12,000 acres and the mightiest state has 900,000 might. A state with 9,000 acres and 900,000 might, which won one war ({{war_win_points}} war points), scores {{score_land_pct}} &times; &frac34; + {{score_might_pct}} + {{war_win_points}} &times; {{score_war_point_pts}}.</p>
 <p>The standings are public all age long (<code>GET /age</code>, and the Age panel on your house page).</p>
 
 <h2 id="Might">Might</h2>

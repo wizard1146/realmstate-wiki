@@ -6,7 +6,7 @@ updated: 2026-10-06
 <p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
 
 <h2 id="Shares">Shares</h2>
-<p>A realm's output is divided among its {{states_per_realm}} states by share. Shares start equal, about {{equal_share_pct}}% each, and never fall below {{share_floor_pct}}%. Winning an <a href="war.html#Outcomes">intra-realm war</a> moves share from the loser to the winner.</p>
+<p>A realm's output is divided among its {{states_per_realm}} states by share. Shares start equal, about {{equal_share_pct}}% each, and never fall below {{share_floor_pct}}%. Winning an <a href="war.html#Outcomes">intra-realm war</a> moves {{share_transfer_pct}} percentage points of share from the loser to the winner, never taking the loser below the floor.</p>
 
 <h2 id="Split">Houses and treasury</h2>
 <p>Of each state's part, {{house_split_pct}}% is shared equally among its houses. The rest goes to the state's treasury, which only the <a href="leadership.html">state leader</a> can use. The split is set per age.</p>
@@ -21,7 +21,7 @@ updated: 2026-10-06
 <h2 id="Spoilage">Spoilage</h2>
 <p>Goods don't keep forever. Each tick, a house may hold {{spoil_free}} units of each material, plus {{spoil_free_per_acre}} per acre of land, without loss. A treasury may hold {{spoil_treasury_free}} of each.</p>
 <p>Beyond that, the excess spoils. You lose {{spoil_step_pct}}% of it for every free allowance's worth you're over, up to {{spoil_max_pct}}% a tick. A little over costs almost nothing; a big hoard melts fast.</p>
-<p><b>Worked example.</b> A house of 400 acres may keep 450 of each material. With 900 bauxite it's 450 over, one allowance's worth, so it loses 1% of 450: 4 units. With 4,950 it's 4,500 over, ten allowances' worth, so the {{spoil_max_pct}}% cap applies: 225 units a tick.</p>
+<p><b>Worked example.</b> A house of 400 acres may keep {{spoil_example_allowance}} of each material. With {{spoil_example_small_stock}} bauxite it's {{spoil_example_allowance}} over, one allowance's worth, so it loses {{spoil_step_pct}}% of that: {{spoil_example_small_loss}} units. With {{spoil_example_big_stock}} it's {{spoil_example_big_over}} over, ten allowances' worth, so the {{spoil_max_pct}}% cap applies: {{spoil_example_big_loss}} units a tick.</p>
 <p>Goods in your sell orders count, so an order at a price nobody pays won't protect them. They spoil after your stock, starting with your highest-priced order. Your house page shows what would spoil next tick.</p>
 <h3 id="Overflow">Treasury overflow</h3>
 <p>Some ages switch treasury overflow on (this age: {{treasury_overflow}}). Then, each tick before anything spoils, a treasury's stock beyond its {{spoil_treasury_free}} free units of a material is shared equally among the state's houses instead of spoiling. Units that don't divide evenly go to one house after another, a different one each tick, so nothing is made or lost and it all evens out. Each house's news says what it got.</p>
@@ -36,7 +36,12 @@ updated: 2026-10-06
   <li>Each material has one order book. You post a buy (the most you'll pay per unit) or a sell (the least you'll take).</li>
   <li><b>Orders fill as soon as they're placed.</b> A new order trades at once with waiting orders that meet its price: the best price first, then the oldest. Each trade is at the <b>waiting order's price</b>, so a buy at 8 that meets a sell at 6 pays 6.</li>
   <li>Whatever doesn't fill at once waits in the book at your price, until someone's order meets it or you cancel it.</li>
+<<<<<<< Updated upstream
   <li>Placing an order sets its goods or gold aside at once. A buy sets aside its price for every unit plus room for the market fee and the <a href="#CrossRealm">cross-realm fee</a>; what it doesn't spend comes back straight away. A buy left waiting keeps room for the cross-realm fee, and gets it back for any units it buys from its own realm.</li>
+=======
+  <li>Placing an order sets its goods or gold aside at once. A buy sets aside its price for every unit plus room for the fee; what it doesn't spend comes back straight away.</li>
+  <li>A house, or a treasury, can have at most 20 open orders at once.</li>
+>>>>>>> Stashed changes
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
 <h3 id="Fee">The market fee</h3>

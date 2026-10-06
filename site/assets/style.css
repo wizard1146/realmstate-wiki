@@ -147,7 +147,7 @@ a:visited { color: var(--link-visited); }
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M1.5 1.5 L7 6.5 L12.5 1.5' fill='none' stroke='%238a8058' stroke-opacity='.9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center bottom / 14px 8px no-repeat;
     background-clip: padding-box; }
 }
-.nav-group__title { margin: 0 0 .25rem; padding: 0 .7rem; font-size: .78rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }   /* same plum as the Play Utopia button */
+.nav-group__title { margin: 0 0 .25rem; padding: 0 .7rem; font-size: .78rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }   /* plum accent */
 .nav-group__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; }
 .nav-group__list a, .nav-group__list a:visited { display: block; margin-right: -.7rem; padding: .54rem .7rem .3rem; border-radius: .3rem 0 0 .3rem; text-decoration: none; color: var(--text-dim); transition: background-color .12s, color .12s; }
 .nav-group__list a:hover { background: var(--surface); color: var(--text); }

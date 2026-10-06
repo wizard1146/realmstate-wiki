@@ -7,11 +7,11 @@ updated: 2026-10-06
 
 <h2 id="Real_Time">Real time</h2>
 <p>Attacks, and every other action, resolve the instant you send them. You see the result straight away.</p>
-<p>Things you start finish at an exact moment, to the second, not at the next tick:</p>
+<p>Things you start finish at their own moment, to the second, not at the next tick:</p>
 <ul>
-  <li>Explored land arrives {{explore_ticks}} hours after you explore.</li>
-  <li>Troops finish training {{train_ticks}} hours after you start.</li>
-  <li>Armies come home {{attack_return_ticks}} hours after an attack (some races and personalities are faster; see <a href="effects.html#return_time">return time</a>).</li>
+  <li>Explored land arrives {{explore_ticks}} ticks after you explore.</li>
+  <li>Troops in training don't all finish at once. Most finish around {{train_ticks}} ticks after you start; the rest spread up to {{train_spread_ticks}} ticks earlier or later (see <a href="military.html#Training">Training</a>).</li>
+  <li>Armies come home {{attack_return_ticks}} ticks after an attack (some races and personalities are faster; see <a href="effects.html#return_time">return time</a>).</li>
 </ul>
 
 <h2 id="The_Tick">The tick</h2>
@@ -25,6 +25,13 @@ updated: 2026-10-06
   <li><a href="science.html">Science</a>: scientists write books, using paper if you have it, and new scientists arrive.</li>
   <li><a href="rites.html#Adepts">Shrines</a> slowly draw adepts from your peasants and gather aether.</li>
 </ol>
+<p><b>Then, house by house:</b></p>
+<ol>
+  <li><a href="military.html#Wages">Wages</a> are paid, after income. A house that can't pay in full loses some troops to desertion.</li>
+  <li><a href="military.html#Draft">The draft</a>: houses below their draft rate draft peasants into soldiers.</li>
+  <li>Races that promote troops on a schedule do so, and afflictions that have run out end.</li>
+  <li><a href="exploring.html#Explorable">Explorable acres</a> grow, up to the bank, and <a href="aid.html#Tax">aid balances</a> fade.</li>
+</ol>
 <p><b>Then the world:</b></p>
 <ol>
   <li>Each realm's <a href="trade.html#Shares">material</a> is shared out to its states, houses and treasuries.</li>
@@ -33,9 +40,10 @@ updated: 2026-10-06
   <li><a href="spying.html#Nerve">Nerve</a> recovers and <a href="spying.html#Vigilance">Vigilance</a> fades.</li>
   <li>Rites and hexes that have run out end; <a href="rites.html#resilience">Spell Resilience</a> and <a href="rites.html#vengeance">Countercast Vengeance</a> fade.</li>
   <li>Courting, unrest, poisoned wells and vigils that have run out end; wavering characters go to auction.</li>
-  <li>On the age's last tick, <a href="end-of-age.html">the age ends</a> here.</li>
+  <li>On the age's last tick, <a href="end-of-age.html">the age ends</a> here. On other ticks, a snapshot of the standings is kept for the <a href="end-of-age.html#End">recap</a> when one is due ({{recap_frames}} across the age).</li>
   <li><a href="colloquium.html#Decay">Colloquium projects decay</a>.</li>
   <li>Academics beyond what your universities hold leave.</li>
+  <li><a href="trade.html#Spoilage">Spoilage</a>: materials beyond what a house or treasury can keep spoil. This is the tick's last step.</li>
 </ol>
 <p>Building, training, exploring and returning armies are not part of the tick. Each finishes at its own moment (above). <a href="trade.html#Market">Market orders</a> aren't either: they fill the moment they meet a waiting order.</p>
 
@@ -47,5 +55,5 @@ updated: 2026-10-06
 <p>Everything happens in one order: every action, finishing timer and tick. Two attacks sent in the same second still resolve one after the other. The game keeps a record of that order, so any result can be replayed exactly.</p>
 
 <h2 id="Downtime">If the server stops</h2>
-<p>Technical detail. The world is saved after every action, so stopping the server loses nothing. Game time keeps running while it's stopped: on restart, the server catches up every tick it missed at once, in order, as if it had never stopped. For example, three hours down at one-hour ticks means three ticks of income, growth and drafting the moment it comes back, and anything due meanwhile (land arriving, troops trained, armies home) happens at its proper time in that catch-up.</p>
+<p>Technical detail. The world is saved after every action, so stopping the server loses nothing. Game time keeps running while it's stopped: on restart, the server catches up every tick it missed at once, in order, as if it had never stopped. For example, three hours down at one-hour ticks means three ticks of income, wages, growth and drafting the moment it comes back, and anything due meanwhile (land arriving, troops trained, armies home) happens at its proper time in that catch-up.</p>
 <p>For planned maintenance the server can instead be restarted <b>paused</b>: game time stops while it's down. The next tick, and everything under way (land arriving, troops training, armies away, auctions and offers), moves later by exactly the time it was down, so the world carries on where it stopped and nothing happens at once. After a crash the server catches up, so nobody loses time they were owed.</p>

@@ -3,7 +3,7 @@ title: War
 category: Mechanics
 updated: 2026-10-06
 -->
-<p>War is fought between <a href="world.html">states</a>, not single houses. It grows out of fighting: every attack or spy operation across two states makes the victim's state more hostile. Once a state is hostile enough, the other state's <a href="leadership.html">leader</a> may declare war. There are two kinds. A <b>general war</b> is between states of different realms. An <b>intra-realm war</b> is between states of the same realm.</p>
+<p>War is fought between <a href="world.html">states</a>, not single houses. It grows out of fighting: every attack, spy operation or hex across two states makes the victim's state more hostile. Once a state is hostile enough, the other state's <a href="leadership.html">leader</a> may declare war. There are two kinds. A <b>general war</b> is between states of different realms. An <b>intra-realm war</b> is between states of the same realm.</p>
 
 <h2 id="Meter">The hostility meter</h2>
 <p>Each state keeps a meter for every other state: how hostile it feels toward that state. Actions by the other state's houses against its houses raise it:</p>
@@ -12,9 +12,10 @@ updated: 2026-10-06
 <tr><td>A successful attack</td><td>{{hostility_attack_points}}</td></tr>
 <tr><td>An attack that is driven off</td><td>{{hostility_failed_attack_points}}</td></tr>
 <tr><td>A spy operation, caught or not</td><td>{{hostility_spy_points}}</td></tr>
+<tr><td>A divination or hex, landed or not</td><td>{{hostility_spy_points}}</td></tr>
 </table></div>
 <p>Every {{meter_decay_ticks}} ticks the meter falls by {{meter_decay_pct}}% or {{meter_decay_min_points}} points, whichever is more. It stops at {{hostility_cap}} points.</p>
-<p>Some <a href="attacks.html">kinds of attack</a> weigh more: a massacre counts double, a reclaim half.</p>
+<p>These are base points. Each kind of attack scales them: see the Meter column on <a href="attacks.html">Attacks</a>. Each spy operation scales the spy points too (the Meter points column on <a href="operations.html">Operations</a>), and an uncovered <a href="spying.html#FalseFlag">False Flag</a> counts double. <a href="rite-list.html">Divinations and hexes</a> scale them as well: a hex counts several times more than a divination.</p>
 <p>You can't attack or spy on houses in your own state, or on a state you have a ceasefire with.</p>
 
 <h2 id="Relations">Relations</h2>
