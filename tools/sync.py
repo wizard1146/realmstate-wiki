@@ -1301,6 +1301,28 @@ def generate(rules):
                + "</table></div>\n" if lp.get("vigils") else "")
             + source_note(latest))
 
+    # Truths and quests. The asks are left out: they would tell a seeker which Truth it seeks.
+    truths = lp.get("truths", [])
+    if truths:
+        kinds = (("breakthrough", "Breakthroughs"), ("wonder", "Wonder plans"))
+        pages["truths.html"] = header("Truths and Quests", "Rules") + (
+            f"<p>{len(truths)} Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, "
+            f"and so may its state; {lp.get('truth_notice_ticks', 0)} ticks later every house hears which state uncovered it, and may use it too. "
+            "What each Truth does is on its own page as it is built.</p>\n"
+            + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b></li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
+            + '<h2 id="quests">Quests</h2>\n<ul>\n'
+            f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, or a general with {lp.get("quest_general_traits", 0)}+ traits, '
+            f'of a house with {lp.get("quest_min_land", 0):,}+ acres that is not protected and on no quest.</li>\n'
+            f'<li><b>The invitation:</b> the world\'s chance starts at {pct(lp.get("quest_invite_bp", 0))}% a tick and rises, faster and faster, to certainty '
+            f'{lp.get("quest_accrual_ticks", 0)} ticks after the last invitation. The Truth sought stays unnamed.</li>\n'
+            f'<li><b>Episodes:</b> the seeker asks a cost (gold, a material, books, aether). Answer within {lp.get("quest_answer_ticks", 0)} ticks or the quest lapses; '
+            f'the next ask comes {lp.get("quest_episode_ticks", 0)} ticks later. The whole quest must end within {lp.get("quest_deadline_ticks", 0)} ticks.</li>\n'
+            f'<li><b>Risks:</b> each paid episode, the trail goes cold {pct(lp.get("quest_cold_bp", 0))}% of the time and the seeker dies {pct(lp.get("quest_death_bp", 0))}%. '
+            f'After the last, {pct(lp.get("quest_nothing_bp", 0))}% of quests find nothing.</li>\n'
+            f'<li><b>Success:</b> {lp.get("quest_renown", 0):,} renown, and the Truth.</li>\n</ul>\n'
+            "<p>Subscribers may use lesser versions of some breakthroughs before they are uncovered. "
+            'Command: <code>answer_quest</code> (see <a href="api.html">API for Tools</a>).</p>\n' + source_note(latest))
+
     # Realm works.
     works = lp.get("realm_works", [])
     if works:
@@ -1532,7 +1554,7 @@ def generate(rules):
             values[k] = "on" if v else "off"
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

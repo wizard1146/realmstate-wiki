@@ -853,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "15833c6ef3539a75",
+      "hash": "17c0608505aaaa32",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1707,6 +1707,18 @@
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
         "protection_ticks": 72,
+        "quest_academic_attributes": 0,
+        "quest_accrual_ticks": 0,
+        "quest_answer_ticks": 0,
+        "quest_cold_bp": 0,
+        "quest_deadline_ticks": 0,
+        "quest_death_bp": 0,
+        "quest_episode_ticks": 0,
+        "quest_general_traits": 0,
+        "quest_invite_bp": 0,
+        "quest_min_land": 0,
+        "quest_nothing_bp": 0,
+        "quest_renown": 0,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 0,
@@ -2382,6 +2394,8 @@
         "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
+        "truth_notice_ticks": 0,
+        "truths": [],
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,
@@ -4997,7 +5011,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "be4e1ccfe9cf4cd0",
+      "hash": "84ad2013fd1a76c5",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5851,6 +5865,18 @@
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
         "protection_ticks": 72,
+        "quest_academic_attributes": 0,
+        "quest_accrual_ticks": 0,
+        "quest_answer_ticks": 0,
+        "quest_cold_bp": 0,
+        "quest_deadline_ticks": 0,
+        "quest_death_bp": 0,
+        "quest_episode_ticks": 0,
+        "quest_general_traits": 0,
+        "quest_invite_bp": 0,
+        "quest_min_land": 0,
+        "quest_nothing_bp": 0,
+        "quest_renown": 0,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 0,
@@ -6526,6 +6552,8 @@
         "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
+        "truth_notice_ticks": 0,
+        "truths": [],
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,
@@ -9339,7 +9367,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "b05d71cb4de90d27",
+      "hash": "916694f32bcdda2a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10201,6 +10229,18 @@
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
         "protection_ticks": 72,
+        "quest_academic_attributes": 2,
+        "quest_accrual_ticks": 140,
+        "quest_answer_ticks": 24,
+        "quest_cold_bp": 800,
+        "quest_deadline_ticks": 240,
+        "quest_death_bp": 100,
+        "quest_episode_ticks": 48,
+        "quest_general_traits": 1,
+        "quest_invite_bp": 5,
+        "quest_min_land": 600,
+        "quest_nothing_bp": 2500,
+        "quest_renown": 1000,
         "raze_cost_base": 300,
         "raze_cost_per_land_milli": 50,
         "realm_work_vote_bp": 6667,
@@ -10941,6 +10981,289 @@
         "treasury_overflow": true,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
+        "truth_notice_ticks": 16,
+        "truths": [
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 150,
+                "books": 0,
+                "books_category": null,
+                "gold": 40000,
+                "material": "timber"
+              },
+              {
+                "aether": 0,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "pine"
+              },
+              {
+                "aether": 0,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 80000,
+                "material": "bauxite"
+              }
+            ],
+            "id": "chariots",
+            "kind": "breakthrough",
+            "name": "Chariots"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 3000,
+                "books_category": "military",
+                "gold": 0,
+                "material": null
+              },
+              {
+                "aether": 0,
+                "amount": 400,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "bauxite"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 120000,
+                "material": null
+              }
+            ],
+            "id": "flanked_ambush",
+            "kind": "breakthrough",
+            "name": "Flanked Ambush"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 200,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "resin"
+              },
+              {
+                "aether": 0,
+                "amount": 500,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "amber"
+              },
+              {
+                "aether": 1500,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "sulfur"
+              }
+            ],
+            "id": "transmutation",
+            "kind": "breakthrough",
+            "name": "Transmutation Rite"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 400,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "limestone"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 100000,
+                "material": null
+              },
+              {
+                "aether": 0,
+                "amount": 400,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "sulfur"
+              }
+            ],
+            "id": "dragon_wall",
+            "kind": "breakthrough",
+            "name": "Dragon Wall"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "paper"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 5000,
+                "books_category": "arcane",
+                "gold": 0,
+                "material": null
+              },
+              {
+                "aether": 0,
+                "amount": 500,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "amber"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 150000,
+                "material": null
+              }
+            ],
+            "id": "library_of_antiquity",
+            "kind": "wonder",
+            "name": "Library of Antiquity"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "sulfur"
+              },
+              {
+                "aether": 2000,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": null
+              },
+              {
+                "aether": 0,
+                "amount": 400,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "amber"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 150000,
+                "material": null
+              }
+            ],
+            "id": "halls_of_the_dead",
+            "kind": "wonder",
+            "name": "Halls of the Dead"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 500,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "limestone"
+              },
+              {
+                "aether": 0,
+                "amount": 300,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "resin"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 150000,
+                "material": null
+              },
+              {
+                "aether": 1500,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": null
+              }
+            ],
+            "id": "deep_sea_haven",
+            "kind": "wonder",
+            "name": "Deep Sea Haven"
+          },
+          {
+            "asks": [
+              {
+                "aether": 0,
+                "amount": 500,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "pine"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 0,
+                "books_category": null,
+                "gold": 100000,
+                "material": null
+              },
+              {
+                "aether": 0,
+                "amount": 400,
+                "books": 0,
+                "books_category": null,
+                "gold": 0,
+                "material": "timber"
+              },
+              {
+                "aether": 0,
+                "amount": 0,
+                "books": 4000,
+                "books_category": "economy",
+                "gold": 0,
+                "material": null
+              }
+            ],
+            "id": "paradise_of_trees",
+            "kind": "wonder",
+            "name": "Paradise of Trees"
+          }
+        ],
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,
