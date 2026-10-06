@@ -2,7 +2,7 @@
 """Realmstate wiki build: content/*.html + site/ -> dist/.  Standard library only.
 
     python3 build.py           build into dist/
-    python3 build.py --check   build, and exit 1 if any internal link is broken
+    python3 build.py --check   build, and exit 1 if any internal link is broken or a merge conflict is left
 
 A content file is an HTML fragment that starts with a metadata comment:
 
@@ -288,6 +288,21 @@ def render(template, nav, page, extra_body="", related=""):
                 description=html.escape(plain(page["body"])[:160]))
 
 
+# A line git writes in an unresolved merge: <<<<<<< ours, =======, >>>>>>> theirs.
+CONFLICT = re.compile(r"^(<{7}|={7}|>{7})( |$)", re.M)
+
+
+def find_conflicts():
+    """Leftover merge conflict markers in content/, tools/, site/ and build.py, as "path:line"."""
+    files = [ROOT / "build.py"] + [p for d in (CONTENT, ROOT / "tools", SITE) for p in sorted(d.rglob("*"))
+                                   if p.is_file() and p.suffix in (".html", ".json", ".py", ".css", ".js", ".md")]
+    out = []
+    for p in files:
+        text = p.read_text(encoding="utf-8", errors="replace")
+        out += [f"{p.relative_to(ROOT)}:{text.count(chr(10), 0, m.start()) + 1}" for m in CONFLICT.finditer(text)]
+    return out
+
+
 def main():
     check = "--check" in sys.argv
     if DIST.exists(): shutil.rmtree(DIST)
@@ -369,6 +384,11 @@ def main():
         for slug, href in broken[:40]: print(f"  {slug}: {href}", file=sys.stderr)
         if check: sys.exit(1)
     if UNKNOWN and check: sys.exit(1)       # a {{name}} with no value is a mistake worth failing the build for
+    conflicts = find_conflicts()
+    if conflicts:
+        print(f"{len(conflicts)} merge conflict markers:", file=sys.stderr)
+        for where in conflicts[:40]: print(f"  {where}", file=sys.stderr)
+        if check: sys.exit(1)
 
 
 if __name__ == "__main__":
