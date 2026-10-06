@@ -10,7 +10,7 @@ generated: tools/sync.py
 <tr id="alchemy"><td><b>Alchemy</b><br><span class="cell-muted">More income.</span></td><td>Gold earned from peasants each tick (<a href="effects.html#income"><code>income</code></a>): +5.5% at 10,000 books, +17.4% at 100,000</td></tr>
 <tr id="artisan"><td><b>Artisan</b><br><span class="cell-muted">Cheaper, faster construction.</span></td><td>Gold cost of construction (<a href="effects.html#construction_cost"><code>construction_cost</code></a>): -3.6% at 10,000 books, -11.5% at 100,000<br>Time to build (<a href="effects.html#construction_time"><code>construction_time</code></a>): -3.6% at 10,000 books, -11.5% at 100,000</td></tr>
 <tr id="housing"><td><b>Housing</b><br><span class="cell-muted">Land holds more people.</span></td><td>How many people the land can hold (<a href="effects.html#population"><code>population</code></a>): +2.0% at 10,000 books, +6.3% at 100,000</td></tr>
-<tr id="production"><td><b>Production</b><br><span class="cell-muted">More food.</span></td><td>Food grown on land each tick (<a href="effects.html#food_production"><code>food_production</code></a>): +16.6% at 10,000 books, +52.3% at 100,000</td></tr>
+<tr id="production"><td><b>Production</b><br><span class="cell-muted">More food and aether.</span></td><td>Food grown on land each tick (<a href="effects.html#food_production"><code>food_production</code></a>): +16.6% at 10,000 books, +52.3% at 100,000<br>Aether gathered each tick (<a href="effects.html#aether_production"><code>aether_production</code></a>): +16.6% at 10,000 books, +52.3% at 100,000</td></tr>
 <tr id="tools"><td><b>Tools</b><br><span class="cell-muted">Higher building efficiency.</span></td><td>Building efficiency (can pass 100%) (<a href="effects.html#building_efficiency"><code>building_efficiency</code></a>): +4.0% at 10,000 books, +12.6% at 100,000</td></tr>
 </table></div>
 <h2 id="military">Military</h2>
@@ -25,8 +25,10 @@ generated: tools/sync.py
 <h2 id="arcane">Arcane</h2>
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>Science</th><th>Effect</th></tr>
+<tr id="channeling"><td><b>Channeling</b><br><span class="cell-muted">Your adepts count for more in every rite&#x27;s roll, cast or resisted.</span></td><td>Your adepts&#x27; strength in a rite&#x27;s roll, cast or resisted (<a href="effects.html#adept_strength"><code>adept_strength</code></a>): +14.3% at 10,000 books, +45.2% at 100,000</td></tr>
 <tr id="crime"><td><b>Crime</b><br><span class="cell-muted">Your spies are stronger.</span></td><td>Strength of your thieves when spying (<a href="effects.html#thief_strength"><code>thief_strength</code></a>): +11.9% at 10,000 books, +37.5% at 100,000</td></tr>
 <tr id="finesse"><td><b>Finesse</b><br><span class="cell-muted">Fewer thieves lost when caught.</span></td><td>Thieves lost when caught spying (<a href="effects.html#thief_losses"><code>thief_losses</code></a>): -7.3% at 10,000 books, -23.2% at 100,000</td></tr>
-<tr id="shielding"><td><b>Shielding</b><br><span class="cell-muted">Enemy spies are weaker against you.</span></td><td>Strength of your thieves against enemy spies (<a href="effects.html#thief_defense"><code>thief_defense</code></a>): +2.4% at 10,000 books, +7.6% at 100,000</td></tr>
+<tr id="shielding"><td><b>Shielding</b><br><span class="cell-muted">Enemy spies are weaker against you, and hexes take and wreck less.</span></td><td>Strength of your thieves against enemy spies (<a href="effects.html#thief_defense"><code>thief_defense</code></a>): +2.4% at 10,000 books, +7.6% at 100,000<br>What hexes take or wreck of yours (<a href="effects.html#hex_damage_taken"><code>hex_damage_taken</code></a>): -2.4% at 10,000 books, -7.6% at 100,000</td></tr>
+<tr id="sorcery"><td><b>Sorcery</b><br><span class="cell-muted">Your hexes take and wreck more.</span></td><td>What your hexes take or wreck (<a href="effects.html#hex_damage"><code>hex_damage</code></a>): +2.4% at 10,000 books, +7.6% at 100,000</td></tr>
 </table></div>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>956a4a07269d6292</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>b252f4def035a8c6</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

@@ -43,7 +43,7 @@ generated: tools/sync.py
 <tr id="rescue"><td><code>rescue</code></td><td>Troops your medics save</td></tr>
 <tr id="refine_yield"><td><code>refine_yield</code></td><td>What refining makes</td></tr>
 <tr id="paper_books"><td><code>paper_books</code></td><td>Books each paper adds</td></tr>
-<tr id="ward"><td><code>ward</code></td><td>Resistance to hexes and divinations against you, and to storm damage</td></tr>
+<tr id="ward"><td><code>ward</code></td><td>Resistance to hexes and divinations against you</td></tr>
 <tr id="casualties_attacking"><td><code>casualties_attacking</code></td><td>Your troops killed in battle when you attack</td></tr>
 <tr id="casualties_defending"><td><code>casualties_defending</code></td><td>Your troops killed in battle when you defend</td></tr>
 <tr id="attack_gains"><td><code>attack_gains</code></td><td>Everything your attacks take (land, plunder, kills)</td></tr>
@@ -51,6 +51,9 @@ generated: tools/sync.py
 <tr id="peasant_growth"><td><code>peasant_growth</code></td><td>The rate peasants are born at</td></tr>
 <tr id="aether_production"><td><code>aether_production</code></td><td>Aether gathered each tick</td></tr>
 <tr id="aether_cost"><td><code>aether_cost</code></td><td>Aether rites cost</td></tr>
+<tr id="adept_strength"><td><code>adept_strength</code></td><td>Your adepts&#x27; strength in a rite&#x27;s roll, cast or resisted</td></tr>
+<tr id="hex_damage"><td><code>hex_damage</code></td><td>What your hexes take or wreck</td></tr>
+<tr id="hex_damage_taken"><td><code>hex_damage_taken</code></td><td>What hexes take or wreck of yours</td></tr>
 </table></div>
 <h2 id="conditions">Conditional modifiers</h2>
 <p>A modifier can hold only under conditions, all of which must hold: <code>when = "war"</code> (only while your state is at war) or <code>when = "peace"</code> (only while it isn't); for races, also <code>when = "overpopulated"</code> (more people than the house has room for) or <code>when = "well_fed"</code> (more food an acre than the race's limit); <code>vs = "troll"</code> (only in battles against a house of that race); <code>attack = "massacre"</code> (only on that kind of attack). Race pages show the conditions next to each modifier.</p>
@@ -74,10 +77,9 @@ generated: tools/sync.py
 <h2 id="unlocks">Unlocks</h2>
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>Kind</th><th>Effect</th></tr>
-<tr id="unlock-spell"><td><code>spell</code></td><td>Grants a spell. Spells do nothing yet: they are not rites, and every house can already cast every rite.</td></tr>
 <tr id="unlock-operation"><td><code>operation</code></td><td>Grants a thievery or spy operation. Nothing uses this yet: every house can run every operation.</td></tr>
 <tr id="unlock-building"><td><code>building</code></td><td>Grants a building. Nothing uses this yet: every house can build every building.</td></tr>
 </table></div>
 <h2 id="units">Unit slots</h2>
 <p>Every race fills the same 10 unit slots: soldiers (drafted), offense specialist, defense specialist, elite, thief, offense specialist, upgraded, defense specialist, upgraded, elite, upgraded, mercenaries (hired per attack), elite, upgraded twice. A race names four base units; the upgraded slots are those units after an upgrade. Thieves have no upgrade.</p>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>956a4a07269d6292</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>b252f4def035a8c6</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

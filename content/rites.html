@@ -1,35 +1,51 @@
 <!--
 title: Rites
 category: Mechanics
-updated: 2026-09-30
+updated: 2026-10-06
 -->
 <p>Rites are Realmstate's magic. Adepts work them with aether: on your own house to strengthen it, or on another house to learn about it or harm it. Every rite this age is on <a href="rite-list.html">Rites and Hexes</a>.</p>
 
 <h2 id="Adepts">Adepts and aether</h2>
 <ul>
-  <li><b>Shrines</b> (a <a href="buildings.html#shrines">building</a>) draw adepts from your peasants every tick, up to what your shrines can hold.</li>
+  <li><b>Shrines</b> (a <a href="buildings.html#shrines">building</a>) draw adepts from your peasants slowly: {{adept_gather_pct}}% of their listed adept output each tick, with part-adepts carried to the next tick, up to what your shrines can hold.</li>
   <li>Shrines also gather <b>aether</b> every tick, up to what they can hold. Every rite spends aether.</li>
-  <li>Both scale with your <a href="construction.html#Efficiency">building efficiency</a>.</li>
+  <li>Both scale with your <a href="construction.html#Efficiency">building efficiency</a>. The <a href="sciences.html">Production</a> science adds aether too.</li>
   <li><b>Hexes</b> also burn {{rite_material}} as incense. Resin is refined from pine, so magic depends on the pine realms.</li>
 </ul>
 
 <h2 id="Kinds">Kinds of rite</h2>
 <ul>
-  <li><b>On yourself.</b> They always work if you have the aether, and last a set number of ticks. Casting one again renews it; the same rite never stacks. <b>Veil</b> hides your name from the houses you attack. <b>Mirror Ward</b> turns some hexes back on whoever cast them.</li>
+  <li><b>On yourself.</b> They always work if you have the aether, and last a while (see <a href="#Length">How long rites last</a>). Casting one again renews it; the same rite never stacks. <b>Veil</b> hides your name from the houses you attack. <b>Mirror Ward</b> turns some hexes back on whoever cast them.</li>
   <li><b>Divinations</b> read another house without risking thieves: a quick look at its wealth and troops, the rites in force on it, or its armies on the road (and whose land they carry). What you learn is shared with your state, like a <a href="spying.html">spy report</a>.</li>
-  <li><b>Hexes</b> harm another house: rot its food, wreck its buildings, blight its share of the realm's material, unravel one of its rites, or <b>curse</b> it (weaken it while the curse lasts). They are stronger when your states are <a href="war.html">at war</a>.</li>
+  <li><b>Hexes</b> harm another house. Most act at once: spoil its food, take its gold, kill its peasants, drain its aether, wreck its buildings, or unravel one of its rites. <b>Blight</b> takes from its share of the realm's material for a while. A <b>curse</b> weakens it while the curse lasts: more food eaten, more defenders killed, buildings working worse, and so on. Most hexes are stronger when your states are <a href="war.html">at war</a>.</li>
 </ul>
+
+<h2 id="cost">What a rite costs</h2>
+<p>A rite's aether cost grows with your land, as Utopia's rune costs do. The listed cost is for a house of {{rite_cost_land}} acres. Any other size pays the listed cost &times; (land + {{rite_cost_offset}}) &divide; ({{rite_cost_land}} + {{rite_cost_offset}}). For example: {{rite_cost_examples}}. Modifiers to <a href="effects.html#aether_cost"><code>aether_cost</code></a> then apply. Hexes also burn a fixed amount of {{rite_material}}, whatever your size.</p>
+
+<h2 id="Length">How long rites last</h2>
+<p>A lasting rite (a rite on yourself, a curse, Blight) runs its full length once shrines are {{rite_full_share_pct}}% of your land. With no shrines it runs {{rite_min_duration_pct}}% of that length, rising in a straight line in between. It always lasts at least one tick. For a hex, the caster's shrines count, not the target's.</p>
 
 <h2 id="Vigils">State vigils</h2>
 <p>A state's leader can open a <b>vigil</b>; every member may give aether and {{rite_material}} to it. Once it's fully funded, every house in the state gains its effect for a while. One vigil at a time. The vigils this age are on <a href="rite-list.html#vigils">Rites and Hexes</a>.</p>
 
 <h2 id="Chance">Chance of a divination or hex</h2>
 <ol>
-  <li>Start from adepts per acre: yours against theirs. Equal adepts per acre gives {{rite_base_success_pct}}%; formally {{rite_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs), kept within 5%-95%. You need at least one adept.</li>
+  <li>Start from adepts per acre: yours against theirs, each times its <a href="effects.html#adept_strength"><code>adept_strength</code></a> (the Channeling science, some races). Equal adepts per acre gives {{rite_base_success_pct}}%; formally {{rite_base_success_pct}}% &times; 2 &times; yours &divide; (yours + theirs), kept within 5%-95%. You need at least one adept.</li>
   <li>Multiply by the rite's own chance.</li>
   <li>Take off their <b>ward</b>. Ward comes only from <a href="buildings.html#watchstones">watchstones</a>. Their cap is set before building efficiency, so efficiency above 100% can push ward past it. However high, at most 80% counts.</li>
+  <li><b>Hexes only:</b> take off the target's <a href="#resilience">Spell Resilience</a>, then add your <a href="#vengeance">Countercast Vengeance</a>. Both are shares of the chance so far.</li>
 </ol>
-<p>The result is kept between 1% and 95%. Ward also cuts what a Storm wrecks.</p>
+<p>The result is kept between 1% and 95%.</p>
+
+<h2 id="resilience">Spell Resilience</h2>
+<p>A house hexed often grows harder to hex. Each hex that lands adds its <b>resilience</b> (listed on <a href="rite-list.html">Rites and Hexes</a>) to the house it lands on, up to {{resilience_max_pct}}%. A hex turned back by a Mirror Ward hardens its caster instead. Resilience fades by {{resilience_decay_pct}} percentage points a tick.</p>
+
+<h2 id="vengeance">Countercast Vengeance</h2>
+<p>Every hex tried on a house, landed or not, adds {{vengeance_gain_pct}}% of that hex's resilience to the house's vengeance, up to {{vengeance_max_pct}}%. Vengeance lifts the chance of that house's own hexes, on anyone, so it never tells you who hexed you. Casting a hex spends {{vengeance_spend_pct}}% of your vengeance. It fades by {{vengeance_decay_pct}} percentage points a tick.</p>
+
+<h2 id="damage">How much a hex takes</h2>
+<p>A hex that takes a share (food, gold, peasants, aether, buildings) is changed by the caster's <a href="effects.html#hex_damage"><code>hex_damage</code></a> (the Sorcery science) and then by the target's <a href="effects.html#hex_damage_taken"><code>hex_damage_taken</code></a> (the Shielding science). Storm spreads its share across every building type, rounding so that even a small house loses some. Ward cuts the chance of a hex, not what it takes.</p>
 
 <h2 id="After">What the target learns</h2>
 <ul>

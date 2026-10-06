@@ -59,7 +59,7 @@ STAT_TEXT = {
     "rescue": "Troops your medics save",
     "refine_yield": "What refining makes",
     "paper_books": "Books each paper adds",
-    "ward": "Resistance to hexes and divinations against you, and to storm damage",
+    "ward": "Resistance to hexes and divinations against you",
     "casualties_attacking": "Your troops killed in battle when you attack",
     "casualties_defending": "Your troops killed in battle when you defend",
     "attack_gains": "Everything your attacks take (land, plunder, kills)",
@@ -67,6 +67,9 @@ STAT_TEXT = {
     "peasant_growth": "The rate peasants are born at",
     "aether_production": "Aether gathered each tick",
     "aether_cost": "Aether rites cost",
+    "adept_strength": "Your adepts' strength in a rite's roll, cast or resisted",
+    "hex_damage": "What your hexes take or wreck",
+    "hex_damage_taken": "What hexes take or wreck of yours",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
@@ -75,7 +78,6 @@ FLAG_TEXT = {
     "elite_plus_plus": "Elite+ can be upgraded once more, into elite++.",
 }
 UNLOCK_TEXT = {
-    "spell": "Grants a spell. Spells do nothing yet: they are not rites, and every house can already cast every rite.",
     "operation": "Grants a thievery or spy operation. Nothing uses this yet: every house can run every operation.",
     "building": "Grants a building. Nothing uses this yet: every house can build every building.",
 }
@@ -167,6 +169,17 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("first_refusal_ticks", "Spying: the courting house's first refusal (ticks)", "n"),
     ("rite_base_success_bp", "Rites: chance of a divination or hex with equal adepts per acre", "pct"),
     ("rite_material", "Rites: material hexes burn as incense", "text"),
+    ("rite_cost_land", "Rites: listed aether cost is for a house of this many acres", "n"),
+    ("rite_cost_offset", "Rites: cost scales by (land + this) / (those acres + this)", "n"),
+    ("rite_full_share_bp", "Rites: shrine share of land for a lasting rite's full length", "pct"),
+    ("rite_min_duration_bp", "Rites: share of that length with no shrines", "pct"),
+    ("adept_gather_bp", "Rites: share of shrines' adept output gathered each tick", "pct"),
+    ("resilience_max_bp", "Rites: most Spell Resilience a house can have", "pct"),
+    ("resilience_decay_bp", "Rites: Spell Resilience fading a tick", "pct"),
+    ("vengeance_gain_bp", "Rites: share of a hex's resilience its target gains as Countercast Vengeance", "pct"),
+    ("vengeance_max_bp", "Rites: most Countercast Vengeance a house can have", "pct"),
+    ("vengeance_spend_bp", "Rites: share of Countercast Vengeance a cast hex spends", "pct"),
+    ("vengeance_decay_bp", "Rites: Countercast Vengeance fading a tick", "pct"),
     ("nerve_fail_extra_bp", "Spying: extra Nerve a failure costs (share of the operation's cost)", "pct"),
     ("vigilance_max_bp", "Spying: most Vigilance a house can have", "pct"),
     ("vigilance_decay_bp", "Spying: Vigilance fading a tick", "pct"),
@@ -267,6 +280,7 @@ PARAM_GROUPS = [
      ("Upgrades", "Medics", "Mounts", "Chariots")),
     ("Generals", set(), ("Generals",)),
     ("Spying", set(), ("Spying",)),
+    ("Rites", set(), ("Rites",)),
     ("Science", set(), ("Science", "Learning by doing", "Lost texts", "Colloquium", "Academics")),
 ]
 
@@ -353,6 +367,7 @@ STAT_SHORT = {
     "refine_yield": "Refining Yield", "paper_books": "Books per Paper", "ward": "Ward", "casualties_attacking": "Offensive Losses",
     "casualties_defending": "Defensive Losses", "attack_gains": "Attack Gains", "mercenary_cost": "Mercenary Cost",
     "peasant_growth": "Birth Rate", "aether_production": "Aether Production", "aether_cost": "Rite Cost",
+    "adept_strength": "Adept Strength", "hex_damage": "Hex Damage", "hex_damage_taken": "Hex Damage Taken",
 }
 SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"}
 
@@ -360,7 +375,7 @@ SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"
 # Stats where a lower number is better for the house (fewer dead, cheaper, faster). Everything else: higher is better.
 LOWER_IS_BETTER = {"food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking",
                    "casualties_defending", "land_loss", "construction_cost", "construction_time", "training_time", "thief_losses",
-                   "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost"}
+                   "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost", "hex_damage_taken"}
 
 
 def effect_entries(d, stats, short=False, params=None):
@@ -1224,11 +1239,13 @@ def generate(rules):
             "scry": lambda: "Reveals land, peasants, gold, food and troops at home",
             "omens": lambda: "Reveals the rites and hexes in force on a house",
             "roads": lambda: "Reveals a house's armies on the road, when they return, and whose land they carry",
-            "rot": lambda: f'{pct(r["effect"]["bp"])}% of their food spoils every tick{war}',
-            "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}, less their ward',
+            "loss": lambda: f'{LOSS_TEXT[r["effect"]["of"]].format(pct(r["effect"]["bp"]))}{war}',
+            "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}',
             "blight": lambda: f'{pct(r["effect"]["bp"])}% of their share of the realm material is lost{war}',
             "unravel": lambda: "Ends one of their rites (the one lasting longest)",
         }[t]()
+    LOSS_TEXT = {"food": "{}% of their food spoils", "gold": "{}% of their gold is lost",
+                 "peasants": "{}% of their peasants die", "aether": "{}% of their aether drains away"}
     def rite_kind(r):
         t = r["effect"]["type"]
         return "On yourself" if t in ("modifiers", "veil", "mirror_ward") else "Divination" if t in ("scry", "omens", "roads") else "Curse" if t == "curse" else "Hex"
@@ -1236,14 +1253,18 @@ def generate(rules):
         f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code></td><td>{rite_kind(r)}</td><td>{rite_does(r)}</td>'
         f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}</td>'
         f'<td class="cell-num">{str(r["ticks"]) + " ticks" if r.get("ticks") else "at once"}</td>'
-        f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td></tr>\n'
+        f'<td class="cell-num">{"always" if rite_kind(r) == "On yourself" else "&times;" + format(r.get("chance_bp", 10_000) / 10_000, "g")}</td>'
+        f'<td class="cell-num">{pct(r["resilience_bp"]) + "%" if r.get("resilience_bp") else "&mdash;"}</td></tr>\n'
         for r in rites)
     if rites:
         pages["rite-list.html"] = header("Rites and Hexes", "Rules") + (
             '<p>Every rite this age. How adepts, aether, chance and ward work is on <a href="rites.html">Rites</a>.</p>\n'
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Rite</th><th>Kind</th><th>Does</th><th class="cell-num">Costs</th>'
-            '<th class="cell-num">Lasts</th><th class="cell-num">Chance</th></tr>\n' + rite_rows + "</table></div>\n"
-            "<p><b>Chance</b> scales the usual rite chance. Casting a rite again renews it rather than stacking. Curses are hexes that weaken the target while they last.</p>\n"
+            '<th class="cell-num">Lasts</th><th class="cell-num">Chance</th><th class="cell-num"><a href="rites.html#resilience">Resilience</a></th></tr>\n' + rite_rows + "</table></div>\n"
+            f"<p><b>Costs</b> are for a house of {lp.get('rite_cost_land', 0):,} acres; bigger houses pay more (see <a href=\"rites.html#cost\">Rites</a>). "
+            f"<b>Lasts</b> is the full length, with shrines on {pct(lp.get('rite_full_share_bp', 0))}% of your land; fewer shrines shorten it. "
+            "<b>Chance</b> scales the usual rite chance. <b>Resilience</b> is the Spell Resilience a landed hex gives its target. "
+            "Casting a rite again renews it rather than stacking. Curses are hexes that weaken the target while they last.</p>\n"
             + ('<h2 id="vigils">State vigils</h2>\n<p>A state\'s leader opens a vigil; members give aether and ' + e(lp["rite_material"]) + '. '
                "Once both are met, every house in the state has it. One at a time; opening another while one is still being funded loses what was given.</p>\n"
                '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Vigil</th><th>Every member gets</th><th class="cell-num">Needs</th><th class="cell-num">Lasts</th></tr>\n'
@@ -1395,6 +1416,9 @@ def generate(rules):
     if p.get("aid_ticks", 0):
         values["aid_tax_step_pct"] = pct(p["aid_tax_bp_per_acre_value"])
         values["aid_value_list"] = ", ".join(f'{k} {v:,}' for k, v in sorted(p.get("aid_values", {}).items(), key=lambda kv: -kv[1]))
+    if p.get("rite_cost_land"):
+        rc = lambda land: (land + p["rite_cost_offset"]) / (p["rite_cost_land"] + p["rite_cost_offset"])
+        values["rite_cost_examples"] = "; ".join(f'{land:,} acres: &times;{rc(land):.2g}' for land in sorted({p["starting_land"], p["rite_cost_land"], 1000, 2000, 4000}))
     values["explore_gold_land_each"] = f'{p.get("explore_gold_per_land_milli", 0) / 1000:g}'
     values["explore_soldiers_land_each"] = f'{p.get("explore_soldiers_per_land_milli", 0) / 1000:g}'
     values["explore_examples"] = "; ".join(f'{land:,} acres: {xg(land):,} gold and {xs(land):g} soldiers an acre' for land in (p["starting_land"], 1000, 2000, 4000))

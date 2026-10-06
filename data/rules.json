@@ -6,7 +6,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2b6e9cc5620980df",
+          "hash": "88ee9ebd87afd23b",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -55,6 +55,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Adept",
@@ -64,7 +67,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ca462f8fc186c895",
+          "hash": "8729663065826666",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -113,6 +116,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -122,7 +128,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3ecab1de9afe3090",
+          "hash": "bd02150ec73de240",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -171,6 +177,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -180,7 +189,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "e4f47cbb6a7996d7",
+          "hash": "412fa532f78b4e66",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -229,6 +238,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -238,7 +250,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "604a8fc0ec76711f",
+          "hash": "31c68548755bea3f",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -268,6 +280,9 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -610,13 +625,13 @@
             ],
             [
               "aether",
-              60
+              80
             ]
           ],
           "construction_ticks": 0,
           "description": "Adepts gather here (drawn from your peasants), and aether for rites.",
           "extra_gold": 0,
-          "hash": "0c87b1151e17c6f7",
+          "hash": "fc70bae9105d6c9d",
           "jobs": 20,
           "key": {
             "identity": "shrines",
@@ -635,7 +650,7 @@
             ],
             [
               "aether",
-              3
+              4
             ]
           ],
           "trait_slots": 0
@@ -838,7 +853,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "cb409fa280404380",
+      "hash": "2d48e77dbf2b4958",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -950,6 +965,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 0,
         "aid_free_per_acre": 0,
@@ -1710,8 +1726,14 @@
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "resilience_decay_bp": 250,
+        "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_cost_land": 400,
+        "rite_cost_offset": 333,
+        "rite_full_share_bp": 1500,
         "rite_material": "resin",
+        "rite_min_duration_bp": 5000,
         "rites": [
           {
             "aether": 150,
@@ -1729,6 +1751,7 @@
               }
             ],
             "name": "Bountiful Fields",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1752,6 +1775,7 @@
               }
             ],
             "name": "Masons' Blessing",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1771,6 +1795,7 @@
               }
             ],
             "name": "War Hymns",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1790,6 +1815,7 @@
               }
             ],
             "name": "Circle of Stones",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1809,6 +1835,7 @@
               }
             ],
             "name": "Swift Roads",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1828,6 +1855,7 @@
               }
             ],
             "name": "Scholar's Lamp",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1842,6 +1870,7 @@
             "incense": 0,
             "mods": [],
             "name": "Veil",
+            "resilience_bp": 0,
             "ticks": 6,
             "war_bonus_bp": 0
           },
@@ -1857,6 +1886,7 @@
             "incense": 0,
             "mods": [],
             "name": "Mirror Ward",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1871,6 +1901,7 @@
             "incense": 0,
             "mods": [],
             "name": "Scrying Pool",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -1885,6 +1916,7 @@
             "incense": 0,
             "mods": [],
             "name": "Read the Omens",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -1899,6 +1931,7 @@
             "incense": 0,
             "mods": [],
             "name": "Watch the Roads",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -1906,22 +1939,24 @@
             "aether": 200,
             "chance_bp": 8000,
             "effect": {
-              "bp": 200,
-              "type": "rot"
+              "bp": 2000,
+              "of": "food",
+              "type": "loss"
             },
             "hostility_bp": 40000,
             "id": "rot",
             "incense": 5,
             "mods": [],
             "name": "Rot",
-            "ticks": 6,
-            "war_bonus_bp": 100
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
           },
           {
-            "aether": 300,
+            "aether": 350,
             "chance_bp": 7000,
             "effect": {
-              "bp": 300,
+              "bp": 150,
               "type": "storm"
             },
             "hostility_bp": 80000,
@@ -1929,8 +1964,9 @@
             "incense": 10,
             "mods": [],
             "name": "Storm",
+            "resilience_bp": 3000,
             "ticks": 0,
-            "war_bonus_bp": 200
+            "war_bonus_bp": 100
           },
           {
             "aether": 250,
@@ -1944,6 +1980,7 @@
             "incense": 8,
             "mods": [],
             "name": "Blight",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 1000
           },
@@ -1958,8 +1995,60 @@
             "incense": 3,
             "mods": [],
             "name": "Unravel",
+            "resilience_bp": 1000,
             "ticks": 0,
             "war_bonus_bp": 0
+          },
+          {
+            "aether": 150,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 4000,
+              "of": "aether",
+              "type": "loss"
+            },
+            "hostility_bp": 40000,
+            "id": "drain",
+            "incense": 4,
+            "mods": [],
+            "name": "Drain",
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7000,
+            "effect": {
+              "bp": 1000,
+              "of": "gold",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "tarnish",
+            "incense": 6,
+            "mods": [],
+            "name": "Tarnish",
+            "resilience_bp": 2500,
+            "ticks": 0,
+            "war_bonus_bp": 500
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 500,
+              "of": "peasants",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "wildfire",
+            "incense": 6,
+            "mods": [],
+            "name": "Wildfire",
+            "resilience_bp": 2000,
+            "ticks": 0,
+            "war_bonus_bp": 300
           },
           {
             "aether": 250,
@@ -1977,6 +2066,7 @@
               }
             ],
             "name": "Pestilence",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -1996,7 +2086,68 @@
               }
             ],
             "name": "Dreamfog",
+            "resilience_bp": 1500,
             "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 40000,
+            "id": "hunger",
+            "incense": 5,
+            "mods": [
+              {
+                "bp": 2500,
+                "stat": "food_consumption"
+              }
+            ],
+            "name": "Hunger",
+            "resilience_bp": 1500,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 50000,
+            "id": "pitfalls",
+            "incense": 6,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "casualties_defending"
+              }
+            ],
+            "name": "Pitfalls",
+            "resilience_bp": 2000,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 7000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 60000,
+            "id": "frost",
+            "incense": 8,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "building_efficiency"
+              }
+            ],
+            "name": "Frost",
+            "resilience_bp": 2500,
+            "ticks": 6,
             "war_bonus_bp": 0
           }
         ],
@@ -2096,6 +2247,10 @@
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
         "upgrade_material": "bauxite",
+        "vengeance_decay_bp": 100,
+        "vengeance_gain_bp": 5000,
+        "vengeance_max_bp": 5000,
+        "vengeance_spend_bp": 5000,
         "vigilance_decay_bp": 400,
         "vigilance_max_bp": 8000,
         "vigils": [
@@ -2159,7 +2314,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7af0e0d2846b15a0",
+          "hash": "8026919fdcab3c2d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -2167,6 +2322,9 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2217,7 +2375,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c25342e127c95e1e",
+          "hash": "7449bf7d84ccbe8e",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -2266,6 +2424,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -2275,7 +2436,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8cf623f1cc920557",
+          "hash": "161224cbfca94326",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -2324,16 +2485,14 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Sage",
           "units": [],
-          "unlocks": [
-            [
-              "spell",
-              "clarity"
-            ]
-          ]
+          "unlocks": []
         },
         null,
         null,
@@ -2576,7 +2735,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "a0a13b0190ba50da",
+          "hash": "ff8adc52c884c03b",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -2584,6 +2743,9 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2695,7 +2857,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "28dc30541c5e4c95",
+          "hash": "a4bbba8e1754abfa",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -2708,6 +2870,9 @@
             0,
             1000,
             -500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -2814,7 +2979,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "efad1c0f585b1a3f",
+          "hash": "6545d83d1ebbf1d1",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -2862,6 +3027,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            1000,
             0,
             0
           ],
@@ -2928,17 +3096,12 @@
               "off": 11
             }
           ],
-          "unlocks": [
-            [
-              "spell",
-              "moonveil"
-            ]
-          ]
+          "unlocks": []
         },
         {
           "conditional": [],
           "flags": 0,
-          "hash": "49acc4f24d8183d3",
+          "hash": "1b56fdb2d9afa169",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -2954,6 +3117,9 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -3057,7 +3223,7 @@
         {
           "conditional": [],
           "flags": 1,
-          "hash": "625be986a26a6be8",
+          "hash": "800af2e69f003351",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -3066,6 +3232,9 @@
           "mods_bp": [
             0,
             -1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -3278,14 +3447,18 @@
         },
         {
           "category": 0,
-          "description": "More food.",
+          "description": "More food and aether.",
           "effects": [
             [
               "FoodProduction",
               1655
+            ],
+            [
+              "AetherProduction",
+              1655
             ]
           ],
-          "hash": "0f9659c50e4f6f8f",
+          "hash": "88ec4d781b078584",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -3390,6 +3563,22 @@
         },
         {
           "category": 2,
+          "description": "Your adepts count for more in every rite's roll, cast or resisted.",
+          "effects": [
+            [
+              "AdeptStrength",
+              1429
+            ]
+          ],
+          "hash": "54af0e5d3535f7c8",
+          "key": {
+            "identity": "channeling",
+            "version": "v1"
+          },
+          "name": "Channeling"
+        },
+        {
+          "category": 2,
           "description": "Your spies are stronger.",
           "effects": [
             [
@@ -3422,19 +3611,39 @@
         },
         {
           "category": 2,
-          "description": "Enemy spies are weaker against you.",
+          "description": "Enemy spies are weaker against you, and hexes take and wreck less.",
           "effects": [
             [
               "ThiefDefense",
               239
+            ],
+            [
+              "HexDamageTaken",
+              -239
             ]
           ],
-          "hash": "0d20a6a7a965236d",
+          "hash": "dcd75905cf1b0480",
           "key": {
             "identity": "shielding",
             "version": "v1"
           },
           "name": "Shielding"
+        },
+        {
+          "category": 2,
+          "description": "Your hexes take and wreck more.",
+          "effects": [
+            [
+              "HexDamage",
+              239
+            ]
+          ],
+          "hash": "d8e4b991cba6bda6",
+          "key": {
+            "identity": "sorcery",
+            "version": "v1"
+          },
+          "name": "Sorcery"
         }
       ],
       "starting_buildings": [
@@ -3462,7 +3671,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "dc33605e3dba87ed",
+          "hash": "c8846a34dcdc394b",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -3511,6 +3720,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -3520,7 +3732,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "5ca50a79a125e919",
+          "hash": "8f6f0e85e2574505",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -3569,6 +3781,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -3578,7 +3793,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3f7f7abd90d4d930",
+          "hash": "122ee6b598f02984",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -3627,6 +3842,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -3636,7 +3854,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "aa57c9bda2ac661f",
+          "hash": "8524134ab3352fb9",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -3685,6 +3903,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -3694,7 +3915,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "cad0597cadd62796",
+          "hash": "665750df5cee4782",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -3743,6 +3964,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -3757,7 +3981,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2b6e9cc5620980df",
+          "hash": "88ee9ebd87afd23b",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -3806,6 +4030,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Adept",
@@ -3815,7 +4042,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ca462f8fc186c895",
+          "hash": "8729663065826666",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -3864,6 +4091,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -3873,7 +4103,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3ecab1de9afe3090",
+          "hash": "bd02150ec73de240",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -3922,6 +4152,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -3931,7 +4164,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "e4f47cbb6a7996d7",
+          "hash": "412fa532f78b4e66",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -3980,6 +4213,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -3989,7 +4225,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "604a8fc0ec76711f",
+          "hash": "31c68548755bea3f",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -4019,6 +4255,9 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -4361,13 +4600,13 @@
             ],
             [
               "aether",
-              60
+              80
             ]
           ],
           "construction_ticks": 0,
           "description": "Adepts gather here (drawn from your peasants), and aether for rites.",
           "extra_gold": 0,
-          "hash": "0c87b1151e17c6f7",
+          "hash": "fc70bae9105d6c9d",
           "jobs": 20,
           "key": {
             "identity": "shrines",
@@ -4386,7 +4625,7 @@
             ],
             [
               "aether",
-              3
+              4
             ]
           ],
           "trait_slots": 0
@@ -4614,7 +4853,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "d3adc06e2b5cafc0",
+      "hash": "5115a2a36a495915",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -4726,6 +4965,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 0,
         "aid_free_per_acre": 0,
@@ -5486,8 +5726,14 @@
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "resilience_decay_bp": 250,
+        "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_cost_land": 400,
+        "rite_cost_offset": 333,
+        "rite_full_share_bp": 1500,
         "rite_material": "resin",
+        "rite_min_duration_bp": 5000,
         "rites": [
           {
             "aether": 150,
@@ -5505,6 +5751,7 @@
               }
             ],
             "name": "Bountiful Fields",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5528,6 +5775,7 @@
               }
             ],
             "name": "Masons' Blessing",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5547,6 +5795,7 @@
               }
             ],
             "name": "War Hymns",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5566,6 +5815,7 @@
               }
             ],
             "name": "Circle of Stones",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5585,6 +5835,7 @@
               }
             ],
             "name": "Swift Roads",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5604,6 +5855,7 @@
               }
             ],
             "name": "Scholar's Lamp",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5618,6 +5870,7 @@
             "incense": 0,
             "mods": [],
             "name": "Veil",
+            "resilience_bp": 0,
             "ticks": 6,
             "war_bonus_bp": 0
           },
@@ -5633,6 +5886,7 @@
             "incense": 0,
             "mods": [],
             "name": "Mirror Ward",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5647,6 +5901,7 @@
             "incense": 0,
             "mods": [],
             "name": "Scrying Pool",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -5661,6 +5916,7 @@
             "incense": 0,
             "mods": [],
             "name": "Read the Omens",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -5675,6 +5931,7 @@
             "incense": 0,
             "mods": [],
             "name": "Watch the Roads",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -5682,22 +5939,24 @@
             "aether": 200,
             "chance_bp": 8000,
             "effect": {
-              "bp": 200,
-              "type": "rot"
+              "bp": 2000,
+              "of": "food",
+              "type": "loss"
             },
             "hostility_bp": 40000,
             "id": "rot",
             "incense": 5,
             "mods": [],
             "name": "Rot",
-            "ticks": 6,
-            "war_bonus_bp": 100
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
           },
           {
-            "aether": 300,
+            "aether": 350,
             "chance_bp": 7000,
             "effect": {
-              "bp": 300,
+              "bp": 150,
               "type": "storm"
             },
             "hostility_bp": 80000,
@@ -5705,8 +5964,9 @@
             "incense": 10,
             "mods": [],
             "name": "Storm",
+            "resilience_bp": 3000,
             "ticks": 0,
-            "war_bonus_bp": 200
+            "war_bonus_bp": 100
           },
           {
             "aether": 250,
@@ -5720,6 +5980,7 @@
             "incense": 8,
             "mods": [],
             "name": "Blight",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 1000
           },
@@ -5734,8 +5995,60 @@
             "incense": 3,
             "mods": [],
             "name": "Unravel",
+            "resilience_bp": 1000,
             "ticks": 0,
             "war_bonus_bp": 0
+          },
+          {
+            "aether": 150,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 4000,
+              "of": "aether",
+              "type": "loss"
+            },
+            "hostility_bp": 40000,
+            "id": "drain",
+            "incense": 4,
+            "mods": [],
+            "name": "Drain",
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7000,
+            "effect": {
+              "bp": 1000,
+              "of": "gold",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "tarnish",
+            "incense": 6,
+            "mods": [],
+            "name": "Tarnish",
+            "resilience_bp": 2500,
+            "ticks": 0,
+            "war_bonus_bp": 500
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 500,
+              "of": "peasants",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "wildfire",
+            "incense": 6,
+            "mods": [],
+            "name": "Wildfire",
+            "resilience_bp": 2000,
+            "ticks": 0,
+            "war_bonus_bp": 300
           },
           {
             "aether": 250,
@@ -5753,6 +6066,7 @@
               }
             ],
             "name": "Pestilence",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -5772,7 +6086,68 @@
               }
             ],
             "name": "Dreamfog",
+            "resilience_bp": 1500,
             "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 40000,
+            "id": "hunger",
+            "incense": 5,
+            "mods": [
+              {
+                "bp": 2500,
+                "stat": "food_consumption"
+              }
+            ],
+            "name": "Hunger",
+            "resilience_bp": 1500,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 50000,
+            "id": "pitfalls",
+            "incense": 6,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "casualties_defending"
+              }
+            ],
+            "name": "Pitfalls",
+            "resilience_bp": 2000,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 7000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 60000,
+            "id": "frost",
+            "incense": 8,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "building_efficiency"
+              }
+            ],
+            "name": "Frost",
+            "resilience_bp": 2500,
+            "ticks": 6,
             "war_bonus_bp": 0
           }
         ],
@@ -5872,6 +6247,10 @@
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
         "upgrade_material": "bauxite",
+        "vengeance_decay_bp": 100,
+        "vengeance_gain_bp": 5000,
+        "vengeance_max_bp": 5000,
+        "vengeance_spend_bp": 5000,
         "vigilance_decay_bp": 400,
         "vigilance_max_bp": 8000,
         "vigils": [
@@ -5935,7 +6314,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7af0e0d2846b15a0",
+          "hash": "8026919fdcab3c2d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -5943,6 +6322,9 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -5993,7 +6375,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c25342e127c95e1e",
+          "hash": "7449bf7d84ccbe8e",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -6042,6 +6424,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -6051,7 +6436,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8cf623f1cc920557",
+          "hash": "161224cbfca94326",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -6100,21 +6485,19 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Sage",
           "units": [],
-          "unlocks": [
-            [
-              "spell",
-              "clarity"
-            ]
-          ]
+          "unlocks": []
         },
         {
           "conditional": [],
           "flags": 0,
-          "hash": "888c106bb73bea57",
+          "hash": "21726e0e83b0a0f2",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -6128,6 +6511,9 @@
             0,
             0,
             -2000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -6409,7 +6795,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "a0a13b0190ba50da",
+          "hash": "ff8adc52c884c03b",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -6417,6 +6803,9 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -6528,7 +6917,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "049886ed8f6eacd6",
+          "hash": "ea952063c06fd20c",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -6543,6 +6932,9 @@
             -500,
             0,
             -500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -6647,7 +7039,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "efad1c0f585b1a3f",
+          "hash": "6545d83d1ebbf1d1",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -6695,6 +7087,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            1000,
             0,
             0
           ],
@@ -6761,17 +7156,12 @@
               "off": 11
             }
           ],
-          "unlocks": [
-            [
-              "spell",
-              "moonveil"
-            ]
-          ]
+          "unlocks": []
         },
         {
           "conditional": [],
           "flags": 0,
-          "hash": "49acc4f24d8183d3",
+          "hash": "1b56fdb2d9afa169",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -6787,6 +7177,9 @@
             0,
             0,
             -1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -6893,7 +7286,7 @@
         {
           "conditional": [],
           "flags": 3,
-          "hash": "48a30428b8c36353",
+          "hash": "4ffe4fdb1da69848",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -6902,6 +7295,9 @@
           "mods_bp": [
             0,
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -7111,14 +7507,18 @@
         },
         {
           "category": 0,
-          "description": "More food.",
+          "description": "More food and aether.",
           "effects": [
             [
               "FoodProduction",
               1655
+            ],
+            [
+              "AetherProduction",
+              1655
             ]
           ],
-          "hash": "0f9659c50e4f6f8f",
+          "hash": "88ec4d781b078584",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -7223,6 +7623,22 @@
         },
         {
           "category": 2,
+          "description": "Your adepts count for more in every rite's roll, cast or resisted.",
+          "effects": [
+            [
+              "AdeptStrength",
+              1429
+            ]
+          ],
+          "hash": "54af0e5d3535f7c8",
+          "key": {
+            "identity": "channeling",
+            "version": "v1"
+          },
+          "name": "Channeling"
+        },
+        {
+          "category": 2,
           "description": "Your spies are stronger.",
           "effects": [
             [
@@ -7255,19 +7671,39 @@
         },
         {
           "category": 2,
-          "description": "Enemy spies are weaker against you.",
+          "description": "Enemy spies are weaker against you, and hexes take and wreck less.",
           "effects": [
             [
               "ThiefDefense",
               239
+            ],
+            [
+              "HexDamageTaken",
+              -239
             ]
           ],
-          "hash": "0d20a6a7a965236d",
+          "hash": "dcd75905cf1b0480",
           "key": {
             "identity": "shielding",
             "version": "v1"
           },
           "name": "Shielding"
+        },
+        {
+          "category": 2,
+          "description": "Your hexes take and wreck more.",
+          "effects": [
+            [
+              "HexDamage",
+              239
+            ]
+          ],
+          "hash": "d8e4b991cba6bda6",
+          "key": {
+            "identity": "sorcery",
+            "version": "v1"
+          },
+          "name": "Sorcery"
         }
       ],
       "starting_buildings": [
@@ -7295,7 +7731,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "dc33605e3dba87ed",
+          "hash": "c8846a34dcdc394b",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -7344,6 +7780,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -7353,7 +7792,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "5ca50a79a125e919",
+          "hash": "8f6f0e85e2574505",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -7402,6 +7841,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -7411,7 +7853,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3f7f7abd90d4d930",
+          "hash": "122ee6b598f02984",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -7460,6 +7902,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -7469,7 +7914,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "aa57c9bda2ac661f",
+          "hash": "8524134ab3352fb9",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -7518,6 +7963,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -7527,7 +7975,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "cad0597cadd62796",
+          "hash": "665750df5cee4782",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -7576,6 +8024,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -7590,7 +8041,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "2b6e9cc5620980df",
+          "hash": "88ee9ebd87afd23b",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -7639,6 +8090,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Adept",
@@ -7648,7 +8102,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ca462f8fc186c895",
+          "hash": "8729663065826666",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -7697,6 +8151,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -7706,7 +8163,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3ecab1de9afe3090",
+          "hash": "bd02150ec73de240",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -7755,6 +8212,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -7764,7 +8224,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "e4f47cbb6a7996d7",
+          "hash": "412fa532f78b4e66",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -7813,6 +8273,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -7822,7 +8285,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "604a8fc0ec76711f",
+          "hash": "31c68548755bea3f",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -7852,6 +8315,9 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -8194,13 +8660,13 @@
             ],
             [
               "aether",
-              60
+              80
             ]
           ],
           "construction_ticks": 0,
           "description": "Adepts gather here (drawn from your peasants), and aether for rites.",
           "extra_gold": 0,
-          "hash": "0c87b1151e17c6f7",
+          "hash": "fc70bae9105d6c9d",
           "jobs": 20,
           "key": {
             "identity": "shrines",
@@ -8219,7 +8685,7 @@
             ],
             [
               "aether",
-              3
+              4
             ]
           ],
           "trait_slots": 0
@@ -8585,7 +9051,7 @@
           "to": "banks@v2"
         }
       ],
-      "hash": "956a4a07269d6292",
+      "hash": "b252f4def035a8c6",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -8697,6 +9163,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 100,
         "aid_free_per_acre": 50,
@@ -9465,8 +9932,14 @@
         "renown_per_win": 20,
         "rescue_bp_per_medic": 200,
         "rescue_cap_bp": 5000,
+        "resilience_decay_bp": 250,
+        "resilience_max_bp": 7500,
         "rite_base_success_bp": 5000,
+        "rite_cost_land": 400,
+        "rite_cost_offset": 333,
+        "rite_full_share_bp": 1500,
         "rite_material": "resin",
+        "rite_min_duration_bp": 5000,
         "rites": [
           {
             "aether": 150,
@@ -9484,6 +9957,7 @@
               }
             ],
             "name": "Bountiful Fields",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9507,6 +9981,7 @@
               }
             ],
             "name": "Masons' Blessing",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9526,6 +10001,7 @@
               }
             ],
             "name": "War Hymns",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9545,6 +10021,7 @@
               }
             ],
             "name": "Circle of Stones",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9564,6 +10041,7 @@
               }
             ],
             "name": "Swift Roads",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9583,6 +10061,7 @@
               }
             ],
             "name": "Scholar's Lamp",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9597,6 +10076,7 @@
             "incense": 0,
             "mods": [],
             "name": "Veil",
+            "resilience_bp": 0,
             "ticks": 6,
             "war_bonus_bp": 0
           },
@@ -9612,6 +10092,7 @@
             "incense": 0,
             "mods": [],
             "name": "Mirror Ward",
+            "resilience_bp": 0,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9626,6 +10107,7 @@
             "incense": 0,
             "mods": [],
             "name": "Scrying Pool",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -9640,6 +10122,7 @@
             "incense": 0,
             "mods": [],
             "name": "Read the Omens",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -9654,6 +10137,7 @@
             "incense": 0,
             "mods": [],
             "name": "Watch the Roads",
+            "resilience_bp": 0,
             "ticks": 0,
             "war_bonus_bp": 0
           },
@@ -9661,22 +10145,24 @@
             "aether": 200,
             "chance_bp": 8000,
             "effect": {
-              "bp": 200,
-              "type": "rot"
+              "bp": 2000,
+              "of": "food",
+              "type": "loss"
             },
             "hostility_bp": 40000,
             "id": "rot",
             "incense": 5,
             "mods": [],
             "name": "Rot",
-            "ticks": 6,
-            "war_bonus_bp": 100
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
           },
           {
-            "aether": 300,
+            "aether": 350,
             "chance_bp": 7000,
             "effect": {
-              "bp": 300,
+              "bp": 150,
               "type": "storm"
             },
             "hostility_bp": 80000,
@@ -9684,8 +10170,9 @@
             "incense": 10,
             "mods": [],
             "name": "Storm",
+            "resilience_bp": 3000,
             "ticks": 0,
-            "war_bonus_bp": 200
+            "war_bonus_bp": 100
           },
           {
             "aether": 250,
@@ -9699,6 +10186,7 @@
             "incense": 8,
             "mods": [],
             "name": "Blight",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 1000
           },
@@ -9713,8 +10201,60 @@
             "incense": 3,
             "mods": [],
             "name": "Unravel",
+            "resilience_bp": 1000,
             "ticks": 0,
             "war_bonus_bp": 0
+          },
+          {
+            "aether": 150,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 4000,
+              "of": "aether",
+              "type": "loss"
+            },
+            "hostility_bp": 40000,
+            "id": "drain",
+            "incense": 4,
+            "mods": [],
+            "name": "Drain",
+            "resilience_bp": 1500,
+            "ticks": 0,
+            "war_bonus_bp": 1000
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7000,
+            "effect": {
+              "bp": 1000,
+              "of": "gold",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "tarnish",
+            "incense": 6,
+            "mods": [],
+            "name": "Tarnish",
+            "resilience_bp": 2500,
+            "ticks": 0,
+            "war_bonus_bp": 500
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "bp": 500,
+              "of": "peasants",
+              "type": "loss"
+            },
+            "hostility_bp": 60000,
+            "id": "wildfire",
+            "incense": 6,
+            "mods": [],
+            "name": "Wildfire",
+            "resilience_bp": 2000,
+            "ticks": 0,
+            "war_bonus_bp": 300
           },
           {
             "aether": 250,
@@ -9732,6 +10272,7 @@
               }
             ],
             "name": "Pestilence",
+            "resilience_bp": 2000,
             "ticks": 12,
             "war_bonus_bp": 0
           },
@@ -9751,7 +10292,68 @@
               }
             ],
             "name": "Dreamfog",
+            "resilience_bp": 1500,
             "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 200,
+            "chance_bp": 8000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 40000,
+            "id": "hunger",
+            "incense": 5,
+            "mods": [
+              {
+                "bp": 2500,
+                "stat": "food_consumption"
+              }
+            ],
+            "name": "Hunger",
+            "resilience_bp": 1500,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 250,
+            "chance_bp": 7500,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 50000,
+            "id": "pitfalls",
+            "incense": 6,
+            "mods": [
+              {
+                "bp": 1500,
+                "stat": "casualties_defending"
+              }
+            ],
+            "name": "Pitfalls",
+            "resilience_bp": 2000,
+            "ticks": 12,
+            "war_bonus_bp": 0
+          },
+          {
+            "aether": 300,
+            "chance_bp": 7000,
+            "effect": {
+              "type": "curse"
+            },
+            "hostility_bp": 60000,
+            "id": "frost",
+            "incense": 8,
+            "mods": [
+              {
+                "bp": -1000,
+                "stat": "building_efficiency"
+              }
+            ],
+            "name": "Frost",
+            "resilience_bp": 2500,
+            "ticks": 6,
             "war_bonus_bp": 0
           }
         ],
@@ -9867,6 +10469,10 @@
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
         "upgrade_material": "bauxite",
+        "vengeance_decay_bp": 100,
+        "vengeance_gain_bp": 5000,
+        "vengeance_max_bp": 5000,
+        "vengeance_spend_bp": 5000,
         "vigilance_decay_bp": 400,
         "vigilance_max_bp": 8000,
         "vigils": [
@@ -9930,7 +10536,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7af0e0d2846b15a0",
+          "hash": "8026919fdcab3c2d",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -9938,6 +10544,9 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -9988,7 +10597,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c25342e127c95e1e",
+          "hash": "7449bf7d84ccbe8e",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -10037,6 +10646,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -10046,7 +10658,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8cf623f1cc920557",
+          "hash": "161224cbfca94326",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -10095,21 +10707,19 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Sage",
           "units": [],
-          "unlocks": [
-            [
-              "spell",
-              "clarity"
-            ]
-          ]
+          "unlocks": []
         },
         {
           "conditional": [],
           "flags": 0,
-          "hash": "888c106bb73bea57",
+          "hash": "21726e0e83b0a0f2",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -10158,6 +10768,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Explorer",
@@ -10167,7 +10780,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "9ce3647baa872edd",
+          "hash": "fd81c4598bd46ca0",
           "key": {
             "identity": "spymaster",
             "version": "v1"
@@ -10216,6 +10829,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Spymaster",
@@ -10225,7 +10841,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7dc433d54a0e386b",
+          "hash": "085142e249338832",
           "key": {
             "identity": "mystic",
             "version": "v1"
@@ -10274,7 +10890,10 @@
             0,
             0,
             1500,
-            -1000
+            -1000,
+            0,
+            0,
+            0
           ],
           "name": "The Mystic",
           "units": [],
@@ -10283,7 +10902,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "10eaaf2a7938a5cf",
+          "hash": "3ceb101d947df174",
           "key": {
             "identity": "quartermaster",
             "version": "v1"
@@ -10332,6 +10951,9 @@
             -2000,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Quartermaster",
@@ -10341,7 +10963,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "1d65d4a0c72ac2f4",
+          "hash": "89a9afcc00af31bf",
           "key": {
             "identity": "prospector",
             "version": "v1"
@@ -10390,6 +11012,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "The Prospector",
@@ -10399,13 +11024,16 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "68165e9843bd283d",
+          "hash": "0a05c1c55fa716c1",
           "key": {
             "identity": "zealot",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -10466,7 +11094,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "6c8ef29a984b187d",
+          "hash": "4c27249517be1a72",
           "key": {
             "identity": "herald",
             "version": "v1"
@@ -10500,6 +11128,9 @@
             0,
             500,
             2500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -10766,7 +11397,7 @@
             }
           ],
           "flags": 0,
-          "hash": "318a72b904b0ecaf",
+          "hash": "94e93c0a30968fab",
           "key": {
             "identity": "ashcliffe",
             "version": "v1"
@@ -10811,6 +11442,9 @@
             0,
             -2000,
             -1500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -10914,7 +11548,7 @@
             }
           ],
           "flags": 0,
-          "hash": "dc553511392f3595",
+          "hash": "d4eb8c03dd160293",
           "key": {
             "identity": "echolalian",
             "version": "v1"
@@ -10958,6 +11592,9 @@
             0,
             0,
             500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -11043,13 +11680,16 @@
         {
           "conditional": [],
           "flags": 4,
-          "hash": "ccefe3a1af93cfdf",
+          "hash": "dd6c143dde35b8c3",
           "key": {
             "identity": "saltborn",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -11188,7 +11828,7 @@
             }
           ],
           "flags": 0,
-          "hash": "ee04eb1ae67383ef",
+          "hash": "23a8db0e671e936a",
           "key": {
             "identity": "peridian",
             "version": "v1"
@@ -11233,6 +11873,9 @@
             0,
             0,
             1500,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -11334,7 +11977,7 @@
             }
           ],
           "flags": 0,
-          "hash": "20ecd0987994dd79",
+          "hash": "82e63a49b8d9431a",
           "key": {
             "identity": "freehomes",
             "version": "v1"
@@ -11360,6 +12003,9 @@
             0,
             -2000,
             -3000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -11470,7 +12116,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "05170e7c709f7d70",
+          "hash": "cf3cdd0a45232886",
           "key": {
             "identity": "unlithian",
             "version": "v1"
@@ -11517,6 +12163,9 @@
             0,
             0,
             -3000,
+            0,
+            0,
+            0,
             0,
             0,
             0
@@ -11603,7 +12252,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "1d59564abc51d147",
+          "hash": "965bc8c23c7c59ac",
           "key": {
             "identity": "troll",
             "version": "v1"
@@ -11631,6 +12280,9 @@
             0,
             0,
             2000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -11749,7 +12401,7 @@
             }
           ],
           "flags": 0,
-          "hash": "de4ae3fedacbd237",
+          "hash": "484cc95a29f9c5b4",
           "key": {
             "identity": "drow",
             "version": "v1"
@@ -11797,6 +12449,9 @@
             700,
             0,
             -2000,
+            0,
+            0,
+            0,
             0,
             0
           ],
@@ -11887,7 +12542,7 @@
             }
           ],
           "flags": 0,
-          "hash": "6b50868df1d4571a",
+          "hash": "b84b2c9cac9045b5",
           "key": {
             "identity": "mycellian",
             "version": "v1"
@@ -11936,6 +12591,9 @@
             0,
             0,
             1200,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Mycellians",
@@ -12043,7 +12701,7 @@
         {
           "conditional": [],
           "flags": 1,
-          "hash": "504134e18fec9242",
+          "hash": "1e8e6e336efe5cf5",
           "key": {
             "identity": "daemon",
             "version": "v1"
@@ -12092,7 +12750,10 @@
             0,
             0,
             0,
-            700
+            700,
+            0,
+            0,
+            0
           ],
           "name": "Daemons",
           "race": {
@@ -12269,14 +12930,18 @@
         },
         {
           "category": 0,
-          "description": "More food.",
+          "description": "More food and aether.",
           "effects": [
             [
               "FoodProduction",
               1655
+            ],
+            [
+              "AetherProduction",
+              1655
             ]
           ],
-          "hash": "0f9659c50e4f6f8f",
+          "hash": "88ec4d781b078584",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -12381,6 +13046,22 @@
         },
         {
           "category": 2,
+          "description": "Your adepts count for more in every rite's roll, cast or resisted.",
+          "effects": [
+            [
+              "AdeptStrength",
+              1429
+            ]
+          ],
+          "hash": "54af0e5d3535f7c8",
+          "key": {
+            "identity": "channeling",
+            "version": "v1"
+          },
+          "name": "Channeling"
+        },
+        {
+          "category": 2,
           "description": "Your spies are stronger.",
           "effects": [
             [
@@ -12413,19 +13094,39 @@
         },
         {
           "category": 2,
-          "description": "Enemy spies are weaker against you.",
+          "description": "Enemy spies are weaker against you, and hexes take and wreck less.",
           "effects": [
             [
               "ThiefDefense",
               239
+            ],
+            [
+              "HexDamageTaken",
+              -239
             ]
           ],
-          "hash": "0d20a6a7a965236d",
+          "hash": "dcd75905cf1b0480",
           "key": {
             "identity": "shielding",
             "version": "v1"
           },
           "name": "Shielding"
+        },
+        {
+          "category": 2,
+          "description": "Your hexes take and wreck more.",
+          "effects": [
+            [
+              "HexDamage",
+              239
+            ]
+          ],
+          "hash": "d8e4b991cba6bda6",
+          "key": {
+            "identity": "sorcery",
+            "version": "v1"
+          },
+          "name": "Sorcery"
         }
       ],
       "starting_buildings": [
@@ -12453,7 +13154,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "dc33605e3dba87ed",
+          "hash": "c8846a34dcdc394b",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -12502,6 +13203,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -12511,7 +13215,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "5ca50a79a125e919",
+          "hash": "8f6f0e85e2574505",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -12560,6 +13264,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -12569,7 +13276,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3f7f7abd90d4d930",
+          "hash": "122ee6b598f02984",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -12618,6 +13325,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -12627,7 +13337,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "aa57c9bda2ac661f",
+          "hash": "8524134ab3352fb9",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -12676,6 +13386,9 @@
             0,
             0,
             0,
+            0,
+            0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -12685,7 +13398,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "cad0597cadd62796",
+          "hash": "665750df5cee4782",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -12702,6 +13415,9 @@
             0,
             0,
             1000,
+            0,
+            0,
+            0,
             0,
             0,
             0,
@@ -13076,7 +13792,10 @@
       "mercenary_cost",
       "peasant_growth",
       "aether_production",
-      "aether_cost"
+      "aether_cost",
+      "adept_strength",
+      "hex_damage",
+      "hex_damage_taken"
     ],
     "unit_slots": [
       "soldier",
@@ -13091,7 +13810,6 @@
       "elite++"
     ],
     "unlock_kinds": [
-      "spell",
       "operation",
       "building"
     ]
