@@ -246,7 +246,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("academic_pick_books", "Academics: books invested to choose attributes", "n"),
     ("trade_fee_bp", "Trading: share of a sale paid to the seller's state", "pct"),
     ("out_of_realm_bp", "Trading: extra an out-of-realm buyer pays", "pct"),
-    ("market_fee_bp", "Market: share of every sale's gold destroyed as a fee", "pct"),
+    ("market_fee_bp", "Market: fee on what an order fills at once (the taker's), destroyed", "pct"),
+    ("order_min_life_ms", "Market: time an order stands before it can be cancelled", "minutes"),
     ("spoil_free", "Spoilage: units of each material a house keeps free", "n"),
     ("spoil_free_per_acre", "Spoilage: more free units per acre of land", "n"),
     ("spoil_treasury_free", "Spoilage: units of each material a treasury keeps free", "n"),
@@ -308,6 +309,8 @@ def pct(bp):
 def show_param(value, how):
     if how == "hours":
         return f"{value / 3_600_000:g} hour(s)"
+    if how == "minutes":
+        return f"{value / 60_000:g} minute(s)"
     if how == "pct":
         return f"{pct(value)}%"
     if how == "pm":
@@ -1411,6 +1414,7 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
+    values["order_lock_minutes"] = f'{p.get("order_min_life_ms", 0) / 60_000:g}'
     sq = lambda land: max(0, land - p.get("explore_square_from", 0)) ** 2 // 1000
     xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000 + sq(land) * p.get("explore_gold_square", 0) // 1000
     xs = lambda land: (land * p.get("explore_soldiers_per_land_milli", 0) + sq(land) * p.get("explore_soldiers_square_milli", 0)) / 1000

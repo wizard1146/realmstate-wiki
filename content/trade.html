@@ -29,15 +29,20 @@ updated: 2026-10-06
 <h2 id="Market">The market</h2>
 <ul>
   <li>Each material has one order book. You post a buy (the most you'll pay per unit) or a sell (the least you'll take).</li>
-  <li>Placing an order sets its goods or gold aside at once. Cancelling gives them back.</li>
-  <li>Once a tick, each book clears at a <b>single price</b>: the one that trades the most units. Everyone who trades pays or receives that price; a buyer who offered more gets the difference back.</li>
-  <li>Better-priced orders fill first, then older ones. Whatever doesn't trade stays open.</li>
+  <li><b>Orders fill as soon as they're placed.</b> A new order trades at once with waiting orders that meet its price: the best price first, then the oldest. Each trade is at the <b>waiting order's price</b>, so a buy at 8 that meets a sell at 6 pays 6.</li>
+  <li>Whatever doesn't fill at once waits in the book at your price, until someone's order meets it or you cancel it.</li>
+  <li>Placing an order sets its goods or gold aside at once. A buy sets aside its price for every unit plus room for the fee; what it doesn't spend comes back straight away.</li>
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
-<p>Every sale pays the market fee: {{market_fee_pct}}% of the gold it receives. The fee is destroyed; it goes to no one. Treasury sales pay it too. Buying is free. (The {{trade_fee_pct}}% fee to the seller's state is a separate one, for selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
-<p><a href="buildings.html#trading_houses">Trading houses</a> cut your fee, down to nothing with enough of them. The fee never goes below zero, so a sale never pays out more gold than the buyer paid. Trading back and forth with a friend can only lose gold.</p>
-<p><b>Worked example.</b> You sell 100 units at 50 gold. The buyer pays 5,000 gold. With no trading houses you pay a {{market_fee_pct}}% fee and receive the rest. Your news shows the fee for each sale.</p>
-<p>You can buy and sell the same material at once, as a market maker does: for example, buy bauxite at 9 and sell it at 11. You just can't trade with yourself, so your buy must be priced below your own sell. A buy at or above it is refused, because at the single clearing price it could fill against your own sell. For a state's leader, their own house and the treasury count as one trader. If a house becomes leader while its orders already cross the treasury's, the treasury's orders wait out each clearing until one side is cancelled.</p>
+<h3 id="Fee">The market fee</h3>
+<p>The fee is paid by the order that <b>fills against a waiting order</b>: {{market_fee_pct}}% of the gold that trade is worth. A buyer pays it on top of the price; a seller has it taken from the gold received. The order that was waiting pays nothing. So posting an order and waiting is free, and taking what's already in the book costs the fee. Treasury orders pay it too.</p>
+<p>The fee is destroyed; it goes to no one. (The {{trade_fee_pct}}% fee to the seller's state is a separate one, for selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
+<p><a href="buildings.html#trading_houses">Trading houses</a> cut your fee, down to nothing with enough of them. The fee never goes below zero, so trading back and forth with a friend can only lose gold.</p>
+<p><b>Worked example.</b> The book has sells of 40 bauxite at 6 and 60 at 8. You place a buy of 120 at 8. At once you get 40 at 6 (240 gold) and 60 at 8 (480 gold): 720 gold, plus a {{market_fee_pct}}% fee on it if you have no trading houses. The other 20 wait in the book at 8. If a seller later fills them, you pay 160 gold and no fee. Your news shows each fill and its fee.</p>
+<h3 id="Cancelling">Cancelling</h3>
+<p>An order stands for <b>{{order_lock_minutes}} minutes</b> after it's placed; only then can you cancel it. This keeps the book honest: a price you post is one others can actually trade against. Cancelling gives back the goods or gold the order still holds.</p>
+<h3 id="Yourself">Trading with yourself</h3>
+<p>You can buy and sell the same material at once, as a market maker does: for example, buy bauxite at 9 and sell it at 11. You just can't trade with yourself, so your buy must be priced below your own sell. A buy at or above it is refused, because it would fill against your own sell. For a state's leader, their own house and the treasury count as one trader.</p>
 <p>States that make the same material may agree on prices between themselves. The game doesn't enforce such agreements; keeping them is up to the players.</p>
 
 <h2 id="Uses">What materials are for</h2>
