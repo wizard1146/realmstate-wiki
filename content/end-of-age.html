@@ -3,7 +3,7 @@ title: The End of an Age
 category: Mechanics
 updated: 2026-10-06
 -->
-<p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends: every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
+<p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends (staff can also end it sooner, in the same way): every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
 
 <h2 id="Scoring">Scoring</h2>
 <p>States are scored on land and might, each measured against the leading state so nothing is counted twice, plus the war points they won:</p>
@@ -31,8 +31,8 @@ updated: 2026-10-06
 <ul>
   <li>Wars still running are settled first, so their war points count: see <a href="war.html#Ending">War</a>.</li>
   <li>Every house hears the winner, its state's rank, its own rank by land, and which heirs it keeps.</li>
-  <li>The world stops: no more commands, and ticks change nothing. The result stays public (<code>GET /ages/{age}</code>), with a recap: {{recap_frames}} snapshots of every state's land, might and war points across the age, and the largest houses.</li>
-  <li>The next age starts with a new world and its own rules. Your account carries over.</li>
+  <li>The world stops: no more commands, and ticks change nothing. The result stays public (<code>GET /ages/{age}</code>), with a recap (<code>GET /ages/{age}/recap</code>): {{recap_frames}} snapshots of every state's land, might and war points across the age, and the largest houses, which the War Room plays back.</li>
+  <li>The next age starts with a new world, its own number and its own rules. Once staff have planned it, its name and start time are public, so you can see the countdown. Before it starts, you can found your house and bring back heirs, but nothing else. Your account carries over; chat starts empty.</li>
 </ul>
 
 <h2 id="Heirs">Heirs</h2>

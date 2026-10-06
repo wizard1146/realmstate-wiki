@@ -18,8 +18,10 @@ updated: 2026-10-06
 <tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /hall</code></td><td>The Hall of Deeds: every listing, with the character's profile and record, and auction state</td></tr>
 <tr><td><code>GET /offers</code></td><td>Offers you've made and offers on your characters (signed in)</td></tr>
-<tr><td><code>GET /age</code></td><td>The age: tick, when the next tick is due (<code>next_tick_at</code>, ms) and the tick length (<code>tick_ms</code>), ticks left, scoring weights, live state standings, and the result once it has ended</td></tr>
+<tr><td><code>GET /age</code></td><td>The age: its <code>name</code>, when it starts (<code>started_at</code>, ms) and whether it has (<code>started</code>), the next age once planned (<code>next</code>: <code>{"age", "name", "ruleset", "start_at"}</code> or null), tick, when the next tick is due (<code>next_tick_at</code>, ms) and the tick length (<code>tick_ms</code>), ticks left, scoring weights, live state standings, and the result once it has ended</td></tr>
 <tr><td><code>GET /ages/{age}</code></td><td>An ended age's result: winner, state scores, house rankings, heirs kept</td></tr>
+<tr><td><code>GET /age/recap</code></td><td>The age so far, for a replay: <code>frames</code>, snapshots taken evenly over the age, each <code>{"tick", "at", "states": [[realm, state, land, might, war_points]], "houses": [[house, land]]}</code> (the ten largest houses); <code>wars</code>; and <code>names</code> (<code>realms</code>, <code>states</code> by <code>"realm:state"</code>, <code>houses</code> by id)</td></tr>
+<tr><td><code>GET /ages/{age}/recap</code></td><td>The same for an ended age, with one last frame at its end</td></tr>
 <tr><td><code>GET /heirs</code></td><td>Your heirs waiting in your account, across ages (signed in)</td></tr>
 <tr><td><code>POST /heirs/recall</code></td><td>Bring one into your house this age: <code>{"uid": "1-G4"}</code> (signed in)</td></tr>
 <tr><td><code>GET /chat/{channel}</code></td><td>Chat on <code>world</code>, <code>realm</code> (yours) or <code>state</code> (yours): the last 200 messages, or those after <code>?after={id}</code>. Each channel keeps its newest 1,000 for the current age. Each has <code>channel</code> and the sender's address in <code>from</code> (signed in)</td></tr>
@@ -124,6 +126,16 @@ updated: 2026-10-06
 <p>An <code>order</code> fills at once against waiting orders (see <a href="trade.html#Market">Trade</a>) and answers <code>{"type": "order_placed", "order": 12, "filled": 100, "gold": 828, "fee": 36, "cross_fee": 72, "left": 20}</code>: units filled at once, gold paid (a buy, fees included) or received (a sale, after the fee), the market fee, the <a href="trade.html#CrossRealm">cross-realm fee</a> a buy paid (0 if every seller was in its realm), and units left waiting in the book. The fee rate is <code>params.cross_realm_fee_bp</code> in <code>/rules</code>; a buy holds room for it. News items <code>order_filled</code> carry <code>fee</code> and <code>cross_fee</code> for each fill, and <code>treasury_share</code> (<code>materials</code>: units by material) tells a house what it got from its treasury's <a href="trade.html#Overflow">overflow</a>. A <code>cancel</code> within {{order_lock_minutes}} minutes of placing is refused.</p>
 <p>Races and personalities are named by identity. <code>units</code> uses the slots above. <code>medics</code>, <code>general</code>, <code>horses</code>, <code>chariots</code> and <code>kind</code> (an id from <a href="attacks.html">Attacks</a>; default <code>assault</code>) are optional in an attack. So are <code>upgraded_mercenaries</code>, how many of the hired mercenaries fight upgraded (races with mercenary upgrades only), and <code>double_strike</code>, to keep a second strike ready for <code>second_strike</code> (races with a double strike, at war, led by a general with enough traits). Give both <code>realm</code> and <code>state</code> to ask for a state, or neither (see <a href="world.html#Placement">placement</a>).</p>
 <p>Before the season starts, every command except <code>create_house</code> and <code>POST /heirs/recall</code> is refused: "the season hasn't started yet".</p>
+
+<h2 id="Staff">Staff</h2>
+<p>Staff run a live game through <code>/dev/*</code> requests (see <a href="running-ages.html">Running the Next Age</a>). <code>GET /dev</code> says whether you're staff and what you may do (<code>can</code>). The age requests:</p>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Request</th><th>What it does</th></tr>
+<tr><td><code>GET /dev/age</code></td><td>This age, the planned next age with the game's check of it (<code>plan_check</code>), the age files to choose from (<code>rulesets</code>) and the lowest number the next age may take (admin)</td></tr>
+<tr><td><code>POST /dev/age/plan</code></td><td>Plan the next age: <code>{"ruleset", "number", "name", "start_at", "params", "note"}</code>; checked by compiling (admin). <code>DELETE</code> drops the plan</td></tr>
+<tr><td><code>POST /dev/age/end</code></td><td>End the age now: <code>{"note"}</code> (owner)</td></tr>
+<tr><td><code>POST /dev/age/open</code></td><td>Open the planned age once this one has ended: the world is archived and the server restarts into the new one (owner)</td></tr>
+</table></div>
 
 <h2 id="Answers">Answers</h2>
 <ul>

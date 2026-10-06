@@ -1,0 +1,68 @@
+<!--
+title: Running the Next Age
+category: Tools, Staff
+updated: 2026-10-06
+-->
+<p>This page is for the people who run a game: how to end an age, plan the next one and open it. Players don't need it. To see when the next age starts, look at the Age panel or <code>GET /age</code>.</p>
+
+<h2 id="Overview">The short version</h2>
+<ol>
+  <li><b>Plan</b> the next age: which rules it runs, its number and name, when it starts, and any changed numbers. The game checks the plan straight away.</li>
+  <li><b>End</b> the current age, or let it end on its last tick.</li>
+  <li><b>Open</b> the next age. The finished world is archived and the server restarts by itself into the new one.</li>
+  <li>Players found their houses before the start time. When it comes, the age begins.</li>
+</ol>
+<p>You can do all of it from the War Room's staff panel, or with the requests below.</p>
+
+<h2 id="Who">Who may do it</h2>
+<ul>
+  <li><b>Admins</b> may plan the next age and drop a plan.</li>
+  <li><b>Owners</b> may also end the age and open the next one. Both are permanent.</li>
+</ul>
+<p>As with every staff action on a live game, you must have signed in with Google or a passkey within the last hour, on the game's own site, and give a short note saying why. Every action goes into the audit log. Roles are given by an owner, or on the server's own command line: <code>realm-server role add &lt;email&gt; owner</code>.</p>
+
+<h2 id="Plan">1. Plan the next age</h2>
+<p>A plan says:</p>
+<ul>
+  <li><b>Age file</b>: which rules the age runs, by the file's name in <code>rules/ages</code>, such as <code>age-3</code>. You can run the same age file again.</li>
+  <li><b>Number</b>: the age's number. It must be higher than this age's and every earlier one's; leave it out to take the next free number. Results, heirs and chat are all kept by age number, so two ages never mix, even if they run the same rules.</li>
+  <li><b>Name</b>: optional. Without one, the age keeps the age file's name.</li>
+  <li><b>Start time</b>: when ticks begin. Until then, players can only found houses and bring back heirs. If the time has already passed when you open the age, it starts at once.</li>
+  <li><b>Changed numbers</b>: any of the age's numbers (its params, as <code>GET /rules</code> lists them), for example a shorter age with <code>age_ticks</code>. Everything else comes from the age file.</li>
+</ul>
+<p>The game compiles the plan the way it would make the world, and refuses it with every problem listed: an age file that doesn't exist, a number that isn't a param, a value the rules don't allow, or an age number that's too low. A plan that's accepted will start.</p>
+<p>Once there's a plan, everyone can see the next age's number, name and start time in <code>GET /age</code> (as <code>next</code>), so players can get ready. Planning again replaces the plan; dropping it takes it away.</p>
+<pre><code>POST /dev/age/plan
+{"ruleset": "age-3", "name": "The Age of Ash", "start_at": 1792000000000,
+ "params": {"age_ticks": 1200}, "note": "next age, a little shorter"}</code></pre>
+<p><code>start_at</code> is in milliseconds since 1 January 1970, UTC. The answer is the plan as the game understands it: the age's number and name, its ruleset fingerprint, its tick length and length in ticks, and roughly when it will end.</p>
+
+<h2 id="End">2. End the age</h2>
+<p>An age ends by itself on its last tick. To end it sooner:</p>
+<pre><code>POST /dev/age/end {"note": "why it ends now"}</code></pre>
+<p>It ends exactly as on its last tick: wars still running are settled, states are scored, a state wins, and houses keep their heirs (see <a href="end-of-age.html">The End of an Age</a>). The result and the age's recap are stored at once, outside the world, so they outlive it. There's no undo.</p>
+
+<h2 id="Open">3. Open the next age</h2>
+<p>When the age has ended and a plan is in place:</p>
+<pre><code>POST /dev/age/open {"note": "opening the next age"}</code></pre>
+<ul>
+  <li>The world's database is moved aside next to it, named after the age it held (for example <code>realm-age-3.db</code>). It's kept, not deleted.</li>
+  <li>The server answers, then restarts itself within a second: same program, same settings, same process. Finding no world, it makes the planned one and forgets the plan.</li>
+  <li>The War Room waits and reloads by itself. Players see the new age's countdown.</li>
+</ul>
+<p>Accounts, roles, heirs and past results carry over: they live in the accounts database, not in the world. Chat starts empty in each age.</p>
+
+<h2 id="After">After opening</h2>
+<ul>
+  <li><code>GET /age</code> shows the new age, its start time and <code>"started": false</code> until then.</li>
+  <li>The finished age's result is at <code>GET /ages/{age}</code>, and its recap at <code>GET /ages/{age}/recap</code>, for the War Room's replay.</li>
+  <li>The wiki's pages for the age file describe its rules. Changed numbers in a plan apply to that age only; the age file itself is unchanged.</li>
+</ul>
+
+<h2 id="Problems">If something goes wrong</h2>
+<ul>
+  <li><b>The plan stopped compiling.</b> If the age files change after you plan, <code>GET /dev/age</code> shows the error under <code>plan_check</code>, and opening is refused. Plan again.</li>
+  <li><b>"already exists" when opening.</b> An archive with that name is already there, perhaps from a test. Move it, then open again. Nothing has changed yet.</li>
+  <li><b>The server didn't come back.</b> Start it again the usual way. With no world in place, it makes the planned age, exactly as the restart would have.</li>
+  <li><b>On a test server</b> (dev mode), anyone signed in may do all of this, with no note needed.</li>
+</ul>
