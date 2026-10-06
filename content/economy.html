@@ -1,12 +1,12 @@
 <!--
 title: Economy
 category: Mechanics
-updated: 2026-09-29
+updated: 2026-10-06
 -->
 <p>Your economy updates every tick. All results are rounded down. Modifiers from your race and personality on the same stat add together, then multiply the base amount (for example +5% and +10% give &times;1.15).</p>
 
 <h2 id="Income">Income</h2>
-<p>Gold each tick = peasants &times; {{gold_per_peasant}} &times; your <a href="effects.html#income">income</a> modifier (banks raise it), plus what your <a href="buildings.html#banks">banks</a> make. Your state then takes its <a href="leadership.html#Tax">tax</a> ({{tax_default_pct}}% unless your leader changes it) for the state treasury.</p>
+<p>Gold each tick = peasants &times; {{gold_per_peasant}} &times; your <a href="effects.html#income">income</a> modifier (banks raise it), plus what your <a href="buildings.html#banks">banks</a> make. Your state then takes its <a href="leadership.html#Tax">tax</a> ({{tax_default_pct}}% unless your leader changes it) for the state treasury. Then your troops take their <a href="military.html#Wages">wages</a>.</p>
 
 <h2 id="Food">Food</h2>
 <p>Food grown each tick = what your <a href="buildings.html#farms">farms</a> grow (times <a href="construction.html#Efficiency">building efficiency</a>) plus {{barren_food}} for each barren acre, times your <a href="effects.html#food_production">food production</a> modifier.</p>

@@ -1,7 +1,7 @@
 <!--
 title: The End of an Age
 category: Mechanics
-updated: 2026-10-02
+updated: 2026-10-06
 -->
 <p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends: every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
 
@@ -29,8 +29,9 @@ updated: 2026-10-02
 
 <h2 id="End">When it ends</h2>
 <ul>
+  <li>Wars still running are settled first, so their war points count: see <a href="war.html#Ending">War</a>.</li>
   <li>Every house hears the winner, its state's rank, its own rank by land, and which heirs it keeps.</li>
-  <li>The world stops: no more commands, and ticks change nothing. The result stays public (<code>GET /ages/{age}</code>).</li>
+  <li>The world stops: no more commands, and ticks change nothing. The result stays public (<code>GET /ages/{age}</code>), with a recap: {{recap_frames}} snapshots of every state's land, might and war points across the age, and the largest houses.</li>
   <li>The next age starts with a new world and its own rules. Your account carries over.</li>
 </ul>
 

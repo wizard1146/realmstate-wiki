@@ -1416,6 +1416,12 @@ def generate(rules):
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
     values["order_lock_minutes"] = f'{p.get("order_min_life_ms", 0) / 60_000:g}'
+    # Wages: thousandths of a unit's training price, and of a gold per soldier. Worked example for
+    # military.html: 1,000 elites trained at 2,000 gold each, and 10,000 soldiers.
+    values["wage_pct"] = f'{p.get("wage_milli", 0) / 10:g}'
+    values["soldier_wage_gold"] = f'{p.get("soldier_wage_milli", 0) / 1000:g}'
+    values["wage_example_elites"] = f'{1_000 * 2_000 * p.get("wage_milli", 0) // 1000:,}'
+    values["wage_example_soldiers"] = f'{10_000 * p.get("soldier_wage_milli", 0) // 1000:,}'
     sq = lambda land: max(0, land - p.get("explore_square_from", 0)) ** 2 // 1000
     xg = lambda land: p["explore_gold_per_acre"] + land * p.get("explore_gold_per_land_milli", 0) // 1000 + sq(land) * p.get("explore_gold_square", 0) // 1000
     xs = lambda land: (land * p.get("explore_soldiers_per_land_milli", 0) + sq(land) * p.get("explore_soldiers_square_milli", 0)) / 1000
