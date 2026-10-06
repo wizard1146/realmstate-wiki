@@ -2,7 +2,7 @@
 """Realmstate wiki build: content/*.html + site/ -> dist/.  Standard library only.
 
     python3 build.py           build into dist/
-    python3 build.py --check   build, and exit 1 if any internal link is broken or a merge conflict is left
+    python3 build.py --check   build, and exit 1 if any internal link or #anchor is broken, or a merge conflict is left
 
 A content file is an HTML fragment that starts with a metadata comment:
 
@@ -349,14 +349,19 @@ def main():
 
     everything = pages + generated
     known = {p["url"] for p in everything} | set(REDIRECTS) | {"search-index.json"}
-    broken = []
+    broken, ids, fragments = [], {}, []
     for p in everything:
-        (DIST / p["url"]).write_text(render(template, nav, p, related=related_box(p, groups, home, pages)), encoding="utf-8")
+        out = render(template, nav, p, related=related_box(p, groups, home, pages))
+        (DIST / p["url"]).write_text(out, encoding="utf-8")
+        whole = Links(); whole.feed(out); ids[p["url"]] = whole.ids     # ids on the finished page, TOC included
         lp = Links(); lp.feed(p["body"])
         for href in lp.hrefs:
-            if re.match(r"^(https?:|mailto:|#)", href): continue
-            target = href.split("#")[0]
+            if re.match(r"^(https?:|mailto:)", href): continue
+            target, _, frag = href.partition("#")
             if target and target not in known: broken.append((p["slug"], href))
+            elif frag and "{{" not in frag: fragments.append((p["slug"], target or p["url"], frag, href))
+    # A link to page.html#part needs an element with id="part" on that page.
+    broken += [(slug, href) for slug, url, frag, href in fragments if url in ids and frag not in ids[url]]
     for p in pages:
         undated = add_data_notes(p)[1]
         if undated: print(f"WARNING: {p['slug']}: {undated} table(s) have no date (add 'updated: YYYY-MM-DD' to the page header)", file=sys.stderr)
