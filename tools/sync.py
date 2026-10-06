@@ -70,6 +70,7 @@ STAT_TEXT = {
     "adept_strength": "Your adepts' strength in a rite's roll, cast or resisted",
     "hex_damage": "What your hexes take or wreck",
     "hex_damage_taken": "What hexes take or wreck of yours",
+    "dragon_damage": "What a dragon's raid burns of yours",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
@@ -379,7 +380,7 @@ STAT_SHORT = {
     "refine_yield": "Refining Yield", "paper_books": "Books per Paper", "ward": "Ward", "casualties_attacking": "Offensive Losses",
     "casualties_defending": "Defensive Losses", "attack_gains": "Attack Gains", "mercenary_cost": "Mercenary Cost",
     "peasant_growth": "Birth Rate", "aether_production": "Aether Production", "aether_cost": "Rite Cost",
-    "adept_strength": "Adept Strength", "hex_damage": "Hex Damage", "hex_damage_taken": "Hex Damage Taken",
+    "adept_strength": "Adept Strength", "hex_damage": "Hex Damage", "hex_damage_taken": "Hex Damage Taken", "dragon_damage": "Dragon Damage",
 }
 SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"}
 
@@ -387,7 +388,7 @@ SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"
 # Stats where a lower number is better for the house (fewer dead, cheaper, faster). Everything else: higher is better.
 LOWER_IS_BETTER = {"food_consumption", "explore_cost", "training_cost", "return_time", "casualties", "casualties_attacking",
                    "casualties_defending", "land_loss", "construction_cost", "construction_time", "training_time", "thief_losses",
-                   "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost", "hex_damage_taken"}
+                   "upgrade_cost", "building_materials", "general_cost", "mercenary_cost", "aether_cost", "hex_damage_taken", "dragon_damage"}
 
 
 def effect_entries(d, stats, short=False, params=None):
@@ -1163,6 +1164,12 @@ def generate(rules):
             parts.append(f'their defense bonuses count for {pct(k["defense_bonus_bp"])}%')
         if k.get("attacker_losses_bp", 10_000) != 10_000:
             parts.append(f'{k["attacker_losses_bp"] / 10_000:g}&times; your usual losses')
+        if k.get("win_ratio_bp", 10_000) != 10_000:
+            parts.append(f'wins when your offense beats {pct(k["win_ratio_bp"])}% of their defense')
+        if k.get("defender_losses_bp", 10_000) != 10_000:
+            parts.append(f'they lose {k["defender_losses_bp"] / 10_000:g}&times; the usual troops')
+        if k.get("choose_building"):
+            parts.append("you name a building type: the land comes from it first, then from barren land")
         if k.get("breached_ticks"):
             parts.append(f'afterwards they stay breached for {k["breached_ticks"]} ticks (defense bonuses at {pct(k["breached_bonus_bp"])}% against anyone)')
         if k.get("renown"):
@@ -1189,6 +1196,10 @@ def generate(rules):
             needs.append(f'1 <a href="materials.html">{e(k["cost_material"])}</a> per {k["troops_per_material"]} troops sent, spent win or lose')
         if k.get("war_only"):
             needs.append("war with their state")
+        if k.get("gate"):
+            g = k["gate"]
+            needs.append(f'a subscription (before the <a href="truths.html#{e(g["truth"])}">breakthrough</a>)' if g.get("lesser")
+                         else f'the <a href="truths.html#{e(g["truth"])}">{e(next((t["name"] for t in lp.get("truths", []) if t["id"] == g["truth"]), g["truth"]))}</a> breakthrough')
         return "<br>".join(needs) or "any target"
 
     attack_rows = "".join(
@@ -1303,13 +1314,31 @@ def generate(rules):
 
     # Truths and quests. The asks are left out: they would tell a seeker which Truth it seeks.
     truths = lp.get("truths", [])
+    gated = {g["truth"]: b for b, g in lp.get("gated_buildings", {}).items() if not g.get("lesser")}
+    def truth_does(tid):
+        text = {
+            lp.get("chariots_truth"): f'Chariots may be built (a horse, {lp.get("chariot_material_cost", 0)} {e(lp.get("chariot_material", ""))} and {lp.get("chariot_gold", 0)} gold each; +{lp.get("chariot_offense", 0)} offense on attacks). Nobody can build them before.',
+            lp.get("transmute_truth"): f'The <code>transmute</code> command: {lp.get("transmute_in", 0)} of one material and {lp.get("transmute_aether", 0)} aether make 1 of another, up to {lp.get("transmute_max", 0)} a cast. '
+                                       f'Lesser rite (subscribers): {lp.get("transmute_lesser_in", 0)} to 1.',
+            "flanked_ambush": 'The <a href="attacks.html#flanked_ambush">Flanked Ambush</a> attack. Lesser version (subscribers): <a href="attacks.html#lesser_ambush">Lesser Flanked Ambush</a>.',
+        }.get(tid)
+        if not text and tid in gated:
+            text = f'<a href="buildings.html#{e(gated[tid])}">Dragon Walls</a> against <a href="#dragons">dragons</a>. Lesser version (subscribers): Lesser Dragon Walls.'
+        return f": {text}" if text else ""
+    dragons = (f'<h2 id="dragons">Dragons</h2>\n<p>From tick {lp.get("dragon_from_tick", 0)}, every {lp.get("dragon_every_ticks", 0)} ticks a dragon raids one house, '
+               "chosen at random among the houses in the top third by land that are not protected. "
+               f'Its strength is {lp.get("dragon_strength_bp", 0) / 10_000:g}&times; the median defense at home of those houses. A house whose defense beats it drives it off and earns '
+               f'{lp.get("dragon_renown", 0)} renown. Otherwise it burns {pct(lp.get("dragon_buildings_bp", 0))}% of the buildings, {pct(lp.get("dragon_troops_bp", 0))}% of the troops at home '
+               f'and {pct(lp.get("dragon_peasants_bp", 0))}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). '
+               "Every other house hears which realm it struck.</p>\n") if lp.get("dragon_every_ticks") else ""
     if truths:
         kinds = (("breakthrough", "Breakthroughs"), ("wonder", "Wonder plans"))
         pages["truths.html"] = header("Truths and Quests", "Rules") + (
             f"<p>{len(truths)} Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, "
             f"and so may its state; {lp.get('truth_notice_ticks', 0)} ticks later every house hears which state uncovered it, and may use it too. "
             "What each Truth does is on its own page as it is built.</p>\n"
-            + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b></li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
+            + "".join(f'<h2 id="{k}">{title}</h2>\n<ul>\n' + "".join(f'<li id="{e(t["id"])}"><b>{e(t["name"])}</b>{truth_does(t["id"])}</li>\n' for t in truths if t["kind"] == k) + "</ul>\n" for k, title in kinds if any(t["kind"] == k for t in truths))
+            + dragons
             + '<h2 id="quests">Quests</h2>\n<ul>\n'
             f'<li><b>Who may be invited:</b> an academic with {lp.get("quest_academic_attributes", 0)}+ attributes, or a general with {lp.get("quest_general_traits", 0)}+ traits, '
             f'of a house with {lp.get("quest_min_land", 0):,}+ acres that is not protected and on no quest.</li>\n'
@@ -1554,7 +1583,7 @@ def generate(rules):
             values[k] = "on" if v else "off"
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and abs(v) >= 10_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

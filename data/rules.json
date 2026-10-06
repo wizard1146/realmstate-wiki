@@ -6,7 +6,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "88ee9ebd87afd23b",
+          "hash": "22a22c091260f158",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -58,6 +58,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -67,7 +68,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8729663065826666",
+          "hash": "46798f25db4e7fb9",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -119,6 +120,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -128,7 +130,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "bd02150ec73de240",
+          "hash": "41aad041c29bc2ba",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -180,6 +182,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -189,7 +192,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "412fa532f78b4e66",
+          "hash": "63628de5488d3742",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -241,6 +244,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -250,7 +254,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "31c68548755bea3f",
+          "hash": "66e372fb29691e73",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -280,6 +284,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -853,7 +858,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "17c0608505aaaa32",
+      "hash": "a830d0b5d288e54f",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -983,8 +988,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 10000,
             "id": "assault",
             "ignores_protection": false,
@@ -1001,7 +1009,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 10000,
@@ -1009,8 +1018,11 @@
             "attacker_losses_bp": 30000,
             "breached_bonus_bp": 7500,
             "breached_ticks": 6,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 5000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "breach",
             "ignores_protection": false,
@@ -1027,7 +1039,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 4000,
@@ -1035,8 +1048,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 5000,
             "id": "reclaim",
             "ignores_protection": true,
@@ -1053,7 +1069,8 @@
             "takes": "reclaim",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 800,
@@ -1061,8 +1078,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": "resin",
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "torch",
             "ignores_protection": false,
@@ -1079,7 +1099,8 @@
             "takes": "buildings",
             "troops_per_material": 20,
             "war_bonus_bp": 400,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 600,
@@ -1103,8 +1124,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 12000,
             "id": "sack",
             "ignores_protection": false,
@@ -1121,7 +1145,8 @@
             "takes": "resources",
             "troops_per_material": 0,
             "war_bonus_bp": 300,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 300,
@@ -1135,8 +1160,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 20000,
             "id": "massacre",
             "ignores_protection": false,
@@ -1153,7 +1181,8 @@
             "takes": "people",
             "troops_per_material": 0,
             "war_bonus_bp": 200,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 200,
@@ -1161,8 +1190,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "blockade",
             "ignores_protection": true,
@@ -1179,7 +1211,8 @@
             "takes": "blockade",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 1000,
@@ -1187,8 +1220,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 0,
             "id": "raze",
             "ignores_protection": true,
@@ -1205,7 +1241,8 @@
             "takes": "destroy",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           }
         ],
         "auction_max_ticks": 48,
@@ -1231,6 +1268,7 @@
         "chariot_material": "timber",
         "chariot_material_cost": 1,
         "chariot_offense": 2,
+        "chariots_truth": null,
         "constructing_living": 15,
         "construction_ticks": 16,
         "court_auction_ticks": 24,
@@ -1253,6 +1291,13 @@
         "draft_default_bp": 2000,
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
+        "dragon_buildings_bp": 0,
+        "dragon_every_ticks": 0,
+        "dragon_from_tick": 0,
+        "dragon_peasants_bp": 0,
+        "dragon_renown": 0,
+        "dragon_strength_bp": 0,
+        "dragon_troops_bp": 0,
         "eowcf_ticks": 96,
         "explorable_bank_ticks": 0,
         "explorable_from_land": 0,
@@ -1269,6 +1314,7 @@
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,
         "food_per_person_milli": 250,
+        "gated_buildings": {},
         "general_cost": 50,
         "general_death_bp": 500,
         "general_elites": 100,
@@ -2391,6 +2437,11 @@
         "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "transmute_aether": 0,
+        "transmute_in": 0,
+        "transmute_lesser_in": 0,
+        "transmute_max": 0,
+        "transmute_truth": null,
         "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
@@ -2472,7 +2523,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8026919fdcab3c2d",
+          "hash": "91a16e1370384542",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -2480,6 +2531,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -2533,7 +2585,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7449bf7d84ccbe8e",
+          "hash": "1c71402fe72eeb0b",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -2585,6 +2637,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -2594,7 +2647,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "161224cbfca94326",
+          "hash": "92b19182b4f11ece",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -2603,6 +2656,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -2893,7 +2947,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ff8adc52c884c03b",
+          "hash": "619dce21060887b3",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -2901,6 +2955,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -3015,7 +3070,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "a4bbba8e1754abfa",
+          "hash": "cb8cbf9cce39ce91",
           "key": {
             "identity": "orc",
             "version": "v1"
@@ -3028,6 +3083,7 @@
             0,
             1000,
             -500,
+            0,
             0,
             0,
             0,
@@ -3137,7 +3193,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "6545d83d1ebbf1d1",
+          "hash": "a223e83d4bbbdb49",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -3188,6 +3244,7 @@
             0,
             0,
             1000,
+            0,
             0,
             0
           ],
@@ -3259,7 +3316,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "1b56fdb2d9afa169",
+          "hash": "139cfcbb59c257b6",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -3275,6 +3332,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -3381,7 +3439,7 @@
         {
           "conditional": [],
           "flags": 1,
-          "hash": "800af2e69f003351",
+          "hash": "b765349d6d59222e",
           "key": {
             "identity": "undead",
             "version": "v1"
@@ -3390,6 +3448,7 @@
           "mods_bp": [
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -3829,7 +3888,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c8846a34dcdc394b",
+          "hash": "f15a754d3c079da3",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -3881,6 +3940,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -3890,7 +3950,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8f6f0e85e2574505",
+          "hash": "19a9110693783933",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -3942,6 +4002,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -3951,7 +4012,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "122ee6b598f02984",
+          "hash": "f04d7fcffc479fbe",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -4003,6 +4064,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -4012,7 +4074,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8524134ab3352fb9",
+          "hash": "9b81622e35a5302d",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -4064,6 +4126,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -4073,7 +4136,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "665750df5cee4782",
+          "hash": "7c01af1a7b927128",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -4125,6 +4188,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -4139,7 +4203,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "88ee9ebd87afd23b",
+          "hash": "22a22c091260f158",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -4191,6 +4255,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -4200,7 +4265,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8729663065826666",
+          "hash": "46798f25db4e7fb9",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -4252,6 +4317,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -4261,7 +4327,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "bd02150ec73de240",
+          "hash": "41aad041c29bc2ba",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -4313,6 +4379,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -4322,7 +4389,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "412fa532f78b4e66",
+          "hash": "63628de5488d3742",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -4374,6 +4441,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -4383,7 +4451,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "31c68548755bea3f",
+          "hash": "66e372fb29691e73",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -4413,6 +4481,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -5011,7 +5080,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "84ad2013fd1a76c5",
+      "hash": "a15ccf0a61d9165a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5141,8 +5210,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 10000,
             "id": "assault",
             "ignores_protection": false,
@@ -5159,7 +5231,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 10000,
@@ -5167,8 +5240,11 @@
             "attacker_losses_bp": 30000,
             "breached_bonus_bp": 7500,
             "breached_ticks": 6,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 5000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "breach",
             "ignores_protection": false,
@@ -5185,7 +5261,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 4000,
@@ -5193,8 +5270,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 5000,
             "id": "reclaim",
             "ignores_protection": true,
@@ -5211,7 +5291,8 @@
             "takes": "reclaim",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 800,
@@ -5219,8 +5300,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": "resin",
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "torch",
             "ignores_protection": false,
@@ -5237,7 +5321,8 @@
             "takes": "buildings",
             "troops_per_material": 20,
             "war_bonus_bp": 400,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 600,
@@ -5261,8 +5346,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 12000,
             "id": "sack",
             "ignores_protection": false,
@@ -5279,7 +5367,8 @@
             "takes": "resources",
             "troops_per_material": 0,
             "war_bonus_bp": 300,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 300,
@@ -5293,8 +5382,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 20000,
             "id": "massacre",
             "ignores_protection": false,
@@ -5311,7 +5403,8 @@
             "takes": "people",
             "troops_per_material": 0,
             "war_bonus_bp": 200,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 200,
@@ -5319,8 +5412,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "blockade",
             "ignores_protection": true,
@@ -5337,7 +5433,8 @@
             "takes": "blockade",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 1000,
@@ -5345,8 +5442,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 0,
             "id": "raze",
             "ignores_protection": true,
@@ -5363,7 +5463,8 @@
             "takes": "destroy",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           }
         ],
         "auction_max_ticks": 48,
@@ -5389,6 +5490,7 @@
         "chariot_material": "timber",
         "chariot_material_cost": 1,
         "chariot_offense": 2,
+        "chariots_truth": null,
         "constructing_living": 15,
         "construction_ticks": 16,
         "court_auction_ticks": 24,
@@ -5411,6 +5513,13 @@
         "draft_default_bp": 2000,
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
+        "dragon_buildings_bp": 0,
+        "dragon_every_ticks": 0,
+        "dragon_from_tick": 0,
+        "dragon_peasants_bp": 0,
+        "dragon_renown": 0,
+        "dragon_strength_bp": 0,
+        "dragon_troops_bp": 0,
         "eowcf_ticks": 96,
         "explorable_bank_ticks": 0,
         "explorable_from_land": 0,
@@ -5427,6 +5536,7 @@
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,
         "food_per_person_milli": 250,
+        "gated_buildings": {},
         "general_cost": 50,
         "general_death_bp": 500,
         "general_elites": 100,
@@ -6549,6 +6659,11 @@
         "train_price_bp": 0,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "transmute_aether": 0,
+        "transmute_in": 0,
+        "transmute_lesser_in": 0,
+        "transmute_max": 0,
+        "transmute_truth": null,
         "treasury_overflow": false,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
@@ -6630,7 +6745,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8026919fdcab3c2d",
+          "hash": "91a16e1370384542",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -6638,6 +6753,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -6691,7 +6807,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7449bf7d84ccbe8e",
+          "hash": "1c71402fe72eeb0b",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -6743,6 +6859,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -6752,7 +6869,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "161224cbfca94326",
+          "hash": "92b19182b4f11ece",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -6761,6 +6878,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -6813,7 +6931,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "21726e0e83b0a0f2",
+          "hash": "e045db9c726a732f",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -6827,6 +6945,7 @@
             0,
             0,
             -2000,
+            0,
             0,
             0,
             0,
@@ -7111,7 +7230,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ff8adc52c884c03b",
+          "hash": "619dce21060887b3",
           "key": {
             "identity": "human",
             "version": "v1"
@@ -7119,6 +7238,7 @@
           "lineage_from": null,
           "mods_bp": [
             500,
+            0,
             0,
             0,
             0,
@@ -7233,7 +7353,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "ea952063c06fd20c",
+          "hash": "345333caaaa962d9",
           "key": {
             "identity": "orc",
             "version": "v2"
@@ -7248,6 +7368,7 @@
             -500,
             0,
             -500,
+            0,
             0,
             0,
             0,
@@ -7355,7 +7476,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "6545d83d1ebbf1d1",
+          "hash": "a223e83d4bbbdb49",
           "key": {
             "identity": "elf",
             "version": "v1"
@@ -7406,6 +7527,7 @@
             0,
             0,
             1000,
+            0,
             0,
             0
           ],
@@ -7477,7 +7599,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "1b56fdb2d9afa169",
+          "hash": "139cfcbb59c257b6",
           "key": {
             "identity": "dwarf",
             "version": "v1"
@@ -7493,6 +7615,7 @@
             0,
             0,
             -1000,
+            0,
             0,
             0,
             0,
@@ -7602,7 +7725,7 @@
         {
           "conditional": [],
           "flags": 3,
-          "hash": "4ffe4fdb1da69848",
+          "hash": "595612f215fadb9c",
           "key": {
             "identity": "revenant",
             "version": "v1"
@@ -7611,6 +7734,7 @@
           "mods_bp": [
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -8047,7 +8171,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c8846a34dcdc394b",
+          "hash": "f15a754d3c079da3",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -8099,6 +8223,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -8108,7 +8233,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8f6f0e85e2574505",
+          "hash": "19a9110693783933",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -8160,6 +8285,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -8169,7 +8295,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "122ee6b598f02984",
+          "hash": "f04d7fcffc479fbe",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -8221,6 +8347,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -8230,7 +8357,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8524134ab3352fb9",
+          "hash": "9b81622e35a5302d",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -8282,6 +8409,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -8291,7 +8419,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "665750df5cee4782",
+          "hash": "7c01af1a7b927128",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -8343,6 +8471,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Virtuic",
@@ -8357,7 +8486,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "88ee9ebd87afd23b",
+          "hash": "22a22c091260f158",
           "key": {
             "identity": "adept",
             "version": "v1"
@@ -8409,6 +8538,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Adept",
@@ -8418,7 +8548,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8729663065826666",
+          "hash": "46798f25db4e7fb9",
           "key": {
             "identity": "prodigious",
             "version": "v1"
@@ -8470,6 +8600,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prodigious",
@@ -8479,7 +8610,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "bd02150ec73de240",
+          "hash": "41aad041c29bc2ba",
           "key": {
             "identity": "prolific",
             "version": "v1"
@@ -8531,6 +8662,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Prolific",
@@ -8540,7 +8672,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "412fa532f78b4e66",
+          "hash": "63628de5488d3742",
           "key": {
             "identity": "shrewd",
             "version": "v1"
@@ -8592,6 +8724,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Shrewd",
@@ -8601,7 +8734,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "31c68548755bea3f",
+          "hash": "66e372fb29691e73",
           "key": {
             "identity": "wise",
             "version": "v1"
@@ -8631,6 +8764,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -8812,6 +8946,41 @@
         {
           "capacity": [],
           "construction_ticks": 0,
+          "description": "Dragons burn less of your house.",
+          "extra_gold": 0,
+          "hash": "435f97cf442d106c",
+          "jobs": 15,
+          "key": {
+            "identity": "dragon_walls",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 0,
+          "materials": [
+            [
+              2,
+              10
+            ],
+            [
+              6,
+              5
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -300,
+              "max_bp": -6000,
+              "stat": "DragonDamage"
+            }
+          ],
+          "name": "Dragon Walls",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
           "description": "Grow food.",
           "extra_gold": 0,
           "hash": "7724c2e31fce8192",
@@ -8908,6 +9077,37 @@
             }
           ],
           "name": "Hospitals",
+          "produce": [],
+          "trait_slots": 0
+        },
+        {
+          "capacity": [],
+          "construction_ticks": 0,
+          "description": "Dragons burn a little less of your house.",
+          "extra_gold": 0,
+          "hash": "881612d8367100b0",
+          "jobs": 15,
+          "key": {
+            "identity": "lesser_dragon_walls",
+            "version": "v1"
+          },
+          "lineage_from": null,
+          "living": 0,
+          "materials": [
+            [
+              2,
+              10
+            ]
+          ],
+          "max_count": 0,
+          "mods": [
+            {
+              "base_bp": -100,
+              "max_bp": -2000,
+              "stat": "DragonDamage"
+            }
+          ],
+          "name": "Lesser Dragon Walls",
           "produce": [],
           "trait_slots": 0
         },
@@ -9365,9 +9565,21 @@
           "identity": "banks",
           "kind": "building",
           "to": "banks@v2"
+        },
+        {
+          "from": null,
+          "identity": "dragon_walls",
+          "kind": "building",
+          "to": "dragon_walls@v1"
+        },
+        {
+          "from": null,
+          "identity": "lesser_dragon_walls",
+          "kind": "building",
+          "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "916694f32bcdda2a",
+      "hash": "3a31000526e4517d",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9505,8 +9717,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 10000,
             "id": "assault",
             "ignores_protection": false,
@@ -9523,7 +9738,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 10000,
@@ -9531,8 +9747,11 @@
             "attacker_losses_bp": 30000,
             "breached_bonus_bp": 7500,
             "breached_ticks": 6,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 5000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "breach",
             "ignores_protection": false,
@@ -9549,7 +9768,8 @@
             "takes": "land",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 4000,
@@ -9557,8 +9777,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 5000,
             "id": "reclaim",
             "ignores_protection": true,
@@ -9575,7 +9798,8 @@
             "takes": "reclaim",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 800,
@@ -9583,8 +9807,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": "resin",
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "torch",
             "ignores_protection": false,
@@ -9601,7 +9828,8 @@
             "takes": "buildings",
             "troops_per_material": 20,
             "war_bonus_bp": 400,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 600,
@@ -9625,8 +9853,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 12000,
             "id": "sack",
             "ignores_protection": false,
@@ -9643,7 +9874,74 @@
             "takes": "resources",
             "troops_per_material": 0,
             "war_bonus_bp": 300,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
+          },
+          {
+            "amount_bp": 4000,
+            "army_bonuses": [],
+            "attacker_losses_bp": 10000,
+            "breached_bonus_bp": 10000,
+            "breached_ticks": 0,
+            "choose_building": true,
+            "cost_material": null,
+            "defender_losses_bp": 15000,
+            "defense_bonus_bp": 10000,
+            "gate": {
+              "lesser": false,
+              "truth": "flanked_ambush"
+            },
+            "hostility_bp": 12000,
+            "id": "flanked_ambush",
+            "ignores_protection": false,
+            "name": "Flanked Ambush",
+            "overkill_max_bp": 10000,
+            "own_state": false,
+            "range_min_bp": 0,
+            "renown": true,
+            "requires_building": null,
+            "requires_inactive_ticks": 0,
+            "requires_science": null,
+            "requires_science_bp": 0,
+            "requires_trait": null,
+            "takes": "land",
+            "troops_per_material": 0,
+            "war_bonus_bp": 0,
+            "war_only": false,
+            "win_ratio_bp": 8000
+          },
+          {
+            "amount_bp": 2500,
+            "army_bonuses": [],
+            "attacker_losses_bp": 10000,
+            "breached_bonus_bp": 10000,
+            "breached_ticks": 0,
+            "choose_building": false,
+            "cost_material": null,
+            "defender_losses_bp": 12500,
+            "defense_bonus_bp": 10000,
+            "gate": {
+              "lesser": true,
+              "truth": "flanked_ambush"
+            },
+            "hostility_bp": 12000,
+            "id": "lesser_ambush",
+            "ignores_protection": false,
+            "name": "Lesser Flanked Ambush",
+            "overkill_max_bp": 10000,
+            "own_state": false,
+            "range_min_bp": 0,
+            "renown": true,
+            "requires_building": null,
+            "requires_inactive_ticks": 0,
+            "requires_science": null,
+            "requires_science_bp": 0,
+            "requires_trait": null,
+            "takes": "land",
+            "troops_per_material": 0,
+            "war_bonus_bp": 0,
+            "war_only": false,
+            "win_ratio_bp": 9000
           },
           {
             "amount_bp": 300,
@@ -9657,8 +9955,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 20000,
             "id": "massacre",
             "ignores_protection": false,
@@ -9675,7 +9976,8 @@
             "takes": "people",
             "troops_per_material": 0,
             "war_bonus_bp": 200,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 200,
@@ -9683,8 +9985,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 15000,
             "id": "blockade",
             "ignores_protection": true,
@@ -9701,7 +10006,8 @@
             "takes": "blockade",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           },
           {
             "amount_bp": 1000,
@@ -9709,8 +10015,11 @@
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
             "breached_ticks": 0,
+            "choose_building": false,
             "cost_material": null,
+            "defender_losses_bp": 10000,
             "defense_bonus_bp": 10000,
+            "gate": null,
             "hostility_bp": 0,
             "id": "raze",
             "ignores_protection": true,
@@ -9727,7 +10036,8 @@
             "takes": "destroy",
             "troops_per_material": 0,
             "war_bonus_bp": 0,
-            "war_only": false
+            "war_only": false,
+            "win_ratio_bp": 10000
           }
         ],
         "auction_max_ticks": 48,
@@ -9753,6 +10063,7 @@
         "chariot_material": "timber",
         "chariot_material_cost": 1,
         "chariot_offense": 2,
+        "chariots_truth": "chariots",
         "constructing_living": 15,
         "construction_ticks": 16,
         "court_auction_ticks": 24,
@@ -9775,6 +10086,13 @@
         "draft_default_bp": 2000,
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
+        "dragon_buildings_bp": 300,
+        "dragon_every_ticks": 36,
+        "dragon_from_tick": 280,
+        "dragon_peasants_bp": 200,
+        "dragon_renown": 300,
+        "dragon_strength_bp": 12000,
+        "dragon_troops_bp": 400,
         "eowcf_ticks": 96,
         "explorable_bank_ticks": 48,
         "explorable_from_land": 400,
@@ -9791,6 +10109,16 @@
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,
         "food_per_person_milli": 250,
+        "gated_buildings": {
+          "dragon_walls": {
+            "lesser": false,
+            "truth": "dragon_wall"
+          },
+          "lesser_dragon_walls": {
+            "lesser": true,
+            "truth": "dragon_wall"
+          }
+        },
         "general_cost": 50,
         "general_death_bp": 500,
         "general_elites": 100,
@@ -10978,6 +11306,11 @@
         "train_price_bp": 20000,
         "train_spread_ticks": 2,
         "train_ticks": 9,
+        "transmute_aether": 100,
+        "transmute_in": 4,
+        "transmute_lesser_in": 8,
+        "transmute_max": 200,
+        "transmute_truth": "transmutation",
         "treasury_overflow": true,
         "tribute_bp": 2000,
         "tribute_ticks": 168,
@@ -11340,7 +11673,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8026919fdcab3c2d",
+          "hash": "91a16e1370384542",
           "key": {
             "identity": "merchant",
             "version": "v1"
@@ -11348,6 +11681,7 @@
           "lineage_from": null,
           "mods_bp": [
             1000,
+            0,
             0,
             0,
             0,
@@ -11401,7 +11735,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "7449bf7d84ccbe8e",
+          "hash": "1c71402fe72eeb0b",
           "key": {
             "identity": "warrior",
             "version": "v1"
@@ -11453,6 +11787,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Warrior",
@@ -11462,7 +11797,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "161224cbfca94326",
+          "hash": "92b19182b4f11ece",
           "key": {
             "identity": "sage",
             "version": "v1"
@@ -11471,6 +11806,7 @@
           "mods_bp": [
             0,
             200,
+            0,
             0,
             0,
             0,
@@ -11523,7 +11859,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "21726e0e83b0a0f2",
+          "hash": "e045db9c726a732f",
           "key": {
             "identity": "explorer",
             "version": "v1"
@@ -11575,6 +11911,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Explorer",
@@ -11584,7 +11921,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "fd81c4598bd46ca0",
+          "hash": "c89d0b0e3700834e",
           "key": {
             "identity": "spymaster",
             "version": "v1"
@@ -11636,6 +11973,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Spymaster",
@@ -11645,7 +11983,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "085142e249338832",
+          "hash": "c9d98260de9f5484",
           "key": {
             "identity": "mystic",
             "version": "v1"
@@ -11697,6 +12035,7 @@
             -1000,
             0,
             0,
+            0,
             0
           ],
           "name": "The Mystic",
@@ -11706,7 +12045,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "3ceb101d947df174",
+          "hash": "3e355bbad6df71af",
           "key": {
             "identity": "quartermaster",
             "version": "v1"
@@ -11758,6 +12097,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Quartermaster",
@@ -11767,7 +12107,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "89a9afcc00af31bf",
+          "hash": "95aadd568e42ca61",
           "key": {
             "identity": "prospector",
             "version": "v1"
@@ -11819,6 +12159,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "The Prospector",
@@ -11828,13 +12169,14 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "0a05c1c55fa716c1",
+          "hash": "c58b94bc773c1d33",
           "key": {
             "identity": "zealot",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
+            0,
             0,
             0,
             0,
@@ -11898,7 +12240,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "4c27249517be1a72",
+          "hash": "41e05674e8b5f7b3",
           "key": {
             "identity": "herald",
             "version": "v1"
@@ -11932,6 +12274,7 @@
             0,
             500,
             2500,
+            0,
             0,
             0,
             0,
@@ -12201,7 +12544,7 @@
             }
           ],
           "flags": 0,
-          "hash": "94e93c0a30968fab",
+          "hash": "eeef036ac21baf55",
           "key": {
             "identity": "ashcliffe",
             "version": "v1"
@@ -12246,6 +12589,7 @@
             0,
             -2000,
             -1500,
+            0,
             0,
             0,
             0,
@@ -12352,7 +12696,7 @@
             }
           ],
           "flags": 0,
-          "hash": "d4eb8c03dd160293",
+          "hash": "adf45034f7688af0",
           "key": {
             "identity": "echolalian",
             "version": "v1"
@@ -12396,6 +12740,7 @@
             0,
             0,
             500,
+            0,
             0,
             0,
             0,
@@ -12484,13 +12829,14 @@
         {
           "conditional": [],
           "flags": 4,
-          "hash": "dd6c143dde35b8c3",
+          "hash": "89672e160b7c5991",
           "key": {
             "identity": "saltborn",
             "version": "v1"
           },
           "lineage_from": null,
           "mods_bp": [
+            0,
             0,
             0,
             0,
@@ -12632,7 +12978,7 @@
             }
           ],
           "flags": 0,
-          "hash": "23a8db0e671e936a",
+          "hash": "03568b99e81992fe",
           "key": {
             "identity": "peridian",
             "version": "v1"
@@ -12677,6 +13023,7 @@
             0,
             0,
             1500,
+            0,
             0,
             0,
             0,
@@ -12781,7 +13128,7 @@
             }
           ],
           "flags": 0,
-          "hash": "82e63a49b8d9431a",
+          "hash": "44ff2ab04a198c5b",
           "key": {
             "identity": "freehomes",
             "version": "v1"
@@ -12807,6 +13154,7 @@
             0,
             -2000,
             -3000,
+            0,
             0,
             0,
             0,
@@ -12920,7 +13268,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "cf3cdd0a45232886",
+          "hash": "c665d525f2d9cb87",
           "key": {
             "identity": "unlithian",
             "version": "v1"
@@ -12967,6 +13315,7 @@
             0,
             0,
             -3000,
+            0,
             0,
             0,
             0,
@@ -13056,7 +13405,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "965bc8c23c7c59ac",
+          "hash": "32753e474dff3da7",
           "key": {
             "identity": "troll",
             "version": "v1"
@@ -13084,6 +13433,7 @@
             0,
             0,
             2000,
+            0,
             0,
             0,
             0,
@@ -13205,7 +13555,7 @@
             }
           ],
           "flags": 0,
-          "hash": "484cc95a29f9c5b4",
+          "hash": "10ebac7fbdbacf78",
           "key": {
             "identity": "drow",
             "version": "v1"
@@ -13253,6 +13603,7 @@
             700,
             0,
             -2000,
+            0,
             0,
             0,
             0,
@@ -13346,7 +13697,7 @@
             }
           ],
           "flags": 0,
-          "hash": "b84b2c9cac9045b5",
+          "hash": "fe91f26dba0737aa",
           "key": {
             "identity": "mycellian",
             "version": "v1"
@@ -13395,6 +13746,7 @@
             0,
             0,
             1200,
+            0,
             0,
             0,
             0,
@@ -13505,7 +13857,7 @@
         {
           "conditional": [],
           "flags": 1,
-          "hash": "1e8e6e336efe5cf5",
+          "hash": "04908e5f66ef3614",
           "key": {
             "identity": "daemon",
             "version": "v1"
@@ -13555,6 +13907,7 @@
             0,
             0,
             700,
+            0,
             0,
             0,
             0
@@ -13939,9 +14292,11 @@
         40,
         0,
         0,
+        0,
         60,
         20,
         30,
+        0,
         0,
         0,
         0,
@@ -13958,7 +14313,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "c8846a34dcdc394b",
+          "hash": "f15a754d3c079da3",
           "key": {
             "identity": "anointed",
             "version": "v1"
@@ -14010,6 +14365,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Anointed",
@@ -14019,7 +14375,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8f6f0e85e2574505",
+          "hash": "19a9110693783933",
           "key": {
             "identity": "bellator",
             "version": "v1"
@@ -14071,6 +14427,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Bellator",
@@ -14080,7 +14437,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "122ee6b598f02984",
+          "hash": "f04d7fcffc479fbe",
           "key": {
             "identity": "grandmaster",
             "version": "v1"
@@ -14132,6 +14489,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Grandmaster",
@@ -14141,7 +14499,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "8524134ab3352fb9",
+          "hash": "9b81622e35a5302d",
           "key": {
             "identity": "pathfinder",
             "version": "v1"
@@ -14193,6 +14551,7 @@
             0,
             0,
             0,
+            0,
             0
           ],
           "name": "Pathfinder",
@@ -14202,7 +14561,7 @@
         {
           "conditional": [],
           "flags": 0,
-          "hash": "665750df5cee4782",
+          "hash": "7c01af1a7b927128",
           "key": {
             "identity": "virtuic",
             "version": "v1"
@@ -14219,6 +14578,7 @@
             0,
             0,
             1000,
+            0,
             0,
             0,
             0,
@@ -14599,7 +14959,8 @@
       "aether_cost",
       "adept_strength",
       "hex_damage",
-      "hex_damage_taken"
+      "hex_damage_taken",
+      "dragon_damage"
     ],
     "unit_slots": [
       "soldier",

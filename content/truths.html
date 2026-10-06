@@ -6,10 +6,10 @@ generated: tools/sync.py
 <p>8 Truths wait to be uncovered this age, each once per world. A house that uncovers one may use it at once, and so may its state; 16 ticks later every house hears which state uncovered it, and may use it too. What each Truth does is on its own page as it is built.</p>
 <h2 id="breakthrough">Breakthroughs</h2>
 <ul>
-<li id="chariots"><b>Chariots</b></li>
-<li id="flanked_ambush"><b>Flanked Ambush</b></li>
-<li id="transmutation"><b>Transmutation Rite</b></li>
-<li id="dragon_wall"><b>Dragon Wall</b></li>
+<li id="chariots"><b>Chariots</b>: Chariots may be built (a horse, 1 timber and 100 gold each; +2 offense on attacks). Nobody can build them before.</li>
+<li id="flanked_ambush"><b>Flanked Ambush</b>: The <a href="attacks.html#flanked_ambush">Flanked Ambush</a> attack. Lesser version (subscribers): <a href="attacks.html#lesser_ambush">Lesser Flanked Ambush</a>.</li>
+<li id="transmutation"><b>Transmutation Rite</b>: The <code>transmute</code> command: 4 of one material and 100 aether make 1 of another, up to 200 a cast. Lesser rite (subscribers): 8 to 1.</li>
+<li id="dragon_wall"><b>Dragon Wall</b>: <a href="buildings.html#dragon_walls">Dragon Walls</a> against <a href="#dragons">dragons</a>. Lesser version (subscribers): Lesser Dragon Walls.</li>
 </ul>
 <h2 id="wonder">Wonder plans</h2>
 <ul>
@@ -18,6 +18,8 @@ generated: tools/sync.py
 <li id="deep_sea_haven"><b>Deep Sea Haven</b></li>
 <li id="paradise_of_trees"><b>Paradise of Trees</b></li>
 </ul>
+<h2 id="dragons">Dragons</h2>
+<p>From tick 280, every 36 ticks a dragon raids one house, chosen at random among the houses in the top third by land that are not protected. Its strength is 1.2&times; the median defense at home of those houses. A house whose defense beats it drives it off and earns 300 renown. Otherwise it burns 3% of the buildings, 4% of the troops at home and 2% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). Every other house hears which realm it struck.</p>
 <h2 id="quests">Quests</h2>
 <ul>
 <li><b>Who may be invited:</b> an academic with 2+ attributes, or a general with 1+ traits, of a house with 600+ acres that is not protected and on no quest.</li>
@@ -27,4 +29,4 @@ generated: tools/sync.py
 <li><b>Success:</b> 1,000 renown, and the Truth.</li>
 </ul>
 <p>Subscribers may use lesser versions of some breakthroughs before they are uncovered. Command: <code>answer_quest</code> (see <a href="api.html">API for Tools</a>).</p>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>916694f32bcdda2a</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>3a31000526e4517d</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
