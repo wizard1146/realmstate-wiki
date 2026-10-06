@@ -1259,8 +1259,9 @@ def generate(rules):
     def rite_needs(r):
         return f'<br><span class="cell-muted">needs {"war" if r["needs"] == "war" else e(r["needs"]) + " or war"}</span>' if r.get("needs") else ""
     def rite_unfriendly(r):
-        bp = r.get("unfriendly_cost_bp", 10_000)
-        return f'<br><span class="cell-muted">{r["aether"] * bp // 10_000:,} aether while only unfriendly</span>' if bp != 10_000 else ""
+        bp, per = r.get("unfriendly_cost_bp", 10_000), r.get("incense_per_1000_acres", 0)
+        more = f'<br><span class="cell-muted">+{per} {e(lp["rite_material"])} per 1,000 acres beyond {lp.get("rite_cost_land", 0):,}</span>' if per else ""
+        return more + (f'<br><span class="cell-muted">{r["aether"] * bp // 10_000:,} aether while only unfriendly</span>' if bp != 10_000 else "")
     def rite_row(r):
         return (f'<tr id="{e(r["id"])}"><td><b>{e(r["name"])}</b><br><code>{e(r["id"])}</code>{rite_needs(r)}</td><td>{rite_does(r)}</td>'
                 f'<td class="cell-num">{r["aether"]:,}{" + " + str(r["incense"]) + " " + e(lp["rite_material"]) if r.get("incense") else ""}'
