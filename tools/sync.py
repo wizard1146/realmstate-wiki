@@ -23,6 +23,15 @@ GEN_MARK = "generated: tools/sync.py"
 
 # Plain-language meaning of each effect type. A new effect type in the game must be described here;
 # --check fails until it is.
+# The Buildings page's groups, in the order of the game's Build page (realmstate-lab views/line/build.js GROUPS).
+BUILDING_GROUPS = [
+    ("Economy", ["banks", "farms", "homes", "mills", "trading_houses"]),
+    ("Learning", ["libraries", "universities"]),
+    ("Military", ["armouries", "barracks", "forts", "castles", "hospitals", "stables", "training_grounds"]),
+    ("Shadows and magic", ["thieves_dens", "watch_towers", "shrines", "watchstones"]),
+    ("Great works", ["ancestral_hall", "dragon_walls", "lesser_dragon_walls"]),
+]
+
 STAT_TEXT = {
     "income": "Gold earned from peasants each tick",
     "population": "How many people the land can hold",
@@ -1077,21 +1086,25 @@ def generate(rules):
         if b["extra_gold"]:
             parts.insert(0, f'{b["extra_gold"]:,} extra gold')
         return ", ".join(parts) or "Gold only"
-    brow = []
+    brow = {}
     for k, b in enumerate(latest.get("buildings", [])):
         ticks = b["construction_ticks"] or latest["params"]["construction_ticks"]
         limit = f'{b["max_count"]} per house' if b["max_count"] else ""
-        brow.append(f'<tr id="{b["key"]["identity"]}"><td><b>{e(b["name"])}</b><br><span class="cell-muted">{e(b["description"])}</span></td>'
+        brow[b["key"]["identity"]] = (f'<tr id="{b["key"]["identity"]}"><td><b>{e(b["name"])}</b><br><span class="cell-muted">{e(b["description"])}</span></td>'
                     f'<td>{building_effects(b)}</td><td class="cell-num">{b["living"]}</td><td class="cell-num">{b["jobs"]}</td>'
                     f'<td>{building_cost(b)}</td><td class="cell-num">{ticks}</td><td class="cell-num">{latest["starting_buildings"][k]}</td><td>{limit}</td></tr>')
     if brow:
+        # By purpose, as the game's Build page groups them; any building not listed goes under Other.
+        listed = [i for _, ids in BUILDING_GROUPS for i in ids]
+        groups = [(g, [i for i in ids if i in brow]) for g, ids in BUILDING_GROUPS] + [("Other", [i for i in brow if i not in listed])]
+        head = ('<tr><th>Building</th><th>Effects</th><th class="cell-num">Houses (people)</th><th class="cell-num">Jobs</th>'
+                '<th>Extra cost</th><th class="cell-num">Build time (ticks)</th><th class="cell-num">A new house starts with</th><th>Limit</th></tr>\n')
+        tables = "".join(f'<h3 id="group-{snake(g.replace(" ", "_"))}">{e(g)}</h3>\n<div class="table-scroll" data-updated="none"><table>\n'
+                         + head + "\n".join(brow[i] for i in ids) + "\n</table></div>\n" for g, ids in groups if ids)
         pages["buildings.html"] = header("Buildings", "Rules, Buildings") + (
             '<p>Every building is built on one acre of barren land. See <a href="construction.html">Land and Construction</a> for costs, '
             'building efficiency and how percentage effects grow.</p>\n'
-            f'<h2 id="current">In {e(latest["name"])}</h2>\n<div class="table-scroll" data-updated="none"><table>\n'
-            '<tr><th>Building</th><th>Effects</th><th class="cell-num">Houses (people)</th><th class="cell-num">Jobs</th>'
-            '<th>Extra cost</th><th class="cell-num">Build time (ticks)</th><th class="cell-num">A new house starts with</th><th>Limit</th></tr>\n'
-            + "\n".join(brow) + "\n</table></div>\n" + source_note(latest))
+            f'<h2 id="current">In {e(latest["name"])}</h2>\n' + tables + source_note(latest))
 
     # Sciences, by category.
     cats = ["economy", "military", "arcane"]
