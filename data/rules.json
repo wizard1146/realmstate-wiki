@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "431be02a809c46dd",
+      "hash": "31e04750b7d24ae3",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -986,6 +986,7 @@
         "aid_values": {},
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "attacker_min_losses": 1,
         "attacks": [
           {
             "amount_bp": 10000,
@@ -2535,6 +2536,7 @@
         "war_win_renown": 100,
         "ward_max_bp": 8000,
         "waver_ticks": 24,
+        "weak_attack_bp": 2500,
         "wonder_refund_bp": 0,
         "wonders": []
       },
@@ -5117,7 +5119,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "cd5f0052d9ed6eb5",
+      "hash": "62acfb8f27a82913",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5240,6 +5242,7 @@
         "aid_values": {},
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "attacker_min_losses": 1,
         "attacks": [
           {
             "amount_bp": 10000,
@@ -6789,6 +6792,7 @@
         "war_win_renown": 100,
         "ward_max_bp": 8000,
         "waver_ticks": 24,
+        "weak_attack_bp": 2500,
         "wonder_refund_bp": 0,
         "wonders": []
       },
@@ -9659,7 +9663,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "7c0bdb5174b364e9",
+      "hash": "b440e3399d90ac6a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9790,6 +9794,7 @@
         },
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
+        "attacker_min_losses": 1,
         "attacks": [
           {
             "amount_bp": 10000,
@@ -11816,6 +11821,7 @@
         "war_win_renown": 100,
         "ward_max_bp": 8000,
         "waver_ticks": 24,
+        "weak_attack_bp": 2500,
         "wonder_refund_bp": 5000,
         "wonders": [
           {
