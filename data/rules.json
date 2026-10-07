@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "232ab2cdc10f1b3e",
+      "hash": "b1d216826cf3d334",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1361,6 +1361,9 @@
         "loyal_ticks": 72,
         "luck_bp": 500,
         "market_fee_bp": 500,
+        "market_ref_max_move_bp": 0,
+        "market_ref_min_units": 0,
+        "market_ref_share_bp": 10000,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
@@ -5120,7 +5123,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "8a461146f668378c",
+      "hash": "4be992a9632d227c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5618,6 +5621,9 @@
         "loyal_ticks": 72,
         "luck_bp": 500,
         "market_fee_bp": 500,
+        "market_ref_max_move_bp": 0,
+        "market_ref_min_units": 0,
+        "market_ref_share_bp": 10000,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
@@ -9665,7 +9671,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "39ee891cbcbce91a",
+      "hash": "3729ce3279dcda80",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10302,6 +10308,9 @@
         "loyal_ticks": 72,
         "luck_bp": 500,
         "market_fee_bp": 500,
+        "market_ref_max_move_bp": 1000,
+        "market_ref_min_units": 20,
+        "market_ref_share_bp": 2500,
         "medic_gold": 250,
         "medic_material": "sulfur",
         "medic_material_cost": 1,
