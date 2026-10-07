@@ -93,6 +93,7 @@
   "build_cost_offset": "10,000",
   "ceasefire_max_ticks": 504,
   "ceasefire_min_ticks": 24,
+  "chance_bands_pct": "20% \u2192 40% \u2192 60% \u2192 80%",
   "chariot_gold": 100,
   "chariot_horses": 1,
   "chariot_material": "timber",

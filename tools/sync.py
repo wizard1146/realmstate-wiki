@@ -147,6 +147,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_contest_min_bp", "Spying: lowest chance from the thieves' contest", "pct"),
     ("spy_chance_min_bp", "Spying: lowest final chance of an operation", "pct"),
     ("spy_chance_max_bp", "Spying: highest chance of an operation", "pct"),
+    ("chance_bands_bp", "Spying and rites: edges of the chance bands a sender is told (very low, low, even, good, very good), basis points", "list"),
     ("spy_loss_bp", "Spying: thieves caught when it fails", "pct"),
     ("nerve_regen_bp", "Spying: Nerve recovered a tick", "pct"),
     ("protection_ticks", "Age: new-house protection (ticks)", "n"),
