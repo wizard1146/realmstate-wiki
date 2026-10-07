@@ -74,6 +74,7 @@
   "aid_ticks": 2,
   "attack_return_ticks": 12,
   "attacker_loss_pct": "8",
+  "attacker_min_losses": 1,
   "auction_max_ticks": 48,
   "auction_min_ticks": 12,
   "auto_war_points": "180",
@@ -300,5 +301,6 @@
   "war_win_renown": 100,
   "ward_max_pct": "80",
   "waver_ticks": 24,
+  "weak_attack_pct": "25",
   "wonder_refund_pct": "50"
 }
