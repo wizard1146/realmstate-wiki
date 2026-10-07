@@ -858,7 +858,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "3b7a71d553778771",
+      "hash": "a722b6e54490c875",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2420,7 +2420,9 @@
         "spy_chance_min_bp": 100,
         "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
+        "starting_academics": 0,
         "starting_food": 60000,
+        "starting_generals": 0,
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
@@ -5091,7 +5093,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "3e29b47cb944e7a8",
+      "hash": "9b7c7a79cc6f103a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6653,7 +6655,9 @@
         "spy_chance_min_bp": 100,
         "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
+        "starting_academics": 0,
         "starting_food": 60000,
+        "starting_generals": 0,
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,
@@ -9601,7 +9605,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "17a61575030c890e",
+      "hash": "1db72ce69ee112b2",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11311,7 +11315,9 @@
         "spy_chance_min_bp": 100,
         "spy_contest_min_bp": 500,
         "spy_loss_bp": 500,
+        "starting_academics": 1,
         "starting_food": 60000,
+        "starting_generals": 1,
         "starting_gold": 150000,
         "starting_land": 400,
         "starting_peasants": 8000,

@@ -71,6 +71,7 @@ STAT_TEXT = {
     "hex_damage": "What your hexes take or wreck",
     "hex_damage_taken": "What hexes take or wreck of yours",
     "dragon_damage": "What a dragon's raid burns of yours",
+    "dragon_defense": "Your defense at home against dragons only",
 }
 PRODUCT_TEXT = {"gold": "gold", "food": "food", "horses": "horses", "renown": "renown", "aether": "aether", "adepts": "adepts (drawn from peasants)"}
 FLAG_TEXT = {
@@ -96,6 +97,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("starting_soldiers", "Of those, starting soldiers", "n"),
     ("starting_gold", "Starting gold", "n"),
     ("starting_food", "Starting food", "n"),
+    ("starting_generals", "Free generals a new house starts with", "n"),
+    ("starting_academics", "Free academics a new house starts with", "n"),
     ("peasant_growth_bp", "Peasant growth per tick", "pct"),
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
     ("train_price_bp", "Training prices, as a share of the race files' unit prices", "pct"),
@@ -287,7 +290,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
 # The prefix is dropped from the label when it just repeats the group's name. Anything unmatched lands in "Other".
 PARAM_GROUPS = [
     ("World", {"realms", "states_per_realm", "houses_per_state", "tick_ms"}, ()),
-    ("Starting a house", {"starting_land", "starting_peasants", "starting_soldiers", "starting_gold", "starting_food"}, ()),
+    ("Starting a house", {"starting_land", "starting_peasants", "starting_soldiers", "starting_gold", "starting_food", "starting_generals", "starting_academics"}, ()),
     ("Population and food", {"peasant_growth_bp", "gold_per_peasant", "food_per_person_milli", "starvation_bp", "starvation_soldiers_bp", "starvation_specialists_bp", "starvation_elites_bp"}, ()),
     ("Land and construction", {"explore_gold_per_acre", "explore_gold_per_land_milli", "explore_soldiers_per_land_milli", "explore_ticks"}, ("Land", "Construction", "Razing", "Efficiency")),
     ("Economy", set(), ("Economy",)),
@@ -388,6 +391,7 @@ STAT_SHORT = {
     "casualties_defending": "Defensive Losses", "attack_gains": "Attack Gains", "mercenary_cost": "Mercenary Cost",
     "peasant_growth": "Birth Rate", "aether_production": "Aether Production", "aether_cost": "Rite Cost",
     "adept_strength": "Adept Strength", "hex_damage": "Hex Damage", "hex_damage_taken": "Hex Damage Taken", "dragon_damage": "Dragon Damage",
+    "dragon_defense": "Dragon Defense",
 }
 SHORT_WHEN = {"overpopulated": "when Overpopulated", "well_fed": "when Well Fed"}
 
@@ -1357,12 +1361,37 @@ def generate(rules):
                               f'<td class="cell-num">{w["ticks"]} ticks</td><td class="cell-num">{w["house_renown"]:,} to the house, {w["state_renown"]:,} to each house of its state</td></tr>\n' for w in wonder_list)
                     + "</table></div>\n<p>Commands: <code>start_wonder</code>, <code>fund_wonder</code>, <code>revive</code>. Renown counts in the "
                     '<a href="end-of-age.html#Scoring">age\'s score</a>.</p>\n') if wonder_list else ""
+    def dragon_burns(d):
+        out = []
+        if d.get("gold_bp"):
+            out.append(f'{pct(d["gold_bp"])}% of the gold')
+        if d.get("materials_bp"):
+            out.append(f'{pct(d["materials_bp"])}% of each material in store')
+        if d.get("food_bp"):
+            out.append(f'{pct(d["food_bp"])}% of the food')
+        if d.get("science_bp"):
+            out.append(f'{pct(d["science_bp"])}% of the books learnt in every science')
+        if d.get("horses_bp"):
+            out.append(f'{pct(d["horses_bp"])}% of the horses at home')
+        if d.get("chariots_bp"):
+            out.append(f'{pct(d["chariots_bp"])}% of the chariots at home')
+        if d.get("peasants_scale_bp", 10_000) != 10_000:
+            out.append(f'{d["peasants_scale_bp"] / 10_000:g}&times; the peasants')
+        return ", ".join(out) or "nothing more"
+    dragon_kinds = lp.get("dragons", [])
+    dragon_table = ('<p>Each dragon is of a kind, drawn evenly, and has a name of its own: each kind has its own sound. '
+                    'On top of the losses above, a dragon that isn\'t driven off burns:</p>\n'
+                    '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Dragon</th><th>Also burns</th></tr>\n'
+                    + "".join(f'<tr id="dragon-{e(d["id"])}"><td><b>{e(d["name"])}</b><br><code>{e(d["id"])}</code></td><td>{dragon_burns(d)}</td></tr>\n' for d in dragon_kinds)
+                    + "</table></div>\n") if dragon_kinds else ""
     dragons = ('<h2 id="dragons">Dragons</h2>\n<p>From tick {{dragon_from_tick}}, every {{dragon_every_ticks}} ticks a dragon raids one house, '
-               "chosen at random among the houses in the top third by land that are not protected. "
-               'Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense beats it drives it off and earns '
+               "chosen at random among the houses in the top third by land that are not protected. The raid is over within the tick: there is no warning. "
+               'Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense, raised by its '
+               '<a href="effects.html#dragon_defense"><code>dragon_defense</code></a> (Dragon Walls), beats it drives it off and earns '
                '{{dragon_renown}} renown. Otherwise it burns {{dragon_buildings_pct}}% of the buildings, {{dragon_troops_pct}}% of the troops at home '
-               'and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). '
-               "Every other house hears which realm it struck.</p>\n") if lp.get("dragon_every_ticks") else ""
+               'and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls).</p>\n'
+               + dragon_table +
+               "<p>The raided house hears the dragon's name and kind and what it lost. Every other house hears the dragon's name and kind and which realm it struck.</p>\n") if lp.get("dragon_every_ticks") else ""
     if truths:
         kinds = (("breakthrough", "Breakthroughs"), ("wonder", "Wonder plans"))
         pages["truths.html"] = header("Truths and Quests", "Rules") + (
@@ -1628,7 +1657,7 @@ def generate(rules):
             values[k] = "on" if v else "off"
         elif isinstance(v, dict) and k == "season_offsets":
             values[k] = ", ".join(f"{m} {t:,}" for m, t in sorted(v.items(), key=lambda kv: kv[1]))
-        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "wonders", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
+        elif k not in ("tick_ms", "food_per_person_milli", "general_trait_renown", "academic_attribute_books", "rescue_bp_per_medic", "heir_slots_renown", "attacks", "operations", "hit_protection", "rites", "vigils", "realm_works", "truths", "gated_buildings", "wonders", "dragons", "recovery_mods", "peace_dividend_mods", "size_gains", "build_cost_per_land_milli", "raze_cost_per_land_milli", "science_ranks"):
             values[k] = f"{v:,}" if isinstance(v, int) and not isinstance(v, bool) and abs(v) >= 1_000 else v
     pages["_values.json"] = json.dumps(values, indent=2) + "\n"
     return pages, problems

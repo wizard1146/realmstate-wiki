@@ -19,7 +19,8 @@ generated: tools/sync.py
 <li id="paradise_of_trees"><b>Paradise of Trees</b>: the plan for the <a href="#wonder-paradise_of_trees">Paradise of Trees</a> wonder.</li>
 </ul>
 <h2 id="dragons">Dragons</h2>
-<p>From tick {{dragon_from_tick}}, every {{dragon_every_ticks}} ticks a dragon raids one house, chosen at random among the houses in the top third by land that are not protected. Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense beats it drives it off and earns {{dragon_renown}} renown. Otherwise it burns {{dragon_buildings_pct}}% of the buildings, {{dragon_troops_pct}}% of the troops at home and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls). Every other house hears which realm it struck.</p>
+<p>From tick {{dragon_from_tick}}, every {{dragon_every_ticks}} ticks a dragon raids one house, chosen at random among the houses in the top third by land that are not protected. The raid is over within the tick: there is no warning. Its strength is {{dragon_strength_pct}}% of the median defense at home of those houses. A house whose defense, raised by its <a href="effects.html#dragon_defense"><code>dragon_defense</code></a> (Dragon Walls), beats it drives it off and earns {{dragon_renown}} renown. Otherwise it burns {{dragon_buildings_pct}}% of the buildings, {{dragon_troops_pct}}% of the troops at home and {{dragon_peasants_pct}}% of the peasants, less what <a href="effects.html#dragon_damage"><code>dragon_damage</code></a> cuts (Dragon Walls).</p>
+<p>The raided house hears the dragon's name and kind and what it lost. Every other house hears the dragon's name and kind and which realm it struck.</p>
 <h2 id="wonders">World Wonders</h2>
 <p>Each wonder can be built once per world, by a house that knows its plan (its Truth). The house starts it; houses of its state fund it with gold and its materials; once funded it takes the ticks below to finish. The first to finish owns it, and the world hears. Any other build of it stops, and {{wonder_refund_pct}}% of what it was given goes back to the house that started it.</p>
 <div class="table-scroll" data-updated="none"><table>
@@ -39,4 +40,4 @@ generated: tools/sync.py
 <li><b>Success:</b> {{quest_renown}} renown, and the Truth.</li>
 </ul>
 <p>Subscribers may use lesser versions of some breakthroughs before they are uncovered. Command: <code>answer_quest</code> (see <a href="api.html">API for Tools</a>).</p>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>17a61575030c890e</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>1db72ce69ee112b2</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
