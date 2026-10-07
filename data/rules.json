@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "31e04750b7d24ae3",
+      "hash": "232ab2cdc10f1b3e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -975,6 +975,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_cap_default_tenths": -1,
         "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 0,
@@ -5119,7 +5120,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "62acfb8f27a82913",
+      "hash": "8a461146f668378c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5231,6 +5232,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_cap_default_tenths": -1,
         "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 0,
@@ -9663,7 +9665,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "b440e3399d90ac6a",
+      "hash": "d7ac99843e9ad8f4",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9775,6 +9777,7 @@
         "academic_material_cost": 50,
         "academic_pick_books": 100000,
         "academic_universities": 100,
+        "adept_cap_default_tenths": 20,
         "adept_gather_bp": 2500,
         "age_ticks": 1680,
         "aid_fade_bp": 100,
@@ -10168,7 +10171,7 @@
         "direct_fail_bp": 600,
         "direct_spread_ticks": 3,
         "direct_time_bp": 5000,
-        "draft_default_bp": 2000,
+        "draft_default_bp": 5500,
         "draft_max_bp": 9000,
         "draft_speed_bp": 100,
         "dragon_buildings_bp": 300,
@@ -14558,8 +14561,8 @@
         0,
         0,
         0,
-        0,
         10,
+        0,
         10,
         0,
         20,

@@ -192,6 +192,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("rite_full_share_bp", "Rites: shrine share of land for a lasting rite's full length", "pct"),
     ("rite_min_duration_bp", "Rites: share of that length with no shrines", "pct"),
     ("adept_gather_bp", "Rites: share of shrines' adept output gathered each tick", "pct"),
+    ("adept_cap_default_tenths", "Rites: adepts an acre a new house's shrines stop gathering at (each house can change it)", "tenths"),
     ("resilience_max_bp", "Rites: most Spell Resilience a house can have", "pct"),
     ("resilience_decay_bp", "Rites: Spell Resilience fading a tick", "pct"),
     ("vengeance_gain_bp", "Rites: share of a hex's resilience its target gains as Countercast Vengeance", "pct"),
@@ -339,6 +340,8 @@ def show_param(value, how):
         return f"{value / 10:g}%"
     if how == "milli":
         return f"{value / 1000:g}"
+    if how == "tenths":
+        return "no limit" if value < 0 else f"{value / 10:.1f}"
     if how == "text":
         return e(str(value))
     if how == "list":
