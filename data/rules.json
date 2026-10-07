@@ -9665,7 +9665,7 @@
           "to": "lesser_dragon_walls@v1"
         }
       ],
-      "hash": "d7ac99843e9ad8f4",
+      "hash": "39ee891cbcbce91a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11439,7 +11439,7 @@
         "starting_generals": 1,
         "starting_gold": 150000,
         "starting_land": 400,
-        "starting_peasants": 8000,
+        "starting_peasants": 7000,
         "starting_scientists": 6,
         "starting_soldiers": 400,
         "starvation_bp": 100,
