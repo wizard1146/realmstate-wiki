@@ -9703,7 +9703,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "b25fe91c74dc2f16",
+      "hash": "194ae68e7a9ce8c4",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11472,7 +11472,7 @@
         "soldier_def": 1,
         "soldier_name": "Soldiers",
         "soldier_off": 1,
-        "soldier_wage_milli": 500,
+        "soldier_wage_milli": 220,
         "spoil_free": 50,
         "spoil_free_per_acre": 1,
         "spoil_max_bp": 500,
@@ -11864,7 +11864,7 @@
             "ticks": 24
           }
         ],
-        "wage_milli": 2,
+        "wage_milli": 1,
         "war_end_margin_bp": 300,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
