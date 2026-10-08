@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "0cd76bd3e835b77e",
+      "hash": "14044d9295aa8012",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2476,6 +2476,11 @@
         "tribute_ticks": 168,
         "truth_notice_ticks": 0,
         "truths": [],
+        "unclaimed_from": "empty_states",
+        "unclaimed_hold_ticks": 0,
+        "unclaimed_markup_bp": 0,
+        "unclaimed_ramp_ticks": 0,
+        "unclaimed_share_bp": 10000,
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,
@@ -5131,7 +5136,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "2be84cfdc3f70cb5",
+      "hash": "663d2409181b60ae",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6744,6 +6749,11 @@
         "tribute_ticks": 168,
         "truth_notice_ticks": 0,
         "truths": [],
+        "unclaimed_from": "empty_states",
+        "unclaimed_hold_ticks": 0,
+        "unclaimed_markup_bp": 0,
+        "unclaimed_ramp_ticks": 0,
+        "unclaimed_share_bp": 10000,
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,
@@ -9693,7 +9703,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "19e665f31f6012dc",
+      "hash": "b25fe91c74dc2f16",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11791,6 +11801,11 @@
             "name": "Paradise of Trees"
           }
         ],
+        "unclaimed_from": "empty_states",
+        "unclaimed_hold_ticks": 48,
+        "unclaimed_markup_bp": 30000,
+        "unclaimed_ramp_ticks": 168,
+        "unclaimed_share_bp": 3000,
         "unfriendly_gain_bp": 400,
         "unfriendly_points": 1500,
         "upgrade_bonus_bp": 2500,

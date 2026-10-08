@@ -282,6 +282,11 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("order_min_life_ms", "Market: time an order stands before it can be cancelled", "minutes"),
     ("market_ref_full_units", "Market: units traded in a tick for the reference price's full move", "n"),
     ("market_ref_share_bp", "Market: share of the gap to the tick's average price the reference moves in a full tick", "pct"),
+    ("unclaimed_from", "Market: whose output the stewards sell (empty_states: any state with no houses; empty_realms: realms with none)", "text"),
+    ("unclaimed_share_bp", "Market: share of that output the stewards collect", "pct"),
+    ("unclaimed_markup_bp", "Market: the stewards' price, of the reference price (0: no stewards)", "pct"),
+    ("unclaimed_ramp_ticks", "Market: ticks from the age's start until the stewards collect their full share", "n"),
+    ("unclaimed_hold_ticks", "Market: most the stewards hold of each material, in ticks of one realm's output", "n"),
     ("market_ref_max_move_bp", "Market: most the reference price moves in a full tick, of itself (0: no limit)", "pct"),
     ("spoil_free", "Spoilage: units of each material a house keeps free", "n"),
     ("spoil_free_per_acre", "Spoilage: more free units per acre of land", "n"),
@@ -1578,6 +1583,7 @@ def generate(rules):
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
     values["order_lock_minutes"] = f'{p.get("order_min_life_ms", 0) / 60_000:g}'
+    values["unclaimed_from_text"] = "realms with no houses at all" if p.get("unclaimed_from") == "empty_realms" else "every state with no houses"
     # Wages: thousandths of a unit's training price, and of a gold per soldier. Worked example for
     # military.html: 1,000 elites trained at 2,000 gold each, and 10,000 soldiers.
     values["wage_pct"] = f'{p.get("wage_milli", 0) / 10:g}'
