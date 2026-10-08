@@ -178,6 +178,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),
     ("score_per_war_point", "Age: score per war point (out of 100)", "pct"),
     ("might_unit_pct", "Age: might per troop, as a share of its offense plus defense", "n"),
+    ("might_thief", "Age: might per thief", "n"),
+    ("might_adept", "Age: might per adept", "n"),
     ("might_medic", "Age: might per medic", "n"),
     ("might_horse", "Age: might per horse", "n"),
     ("might_chariot", "Age: might per chariot", "n"),

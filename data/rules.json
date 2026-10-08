@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "14044d9295aa8012",
+      "hash": "1c2cee6e6902ac05",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1383,11 +1383,13 @@
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
+        "might_adept": 0,
         "might_character": 500,
         "might_chariot": 3,
         "might_horse": 1,
         "might_medic": 2,
         "might_per_100_books": 1,
+        "might_thief": 0,
         "might_unit_pct": 75,
         "nerve_fail_extra_bp": 5000,
         "nerve_regen_bp": 400,
@@ -5136,7 +5138,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "663d2409181b60ae",
+      "hash": "ff28474a2393dd2c",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5656,11 +5658,13 @@
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
+        "might_adept": 0,
         "might_character": 500,
         "might_chariot": 3,
         "might_horse": 1,
         "might_medic": 2,
         "might_per_100_books": 1,
+        "might_thief": 0,
         "might_unit_pct": 75,
         "nerve_fail_extra_bp": 5000,
         "nerve_regen_bp": 400,
@@ -9703,7 +9707,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "194ae68e7a9ce8c4",
+      "hash": "84bea24daee269ef",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10362,11 +10366,13 @@
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
+        "might_adept": 2,
         "might_character": 500,
         "might_chariot": 3,
         "might_horse": 1,
         "might_medic": 2,
         "might_per_100_books": 1,
+        "might_thief": 3,
         "might_unit_pct": 75,
         "nerve_fail_extra_bp": 5000,
         "nerve_regen_bp": 400,
