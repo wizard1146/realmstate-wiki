@@ -240,6 +240,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("constructing_living", "Land: people each acre under construction houses", "n"),
     ("build_cost_per_land_milli", "Construction: gold per acre of land, thousandths", "n"),
     ("build_cost_offset", "Construction: land added before costing", "n"),
+    ("build_cost_floor_bp", "Construction: least a building costs, of its base gold, however many cuts stack", "pct"),
+    ("explore_cost_floor_bp", "Land: least exploring costs, of its base gold, however many cuts stack", "pct"),
     ("construction_ticks", "Construction: ticks to build", "n"),
     ("raze_cost_base", "Razing: base gold per building", "n"),
     ("raze_cost_per_land_milli", "Razing: gold per acre of land, thousandths", "n"),

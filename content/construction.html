@@ -16,6 +16,7 @@ updated: 2026-10-06
 <h2 id="Building">Building and razing</h2>
 <ul>
   <li>A building costs {{build_cost_per_land}} &times; (your land + {{build_cost_offset}}) gold, less what your <a href="buildings.html#mills">mills</a> save. A new house pays {{example_build_cost}} gold a building.</li>
+  <li>However many cuts stack (mills, Masons' Blessing, war recovery, science), a building never costs less than {{build_cost_floor_pct}}% of that base gold.</li>
   <li>Some buildings also cost materials (forts and castles use limestone) or extra gold. See <a href="buildings.html">Buildings</a>.</li>
   <li>Construction takes {{construction_ticks}} ticks, unless a building says otherwise.</li>
   <li>Razing costs {{raze_cost_base}} + {{raze_cost_per_land}} &times; your land gold a building. The land is barren again at once.</li>

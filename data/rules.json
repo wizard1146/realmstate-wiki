@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "f2fc9257699f9a51",
+      "hash": "0cd76bd3e835b77e",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1266,6 +1266,7 @@
         "books_per_paper": 5,
         "books_per_spy": 50,
         "books_per_thousand_fee": 100,
+        "build_cost_floor_bp": 0,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -1318,6 +1319,7 @@
         "explorable_max_bp": 0,
         "explorable_min_bp": 0,
         "explorable_to_land": 0,
+        "explore_cost_floor_bp": 0,
         "explore_gold_per_acre": 300,
         "explore_gold_per_land_milli": 750,
         "explore_gold_square": 0,
@@ -5129,7 +5131,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "0b275f93a2b6a8ff",
+      "hash": "2be84cfdc3f70cb5",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5532,6 +5534,7 @@
         "books_per_paper": 5,
         "books_per_spy": 50,
         "books_per_thousand_fee": 100,
+        "build_cost_floor_bp": 0,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -5584,6 +5587,7 @@
         "explorable_max_bp": 0,
         "explorable_min_bp": 0,
         "explorable_to_land": 0,
+        "explore_cost_floor_bp": 0,
         "explore_gold_per_acre": 300,
         "explore_gold_per_land_milli": 750,
         "explore_gold_square": 0,
@@ -9246,11 +9250,11 @@
           "construction_ticks": 0,
           "description": "Cheaper construction and exploring.",
           "extra_gold": 0,
-          "hash": "564c194b65eace3d",
+          "hash": "d287aca4fdd9b577",
           "jobs": 25,
           "key": {
             "identity": "mills",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "living": 25,
@@ -9258,8 +9262,8 @@
           "max_count": 0,
           "mods": [
             {
-              "base_bp": -400,
-              "max_bp": -10000,
+              "base_bp": -300,
+              "max_bp": -7500,
               "stat": "ConstructionCost"
             },
             {
@@ -9681,9 +9685,15 @@
           "identity": "lesser_dragon_walls",
           "kind": "building",
           "to": "lesser_dragon_walls@v1"
+        },
+        {
+          "from": "mills@v1",
+          "identity": "mills",
+          "kind": "building",
+          "to": "mills@v2"
         }
       ],
-      "hash": "f33ef7a3f72f8a87",
+      "hash": "19e665f31f6012dc",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10160,6 +10170,7 @@
         "books_per_paper": 5,
         "books_per_spy": 50,
         "books_per_thousand_fee": 100,
+        "build_cost_floor_bp": 2500,
         "build_cost_offset": 10000,
         "build_cost_per_land_milli": 50,
         "ceasefire_max_ticks": 504,
@@ -10268,6 +10279,7 @@
         "explorable_max_bp": 25,
         "explorable_min_bp": 1,
         "explorable_to_land": 1500,
+        "explore_cost_floor_bp": 2500,
         "explore_gold_per_acre": 300,
         "explore_gold_per_land_milli": 750,
         "explore_gold_square": 1000,
