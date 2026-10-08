@@ -13,7 +13,7 @@ updated: 2026-10-06
 <tr><td><code>GET /houses/{id}</code></td><td>Your own house in full; any other house's public facts (name, address, race, land, renown, might)</td></tr>
 <tr><td><code>GET /states/{realm}/{state}</code></td><td>A state's houses (public facts)</td></tr>
 <tr><td><code>GET /market</code></td><td>Every material: producing realms, output this tick, last trade (price, and units and gold traded in its tick), <code>reference</code> price (see <a href="trade.html#Reference">Trade</a>), open orders by price</td></tr>
-<tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count and leader</td></tr>
+<tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count, leader and <code>ranks</code> (as <code>GET /state</code> gives them; null for a state with no house)</td></tr>
 <tr><td><code>GET /state</code></td><td>Your state: members, leader, vote counts, treasury, war <code>recovery</code> (<code>{"share_bp", "until_tick"}</code> or null) and <code>peace_dividend</code> (<code>{"from_tick", "active"}</code>, or null while at war), and <code>ranks</code>: where the state stands among every state with a house, by <code>land</code>, <code>might</code> and <code>renown</code>, each <code>{"total", "rank", "of"}</code> (the total over its houses; 1 is first; ties share a rank) (signed in)</td></tr>
 <tr><td><code>GET /colloquium</code></td><td>Your state's Colloquium: projects, tiers, knowledge, decay, contributors (signed in)</td></tr>
 <tr><td><code>GET /hall</code></td><td>The Hall of Deeds: every listing, with the character's profile and record, and auction state</td></tr>
