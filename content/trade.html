@@ -41,7 +41,7 @@ updated: 2026-10-06
   <li>The book shows prices and quantities, never who placed them.</li>
 </ul>
 <h3 id="Fee">The market fee</h3>
-<p>The fee is paid by the order that <b>fills against a waiting order</b>: {{market_fee_pct}}% of the gold that trade is worth. A buyer pays it on top of the price; a seller has it taken from the gold received. The order that was waiting pays nothing. So posting an order and waiting is free, and taking what's already in the book costs the fee. Treasury orders pay it too.</p>
+<p>The fee is paid by the order that <b>fills against a waiting order</b>: {{market_fee_pct}}% of the gold that trade is worth. A buyer pays it on top of the price; a seller has it taken from the gold received. The order that was waiting pays nothing. So posting an order and waiting is free, and taking what's already in the book costs the fee. Fees round up, on the order's total rather than on each fill, so tiny trades can't dodge them and an order filled by many sellers pays no more than one trade. Treasury orders pay it too.</p>
 <p>The fee is destroyed; it goes to no one. (The {{trade_fee_pct}}% fee to the seller's state is a separate one, for selling characters in the <a href="hall-of-deeds.html">Hall of Deeds</a>.)</p>
 <p><a href="buildings.html#trading_houses">Trading houses</a> cut your fee, down to nothing with enough of them. The fee never goes below zero, so trading back and forth with a friend can only lose gold.</p>
 <h3 id="CrossRealm">The cross-realm fee</h3>
