@@ -9707,7 +9707,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "84bea24daee269ef",
+      "hash": "98569db7c36ce621",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10290,16 +10290,16 @@
         "eowcf_ticks": 96,
         "explorable_bank_ticks": 48,
         "explorable_from_land": 400,
-        "explorable_max_bp": 25,
-        "explorable_min_bp": 1,
-        "explorable_to_land": 1500,
+        "explorable_max_bp": 75,
+        "explorable_min_bp": 2,
+        "explorable_to_land": 6000,
         "explore_cost_floor_bp": 2500,
         "explore_gold_per_acre": 300,
         "explore_gold_per_land_milli": 750,
-        "explore_gold_square": 1000,
+        "explore_gold_square": 250,
         "explore_soldiers_per_land_milli": 5,
-        "explore_soldiers_square_milli": 4,
-        "explore_square_from": 400,
+        "explore_soldiers_square_milli": 1,
+        "explore_square_from": 1400,
         "explore_ticks": 12,
         "false_flag_nerve_bp": 1000,
         "first_refusal_ticks": 6,
