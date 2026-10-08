@@ -1628,7 +1628,7 @@ def generate(rules):
         # In acres a tick a bigger house never gets more (as the engine does).
         return min(at(min(land, hi)), at(lo)) / 1000
     if p.get("explorable_max_bp", 0):
-        values["explorable_examples"] = "; ".join(f'{land:,} acres: {ex_tick(land):.2g} a tick, up to {int(ex_tick(land) * p["explorable_bank_ticks"])} banked' for land in (p["starting_land"], 800, 1200, 2000, 4000))
+        values["explorable_examples"] = "; ".join(f'{land:,} acres: {ex_tick(land):.2g} a tick, up to {int(ex_tick(land) * p["explorable_bank_ticks"])} banked' for land in (p["starting_land"], 2000, 3500, 5000, 6000))
         values["explorable_bank_days"] = f'{p["explorable_bank_ticks"] * p["tick_ms"] / 86_400_000:g}'
     if p.get("aid_ticks", 0):
         values["aid_tax_step_pct"] = pct(p["aid_tax_bp_per_acre_value"])

@@ -39,7 +39,7 @@
   "spoil_example_big_over": "4,500",
   "spoil_example_big_loss": "225",
   "paper_example_books": 50,
-  "explorable_examples": "400 acres: 3 a tick, up to 144 banked; 800 acres: 3 a tick, up to 144 banked; 1,200 acres: 3 a tick, up to 144 banked; 2,000 acres: 3 a tick, up to 144 banked; 4,000 acres: 3 a tick, up to 144 banked",
+  "explorable_examples": "400 acres: 3 a tick, up to 144 banked; 2,000 acres: 3 a tick, up to 144 banked; 3,500 acres: 3 a tick, up to 144 banked; 5,000 acres: 2.2 a tick, up to 103 banked; 6,000 acres: 1.2 a tick, up to 57 banked",
   "explorable_bank_days": "2",
   "aid_tax_step_pct": "0.5",
   "aid_value_list": "explorable 300, soldiers 40, horses 30, material 15, aether 10, food 1, gold 1",
