@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "1c2cee6e6902ac05",
+      "hash": "c76a412e93b60e44",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2374,6 +2374,9 @@
             "war_bonus_bp": 25
           }
         ],
+        "robot_target_cap": 0,
+        "robot_target_cap_war": 0,
+        "robot_war_attack_pace_bp": 10000,
         "science_cap_bp": 0,
         "science_ranks": [
           [
@@ -2458,6 +2461,7 @@
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
+        "third_party_gains_bp": 10000,
         "tick_ms": 3600000,
         "trade_cooldown_ticks": 72,
         "trade_fee_bp": 500,
@@ -2543,6 +2547,8 @@
         ],
         "wage_milli": 0,
         "war_end_margin_bp": 0,
+        "war_explore_allowance_bp": 10000,
+        "war_explore_cost_bp": 10000,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -5138,7 +5144,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "ff28474a2393dd2c",
+      "hash": "2aa19df5114c3fe5",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6649,6 +6655,9 @@
             "war_bonus_bp": 25
           }
         ],
+        "robot_target_cap": 0,
+        "robot_target_cap_war": 0,
+        "robot_war_attack_pace_bp": 10000,
         "science_cap_bp": 0,
         "science_ranks": [
           [
@@ -6733,6 +6742,7 @@
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
+        "third_party_gains_bp": 10000,
         "tick_ms": 3600000,
         "trade_cooldown_ticks": 72,
         "trade_fee_bp": 500,
@@ -6818,6 +6828,8 @@
         ],
         "wage_milli": 0,
         "war_end_margin_bp": 0,
+        "war_explore_allowance_bp": 10000,
+        "war_explore_cost_bp": 10000,
         "war_gain_bp": 1500,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -9707,7 +9719,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "98569db7c36ce621",
+      "hash": "eb236c5221757233",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11406,6 +11418,9 @@
             "war_bonus_bp": 25
           }
         ],
+        "robot_target_cap": 7,
+        "robot_target_cap_war": 15,
+        "robot_war_attack_pace_bp": 20000,
         "science_cap_bp": 2500,
         "science_ranks": [
           [
@@ -11506,6 +11521,7 @@
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
+        "third_party_gains_bp": 2500,
         "tick_ms": 3600000,
         "trade_cooldown_ticks": 72,
         "trade_fee_bp": 500,
@@ -11872,7 +11888,9 @@
         ],
         "wage_milli": 1,
         "war_end_margin_bp": 300,
-        "war_gain_bp": 1500,
+        "war_explore_allowance_bp": 2500,
+        "war_explore_cost_bp": 20000,
+        "war_gain_bp": 5000,
         "war_min_ticks": 48,
         "war_peace_points": 1,
         "war_peace_renown": 30,
