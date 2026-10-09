@@ -175,6 +175,7 @@
   "mercenary_name": "Mercenaries",
   "mercenary_off": 3,
   "mercenary_ratio": 5,
+  "merge_training_timers": "on",
   "meter_decay_pct": "20",
   "meter_decay_min_points": "3",
   "meter_decay_ticks": 24,

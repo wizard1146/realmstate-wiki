@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "c76a412e93b60e44",
+      "hash": "bf2a63bc3371bc28",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1380,6 +1380,7 @@
         "mercenary_name": "Mercenaries",
         "mercenary_off": 3,
         "mercenary_ratio": 5,
+        "merge_training_timers": false,
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
@@ -5144,7 +5145,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "2aa19df5114c3fe5",
+      "hash": "6b8197c688dac3c0",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5661,6 +5662,7 @@
         "mercenary_name": "Mercenaries",
         "mercenary_off": 3,
         "mercenary_ratio": 5,
+        "merge_training_timers": false,
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,
@@ -9719,7 +9721,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "eb236c5221757233",
+      "hash": "9975959b348d8886",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10375,6 +10377,7 @@
         "mercenary_name": "Mercenaries",
         "mercenary_off": 3,
         "mercenary_ratio": 5,
+        "merge_training_timers": true,
         "meter_decay_bp": 2000,
         "meter_decay_min_points": 300,
         "meter_decay_ticks": 24,

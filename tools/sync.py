@@ -147,6 +147,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_contest_min_bp", "Spying: lowest chance from the thieves' contest", "pct"),
     ("spy_chance_min_bp", "Spying: lowest final chance of an operation", "pct"),
     ("spy_chance_max_bp", "Spying: highest chance of an operation", "pct"),
+    ("merge_training_timers", "Training: trainees of one house and unit due at the same moment share one timer", "text"),
     ("war_explore_allowance_bp", "War: explorable acres grow at this share of the usual rate", "pct"),
     ("war_explore_cost_bp", "War: exploring costs this share of the usual gold and soldiers", "pct"),
     ("third_party_gains_bp", "War: a third party striking a house at war with another state gains this share", "pct"),
