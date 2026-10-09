@@ -152,7 +152,7 @@ updated: 2026-10-06
 
 <h2 id="Answers">Answers</h2>
 <ul>
-  <li><b>200</b>: done; the body says what happened (for example <code>{"type": "created", "house": 0, "realm": 4, "state": 2, "seat": 1}</code>).</li>
+  <li><b>200</b>: done; the body says what happened (for example <code>{"type": "created", "house": 0, "realm": 4, "state": 2, "seat": 1}</code>). It also carries <code>after</code>: your house's resources right after the command (<code>id</code>, <code>gold</code>, <code>food</code>, <code>peasants</code>, <code>units</code> and <code>away</code> by slot, <code>training</code>, <code>medics</code>, <code>horses</code>, <code>chariots</code>, <code>aether</code>, <code>adepts</code>, <code>land</code>, <code>incoming_land</code>, <code>explorable_acres</code>, <code>materials</code>), so a page can show what is left at once rather than wait for <code>/me</code>, which may lag by a quarter of a second or more.</li>
   <li><b>401</b>: sign in first (see <a href="signing-in.html">Signing In</a>). Orders use your sign-in cookie, or a connected site's <code>Authorization: Bearer</code> token.</li>
   <li><b>422</b>: the game refused the order; <code>error</code> says why (for example "that house isn't yours").</li>
   <li><b>429</b>: too many requests. Orders allow a burst of 30, then 5 a second. Chat has its own limit: a burst of 5, then one message every 2 seconds (see <a href="chat.html">Chat</a>).</li>
