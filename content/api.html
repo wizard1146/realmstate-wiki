@@ -10,7 +10,7 @@ updated: 2026-10-06
 <tr><td><code>GET /world</code></td><td>Age, current time, tick count, number of houses</td></tr>
 <tr><td><code>GET /rules</code></td><td>The age's slots, definitions, fingerprints and numbers; academic attributes and general traits with their <code>effects</code> as [stat, bp]; races' <code>flags</code> by name; refining <code>recipes</code></td></tr>
 <tr><td><code>GET /rankings</code></td><td>The 100 largest houses by land, largest first (ties by house id). Not the age result: a <em>state</em> wins the age on score; see <a href="end-of-age.html">The End of an Age</a> and <code>/ages/{age}</code></td></tr>
-<tr><td><code>GET /houses/{id}</code></td><td>Your own house in full; any other house's public facts (name, address, race, land, renown, might)</td></tr>
+<tr><td><code>GET /houses/{id}</code></td><td>Your own house in full; any other house's public facts (name, address, race, land, renown, might, <code>protected</code>, and <code>robot</code>: played by a robot, not a person)</td></tr>
 <tr><td><code>GET /states/{realm}/{state}</code></td><td>A state's houses (public facts)</td></tr>
 <tr><td><code>GET /market</code></td><td>Every material: producing realms, output this tick, last trade (price, and units and gold traded in its tick), <code>reference</code> price (see <a href="trade.html#Reference">Trade</a>), <code>stewards</code> (their offer of unclaimed output, <code>{"price", "quantity"}</code>, or null; see <a href="trade.html#Stewards">Trade</a>), open orders by price</td></tr>
 <tr><td><code>GET /realms/{realm}</code></td><td>A realm's material, and each state's share, house count, leader and <code>ranks</code> (as <code>GET /state</code> gives them; null for a state with no house)</td></tr>
