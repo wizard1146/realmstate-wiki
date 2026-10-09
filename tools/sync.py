@@ -148,6 +148,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("spy_chance_min_bp", "Spying: lowest final chance of an operation", "pct"),
     ("spy_chance_max_bp", "Spying: highest chance of an operation", "pct"),
     ("merge_training_timers", "Training: trainees of one house and unit due at the same moment share one timer", "text"),
+    ("battered_fade_bp", "Attacks: the battered level fades this share a tick", "pct"),
+    ("protection_cuts_losses", "Attacks: protection from repeated hits also cuts the defender's troop losses", "text"),
     ("war_explore_allowance_bp", "War: explorable acres grow at this share of the usual rate", "pct"),
     ("war_explore_cost_bp", "War: exploring costs this share of the usual gold and soldiers", "pct"),
     ("third_party_gains_bp", "War: a third party striking a house at war with another state gains this share", "pct"),
@@ -1290,9 +1292,11 @@ def generate(rules):
             "<p><b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two "
             "states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>\n"
             '<h2 id="protection">Protection from repeated hits</h2>\n'
-            f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {{{{hit_window_ticks}}}} ticks, {curve}. '
-            "This is applied last, after every other bonus. " + (", ".join(k["name"] for k in kinds if k.get("ignores_protection")) or "No attack") + " neither count as hits nor are reduced.</p>\n"
-            + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>Recent hits</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
+            + (f'<p>A house that has been hit hard loses less to each new hit{", in land, spoils and troops" if lp.get("protection_cuts_losses") else ""}. Each successful hit that takes something (land, or troops: a sack too) adds 1 to the house\'s <b>battered level</b>, which fades {{{{battered_fade_pct}}}}% every tick, so about half is gone in a day and a half. At each level, {curve}, in between for part of a level. '
+               if lp.get("battered_fade_bp", 0) > 0 else f'<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {{{{hit_window_ticks}}}} ticks, {curve}. ')
+            + "This is applied last, after every other bonus. " + (", ".join(k["name"] for k in kinds if k.get("ignores_protection")) or "No attack") + " neither count as hits nor are reduced.</p>\n"
+            + ('<p>The battered level isn\'t public. Every successful <a href="spying.html">intel operation</a> and <a href="rites.html">divination</a> reports the target\'s battered level and how much an attack on it would yield now.</p>\n' if lp.get("battered_fade_bp", 0) > 0 else '')
+            + ('<div class="table-scroll" data-updated="none"><table>\n<tr><th>' + ("Battered level" if lp.get("battered_fade_bp", 0) > 0 else "Recent hits") + '</th>' + "".join(f'<th class="cell-num">{n}</th>' for n in range(6))
                + '</tr>\n<tr><td>Share taken</td>' + "".join(shares) + "</tr>\n</table></div>\n" if shares else "")
             + size_section
             + source_note(latest))

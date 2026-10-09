@@ -19,9 +19,10 @@ generated: tools/sync.py
 </table></div>
 <p><b>Meter</b> scales the hostility points the attack adds to the target state's meter. <b>At war</b> is added to the share taken when the two states are at war; land attacks get the war's land bonus instead. Only defense <em>bonuses</em> are cut by a Breach; penalties count in full.</p>
 <h2 id="protection">Protection from repeated hits</h2>
-<p>A house that has been hit hard loses less to each new hit. Counting successful hits it took in the last {{hit_window_ticks}} ticks, each recent hit takes 15% off what's left, never below 20% of the full amount. This is applied last, after every other bonus. Reclaim, Blockade, Raze neither count as hits nor are reduced.</p>
+<p>A house that has been hit hard loses less to each new hit, in land, spoils and troops. Each successful hit that takes something (land, or troops: a sack too) adds 1 to the house's <b>battered level</b>, which fades {{battered_fade_pct}}% every tick, so about half is gone in a day and a half. At each level, each recent hit takes 15% off what's left, never below 20% of the full amount, in between for part of a level. This is applied last, after every other bonus. Reclaim, Blockade, Raze neither count as hits nor are reduced.</p>
+<p>The battered level isn't public. Every successful <a href="spying.html">intel operation</a> and <a href="rites.html">divination</a> reports the target's battered level and how much an attack on it would yield now.</p>
 <div class="table-scroll" data-updated="none"><table>
-<tr><th>Recent hits</th><th class="cell-num">0</th><th class="cell-num">1</th><th class="cell-num">2</th><th class="cell-num">3</th><th class="cell-num">4</th><th class="cell-num">5</th></tr>
+<tr><th>Battered level</th><th class="cell-num">0</th><th class="cell-num">1</th><th class="cell-num">2</th><th class="cell-num">3</th><th class="cell-num">4</th><th class="cell-num">5</th></tr>
 <tr><td>Share taken</td><td class="cell-num">100%</td><td class="cell-num">85%</td><td class="cell-num">72.25%</td><td class="cell-num">61.41%</td><td class="cell-num">52.19%</td><td class="cell-num">44.36%</td></tr>
 </table></div>
 <h2 id="size">Target size</h2>
@@ -30,4 +31,4 @@ generated: tools/sync.py
 <tr><th>Their land, of yours</th><th class="cell-num">25%</th><th class="cell-num">40%</th><th class="cell-num">50%</th><th class="cell-num">60%</th><th class="cell-num">75%</th></tr>
 <tr><td>Share of the usual gains</td><td class="cell-num">2%</td><td class="cell-num">10%</td><td class="cell-num">25%</td><td class="cell-num">50%</td><td class="cell-num">100%</td></tr>
 </table></div>
-<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>9975959b348d8886</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>
+<p class="data-note">Generated from the game's rule files: Age 3, ruleset <code>5f7787e2545b7b6a</code>. Edit the game's rules, then run <code>tools/sync.py</code>.</p>

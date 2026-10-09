@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "bf2a63bc3371bc28",
+      "hash": "943147eca040c394",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1257,6 +1257,7 @@
         "auto_war_points": 18000,
         "barren_food": 2,
         "barren_living": 15,
+        "battered_fade_bp": 0,
         "bid_step_bp": 500,
         "blockade_max_bp": 2000,
         "blockade_ticks": 24,
@@ -1774,6 +1775,7 @@
         ],
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
+        "protection_cuts_losses": false,
         "protection_ticks": 72,
         "quest_academic_attributes": 0,
         "quest_accrual_ticks": 0,
@@ -5145,7 +5147,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "6b8197c688dac3c0",
+      "hash": "78f41ee64adaf9af",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5539,6 +5541,7 @@
         "auto_war_points": 18000,
         "barren_food": 2,
         "barren_living": 15,
+        "battered_fade_bp": 0,
         "bid_step_bp": 500,
         "blockade_max_bp": 2000,
         "blockade_ticks": 24,
@@ -6056,6 +6059,7 @@
         ],
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
+        "protection_cuts_losses": false,
         "protection_ticks": 72,
         "quest_academic_attributes": 0,
         "quest_accrual_ticks": 0,
@@ -9721,7 +9725,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "9975959b348d8886",
+      "hash": "5f7787e2545b7b6a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10189,6 +10193,7 @@
         "auto_war_points": 18000,
         "barren_food": 2,
         "barren_living": 15,
+        "battered_fade_bp": 191,
         "bid_step_bp": 500,
         "blockade_max_bp": 2000,
         "blockade_ticks": 24,
@@ -10224,7 +10229,7 @@
         "decay_max_bp": 100,
         "decay_start_bp": 2,
         "declare_either_points": 6000,
-        "defender_loss_bp": 600,
+        "defender_loss_bp": 450,
         "depletion": false,
         "depletion_floor_bp": 2500,
         "depletion_reserve_ticks": 2520,
@@ -10771,6 +10776,7 @@
         ],
         "peace_dividend_ticks": 168,
         "peasant_growth_bp": 300,
+        "protection_cuts_losses": true,
         "protection_ticks": 72,
         "quest_academic_attributes": 2,
         "quest_accrual_ticks": 140,
