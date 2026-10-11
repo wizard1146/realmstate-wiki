@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "943147eca040c394",
+      "hash": "f8a14460305c9a4a",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1041,7 +1041,7 @@
             "requires_building": "ancestral_hall",
             "requires_inactive_ticks": 0,
             "requires_science": "tactics",
-            "requires_science_bp": 1400,
+            "requires_science_bp": 900,
             "requires_trait": "bellator",
             "takes": "land",
             "troops_per_material": 0,
@@ -2380,7 +2380,7 @@
         "robot_target_cap": 0,
         "robot_target_cap_war": 0,
         "robot_war_attack_pace_bp": 10000,
-        "science_cap_bp": 0,
+        "science_half_at": 350000,
         "science_ranks": [
           [
             0,
@@ -2399,7 +2399,7 @@
             120
           ]
         ],
-        "scientist_spawn_milli": 100,
+        "scientist_spawn_milli": 50,
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
@@ -3673,10 +3673,10 @@
           "effects": [
             [
               "Income",
-              552
+              3000
             ]
           ],
-          "hash": "98f5572e40c6cd73",
+          "hash": "7cd4b252e2dbface",
           "key": {
             "identity": "alchemy",
             "version": "v1"
@@ -3689,14 +3689,14 @@
           "effects": [
             [
               "ConstructionCost",
-              -364
+              -3000
             ],
             [
               "ConstructionTime",
-              -364
+              -3000
             ]
           ],
-          "hash": "c60433ec68dcf2bc",
+          "hash": "6172e0e7dfbc59f2",
           "key": {
             "identity": "artisan",
             "version": "v1"
@@ -3709,10 +3709,10 @@
           "effects": [
             [
               "Population",
-              200
+              2000
             ]
           ],
-          "hash": "86c8babb605a4d72",
+          "hash": "dd08230d1c29e19c",
           "key": {
             "identity": "housing",
             "version": "v1"
@@ -3725,14 +3725,14 @@
           "effects": [
             [
               "FoodProduction",
-              1655
+              5000
             ],
             [
               "AetherProduction",
-              1655
+              5000
             ]
           ],
-          "hash": "88ec4d781b078584",
+          "hash": "80d6519aa1b9b7ce",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -3745,10 +3745,10 @@
           "effects": [
             [
               "BuildingEfficiency",
-              399
+              2500
             ]
           ],
-          "hash": "6554646518fd313d",
+          "hash": "cf3fae465d4e4809",
           "key": {
             "identity": "tools",
             "version": "v1"
@@ -3761,10 +3761,10 @@
           "effects": [
             [
               "Casualties",
-              -373
+              -3500
             ]
           ],
-          "hash": "be4022a227840542",
+          "hash": "f5003bc1a93be5a3",
           "key": {
             "identity": "resilience",
             "version": "v1"
@@ -3777,10 +3777,10 @@
           "effects": [
             [
               "LandGain",
-              200
+              2000
             ]
           ],
-          "hash": "cd683ef6b92bb7e8",
+          "hash": "7497b614bb921b90",
           "key": {
             "identity": "siege",
             "version": "v1"
@@ -3793,10 +3793,10 @@
           "effects": [
             [
               "Defense",
-              280
+              2000
             ]
           ],
-          "hash": "ee83b1d94bac70ba",
+          "hash": "cdac579cac56194b",
           "key": {
             "identity": "strategy",
             "version": "v1"
@@ -3809,10 +3809,10 @@
           "effects": [
             [
               "Offense",
-              280
+              2000
             ]
           ],
-          "hash": "d24a4b1b5d71d665",
+          "hash": "f5ec126c7ce8859c",
           "key": {
             "identity": "tactics",
             "version": "v1"
@@ -3825,10 +3825,10 @@
           "effects": [
             [
               "TrainingTime",
-              -443
+              -4000
             ]
           ],
-          "hash": "c0751d0819cf8d50",
+          "hash": "dee043a8c77243e8",
           "key": {
             "identity": "valor",
             "version": "v1"
@@ -3841,10 +3841,10 @@
           "effects": [
             [
               "AdeptStrength",
-              1429
+              5000
             ]
           ],
-          "hash": "54af0e5d3535f7c8",
+          "hash": "92e745cdf7aa27b0",
           "key": {
             "identity": "channeling",
             "version": "v1"
@@ -3857,10 +3857,10 @@
           "effects": [
             [
               "ThiefStrength",
-              1186
+              4000
             ]
           ],
-          "hash": "dcfc3321276da376",
+          "hash": "77407734b5479ae2",
           "key": {
             "identity": "crime",
             "version": "v1"
@@ -3873,10 +3873,10 @@
           "effects": [
             [
               "ThiefLosses",
-              -735
+              -5000
             ]
           ],
-          "hash": "1f8138707210b5c9",
+          "hash": "3097db98462f09eb",
           "key": {
             "identity": "finesse",
             "version": "v1"
@@ -3889,14 +3889,14 @@
           "effects": [
             [
               "ThiefDefense",
-              239
+              2500
             ],
             [
               "HexDamageTaken",
-              -239
+              -2500
             ]
           ],
-          "hash": "dcd75905cf1b0480",
+          "hash": "14f59841b8d766fe",
           "key": {
             "identity": "shielding",
             "version": "v1"
@@ -3909,10 +3909,10 @@
           "effects": [
             [
               "HexDamage",
-              239
+              3000
             ]
           ],
-          "hash": "d8e4b991cba6bda6",
+          "hash": "2d83bb9cc4791baf",
           "key": {
             "identity": "sorcery",
             "version": "v1"
@@ -5147,7 +5147,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "78f41ee64adaf9af",
+      "hash": "e54de5409f47fb44",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5325,7 +5325,7 @@
             "requires_building": "ancestral_hall",
             "requires_inactive_ticks": 0,
             "requires_science": "tactics",
-            "requires_science_bp": 1400,
+            "requires_science_bp": 900,
             "requires_trait": "bellator",
             "takes": "land",
             "troops_per_material": 0,
@@ -6664,7 +6664,7 @@
         "robot_target_cap": 0,
         "robot_target_cap_war": 0,
         "robot_war_attack_pace_bp": 10000,
-        "science_cap_bp": 0,
+        "science_half_at": 350000,
         "science_ranks": [
           [
             0,
@@ -6683,7 +6683,7 @@
             120
           ]
         ],
-        "scientist_spawn_milli": 100,
+        "scientist_spawn_milli": 50,
         "score_land_bp": 5000,
         "score_might_bp": 5000,
         "score_per_war_point": 200,
@@ -8019,10 +8019,10 @@
           "effects": [
             [
               "Income",
-              552
+              3000
             ]
           ],
-          "hash": "98f5572e40c6cd73",
+          "hash": "7cd4b252e2dbface",
           "key": {
             "identity": "alchemy",
             "version": "v1"
@@ -8035,14 +8035,14 @@
           "effects": [
             [
               "ConstructionCost",
-              -364
+              -3000
             ],
             [
               "ConstructionTime",
-              -364
+              -3000
             ]
           ],
-          "hash": "c60433ec68dcf2bc",
+          "hash": "6172e0e7dfbc59f2",
           "key": {
             "identity": "artisan",
             "version": "v1"
@@ -8055,10 +8055,10 @@
           "effects": [
             [
               "Population",
-              200
+              2000
             ]
           ],
-          "hash": "86c8babb605a4d72",
+          "hash": "dd08230d1c29e19c",
           "key": {
             "identity": "housing",
             "version": "v1"
@@ -8071,14 +8071,14 @@
           "effects": [
             [
               "FoodProduction",
-              1655
+              5000
             ],
             [
               "AetherProduction",
-              1655
+              5000
             ]
           ],
-          "hash": "88ec4d781b078584",
+          "hash": "80d6519aa1b9b7ce",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -8091,10 +8091,10 @@
           "effects": [
             [
               "BuildingEfficiency",
-              399
+              2500
             ]
           ],
-          "hash": "6554646518fd313d",
+          "hash": "cf3fae465d4e4809",
           "key": {
             "identity": "tools",
             "version": "v1"
@@ -8107,10 +8107,10 @@
           "effects": [
             [
               "Casualties",
-              -373
+              -3500
             ]
           ],
-          "hash": "be4022a227840542",
+          "hash": "f5003bc1a93be5a3",
           "key": {
             "identity": "resilience",
             "version": "v1"
@@ -8123,10 +8123,10 @@
           "effects": [
             [
               "LandGain",
-              200
+              2000
             ]
           ],
-          "hash": "cd683ef6b92bb7e8",
+          "hash": "7497b614bb921b90",
           "key": {
             "identity": "siege",
             "version": "v1"
@@ -8139,10 +8139,10 @@
           "effects": [
             [
               "Defense",
-              280
+              2000
             ]
           ],
-          "hash": "ee83b1d94bac70ba",
+          "hash": "cdac579cac56194b",
           "key": {
             "identity": "strategy",
             "version": "v1"
@@ -8155,10 +8155,10 @@
           "effects": [
             [
               "Offense",
-              280
+              2000
             ]
           ],
-          "hash": "d24a4b1b5d71d665",
+          "hash": "f5ec126c7ce8859c",
           "key": {
             "identity": "tactics",
             "version": "v1"
@@ -8171,10 +8171,10 @@
           "effects": [
             [
               "TrainingTime",
-              -443
+              -4000
             ]
           ],
-          "hash": "c0751d0819cf8d50",
+          "hash": "dee043a8c77243e8",
           "key": {
             "identity": "valor",
             "version": "v1"
@@ -8187,10 +8187,10 @@
           "effects": [
             [
               "AdeptStrength",
-              1429
+              5000
             ]
           ],
-          "hash": "54af0e5d3535f7c8",
+          "hash": "92e745cdf7aa27b0",
           "key": {
             "identity": "channeling",
             "version": "v1"
@@ -8203,10 +8203,10 @@
           "effects": [
             [
               "ThiefStrength",
-              1186
+              4000
             ]
           ],
-          "hash": "dcfc3321276da376",
+          "hash": "77407734b5479ae2",
           "key": {
             "identity": "crime",
             "version": "v1"
@@ -8219,10 +8219,10 @@
           "effects": [
             [
               "ThiefLosses",
-              -735
+              -5000
             ]
           ],
-          "hash": "1f8138707210b5c9",
+          "hash": "3097db98462f09eb",
           "key": {
             "identity": "finesse",
             "version": "v1"
@@ -8235,14 +8235,14 @@
           "effects": [
             [
               "ThiefDefense",
-              239
+              2500
             ],
             [
               "HexDamageTaken",
-              -239
+              -2500
             ]
           ],
-          "hash": "dcd75905cf1b0480",
+          "hash": "14f59841b8d766fe",
           "key": {
             "identity": "shielding",
             "version": "v1"
@@ -8255,10 +8255,10 @@
           "effects": [
             [
               "HexDamage",
-              239
+              3000
             ]
           ],
-          "hash": "d8e4b991cba6bda6",
+          "hash": "2d83bb9cc4791baf",
           "key": {
             "identity": "sorcery",
             "version": "v1"
@@ -9725,7 +9725,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "5f7787e2545b7b6a",
+      "hash": "046f92bd4f9d6334",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9911,7 +9911,7 @@
             "requires_building": "ancestral_hall",
             "requires_inactive_ticks": 0,
             "requires_science": "tactics",
-            "requires_science_bp": 1400,
+            "requires_science_bp": 900,
             "requires_trait": "bellator",
             "takes": "land",
             "troops_per_material": 0,
@@ -11430,7 +11430,7 @@
         "robot_target_cap": 7,
         "robot_target_cap_war": 15,
         "robot_war_attack_pace_bp": 20000,
-        "science_cap_bp": 2500,
+        "science_half_at": 350000,
         "science_ranks": [
           [
             0,
@@ -11449,7 +11449,7 @@
             120
           ]
         ],
-        "scientist_spawn_milli": 100,
+        "scientist_spawn_milli": 50,
         "score_land_bp": 4000,
         "score_might_bp": 4000,
         "score_per_war_point": 200,
@@ -11897,8 +11897,8 @@
         ],
         "wage_milli": 1,
         "war_end_margin_bp": 300,
-        "war_explore_allowance_bp": 2500,
-        "war_explore_cost_bp": 20000,
+        "war_explore_allowance_bp": 1250,
+        "war_explore_cost_bp": 40000,
         "war_gain_bp": 5000,
         "war_min_ticks": 48,
         "war_peace_points": 1,
@@ -14387,10 +14387,10 @@
           "effects": [
             [
               "Income",
-              552
+              3000
             ]
           ],
-          "hash": "98f5572e40c6cd73",
+          "hash": "7cd4b252e2dbface",
           "key": {
             "identity": "alchemy",
             "version": "v1"
@@ -14403,14 +14403,14 @@
           "effects": [
             [
               "ConstructionCost",
-              -364
+              -3000
             ],
             [
               "ConstructionTime",
-              -364
+              -3000
             ]
           ],
-          "hash": "c60433ec68dcf2bc",
+          "hash": "6172e0e7dfbc59f2",
           "key": {
             "identity": "artisan",
             "version": "v1"
@@ -14423,10 +14423,10 @@
           "effects": [
             [
               "Population",
-              200
+              2000
             ]
           ],
-          "hash": "86c8babb605a4d72",
+          "hash": "dd08230d1c29e19c",
           "key": {
             "identity": "housing",
             "version": "v1"
@@ -14439,14 +14439,14 @@
           "effects": [
             [
               "FoodProduction",
-              1655
+              5000
             ],
             [
               "AetherProduction",
-              1655
+              5000
             ]
           ],
-          "hash": "88ec4d781b078584",
+          "hash": "80d6519aa1b9b7ce",
           "key": {
             "identity": "production",
             "version": "v1"
@@ -14459,10 +14459,10 @@
           "effects": [
             [
               "BuildingEfficiency",
-              399
+              2500
             ]
           ],
-          "hash": "6554646518fd313d",
+          "hash": "cf3fae465d4e4809",
           "key": {
             "identity": "tools",
             "version": "v1"
@@ -14475,10 +14475,10 @@
           "effects": [
             [
               "Casualties",
-              -373
+              -3500
             ]
           ],
-          "hash": "be4022a227840542",
+          "hash": "f5003bc1a93be5a3",
           "key": {
             "identity": "resilience",
             "version": "v1"
@@ -14491,10 +14491,10 @@
           "effects": [
             [
               "LandGain",
-              200
+              2000
             ]
           ],
-          "hash": "cd683ef6b92bb7e8",
+          "hash": "7497b614bb921b90",
           "key": {
             "identity": "siege",
             "version": "v1"
@@ -14507,10 +14507,10 @@
           "effects": [
             [
               "Defense",
-              280
+              2000
             ]
           ],
-          "hash": "ee83b1d94bac70ba",
+          "hash": "cdac579cac56194b",
           "key": {
             "identity": "strategy",
             "version": "v1"
@@ -14523,10 +14523,10 @@
           "effects": [
             [
               "Offense",
-              280
+              2000
             ]
           ],
-          "hash": "d24a4b1b5d71d665",
+          "hash": "f5ec126c7ce8859c",
           "key": {
             "identity": "tactics",
             "version": "v1"
@@ -14539,10 +14539,10 @@
           "effects": [
             [
               "TrainingTime",
-              -443
+              -4000
             ]
           ],
-          "hash": "c0751d0819cf8d50",
+          "hash": "dee043a8c77243e8",
           "key": {
             "identity": "valor",
             "version": "v1"
@@ -14555,10 +14555,10 @@
           "effects": [
             [
               "AdeptStrength",
-              1429
+              5000
             ]
           ],
-          "hash": "54af0e5d3535f7c8",
+          "hash": "92e745cdf7aa27b0",
           "key": {
             "identity": "channeling",
             "version": "v1"
@@ -14571,10 +14571,10 @@
           "effects": [
             [
               "ThiefStrength",
-              1186
+              4000
             ]
           ],
-          "hash": "dcfc3321276da376",
+          "hash": "77407734b5479ae2",
           "key": {
             "identity": "crime",
             "version": "v1"
@@ -14587,10 +14587,10 @@
           "effects": [
             [
               "ThiefLosses",
-              -735
+              -5000
             ]
           ],
-          "hash": "1f8138707210b5c9",
+          "hash": "3097db98462f09eb",
           "key": {
             "identity": "finesse",
             "version": "v1"
@@ -14603,14 +14603,14 @@
           "effects": [
             [
               "ThiefDefense",
-              239
+              2500
             ],
             [
               "HexDamageTaken",
-              -239
+              -2500
             ]
           ],
-          "hash": "dcd75905cf1b0480",
+          "hash": "14f59841b8d766fe",
           "key": {
             "identity": "shielding",
             "version": "v1"
@@ -14623,10 +14623,10 @@
           "effects": [
             [
               "HexDamage",
-              239
+              3000
             ]
           ],
-          "hash": "d8e4b991cba6bda6",
+          "hash": "2d83bb9cc4791baf",
           "key": {
             "identity": "sorcery",
             "version": "v1"

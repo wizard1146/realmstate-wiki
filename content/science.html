@@ -29,5 +29,6 @@ updated: 2026-10-06
 <p>Each time you explore there's a {{lost_text_chance_pct}}% chance your explorers find lost texts: {{books_per_explored_acre}} economy books for every acre explored.</p>
 
 <h2 id="Investing">Investing books</h2>
-<p>Books are spent on sciences in their own category, and take effect at once. A science's bonus grows with the square root of the books in it: four times the books gives twice the bonus. Each science's bonus is held to {{science_cap_pct}}% (a penalty too), however many books it holds. <a href="buildings.html#libraries">Libraries</a> and other science efficiency then strengthen every science, so the total can go past the cap.</p>
-<p>The square root keeps every result a whole number, identical on every machine.</p>
+<p>Books are spent on sciences in their own category, and take effect at once. Each science nears a limit (see <a href="sciences.html">Sciences</a>) and never reaches it. It reaches half its limit at {{science_half_at}} books, and each further step costs more books.</p>
+<p>The formula: bonus = limit &times; r &divide; (r + r<sub>half</sub>). Here r is the 2.125th root of the books in the science, as in Utopia, and r<sub>half</sub> is the same root of {{science_half_at}}. <a href="buildings.html#libraries">Libraries</a> and other science efficiency raise r, as if the science held more books, so they never take it past its limit either.</p>
+<p>The root is worked out in whole numbers only, so every machine gets the same result.</p>

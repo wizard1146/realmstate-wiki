@@ -111,7 +111,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("peasant_growth_bp", "Peasant growth per tick", "pct"),
     ("gold_per_peasant", "Gold per peasant per tick", "n"),
     ("train_price_bp", "Training prices, as a share of the race files' unit prices", "pct"),
-    ("science_cap_bp", "The most one science adds to a stat (before science efficiency)", "pct"),
+    ("science_half_at", "Books that bring a science to half its limit", "n"),
     ("food_per_person_milli", "Food eaten per person per tick", "milli"),
     ("starvation_bp", "Peasants lost per tick without food", "pct"),
     ("starvation_soldiers_bp", "Soldiers lost per tick without food", "pct"),
@@ -1132,13 +1132,14 @@ def generate(rules):
         rows = []
         for x in (x for x in latest.get("sciences", []) if x["category"] == c):
             effs = []
-            for stat, per_root in x["effects"]:
+            half = latest["params"]["science_half_at"]
+            for stat, limit_bp in x["effects"]:
                 st = snake(stat)
-                per = per_root / 100
-                at10k, at100k = per * 100 / 100, per * 316 / 100
-                sign = "+" if per > 0 else ""
+                at = lambda books: limit_bp / 100 * books ** (8 / 17) / (books ** (8 / 17) + half ** (8 / 17))
+                sign = "+" if limit_bp > 0 else ""
                 effs.append(f'{e(STAT_TEXT.get(st, st))} (<a href="effects.html#{st}"><code>{st}</code></a>): '
-                            f'{sign}{at10k:.1f}% at 10,000 books, {sign}{at100k:.1f}% at 100,000')
+                            f'nears {sign}{limit_bp / 100:g}%; {sign}{at(100_000):.1f}% at 100,000 books, '
+                            f'{sign}{at(half):.1f}% at {half:,}, {sign}{at(2_000_000):.1f}% at 2,000,000')
             rows.append(f'<tr id="{x["key"]["identity"]}"><td><b>{e(x["name"])}</b><br><span class="cell-muted">{e(x["description"])}</span></td>'
                         f'<td>{"<br>".join(effs)}</td></tr>')
         if rows:
@@ -1146,7 +1147,7 @@ def generate(rules):
                              '<tr><th>Science</th><th>Effect</th></tr>\n' + "\n".join(rows) + "\n</table></div>\n")
     if sci_parts:
         pages["sciences.html"] = header("Sciences", "Rules, Science") + (
-            '<p>Each science grows with the square root of the books invested in it: four times the books gives twice the bonus. '
+            f'<p>Each science nears a limit and never reaches it: half of it at {latest["params"]["science_half_at"]:,} books, then ever more slowly. '
             'Books are spent in their own category. See <a href="science.html">Science</a> for how books are earned.</p>\n'
             + "".join(sci_parts) + source_note(latest))
 
