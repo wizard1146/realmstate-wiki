@@ -303,6 +303,8 @@
   "upgrade_cost": 1,
   "upgrade_cost_elite": 2,
   "upgrade_cross_point": 1,
+  "upgrade_elite_material": "amber",
+  "upgrade_elite_material_cost": 1,
   "upgrade_material": "bauxite",
   "vengeance_decay_pct": "1",
   "vengeance_gain_pct": "50",

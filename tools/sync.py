@@ -233,6 +233,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("upgrade_material", "Upgrades: material spent", "text"),
     ("upgrade_cost", "Upgrades: material per unit", "n"),
     ("upgrade_cost_elite", "Upgrades: material per elite", "n"),
+    ("upgrade_elite_material", "Upgrades: second material elites take", "text"),
+    ("upgrade_elite_material_cost", "Upgrades: second material per elite", "n"),
     ("medic_material", "Medics: material spent", "text"),
     ("medic_material_cost", "Medics: material per medic", "n"),
     ("medic_gold", "Medics: gold per medic", "n"),

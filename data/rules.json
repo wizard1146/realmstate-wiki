@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "f8a14460305c9a4a",
+      "hash": "1ae47c4c66b1e0d4",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2496,6 +2496,8 @@
         "upgrade_cost": 1,
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
+        "upgrade_elite_material": "",
+        "upgrade_elite_material_cost": 0,
         "upgrade_material": "bauxite",
         "vengeance_decay_bp": 100,
         "vengeance_gain_bp": 5000,
@@ -5147,7 +5149,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "e54de5409f47fb44",
+      "hash": "525f6e5365791a43",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6780,6 +6782,8 @@
         "upgrade_cost": 1,
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
+        "upgrade_elite_material": "",
+        "upgrade_elite_material_cost": 0,
         "upgrade_material": "bauxite",
         "vengeance_decay_bp": 100,
         "vengeance_gain_bp": 5000,
@@ -9725,7 +9729,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "046f92bd4f9d6334",
+      "hash": "87bb12d32bf357fe",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11843,6 +11847,8 @@
         "upgrade_cost": 1,
         "upgrade_cost_elite": 2,
         "upgrade_cross_point": 1,
+        "upgrade_elite_material": "amber",
+        "upgrade_elite_material_cost": 1,
         "upgrade_material": "bauxite",
         "vengeance_decay_bp": 100,
         "vengeance_gain_bp": 5000,
