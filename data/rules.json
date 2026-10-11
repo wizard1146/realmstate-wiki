@@ -9693,6 +9693,12 @@
           "to": "limestone@v2"
         },
         {
+          "from": "paper@v1",
+          "identity": "paper",
+          "kind": "material",
+          "to": "paper@v2"
+        },
+        {
           "from": "pine@v1",
           "identity": "pine",
           "kind": "material",
@@ -9729,66 +9735,66 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "87bb12d32bf357fe",
+      "hash": "06b7fbcae014adc9",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
-          "hash": "94ce13c988911e1a",
+          "hash": "31fd51a1aaa9fe1d",
           "key": {
             "identity": "amber",
             "version": "v2"
           },
           "lineage_from": null,
           "name": "Amber",
-          "output_per_tick": 300,
+          "output_per_tick": 80,
           "produced": true
         },
         {
           "description": "Lightweight weaponry. Used to arm troops for offense.",
-          "hash": "cae20443fe85d3d8",
+          "hash": "6092a733e356a33c",
           "key": {
             "identity": "bauxite",
             "version": "v2"
           },
           "lineage_from": null,
           "name": "Bauxite",
-          "output_per_tick": 1400,
+          "output_per_tick": 1000,
           "produced": true
         },
         {
           "description": "Construction. Used for buildings (a later milestone).",
-          "hash": "c3e7affec186abdf",
+          "hash": "6b19069fa4d15621",
           "key": {
             "identity": "limestone",
             "version": "v2"
           },
           "lineage_from": null,
           "name": "Limestone",
-          "output_per_tick": 500,
+          "output_per_tick": 240,
           "produced": true
         },
         {
           "description": "Science. Used for research (a later milestone).",
-          "hash": "e9a305db3c32e8e0",
+          "hash": "e5b45e3a85d84706",
           "key": {
             "identity": "paper",
-            "version": "v1"
+            "version": "v2"
           },
           "lineage_from": null,
           "name": "Paper",
-          "output_per_tick": 1200,
+          "output_per_tick": 700,
           "produced": true
         },
         {
           "description": "Speed. Used to bring armies home sooner.",
-          "hash": "b238fd46da5c60ee",
+          "hash": "fbbe21a50f6aa9ad",
           "key": {
             "identity": "pine",
             "version": "v2"
           },
           "lineage_from": null,
           "name": "Pine",
-          "output_per_tick": 600,
+          "output_per_tick": 880,
           "produced": true
         },
         {
@@ -9805,14 +9811,14 @@
         },
         {
           "description": "Healing. Used to save troops from dying in battle.",
-          "hash": "1c48a84cab4421ad",
+          "hash": "3ee7408300e4e523",
           "key": {
             "identity": "sulfur",
             "version": "v2"
           },
           "lineage_from": null,
           "name": "Sulfur",
-          "output_per_tick": 400,
+          "output_per_tick": 350,
           "produced": true
         },
         {
@@ -15015,7 +15021,8 @@
       "lineage_from": null,
       "name": "Paper",
       "versions": [
-        "v1"
+        "v1",
+        "v2"
       ]
     },
     {
