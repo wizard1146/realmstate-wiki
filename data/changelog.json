@@ -1,5 +1,15 @@
 [
 [
+"2026-10-12T22:39:27+11:00",
+"c3fd2fc",
+"Armies out at once: 2, and 1 for each general; robots back a person to lead their state"
+],
+[
+"2026-10-12T22:32:31+11:00",
+"5f86ebb",
+"A front page that counts down to the age; REALM_START_AT for a new world's start"
+],
+[
 "2026-10-12T22:03:35+11:00",
 "46845dc",
 "An order's standing time is a share of a tick (order_min_life_tick_bp)"

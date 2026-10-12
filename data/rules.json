@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "7cc770644e14d941",
+      "hash": "03df8d910a3611e1",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -985,6 +985,8 @@
         "aid_tax_max_bp": 0,
         "aid_ticks": 0,
         "aid_values": {},
+        "armies_base": 0,
+        "armies_per_general": 0,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
         "attacker_min_losses": 1,
@@ -5152,7 +5154,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "db1ca8f767b0032c",
+      "hash": "c97cc9d9e4b40b3f",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5274,6 +5276,8 @@
         "aid_tax_max_bp": 0,
         "aid_ticks": 0,
         "aid_values": {},
+        "armies_base": 0,
+        "armies_per_general": 0,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
         "attacker_min_losses": 1,
@@ -9741,7 +9745,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "e0474be037b72a47",
+      "hash": "26d8be6b2df908a1",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -9871,6 +9875,8 @@
           "material": 15,
           "soldiers": 40
         },
+        "armies_base": 2,
+        "armies_per_general": 1,
         "attack_return_ticks": 12,
         "attacker_loss_bp": 800,
         "attacker_min_losses": 1,

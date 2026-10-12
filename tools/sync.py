@@ -248,6 +248,8 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("general_trait_renown", "Generals: renown for 1st, 2nd, 3rd... trait", "list"),
     ("general_pick_renown", "Generals: renown to choose traits", "n"),
     ("general_max", "Generals: most a house can keep", "n"),
+    ("armies_base", "Attacks: armies a house may have out at once (0: no limit)", "n"),
+    ("armies_per_general", "Attacks: more armies out at once for each general", "n"),
     ("general_death_bp", "Generals: chance of dying leading a failed attack", "pct"),
     ("barren_living", "Land: people each barren acre houses", "n"),
     ("barren_food", "Land: food each barren acre grows per tick", "n"),
