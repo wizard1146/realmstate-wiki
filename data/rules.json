@@ -9735,7 +9735,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "06b7fbcae014adc9",
+      "hash": "b311552aeee2ca39",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10069,7 +10069,7 @@
             "win_ratio_bp": 8000
           },
           {
-            "amount_bp": 2500,
+            "amount_bp": 4000,
             "army_bonuses": [],
             "attacker_losses_bp": 10000,
             "breached_bonus_bp": 10000,
@@ -11553,7 +11553,7 @@
         "train_ticks": 9,
         "transmute_aether": 100,
         "transmute_in": 4,
-        "transmute_lesser_in": 8,
+        "transmute_lesser_in": 5,
         "transmute_max": 200,
         "transmute_truth": "transmutation",
         "treasury_overflow": true,

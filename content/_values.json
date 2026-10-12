@@ -286,7 +286,7 @@
   "train_ticks": 9,
   "transmute_aether": 100,
   "transmute_in": 4,
-  "transmute_lesser_in": 8,
+  "transmute_lesser_in": 5,
   "transmute_max": 200,
   "treasury_overflow": "on",
   "tribute_pct": "20",
