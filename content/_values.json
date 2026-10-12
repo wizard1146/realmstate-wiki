@@ -77,6 +77,7 @@
   "attack_return_ticks": 12,
   "attacker_loss_pct": "8",
   "attacker_min_losses": 1,
+  "attacks_close_ticks": 24,
   "auction_max_ticks": 48,
   "auction_min_ticks": 12,
   "auto_war_points": "180",

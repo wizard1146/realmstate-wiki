@@ -182,6 +182,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("peace_dividend_ticks", "War: ticks out of war before the peace dividend", "n"),
     ("war_end_margin_bp", "War: extra land growth, as a share of its land, that wins a war still running at the age's end", "pct"),
     ("age_ticks", "Age: length in ticks", "n"),
+    ("attacks_close_ticks", "Age: attacks close this many ticks before the end", "n"),
     ("recap_frames", "Age: snapshots of the standings kept for the recap", "n"),
     ("score_land_bp", "Age: score for the most land (out of 100)", "pct"),
     ("score_might_bp", "Age: score for the most might (out of 100)", "pct"),
@@ -1320,7 +1321,8 @@ def generate(rules):
             "roads": lambda: "Reveals a house's armies on the road, when they return, and whose land they carry",
             "loss": lambda: f'{LOSS_TEXT[r["effect"]["of"]].format(pct(r["effect"]["bp"]))}{war}',
             "storm": lambda: f'Wrecks {pct(r["effect"]["bp"])}% of every building{war}',
-            "seize": lambda: f'Captures {pct(r["effect"]["bp"])}% of their land{war} as barren land; smaller targets yield less',
+            "seize": lambda: f'Captures {pct(r["effect"]["bp"])}% of their land{war} as barren land; smaller targets yield less'
+                             + (f', and one cast takes at most {pct(r["effect"]["most_bp"])}% of your own land' if r["effect"].get("most_bp") else ''),
             "hellfire": lambda: f'{pct(r["effect"]["bp"])}% of their peasants and troops at home die every tick{war}',
             "blight": lambda: f'{pct(r["effect"]["bp"])}% of their share of the realm material is lost{war}',
             "unravel": lambda: "Ends one of their rites (the one lasting longest)",

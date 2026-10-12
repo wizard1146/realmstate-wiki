@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "1ae47c4c66b1e0d4",
+      "hash": "9e6cc74b904d0d18",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -1252,6 +1252,7 @@
             "win_ratio_bp": 10000
           }
         ],
+        "attacks_close_ticks": 0,
         "auction_max_ticks": 48,
         "auction_min_ticks": 12,
         "auto_war_points": 18000,
@@ -2343,6 +2344,7 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 100,
+              "most_bp": 0,
               "type": "seize"
             },
             "hostility_bp": 100000,
@@ -5149,7 +5151,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "525f6e5365791a43",
+      "hash": "a26f3bf2529b544b",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -5538,6 +5540,7 @@
             "win_ratio_bp": 10000
           }
         ],
+        "attacks_close_ticks": 0,
         "auction_max_ticks": 48,
         "auction_min_ticks": 12,
         "auto_war_points": 18000,
@@ -6629,6 +6632,7 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 100,
+              "most_bp": 0,
               "type": "seize"
             },
             "hostility_bp": 100000,
@@ -9735,7 +9739,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "b311552aeee2ca39",
+      "hash": "194538f9ce20fb06",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10198,6 +10202,7 @@
             "win_ratio_bp": 10000
           }
         ],
+        "attacks_close_ticks": 24,
         "auction_max_ticks": 48,
         "auction_min_ticks": 12,
         "auto_war_points": 18000,
@@ -11403,6 +11408,7 @@
             "chance_bp": 6000,
             "effect": {
               "bp": 100,
+              "most_bp": 200,
               "type": "seize"
             },
             "hostility_bp": 100000,
