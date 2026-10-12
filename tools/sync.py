@@ -294,6 +294,7 @@ PARAM_TEXT = [  # (key, label, how to show it)
     ("market_fee_bp", "Market: fee on what an order fills at once (the taker's), destroyed", "pct"),
     ("cross_realm_fee_bp", "Market: extra a buyer from another realm than the seller's pays, destroyed", "pct"),
     ("order_min_life_ms", "Market: time an order stands before it can be cancelled", "minutes"),
+    ("order_min_life_tick_bp", "Market: share of a tick an order stands before it can be cancelled", "pct"),
     ("market_ref_full_units", "Market: units traded in a tick for the reference price's full move", "n"),
     ("market_ref_share_bp", "Market: share of the gap to the tick's average price the reference moves in a full tick", "pct"),
     ("unclaimed_from", "Market: whose output the stewards sell (empty_states: any state with no houses; empty_realms: realms with none)", "text"),
@@ -1600,7 +1601,11 @@ def generate(rules):
     values["starting_built"] = sum(latest.get("starting_buildings", []))
     values["starting_barren"] = p["starting_land"] - values["starting_built"]
     values["equal_share_pct"] = f'{100 / p["states_per_realm"]:.1f}'
-    values["order_lock_minutes"] = f'{p.get("order_min_life_ms", 0) / 60_000:g}'
+    # The time an order stands: a share of a tick when the age sets one (it scales with the tick).
+    lock_bp = p.get("order_min_life_tick_bp", 0)
+    lock_ms = p["tick_ms"] * lock_bp / 10_000 if lock_bp else p.get("order_min_life_ms", 0)
+    values["order_lock_minutes"] = f'{round(lock_ms / 60_000, 1):g}'
+    values["order_lock_note"] = f" ({lock_bp / 100:g}% of a tick, so it scales with the tick's length)" if lock_bp else ""
     values["unclaimed_from_text"] = "realms with no houses at all" if p.get("unclaimed_from") == "empty_realms" else "every state with no houses"
     # Wages: thousandths of a unit's training price, and of a gold per soldier. Worked example for
     # military.html: 1,000 elites trained at 2,000 gold each, and 10,000 soldiers.
@@ -1683,7 +1688,7 @@ def generate(rules):
     meter = ("hostility_attack_points", "hostility_failed_attack_points", "hostility_spy_points", "unfriendly_points",
              "hostile_points", "declare_either_points", "auto_war_points", "hostility_cap", "meter_decay_min_points")
     # Settings pages never need as they are: each has a readable value above (or is already applied).
-    raw = {"wage_milli": "wage_pct", "soldier_wage_milli": "soldier_wage_gold", "order_min_life_ms": "order_lock_minutes",
+    raw = {"wage_milli": "wage_pct", "soldier_wage_milli": "soldier_wage_gold", "order_min_life_ms": "order_lock_minutes", "order_min_life_tick_bp": "order_lock_minutes",
            "scientist_spawn_milli": "scientists_per_tick", "train_general_cbp": "train_general_per_1000_pct",
            "might_unit_pct": "might_unit_factor", "score_per_war_point": "score_war_point_pts",
            "settling_penalty_bp": "settling_penalty_size", "starting_peasants": "starting_peasants_only",
