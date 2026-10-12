@@ -20,7 +20,7 @@ A content file is an HTML fragment that starts with a metadata comment:
 
 Files whose name starts with "_" are not pages (see _nav.html).
 """
-import datetime, html, json, pathlib, re, shutil, sys
+import datetime, html, json, os, pathlib, re, shutil, subprocess, sys
 from collections import defaultdict
 from html.parser import HTMLParser
 
@@ -261,6 +261,9 @@ def related_box(page, groups, home, pages):
             f'<ul class="related__list">{items}</ul></nav>')
 
 
+BUILT = [""]
+
+
 def render(template, nav, page, extra_body="", related=""):
     page = dict(page)
     page["body"], toc = add_toc(page)
@@ -284,8 +287,95 @@ def render(template, nav, page, extra_body="", related=""):
                 f'<strong class="status-banner__label">{st["label"]}.</strong> {st["banner"]}{note}{help_link}</aside>\n') + body
     body += extra_body
     tab = page.get("tab_title") or f'{page["title"]} · Realmstate Wiki'
-    return fill(template, toc=toc, body_class=" page__body--with-toc" if toc else "", title_class=" page__title--hidden" if page.get("hide_title") else "", tab_title=html.escape(tab), title=html.escape(page["title"]), body=body, nav=nav, related=related, categories=cats, credits=credits,
+    return fill(template, built=BUILT[0], toc=toc, body_class=" page__body--with-toc" if toc else "", title_class=" page__title--hidden" if page.get("hide_title") else "", tab_title=html.escape(tab), title=html.escape(page["title"]), body=body, nav=nav, related=related, categories=cats, credits=credits,
                 description=html.escape(plain(page["body"])[:160]))
+
+
+# ---- when the site was built, and the changelog ----
+def git_log(repo, n=200):
+    """[[iso date, short hash, subject], ...] newest first, or [] if repo isn't a git checkout (or git isn't there)."""
+    try:
+        out = subprocess.run(["git", "-C", str(repo), "log", "--no-merges", f"-n{n}", "--format=%cI%x1f%h%x1f%s"],
+                             capture_output=True, text=True)
+    except OSError:
+        return []
+    if out.returncode != 0:
+        return []
+    return [line.split("\x1f", 2) for line in out.stdout.splitlines() if line.count("\x1f") == 2]
+
+
+def game_repo():
+    repo = pathlib.Path(os.environ.get("REALMSTATE", ROOT.parent / "realmstate"))
+    return repo if (repo / "rules").is_dir() else None
+
+
+def game_history():
+    """The game's commits: from its repo when it's beside the wiki, else the copy tools/sync.py saved."""
+    repo = game_repo()
+    log = git_log(repo) if repo else []
+    if not log and (ROOT / "data" / "changelog.json").exists():
+        log = json.loads((ROOT / "data" / "changelog.json").read_text(encoding="utf-8"))
+    return log
+
+
+def built_line():
+    """'Built 12 Oct 2026, 11:20 UTC from game commit abc1234 (Age 3, ruleset ...)' for every page's footer."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    text = f"Built {now.strftime('%-d %b %Y, %H:%M')} UTC"
+    game = ROOT / "data" / "game.json"
+    if game.exists():
+        g = json.loads(game.read_text(encoding="utf-8"))
+        text += f" from game commit {g['commit']}"
+    rules = ROOT / "data" / "rules.json"
+    if rules.exists():
+        ages = json.loads(rules.read_text(encoding="utf-8")).get("ages", [])
+        if ages:
+            a = max(ages, key=lambda a: a["age"])
+            text += f" ({a['name']}, ruleset {a['hash']})"
+    return html.escape(text + ".") + ' <a href="changelog.html">What changed</a>'
+
+
+CHANGELOG_SHOWN = 200
+AREA = re.compile(r"^([^:]{2,48}):\s+(.+)$")
+
+
+def changelog_page(pages):
+    """A table of the game's and the wiki's recent commits, newest first, a section per day."""
+    entries = [(d, h, s, "Game") for d, h, s in game_history()] + [(d, h, s, "Wiki") for d, h, s in git_log(ROOT)]
+    entries.sort(key=lambda x: x[0], reverse=True)
+    entries = entries[:CHANGELOG_SHOWN]
+    # An "Area: change" subject links its area to the page of that name, where there is one.
+    by_name = {}
+    for p in pages:
+        by_name[p["title"].lower()] = p
+        by_name[p["slug"].replace("-", " ")] = p
+    def area_cell(area):
+        parts = []
+        for piece in (x.strip() for x in area.split(",")):
+            p = by_name.get(piece.lower())
+            parts.append(f'<a href="{p["url"]}">{html.escape(piece)}</a>' if p else html.escape(piece))
+        return ", ".join(parts)
+    months, order = defaultdict(list), []
+    for d, h, s, src in entries:
+        month = d[:10]
+        if month not in months: order.append(month)
+        m = AREA.match(s)
+        area, change = (m.group(1), m.group(2)) if m else ("", s)
+        months[month].append(
+            f'<tr><td><span class="changelog__source changelog__source--{src.lower()}">{src}</span></td>'
+            f'<td>{area_cell(area) if area else ""}</td>'
+            f'<td>{html.escape(change)} <code>{html.escape(h)}</code></td></tr>')
+    if not entries:
+        body = "<p><em>No history available for this build.</em></p>"
+    else:
+        body = (f'<p>The latest {len(entries)} changes to the game and to this wiki, newest first. Where a change names an area that '
+                f'has a page, the area links to it.</p>')
+        for month in order:
+            body += (f'<h2>{nice_date(month)}</h2>\n<div class="table-scroll" data-updated="none"><table class="changelog table--wide">'
+                     f'<thead><tr><th>Source</th><th>Area</th><th>Change</th></tr></thead>'
+                     f'<tbody>{"".join(months[month])}</tbody></table></div>\n')
+    return {"slug": "changelog", "url": "changelog.html", "title": "Changelog", "toc": "yes", "body": body,
+            "categories": [], "credits": [], "status": "", "status_note": ""}
 
 
 # A line git writes in an unresolved merge: <<<<<<< ours, =======, >>>>>>> theirs.
@@ -347,6 +437,8 @@ def main():
                       "body": '<p>That page does not exist (yet). Try the search box, or see <a href="all-pages.html">all pages</a>.</p>',
                       "categories": [], "credits": [], "status": "", "status_note": ""})
 
+    generated.append(changelog_page(pages))
+    BUILT[0] = built_line()
     everything = pages + generated
     known = {p["url"] for p in everything} | set(REDIRECTS) | {"search-index.json"}
     broken, ids, fragments = [], {}, []

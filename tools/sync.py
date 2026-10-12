@@ -404,6 +404,29 @@ def export_rules():
         sys.exit("export failed:\n" + out.stderr)
     DATA.mkdir(exist_ok=True)
     (DATA / "rules.json").write_text(out.stdout, encoding="utf-8")
+    export_history(repo)
+
+
+# The game's commits for the wiki's changelog (build.py reads the game repo itself when it's there,
+# and this copy when it isn't, as on GitHub).
+CHANGELOG_ENTRIES = 200
+
+
+def git_log(repo, n):
+    """[[iso date, short hash, subject], ...] newest first, or [] if repo isn't a git checkout."""
+    out = subprocess.run(["git", "-C", str(repo), "log", "--no-merges", f"-n{n}", "--format=%cI%x1f%h%x1f%s"],
+                         capture_output=True, text=True)
+    if out.returncode != 0:
+        return []
+    return [line.split("\x1f", 2) for line in out.stdout.splitlines() if line.count("\x1f") == 2]
+
+
+def export_history(repo):
+    log = git_log(repo, CHANGELOG_ENTRIES)
+    if not log:
+        return
+    (DATA / "game.json").write_text(json.dumps({"commit": log[0][1], "date": log[0][0], "subject": log[0][2]}, indent=1) + "\n", encoding="utf-8")
+    (DATA / "changelog.json").write_text(json.dumps(log, indent=0, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def header(title, category):

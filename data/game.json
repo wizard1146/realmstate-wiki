@@ -1,0 +1,5 @@
+{
+ "commit": "46845dc",
+ "date": "2026-10-12T22:03:35+11:00",
+ "subject": "An order's standing time is a share of a tick (order_min_life_tick_bp)"
+}

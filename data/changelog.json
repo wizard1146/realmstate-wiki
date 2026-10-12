@@ -1,0 +1,847 @@
+[
+[
+"2026-10-12T22:03:35+11:00",
+"46845dc",
+"An order's standing time is a share of a tick (order_min_life_tick_bp)"
+],
+[
+"2026-10-12T21:44:55+11:00",
+"1bfc8ce",
+"Attacks close 24 ticks before the age ends; Siphon takes at most 2% of the caster's land"
+],
+[
+"2026-10-12T21:16:08+11:00",
+"4270f21",
+"God view, World materials: average price, price range and units traded over the last 60 ticks, and the bid-ask now"
+],
+[
+"2026-10-12T21:00:05+11:00",
+"fc6c6fa",
+"God view, Market: a live tape of fills (buyer, seller, price, change) and, if asked, new orders"
+],
+[
+"2026-10-12T14:00:08+11:00",
+"3ab3033",
+"Robots can be marked before the age starts"
+],
+[
+"2026-10-12T13:56:13+11:00",
+"e9d060f",
+"Robots share a market turn's gold by what each shortfall is worth"
+],
+[
+"2026-10-12T12:13:44+11:00",
+"d92c5bf",
+"Robots chase quests; the simulator compares subscribers; lesser ambush 40%, lesser rite 5 to 1"
+],
+[
+"2026-10-12T12:00:24+11:00",
+"c392644",
+"A person joining a full state takes a robot's seat in one engine command"
+],
+[
+"2026-10-12T10:43:30+11:00",
+"cabfbdf",
+"Second supply pass; robots set a paper budget; the simulator reports stock"
+],
+[
+"2026-10-12T09:37:04+11:00",
+"d07728e",
+"Elite upgrades also take 1 amber each (upgrade_elite_material)"
+],
+[
+"2026-10-11T23:45:22+11:00",
+"30d2d5c",
+"Science: Utopia's 2.125th root, nearing a limit instead of a cap"
+],
+[
+"2026-10-11T23:44:58+11:00",
+"e50332e",
+"God view and settings page for a live server: admins under the staff rules; /settings served"
+],
+[
+"2026-10-11T23:14:25+11:00",
+"41e9e57",
+"God view, Market: the world's materials and where they are"
+],
+[
+"2026-10-11T23:02:16+11:00",
+"6165025",
+"Settings page: a series that only goes negative (a cost cut) is drawn as its size"
+],
+[
+"2026-10-11T22:59:54+11:00",
+"672e110",
+"Settings page: science graphs (bonus by books, books a tick, a science over an age, colloquium decay)"
+],
+[
+"2026-10-11T22:55:23+11:00",
+"098767f",
+"Settings page: a Buildings tab"
+],
+[
+"2026-10-11T22:18:28+11:00",
+"f9acf28",
+"Robots drawn at random; the god view's state card and market view"
+],
+[
+"2026-10-11T21:54:00+11:00",
+"72434eb",
+"God view (/god, dev mode): the server, the world's totals, every house as a dot, live actions, commands"
+],
+[
+"2026-10-11T20:57:42+11:00",
+"6b60491",
+"Settings page: graphs for build costs, hit protection and fading, troop losses, wages, the market reference price"
+],
+[
+"2026-10-11T20:49:55+11:00",
+"f1ac905",
+"Settings page: a graphs panel (exploring first) with values to try"
+],
+[
+"2026-10-11T20:45:58+11:00",
+"44effba",
+"Robots: default draft 65% (was 50%): explorer, banker, scholar, mystic and casual"
+],
+[
+"2026-10-11T20:37:36+11:00",
+"4f011ba",
+"Settings page: robots with styles down and a section's settings across"
+],
+[
+"2026-10-11T11:16:29+11:00",
+"610e8f5",
+"Settings page: compact, areas instead of pages"
+],
+[
+"2026-10-11T10:56:33+11:00",
+"7f2dc44",
+"Ticks on the clock: a new world starts on the next whole tick, and a pause lasts whole ticks"
+],
+[
+"2026-10-10T22:41:01+11:00",
+"0e187f0",
+"tools/settings_page.py: a local settings page (server, age and robot settings in paged tabs)"
+],
+[
+"2026-10-10T22:39:57+11:00",
+"c682724",
+"Robots: army targets per acre, spying before attacks, a lower draft while soldiers sit idle; war exploring an eighth at four times the cost"
+],
+[
+"2026-10-10T01:00:21+11:00",
+"ef1f2ee",
+"Robots: their plans in rules/robots.toml, war stances, chain attacks, leaders who win and lose wars"
+],
+[
+"2026-10-10T00:25:46+11:00",
+"d9e9b75",
+"A battered level that fades, protection for troops too, and intel that reports it"
+],
+[
+"2026-10-09T23:42:45+11:00",
+"c321cf7",
+"The server logs its timings every 100 ticks"
+],
+[
+"2026-10-09T23:18:22+11:00",
+"5a8f8d7",
+"The view keeps up with a full robot world: one pass over orders and timers, and merged training timers"
+],
+[
+"2026-10-09T22:45:22+11:00",
+"6ffbdc1",
+"Robots rank houses they struck lately lower, from their own memory, not the engine's hit count"
+],
+[
+"2026-10-09T22:13:59+11:00",
+"526d273",
+"Wars: land from fighting, not exploring; robots stop piling on"
+],
+[
+"2026-10-09T15:47:07+11:00",
+"6aadc33",
+"A command's answer carries the house's resources right after it (after)"
+],
+[
+"2026-10-09T15:29:54+11:00",
+"8d6cf3a",
+"A pause replays as it was taken: it applies at the world's own time"
+],
+[
+"2026-10-09T15:04:21+11:00",
+"8ce634e",
+"Wars trackable over time: each state's totals recorded every tick; /wars/{id}/series; land_at_start in /wars"
+],
+[
+"2026-10-09T14:56:21+11:00",
+"a466175",
+"A person joining a full state takes the place of its weakest robot"
+],
+[
+"2026-10-09T13:31:02+11:00",
+"3260739",
+"Robots in a live game: REALM_BOTS_LIVE, REALM_BOTS_FILL, a public robot flag; Thief robots train guards first"
+],
+[
+"2026-10-09T13:00:03+11:00",
+"cc577d6",
+"Resuming in pause mode never fires overdue ticks"
+],
+[
+"2026-10-09T12:22:00+11:00",
+"e200688",
+"Snapshots: every 24 ticks or sooner when the log is busy, the newest 3 kept, gzipped; robots' news not stored"
+],
+[
+"2026-10-08T22:22:39+11:00",
+"de67ccd",
+"Age 3: explore 3 acres a tick, easing off with size; the square cost starts at 1,400 acres, a quarter as steep"
+],
+[
+"2026-10-08T22:13:03+11:00",
+"b60facb",
+"/me prices.offense: an army's bonuses, so a page can show the attack score"
+],
+[
+"2026-10-08T21:44:07+11:00",
+"4a3ec85",
+"Market and cross-realm fees round up, on an order's total"
+],
+[
+"2026-10-08T21:29:39+11:00",
+"7775832",
+"Costs round up, so splitting an order never makes it cheaper"
+],
+[
+"2026-10-08T21:19:31+11:00",
+"6772887",
+"Thieves and adepts count towards might (Age 3: 3 and 2 each)"
+],
+[
+"2026-10-08T21:09:36+11:00",
+"2a1de19",
+"Age 3: military wages halved (0.1% of a unit's price a tick, 0.22 gold a soldier)"
+],
+[
+"2026-10-08T20:54:07+11:00",
+"fba06a1",
+"The stewards sell unclaimed output at a markup, so every material can be bought"
+],
+[
+"2026-10-08T20:29:15+11:00",
+"7d62761",
+"/realms/{realm} sends each state's ranks"
+],
+[
+"2026-10-08T11:32:07+11:00",
+"2296db0",
+"Building and exploring never cost less than a floor; mills cut 3% a step"
+],
+[
+"2026-10-08T06:37:37+11:00",
+"d9c3861",
+"Older saves load after a field is added; /state sends the state's ranks"
+],
+[
+"2026-10-08T06:01:44+11:00",
+"09ecd53",
+"Close five hidden-information leaks (abuse entries 2, 3, 38, 39, 40)"
+],
+[
+"2026-10-08T04:58:59+11:00",
+"4385d25",
+"Reference price: every fill counts by size; small ticks move it less"
+],
+[
+"2026-10-08T04:43:41+11:00",
+"5e57821",
+"Robots price from a reference price and act at a random time each tick"
+],
+[
+"2026-10-08T00:35:58+11:00",
+"085c4d2",
+"/me sends house.aether_capacity: the most aether the house's buildings hold"
+],
+[
+"2026-10-08T00:21:03+11:00",
+"7b21278",
+"Tick reports carry chariots, aether and adepts (changes and levels), so they can be graphed"
+],
+[
+"2026-10-08T00:14:47+11:00",
+"35e869f",
+"Age 3: houses start with 7,000 people, under every race's population cap"
+],
+[
+"2026-10-07T23:24:26+11:00",
+"1abf1a9",
+"Age 3 defaults: 55% draft rate, 10 shrines for 10 stables, adepts stop at 2.0 an acre"
+],
+[
+"2026-10-07T22:59:39+11:00",
+"f9dd133",
+"Engine tests as one program; CLAUDE.md says how to add and run tests"
+],
+[
+"2026-10-07T22:19:01+11:00",
+"a734f5a",
+"Adepts: a per-acre limit for gathering, and releasing adepts"
+],
+[
+"2026-10-07T22:09:06+11:00",
+"7df718e",
+"Adepts count in population; /me sends jobs, employment and ranks"
+],
+[
+"2026-10-07T17:49:45+11:00",
+"8024362",
+"Close stored XSS: escape names in the web pages, strict CSP, no markup in names"
+],
+[
+"2026-10-07T15:33:15+11:00",
+"9118273",
+"Weak attacks count for nothing, and every attack costs a troop"
+],
+[
+"2026-10-07T14:11:43+11:00",
+"dc48743",
+"Dragon sightings name the realm"
+],
+[
+"2026-10-07T13:55:17+11:00",
+"b5f3a97",
+"Defenders lose troops in proportion to the attack's weight"
+],
+[
+"2026-10-07T13:31:57+11:00",
+"b21aa50",
+"Dragons: five kinds with their own names and losses; Dragon Walls raise defense against them"
+],
+[
+"2026-10-07T12:59:13+11:00",
+"ad306a4",
+"Every new house starts with a free general and a free academic (Age 3)"
+],
+[
+"2026-10-07T12:41:30+11:00",
+"495c6c3",
+"Release: the lowered draft rate is rounded down to 0.5%"
+],
+[
+"2026-10-07T12:37:17+11:00",
+"4b15240",
+"Release: soldiers back to peasants, other troops back into soldiers"
+],
+[
+"2026-10-06T20:46:04+11:00",
+"2b34b1e",
+"Robots use Truths, realm works and wonders; scientists may seek Truths"
+],
+[
+"2026-10-06T20:33:21+11:00",
+"e3f46ef",
+"Server: market_fee_bp doc matches the taker fee"
+],
+[
+"2026-10-06T20:21:05+11:00",
+"d47d47b",
+"Chance limits are rules: spy and rite contest floors, final 1-95%, ward cap"
+],
+[
+"2026-10-06T15:53:07+11:00",
+"d9b41b7",
+"World Wonders and renown in the score"
+],
+[
+"2026-10-06T15:36:28+11:00",
+"d3f1f9c",
+"Breakthroughs: Chariots, Flanked Ambush, Transmutation Rite, Dragon Walls; dragons"
+],
+[
+"2026-10-06T15:30:15+11:00",
+"3b32d73",
+"Hellfire tells its victim every tick; your record in past ages"
+],
+[
+"2026-10-06T15:08:04+11:00",
+"5a5d5fd",
+"Truths and quests: eight secrets, episodic quests, the 16-tick notice, subscribers"
+],
+[
+"2026-10-06T15:05:06+11:00",
+"9729904",
+"Ages: an unnamed plan's age takes its own number as its name"
+],
+[
+"2026-10-06T14:47:16+11:00",
+"70e6fc0",
+"Cross-realm fee 3%; treasury shares told daily; the API gaps"
+],
+[
+"2026-10-06T14:26:12+11:00",
+"d7cb323",
+"Ages: staff end the age, plan the next and open it; the age's recap"
+],
+[
+"2026-10-06T13:58:50+11:00",
+"06aaf61",
+"Realm works: Specialised Materials Production, voted by a realm's states"
+],
+[
+"2026-10-06T13:48:36+11:00",
+"0e81c9c",
+"Market: treasury overflow goes to the state's houses; a cross-realm fee for buyers"
+],
+[
+"2026-10-06T13:18:43+11:00",
+"822ecc8",
+"Siphon: 750 aether, and its resin rises slowly with land"
+],
+[
+"2026-10-06T13:16:09+11:00",
+"2ebd7c6",
+"README: continuous matching, the taker fee and the 10-minute order lock"
+],
+[
+"2026-10-06T13:01:08+11:00",
+"33b6ccd",
+"Siphon costs half as much aether again while relations are only unfriendly"
+],
+[
+"2026-10-06T13:00:52+11:00",
+"310fea2",
+"Chat: its own rate limit, newest 1,000 per channel, cleared each age"
+],
+[
+"2026-10-06T12:21:01+11:00",
+"5f555be",
+"Rites: Siphon and Hellfire (renamed); robots cast rites with purpose"
+],
+[
+"2026-10-06T11:54:03+11:00",
+"af4481c",
+"Rites: vengeance per caster state; Dread, Land Lust, Meteor Showers; Drain 17%"
+],
+[
+"2026-10-06T11:01:06+11:00",
+"975e371",
+"Rites and hexes: Utopia-style balance"
+],
+[
+"2026-10-06T10:56:39+11:00",
+"1bb7a1b",
+"Market API test: instant fills, a resting bid and the cancel lock"
+],
+[
+"2026-10-06T10:09:07+11:00",
+"49bda35",
+"WIP: continuous matching (taker fee, 10-minute order lock); API test still to update"
+],
+[
+"2026-10-06T10:08:06+11:00",
+"1571cdd",
+"Season: military wages and desertion, wars settled at the end, staff end, recap, pre-season"
+],
+[
+"2026-10-06T09:30:12+11:00",
+"68fd258",
+"Hall of Deeds: the war rule is checked again at the sale"
+],
+[
+"2026-10-06T09:24:15+11:00",
+"b9a68e3",
+"Robots: late bloomers turn to war at tick 560, whatever the age's length"
+],
+[
+"2026-10-06T06:55:10+11:00",
+"ac503f4",
+"Supply: retuned outputs, seasons, spoilage, and depletion (a per-age flag)"
+],
+[
+"2026-10-05T23:53:02+11:00",
+"90c5d16",
+"Robots pace their attacks"
+],
+[
+"2026-10-05T23:38:49+11:00",
+"fe4bf1a",
+"Cargo.lock: realm-server depends on realm-names"
+],
+[
+"2026-10-05T23:36:35+11:00",
+"1955255",
+"Robots trade: every style buys what its plans use and sells the rest"
+],
+[
+"2026-10-05T23:27:30+11:00",
+"e92b0af",
+"Market: a fee that trading houses cut (no more minted premium); two-sided quotes"
+],
+[
+"2026-10-05T23:01:16+11:00",
+"781f55f",
+"Age 3 economy pass: dearer training, less gold, a science cap; robots draft 50-75%"
+],
+[
+"2026-10-05T22:44:03+11:00",
+"9305fba",
+"README: robots fill states and go to war"
+],
+[
+"2026-10-05T22:39:56+11:00",
+"ce20477",
+"Robots go to war; explorable acres tightened for big houses"
+],
+[
+"2026-10-05T21:35:00+11:00",
+"a63d593",
+"API for aid and explorable acres: /me explorable and aid_balance, GET /aid/quote"
+],
+[
+"2026-10-05T21:24:37+11:00",
+"840fd02",
+"Explorable acres, a squared exploring cost, and aid between statemates"
+],
+[
+"2026-10-05T20:55:27+11:00",
+"6d39ed0",
+"Balance summary across five simulated ages (docs/sims/balance-5-seeds.md)"
+],
+[
+"2026-10-05T20:52:49+11:00",
+"2eae704",
+"Robots in a world: REALM_BOTS=N (dev mode) founds robot houses and plays them after every tick"
+],
+[
+"2026-10-05T20:46:31+11:00",
+"3446c0b",
+"Robot players in 14 styles, and a simulator that plays a whole age for balancing"
+],
+[
+"2026-10-05T17:49:58+11:00",
+"52b4e67",
+"Staff roles for troubleshooting a live game: owner, admin, moderator"
+],
+[
+"2026-10-05T17:33:24+11:00",
+"2b83974",
+"Dev mode: jump time ahead, pause and resume, grant, protect, war and peace, play as any house"
+],
+[
+"2026-10-05T17:06:18+11:00",
+"665df90",
+"Six new personalities in Age 3: Spymaster, Mystic, Quartermaster, Prospector, Zealot, Herald"
+],
+[
+"2026-10-05T16:37:46+11:00",
+"bd8f517",
+"Name suggestions: a name list for each of the ten races; GET /names"
+],
+[
+"2026-10-04T20:24:09+11:00",
+"24818b4",
+"Peridian citizens defend at 20% of a soldier"
+],
+[
+"2026-10-04T20:01:59+11:00",
+"402442e",
+"Age 3: the four non-human races, and Unlithian elites from war at 0.1%"
+],
+[
+"2026-10-04T19:20:49+11:00",
+"114ae12",
+"/me prices.mercenary.ratio: the race's ratio, not the age's"
+],
+[
+"2026-10-04T19:20:03+11:00",
+"1569319",
+"API for the Age 3 races; new worlds default to Age 3"
+],
+[
+"2026-10-04T19:16:29+11:00",
+"d4a4590",
+"Age 3: the six human races, with every mechanic their rules need"
+],
+[
+"2026-10-04T18:48:56+11:00",
+"e4d3d4b",
+"CORS: answer Chrome's private-network check, so a public page can call a server on the player's computer"
+],
+[
+"2026-10-04T15:33:56+11:00",
+"6c32d31",
+"Connected sites: any front end or tool can act for a player once they allow it"
+],
+[
+"2026-10-04T08:26:36+11:00",
+"16544eb",
+"Pause on restart: never for a world just created, nor for under a second down"
+],
+[
+"2026-10-04T08:16:08+11:00",
+"ac35df9",
+"Pause on restart: REALM_RESUME=pause moves the world on instead of catching up"
+],
+[
+"2026-10-04T07:40:40+11:00",
+"b4f4f1b",
+"/state: restore share_bp (dropped when the name fields were added)"
+],
+[
+"2026-10-04T07:32:46+11:00",
+"8c408a8",
+"State and realm names; leaders rename their state once a day"
+],
+[
+"2026-10-04T07:22:06+11:00",
+"ad4a523",
+"One place for every gain; mercenary_cost stat; API: recipes, race flags, prices, heirs"
+],
+[
+"2026-10-04T07:06:00+11:00",
+"fa41dea",
+"One place for every loss: World::lose, with its cause and who caused it"
+],
+[
+"2026-10-04T06:30:35+11:00",
+"8d30709",
+"Conditional race and personality modifiers; attack-only and defence-only casualties; attack gains"
+],
+[
+"2026-10-04T06:21:27+11:00",
+"c502be3",
+"Mercenaries, elite++, Propaganda and Kidnapping; Unsettle becomes Bribe a General"
+],
+[
+"2026-10-04T05:52:02+11:00",
+"71c98a3",
+"New houses start with 400 soldiers (from their starting people)"
+],
+[
+"2026-10-04T05:42:49+11:00",
+"b3e6f8d",
+"/me science gives each category's scientist rank and books next tick"
+],
+[
+"2026-10-04T05:35:10+11:00",
+"b31dcd6",
+"/rules sends each academic attribute's and general trait's effects"
+],
+[
+"2026-10-04T05:32:11+11:00",
+"3ad3dc7",
+"Starving hurts: troops and peasants starve, nobody is born, and the house is told"
+],
+[
+"2026-10-04T05:03:27+11:00",
+"237773f",
+"Exploring scales with size; attack report cards; building effects; richer tick reports"
+],
+[
+"2026-10-04T04:55:23+11:00",
+"6beff5a",
+"Tick reports count soldiers among troops"
+],
+[
+"2026-10-04T04:49:25+11:00",
+"3d3f320",
+"Attack any size: a size curve cuts gains against smaller houses instead of a 75% floor"
+],
+[
+"2026-10-03T15:56:32+10:00",
+"bffe9f0",
+"Soldiers and the draft, training on a bell with losses, chat channels, tick reports"
+],
+[
+"2026-10-03T12:39:55+10:00",
+"b839561",
+"/me shows population and max population"
+],
+[
+"2026-10-03T12:29:34+10:00",
+"0358a8b",
+"Fix: no trading with yourself; the winning state's extra heir can be kept"
+],
+[
+"2026-10-03T10:57:18+10:00",
+"bf0955d",
+"Your house shows work under way (with start and finish times) and exact prices"
+],
+[
+"2026-10-02T10:32:27+10:00",
+"db3a3dc",
+"State chat: stamp messages with the wall clock, not the world's last step"
+],
+[
+"2026-10-02T10:21:23+10:00",
+"4caa6b8",
+"/age gives next_tick_at and tick_ms, so pages can count down to the next tick"
+],
+[
+"2026-10-02T10:19:56+10:00",
+"4024042",
+"War recovery for the loser (half each after a peace) and a peace dividend for states out of war"
+],
+[
+"2026-10-02T08:01:24+10:00",
+"633b63e",
+"New-house protection, state chat, live updates over WebSocket"
+],
+[
+"2026-10-02T07:44:49+10:00",
+"962b7be",
+"Score states on land and might, each against the leader"
+],
+[
+"2026-10-02T07:22:50+10:00",
+"be708ae",
+"Age end: scoring, the winning state, heirs kept and recalled across ages"
+],
+[
+"2026-10-01T00:00:30+10:00",
+"751493a",
+"Intrigue phase 3: False Flag, Forge Orders, Unsettle, Courting with Reassure, Stir Unrest, more sabotage, curses, state vigils"
+],
+[
+"2026-09-30T22:43:14+10:00",
+"506fbdd",
+"Rites (Intrigue phase 2): adepts, aether, shrines, watchstones, self rites, divinations, hexes"
+],
+[
+"2026-09-30T21:58:20+10:00",
+"29ecf17",
+"Intrigue phase 1: Nerve, Vigilance, intel, theft and sabotage operations"
+],
+[
+"2026-09-30T17:29:49+10:00",
+"33d8c0a",
+"Attacks: Raze within a state for idle houses; Torch scales with overwhelming force; Reclaim 40%; Sack and Massacre scale with the army's make-up"
+],
+[
+"2026-09-30T17:19:53+10:00",
+"ce02fc2",
+"Attacks, second pass: Assault, Breach, Reclaim, Torch, Sack, Massacre, Blockade; protection from repeated hits"
+],
+[
+"2026-09-29T23:26:36+10:00",
+"3408bf8",
+"Attack kinds: Conquest, Ambush, Raze, Plunder, Massacre, Learn"
+],
+[
+"2026-09-29T23:04:22+10:00",
+"6f34fd4",
+"War: hostility meters, declarations, ceasefires, general and intra-realm wars"
+],
+[
+"2026-09-29T22:50:16+10:00",
+"f51fe92",
+"Heirs: renown slot table, winner bonus, marking heirs"
+],
+[
+"2026-09-29T22:44:02+10:00",
+"e24c830",
+"Hall of Deeds: trading generals and academics"
+],
+[
+"2026-09-29T22:31:23+10:00",
+"c049949",
+"Service records for generals and academics; chronicle documents"
+],
+[
+"2026-09-29T22:14:02+10:00",
+"40d761b",
+"Academics (scholars with flat attributes); generals capped at 5"
+],
+[
+"2026-09-29T21:59:49+10:00",
+"27567ba",
+"Export sciences and projects for the wiki"
+],
+[
+"2026-09-29T21:59:44+10:00",
+"0b32544",
+"Science and Colloquium in the server and pages"
+],
+[
+"2026-09-29T21:57:19+10:00",
+"d217eee",
+"Science (after Utopia) and the Colloquium"
+],
+[
+"2026-09-29T21:33:01+10:00",
+"ed03aa3",
+"Export buildings for the wiki"
+],
+[
+"2026-09-29T21:32:39+10:00",
+"e0b8e4b",
+"Buildings (after Utopia), stables and chariots, trading houses, Ancestral Hall"
+],
+[
+"2026-09-29T21:22:51+10:00",
+"066a2fa",
+"Rename general traits: Bellator, Grandmaster, Virtuic, Anointed, Pathfinder"
+],
+[
+"2026-09-29T21:09:28+10:00",
+"bee7eed",
+"Export recipes and traits for the wiki"
+],
+[
+"2026-09-29T21:08:30+10:00",
+"7a17fb9",
+"Military: unit upgrades, medics, refining, renown and generals"
+],
+[
+"2026-09-29T19:03:51+10:00",
+"2db493b",
+"State tax: the leader sets it within a per-age band"
+],
+[
+"2026-09-29T15:02:16+10:00",
+"bc2f8f8",
+"Economy: materials, production shares, state treasuries, leaders, market"
+],
+[
+"2026-09-29T14:32:12+10:00",
+"7e64143",
+"Docs: what players can see; hidden-information rule for new endpoints"
+],
+[
+"2026-09-29T14:31:11+10:00",
+"0e948c6",
+"Hidden information: public vs private views, spying, news, shared reports"
+],
+[
+"2026-09-29T14:19:48+10:00",
+"d0bcaee",
+"Milestone 2 (part 1): realms/states/houses, accounts, Google sign-in, passkeys"
+],
+[
+"2026-09-29T13:54:36+10:00",
+"ea89967",
+"export: satisfy clippy"
+],
+[
+"2026-09-29T13:53:15+10:00",
+"2031545",
+"Rules export for the wiki; keep-in-step rules in CLAUDE.md"
+],
+[
+"2026-09-29T13:03:54+10:00",
+"e76a74d",
+"Note the GitHub remote"
+],
+[
+"2026-09-29T13:02:16+10:00",
+"8718f96",
+"Rename project to Realmstate; groups of kingdoms are realms"
+],
+[
+"2026-09-29T13:01:01+10:00",
+"b710494",
+"Milestone 1: rules as data, single-writer engine, log and replay, HTTP API"
+]
+]

@@ -20,6 +20,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0      # the changelog reads the wiki's whole history
       - name: Generated rules pages match data/rules.json
         run: python3 tools/sync.py --check
       - name: Build site (checks internal links; stdlib Python only)
