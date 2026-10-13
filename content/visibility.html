@@ -24,7 +24,7 @@ updated: 2026-10-06
 <p>The first six intel sources are <a href="operations.html">thieves' operations</a>; the last three are divinations (<a href="rite-list.html">rites</a>).</p>
 
 <h2 id="News">Your news</h2>
-<p>Your house keeps a news feed that only you see. There is no public news; wars, rankings and the <a href="hall-of-deeds.html">Hall of Deeds</a> are public instead.</p>
+<p>Your house keeps a news feed that only you see, except what your state sees (below). There is no public news; wars, rankings and the <a href="hall-of-deeds.html">Hall of Deeds</a> are public instead.</p>
 <div class="table-scroll" data-updated="none"><table>
 <tr><th>What happened to you</th><th>Your news says</th><th>Names who did it?</th></tr>
 <tr><td>Attacked</td><td>Whether they won, land and troops lost, what was taken</td><td>Yes, unless they cast Veil</td></tr>
@@ -38,6 +38,9 @@ updated: 2026-10-06
 <tr><td>A character is courted</td><td>Every house in your state hears that it is wavering, and what reassuring it costs</td><td>No; if it goes to auction, the courter has first refusal</td></tr>
 </table></div>
 <p>Your news also says when explored land arrives, troops finish training and your army comes home.</p>
+
+<h2 id="StateNews">Your state's news</h2>
+<p>Your statemates see part of your news, and you see part of theirs: attacks made and suffered, second strikes, land retaken, spies caught, thefts and sabotage suffered, afflictions, Hellfire, hexes suffered and resisted, and dragon raids. Your hardships (starving, desertion, a general killed) are shared only if you choose; it is off until you turn it on. Everything else stays yours alone. Tools read it at <code>GET /state/news</code> and switch sharing with the <code>share_losses</code> command (see <a href="api.html">API</a>).</p>
 
 <h2 id="Reports">Your state's reports</h2>
 <p>Every successful intel operation or divination by anyone in your state is shared with the whole state. Thefts, sabotage and hexes make no report. Tools read them at <code>GET /reports</code> (see <a href="api.html">API</a>): each has a <code>kind</code> of <code>survey</code>, <code>muster</code>, <code>ledgers</code>, <code>archives</code>, <code>couriers</code>, <code>dossier</code>, <code>scrying</code>, <code>omens</code> or <code>roads</code>.</p>
