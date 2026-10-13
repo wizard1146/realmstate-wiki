@@ -57,6 +57,7 @@
   --muted: #6b6558;
   --border: #ddd5c3;
   --accent: #6f674a;        /* olive khaki, dark enough for small text to pass AA contrast */
+  --gold: #b8892e;          /* the landing page's gold: rules and marks, not text */
   --accent-text: #ffffff;
   --link: #2a5d9f;
   --link-visited: #6b3fa0;
@@ -89,7 +90,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #17141a; --surface: #201c25; --sidebar-bg: #100d13; --text-dim: #c9c3d2; --text: #e9e4ee; --muted: #a59fb0; --border: #3a3342;
-    --accent: #c2b78a; --accent-text: #17141a; --link: #8fb8f0; --link-visited: #b89bea;
+    --accent: #c2b78a; --gold: #d9ad55; --accent-text: #17141a; --link: #8fb8f0; --link-visited: #b89bea;
     --header-bg: #0f0c12; --header-text: #f3e9d2;
     --yes-bg: #1c3d2a; --yes-text: #b7f0c9; --no-bg: #4a1f26; --no-text: #f6c4ca;
     --good-bg: #1d3b25; --bad-bg: #472228; --row-hover: #252224; --answer-bg: #1b1820; --head-bg: #3e3b2c; --head-text: #ece6d2; --band-bg: #2a2532;
@@ -148,6 +149,14 @@ a:visited { color: var(--link-visited); }
     background-clip: padding-box; }
 }
 .nav-group__title { margin: 0 0 .25rem; padding: 0 .7rem; font-size: .78rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }   /* plum accent */
+/* A group's title and a gold rule running right, as in Straightline's menu. The group holding the current page slides
+   its title to the right (the rule moves to its left), over 140ms. */
+.nav-group__title { display: flex; align-items: center; }
+.nav-group__title::before, .nav-group__title::after { content: ""; height: 1px; flex: 0 1 0; min-width: 0; background: color-mix(in srgb, var(--gold) 55%, transparent); transition: flex-grow 140ms ease-out, margin 140ms ease-out; }
+.nav-group__title::after { flex-grow: 1; margin-left: 8px; }
+.nav-group__title:has(+ .nav-group__list a[aria-current])::before { flex-grow: 1; margin-right: 8px; }
+.nav-group__title:has(+ .nav-group__list a[aria-current])::after { flex-grow: 0; margin-left: 0; }
+@media (prefers-reduced-motion: reduce) { .nav-group__title::before, .nav-group__title::after { transition: none; } }
 .nav-group__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 1px; }
 .nav-group__list a, .nav-group__list a:visited { display: block; margin-right: -.7rem; padding: .54rem .7rem .3rem; border-radius: .3rem 0 0 .3rem; text-decoration: none; color: var(--text-dim); transition: background-color .12s, color .12s; }
 .nav-group__list a:hover { background: var(--surface); color: var(--text); }
