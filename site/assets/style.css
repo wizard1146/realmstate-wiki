@@ -120,7 +120,7 @@ a:visited { color: var(--link-visited); }
 .site-sidebar__close { display: none; background: none; border: 0; color: var(--muted); padding: .4rem; margin: 0 -.4rem 0 0; cursor: pointer; }
 .site-sidebar__close:hover { color: var(--text); }
 
-.site-nav { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 1.1rem; padding: 1rem .7rem; font: 400 1rem/1.4 var(--font-heading); }   /* same stack as the headings */   /* scrolls independently; position is remembered across pages (see the inline script in template.html) */
+.site-nav { position: relative; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; gap: 1.1rem; padding: 1rem .7rem; font: 400 1rem/1.4 var(--font-heading); background: var(--sidebar-bg) url(paper.svg) local; }   /* same stack as the headings */   /* scrolls independently, its grain with it (local); position is remembered across pages (see the inline script in template.html) */
 /* Sidebar scrollbar. Chrome / Edge / Safari: the bar and track are invisible; only the sword shows (point down), sitting in the middle of the
    (transparent) handle, so it travels down the sidebar as you scroll. Drag anywhere on the handle.
    Firefox can't paint images on scrollbars: it gets a thin scrollbar in the site colours. The standard scrollbar-* properties are kept out
