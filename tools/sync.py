@@ -983,7 +983,7 @@ def generate(rules):
                 if (a := art.get(ident)):
                     if not (ROOT / "site" / "assets" / "races" / a["file"]).exists():
                         problems.append(f'content/_race-art.json: site/assets/races/{a["file"]} is missing')
-                    pic = f'<figure class="race-art"><img src="assets/races/{e(a["file"])}" alt="{e(a["alt"])}" width="1000" height="1000"></figure>\n'
+                    pic = f'<figure class="race-art"><img src="assets/races/{e(a["file"])}" alt="{e(a["alt"])}" width="800" height="800"></figure>\n'
                 parts.append('<h2 id="lore">Lore</h2>\n<div class="race-lore">\n' + pic + "".join(f"<p>{e(p)}</p>\n" for p in lore.get(ident, [])) + "</div>\n")
             if i["lineage_from"]:
                 src = known.get(i["lineage_from"], {"name": i["lineage_from"]})
