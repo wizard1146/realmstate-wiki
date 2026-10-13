@@ -110,7 +110,7 @@ a:visited { color: var(--link-visited); }
 .site-main > .page { flex: 1; width: 100%; }
 
 /* ---- site-sidebar: brand block, grouped nav, pinned group at the bottom ---- */
-.site-sidebar { position: sticky; top: 0; z-index: 30; height: 100vh; overflow: visible; display: flex; flex-direction: column; background: var(--sidebar-bg); border-right: 1px solid var(--border); }   /* the sidebar itself never scrolls: the brand stays put, only .site-nav scrolls. Not clipped, and above the main column, so the nav-marker shield can sit across its right edge */
+.site-sidebar { position: sticky; top: 0; z-index: 30; height: 100vh; overflow: visible; display: flex; flex-direction: column; background: var(--sidebar-bg) url(paper.svg); border-right: 1px solid var(--border); }   /* the sidebar itself never scrolls: the brand stays put, only .site-nav scrolls. Not clipped, and above the main column, so the nav-marker shield can sit across its right edge */
 .site-sidebar__brand { flex: none; display: flex; align-items: center; justify-content: space-between; gap: .5rem; height: var(--header-h); padding: 0 1.3rem; border-bottom: 1px solid var(--border); }   /* same height as .site-header so their bottom borders line up */   /* pinned to the top of the sidebar */
 .site-sidebar__brand-link, .site-sidebar__brand-link:visited { display: flex; align-items: center; gap: .65rem; text-decoration: none; color: var(--accent); line-height: 1.2; }
 .site-sidebar__brand-text { display: flex; flex-direction: column; }
