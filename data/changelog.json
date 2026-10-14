@@ -1,5 +1,15 @@
 [
 [
+"2026-10-15T01:57:40+11:00",
+"b9dd3e0",
+"Realm works cost 5,000,000 gold and 10,000 of the realm's material (was 500,000 and 1,000): too easy to finish"
+],
+[
+"2026-10-15T01:02:27+11:00",
+"b493691",
+"The world feed: GET /world/news (public) and live world_news messages tell everyone of wars declared and ended, ceasefires agreed, broken and ended, Truths announced, dragons sighted, and big market moves (an order of world_news_trade_gold or more, a reference price moving world_news_swing_bp or more in a tick), never who traded. Stored as the news of a house numbered WORLD, which no house has"
+],
+[
 "2026-10-15T00:28:31+11:00",
 "6a34080",
 "Robots and the Colloquium: a robot leading its state chooses a project when there's none (one its realm can research); every 12 ticks each robot gives colloquium_bp of all the books it has written this age, less what it has given (robots.toml, per style: 5% for fighters and the casual, up to 10% for the scholar)"

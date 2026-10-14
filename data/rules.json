@@ -9749,7 +9749,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "d471ff79ee426802",
+      "hash": "96598003922cb1c5",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -10824,50 +10824,50 @@
         "realm_work_vote_bp": 6667,
         "realm_works": [
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "surface_mine",
             "material": "bauxite",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Surface Mine",
             "output_bp": 200
           },
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "quarry",
             "material": "limestone",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Quarry",
             "output_bp": 200
           },
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "ancient_digsite",
             "material": "amber",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Ancient Digsite",
             "output_bp": 200
           },
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "volcanic_pit",
             "material": "sulfur",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Volcanic Pit",
             "output_bp": 200
           },
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "forestry_camp",
             "material": "pine",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Forestry Camp",
             "output_bp": 200
           },
           {
-            "gold": 500000,
+            "gold": 5000000,
             "id": "lumber_yard",
             "material": "paper",
-            "material_cost": 1000,
+            "material_cost": 10000,
             "name": "Lumber Yard",
             "output_bp": 200
           }
