@@ -1,7 +1,7 @@
 <!--
 title: Trade
 category: Mechanics, Economy
-updated: 2026-10-06
+updated: 2026-10-14
 -->
 <p>Every realm makes one <a href="materials.html">material</a> each tick. Its states share the output, each state splits its part between its houses and its treasury, and anyone can buy or sell on the market.</p>
 
@@ -22,7 +22,7 @@ updated: 2026-10-06
 <p>Goods don't keep forever. Each tick, a house may hold {{spoil_free}} units of each material, plus {{spoil_free_per_acre}} per acre of land, without loss. A treasury may hold {{spoil_treasury_free}} of each.</p>
 <p>Beyond that, the excess spoils. You lose {{spoil_step_pct}}% of it for every free allowance's worth you're over, up to {{spoil_max_pct}}% a tick. A little over costs almost nothing; a big hoard melts fast.</p>
 <p><b>Worked example.</b> A house of 400 acres may keep {{spoil_example_allowance}} of each material. With {{spoil_example_small_stock}} bauxite it's {{spoil_example_allowance}} over, one allowance's worth, so it loses {{spoil_step_pct}}% of that: {{spoil_example_small_loss}} units. With {{spoil_example_big_stock}} it's {{spoil_example_big_over}} over, ten allowances' worth, so the {{spoil_max_pct}}% cap applies: {{spoil_example_big_loss}} units a tick.</p>
-<p>Goods in your sell orders count, so an order at a price nobody pays won't protect them. They spoil after your stock, starting with your highest-priced order. Your house page shows what would spoil next tick.</p>
+<p>Goods in your sell orders count, so an order at a price nobody pays won't protect them. They spoil after your stock, starting with your highest-priced order.</p>
 <h3 id="Overflow">Treasury overflow</h3>
 <p>Some ages switch treasury overflow on (this age: {{treasury_overflow}}). Then, each tick before anything spoils, a treasury's stock beyond its {{spoil_treasury_free}} free units of a material is shared equally among the state's houses instead of spoiling. Units that don't divide evenly go to one house after another, a different one each tick, so nothing is made or lost and it all evens out. Once a day, each house's news says what it got that day.</p>
 <p>The houses' own spoilage then applies as usual, so a house already over its allowance loses some of its share. Goods in the treasury's sell orders count toward its allowance, but they are never handed out. A state with no houses has no one to share with: its treasury's excess still spoils.</p>

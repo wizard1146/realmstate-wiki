@@ -16,7 +16,7 @@ updated: 2026-10-14
 </ul>
 <p>The state with the highest score wins the age. Houses are also ranked by land, by might and by renown.</p>
 <p><b>Example.</b> The leading state by land holds 12,000 acres and the mightiest state has 900,000 might. A state with 9,000 acres, 900,000 might and no renown, which won one war ({{war_win_points}} war points), scores {{score_land_pct}} &times; &frac34; + {{score_might_pct}} + 0 + {{war_win_points}} &times; {{score_war_point_pts}}.</p>
-<p>The standings are public all age long (<code>GET /age</code>, and the Age panel on your house page).</p>
+<p>The standings are public all age long (<code>GET /age</code>).</p>
 
 <h2 id="Might">Might</h2>
 <p>Might counts what a house has built up, but not its land or buildings (those already count as land), and not gold, food or materials (so it can't be pumped at the last minute):</p>
@@ -59,4 +59,4 @@ updated: 2026-10-14
 <p>The results show every house, but not who played which: that stays private. The game does remember which house was yours, so you can always look up your own record in each age you played: your house, how it ranked by land, might and renown, how your state did, and the heirs you kept. The War Room lists it under Your Past Ages and marks your house in that age's results and recap (<code>GET /me/ages</code>). Ages that ended before the game kept this record aren't listed.</p>
 
 <h2 id="Recall">Bringing an heir back</h2>
-<p>In a later age, once you have a house, recall an heir from the Age panel (or <code>POST /heirs/recall</code>). It joins your house with its record, starting a new stint, and arrives settling in like a traded character. You need room for it: fewer than the most generals a house may keep, or the universities for another academic. If the new age has no such trait or attribute any more, that one is dropped. Each heir comes back once.</p>
+<p>In a later age, once you have a house, you can recall an heir into it (<code>POST /heirs/recall</code>). It joins your house with its record, starting a new stint, and arrives settling in like a traded character. You need room for it: fewer than the most generals a house may keep, or the universities for another academic. If the new age has no such trait or attribute any more, that one is dropped. Each heir comes back once; if it's kept again at the end of that age, it can return in the one after.</p>
