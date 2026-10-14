@@ -50,8 +50,8 @@
     }
   }
 
-  function draw({ age, houses, wars, news }) {
-    names = Object.fromEntries((age.standings || []).map((s) => [`${s.state.realm}:${s.state.state}`, s.name]));
+  function draw({ age, houses, wars, news, more = {} }) {
+    names = { ...Object.fromEntries((age.standings || []).map((s) => [`${s.state.realm}:${s.state.state}`, s.name])), ...more };
     const parts = [];
     if (!age.started) parts.push(`<b>${esc(age.name)}</b> hasn't begun yet`);
     else if (age.ended) parts.push(`<b>${esc(age.name)}</b> has ended`);
@@ -70,5 +70,18 @@
     band.hidden = false;
   }
 
-  load().then(draw, () => { band.hidden = true; });
+  // A state the standings don't list (one with few houses) is named from its realm, for the latest news line.
+  async function nameTheRest(data) {
+    const known = new Set((data.age.standings || []).map((s) => `${s.state.realm}:${s.state.state}`));
+    const n = (data.news || [])[0] || {};
+    const realms = [...new Set([n.by, n.on, n.a, n.b, n.winner].filter((s) => s && !known.has(`${s.realm}:${s.state}`) && !(data.more || {})[`${s.realm}:${s.state}`]).map((s) => s.realm))];
+    if (!realms.length) return;
+    const got = await Promise.all(realms.map((r) => get(`/realms/${r}`).catch(() => null)));
+    data.more = { ...(data.more || {}) };
+    got.forEach((x, i) => { for (const s of x?.states || []) if (s.name) data.more[`${realms[i]}:${s.state}`] = s.name; });
+    try { sessionStorage.setItem(KEY, JSON.stringify({ at: Date.now(), data })); } catch {}
+    draw(data);
+  }
+
+  load().then((data) => { draw(data); nameTheRest(data); }, () => { band.hidden = true; });
 })();
