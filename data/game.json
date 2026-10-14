@@ -1,5 +1,5 @@
 {
- "commit": "8996924",
- "date": "2026-10-14T23:10:43+11:00",
- "subject": "Tests for the generals limit: a house at 5 can't raise, offer, bid or recall a heir; a sale or auction to a buyer that filled up since fails (gold back); no general rises from the ranks past it"
+ "commit": "6a34080",
+ "date": "2026-10-15T00:28:31+11:00",
+ "subject": "Robots and the Colloquium: a robot leading its state chooses a project when there's none (one its realm can research); every 12 ticks each robot gives colloquium_bp of all the books it has written this age, less what it has given (robots.toml, per style: 5% for fighters and the casual, up to 10% for the scholar)"
 }

@@ -335,5 +335,7 @@
   "ward_max_pct": "80",
   "waver_ticks": 24,
   "weak_attack_pct": "25",
-  "wonder_refund_pct": "50"
+  "wonder_refund_pct": "50",
+  "world_news_swing_pct": "5",
+  "world_news_trade_gold": "50,000"
 }

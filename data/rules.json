@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "03df8d910a3611e1",
+      "hash": "f804b8cf797c3393",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2573,7 +2573,9 @@
         "waver_ticks": 24,
         "weak_attack_bp": 2500,
         "wonder_refund_bp": 0,
-        "wonders": []
+        "wonders": [],
+        "world_news_swing_bp": 0,
+        "world_news_trade_gold": 0
       },
       "personalities": [
         {
@@ -5154,7 +5156,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "c97cc9d9e4b40b3f",
+      "hash": "ecc67678fcc84a24",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6864,7 +6866,9 @@
         "waver_ticks": 24,
         "weak_attack_bp": 2500,
         "wonder_refund_bp": 0,
-        "wonders": []
+        "wonders": [],
+        "world_news_swing_bp": 0,
+        "world_news_trade_gold": 0
       },
       "personalities": [
         {
@@ -9745,7 +9749,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "26d8be6b2df908a1",
+      "hash": "d471ff79ee426802",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -12022,7 +12026,9 @@
             "ticks": 168,
             "truth": "paradise_of_trees"
           }
-        ]
+        ],
+        "world_news_swing_bp": 500,
+        "world_news_trade_gold": 50000
       },
       "personalities": [
         {
