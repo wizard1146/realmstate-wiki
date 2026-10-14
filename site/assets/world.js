@@ -1,5 +1,5 @@
 // The world now: a small banner on Getting Started (any page with #world-now) with the live game's state: the age
-// and its day, players, wars under way, and the latest world news. Read from the game's public
+// and its day, players and houses, wars under way, and the latest world news. Read from the game's public
 // API (api.realmstate.net; the local game when the wiki is served locally), kept for a minute so moving between
 // pages doesn't ask again. If the game can't be reached, the band stays hidden and nothing else changes.
 (() => {
@@ -59,7 +59,7 @@
       const day = Math.floor((age.ticks * age.tick_ms) / DAY) + 1, days = Math.ceil((age.age_ticks * age.tick_ms) / DAY);
       parts.push(`<b>${esc(age.name)}</b>, day ${fmt(day)} of ${fmt(days)}`);
     }
-    parts.push(`${fmt(age.people)} player${age.people === 1 ? '' : 's'}`);
+    parts.push(`${fmt(age.people)} player${age.people === 1 ? '' : 's'}`, `${fmt(houses)} house${houses === 1 ? '' : 's'}`);
     const all = wars.wars || [];
     parts.push(`${fmt(all.length)} war${all.length === 1 ? '' : 's'}`);
     band.querySelector('.world-now__parts').innerHTML = parts.map((p) => `<span>${p}</span>`).join('');
