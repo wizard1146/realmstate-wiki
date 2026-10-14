@@ -174,6 +174,16 @@ a:visited { color: var(--link-visited); }
 .site-header__play-link, .site-header__play-link:visited { margin-left: auto; padding: .38rem .95rem; border-radius: .4rem; background: radial-gradient(ellipse at center, #7b7354 0%, #29261c 100%); color: #fff; font-size: .85rem; font-weight: 600; white-space: nowrap; text-decoration: none; }
 .site-header__play-link:hover, .site-header__play-link:visited:hover, .site-header__play-link:focus-visible { background: var(--surface); color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); }   /* inverts on hover: light fill, accent text + outline */
 
+/* ---- the world now (assets/world.js): the live game's state in a slim band under the header ---- */
+.world-now { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem .9rem; padding: .45rem 2rem; background: var(--band-bg); border-bottom: 1px solid var(--border); color: var(--text-dim); font-size: .82rem; }
+.world-now[hidden] { display: none; }
+.world-now__label { font-family: var(--font-heading); font-variant-caps: all-small-caps; letter-spacing: .1em; color: var(--accent); font-size: .95rem; }
+.world-now__parts { display: contents; }
+.world-now__parts > span + span::before { content: "·"; margin-right: .9rem; color: var(--muted); }
+.world-now b { color: var(--text); font-weight: 600; }
+.world-now__latest { color: var(--text); }
+@media (max-width: 47.99rem) { .world-now { padding: .4rem 1.5rem; font-size: .78rem; } .world-now__parts > span + span::before { display: none; } }
+
 /* ---- title in the header (desktop, enabled by class="title-in-header" on <html>) ----
    The big page title stays at the top of the article and scrolls away as normal. Once it has, a condensed copy fades in on the left of the
    header (long titles are cut with an ellipsis), so one bar replaces the old header + pinned-title pair. Below 48rem nothing changes. */

@@ -1,5 +1,5 @@
 // Sidebar drawer (phones, < 768px). From 768px up the sidebar is a persistent rail and none of this runs.
-// Nothing else on the site needs JavaScript except search.
+// Nothing else on the site needs JavaScript except search, and the world-now band (world.js), which reads the live game.
 (() => {
   const openBtn = document.getElementById('nav-open-button');
   const closeBtn = document.getElementById('nav-close-button');
