@@ -1,5 +1,5 @@
-// The world now: a band under the header with the live game's state (the age and its day, players and houses,
-// wars under way and how many began today, the leading state, the latest world news). Read from the game's public
+// The world now: a small banner on Getting Started (any page with #world-now) with the live game's state: the age
+// and its day, players, wars under way, and the latest world news. Read from the game's public
 // API (api.realmstate.net; the local game when the wiki is served locally), kept for a minute so moving between
 // pages doesn't ask again. If the game can't be reached, the band stays hidden and nothing else changes.
 (() => {
@@ -53,20 +53,21 @@
   function draw({ age, houses, wars, news, more = {} }) {
     names = { ...Object.fromEntries((age.standings || []).map((s) => [`${s.state.realm}:${s.state.state}`, s.name])), ...more };
     const parts = [];
-    if (!age.started) parts.push(`<b>${esc(age.name)}</b> hasn't begun yet`);
+    if (!age.started) parts.push(`<b>${esc(age.name)}</b> hasn't begun`);
     else if (age.ended) parts.push(`<b>${esc(age.name)}</b> has ended`);
     else {
       const day = Math.floor((age.ticks * age.tick_ms) / DAY) + 1, days = Math.ceil((age.age_ticks * age.tick_ms) / DAY);
       parts.push(`<b>${esc(age.name)}</b>, day ${fmt(day)} of ${fmt(days)}`);
     }
-    parts.push(`${fmt(age.people)} player${age.people === 1 ? '' : 's'}, ${fmt(houses)} houses`);
-    const all = wars.wars || [], today = all.filter((w) => w.started_tick >= (wars.ticks ?? age.ticks) - DAY / age.tick_ms).length;
-    parts.push(`${fmt(all.length)} war${all.length === 1 ? '' : 's'}${today ? ` (${fmt(today)} new today)` : ''}`);
-    const lead = (age.standings || [])[0];
-    if (lead && age.started) parts.push(`Leading: ${esc(lead.name || `State ${lead.state.realm}:${lead.state.state}`)}`);
-    const latest = (news || []).map(line).find(Boolean);
-    if (latest) parts.push(`<span class="world-now__latest">Latest: ${latest}</span>`);
+    parts.push(`${fmt(age.people)} player${age.people === 1 ? '' : 's'}`);
+    const all = wars.wars || [];
+    parts.push(`${fmt(all.length)} war${all.length === 1 ? '' : 's'}`);
     band.querySelector('.world-now__parts').innerHTML = parts.map((p) => `<span>${p}</span>`).join('');
+    const latest = (news || []).map(line).find(Boolean);
+    const el = band.querySelector('.world-now__latest');
+    el.innerHTML = latest ? `Latest: ${latest}` : '';
+    el.title = el.textContent;
+    el.hidden = !latest;
     band.hidden = false;
   }
 
