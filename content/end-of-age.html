@@ -1,7 +1,7 @@
 <!--
 title: The End of an Age
 category: Mechanics
-updated: 2026-10-06
+updated: 2026-10-14
 -->
 <p>An age lasts {{age_ticks}} ticks, about {{age_weeks}} weeks. On its last tick the age ends (staff can also end it sooner, in the same way): every state is scored, one state wins, and each house keeps a few of its generals and academics as <b>heirs</b> for the next age.</p>
 <p><b>Attacks close {{attacks_close_ticks}} ticks before the end.</b> The land an attack takes leaves the target at once but reaches the attacker only when the army returns. A hit in the closing hours would destroy land that never counts for anyone, so in the last {{attacks_close_ticks}} ticks no attack of any kind can be sent. Everything else, including rites and operations, carries on.</p>
@@ -41,10 +41,18 @@ updated: 2026-10-06
 <h2 id="Heirs">Heirs</h2>
 <p>Before the age ends, mark the generals and academics you want to keep, in order of preference. You can change your choice any time until the last tick.</p>
 <ul>
-  <li><b>How many:</b> heir slots come from your renown ({{heir_slot_list}}). Houses of the winning state get {{heir_winner_slots}} more at the end. You may mark that many extra now, as spares: they're kept only if your state wins.</li>
+  <li><b>How many:</b> heir slots come from your <a href="military.html#Renown">renown</a> (table below). Houses of the winning state get {{heir_winner_slots}} more at the end. You may mark that many extra now, as spares: they're kept only if your state wins.</li>
   <li><b>Which:</b> the first ones you marked, as many as you have slots for, if they're still yours.</li>
   <li><b>What travels:</b> each heir leaves with a sealed chronicle of its whole service record and waits in your account, not in the world.</li>
 </ul>
+<div class="table-scroll" data-updated="none"><table>
+<tr><th>Your renown at the end</th><th class="cell-num">Heir slots</th></tr>
+<tr><td>under {{heir_renown_1}}</td><td class="cell-num">0</td></tr>
+<tr><td>{{heir_renown_1}} or more</td><td class="cell-num">1</td></tr>
+<tr><td>{{heir_renown_2}} or more</td><td class="cell-num">2</td></tr>
+<tr><td>{{heir_renown_3}} or more</td><td class="cell-num">3</td></tr>
+<tr><td>your state wins the age</td><td class="cell-num">+{{heir_winner_slots}}</td></tr>
+</table></div>
 <p>Marked heirs can't be <a href="spying.html#Courting">courted</a>.</p>
 
 <h2 id="Record">Your record</h2>

@@ -1710,6 +1710,10 @@ def generate(rules):
         values["score_war_point_pts"] = f'{p["score_per_war_point"] / 100:g}'
         values["might_unit_factor"] = f'{p["might_unit_pct"] / 100:g}'
     values["heir_slot_list"] = ", ".join(f'{n} at {r:,} renown' for n, r in enumerate(p.get("heir_slots_renown", []), 1))
+    # One per rung, for End of the Age's table: heir_renown_1 is the renown for the first slot, and so on. That table
+    # has 3 rungs; a ruleset with fewer leaves a {{name}} unknown, which fails --check.
+    for n, r in enumerate(p.get("heir_slots_renown", []), 1):
+        values[f"heir_renown_{n}"] = f"{r:,}"
     for mat in latest.get("materials", []):
         if mat["key"]["identity"] == "bauxite":
             # Worked example for trade.html: one bauxite state with an equal share and a full roster.

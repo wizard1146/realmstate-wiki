@@ -1,5 +1,5 @@
 {
- "commit": "e8c0cb2",
- "date": "2026-10-13T16:41:52+11:00",
- "subject": "State news includes robot statemates: a robot's news of the state-news kinds is stored when a person plays in its state (the rest of robots' news still isn't)"
+ "commit": "8996924",
+ "date": "2026-10-14T23:10:43+11:00",
+ "subject": "Tests for the generals limit: a house at 5 can't raise, offer, bid or recall a heir; a sale or auction to a buyer that filled up since fails (gold back); no general rises from the ranks past it"
 }
