@@ -1,5 +1,30 @@
 [
 [
+"2026-10-13T16:41:52+11:00",
+"e8c0cb2",
+"State news includes robot statemates: a robot's news of the state-news kinds is stored when a person plays in its state (the rest of robots' news still isn't)"
+],
+[
+"2026-10-13T15:25:50+11:00",
+"c17713d",
+"State news: GET /state/news shows statemates' battles, intrigue, hexes and dragon raids; hardships (starving, desertion, a general killed) only from houses that share them (share_losses command, off by default)"
+],
+[
+"2026-10-13T10:10:21+11:00",
+"92dd718",
+"Signing out of a connected site signs out of the game's site too: /auth/signout"
+],
+[
+"2026-10-12T23:25:56+11:00",
+"6c54d65",
+"REALM_PLAY_URL: the front page's Play button goes to a player front end"
+],
+[
+"2026-10-12T23:07:10+11:00",
+"c6cd7ce",
+"An empty REALM_START_AT or Google setting counts as unset"
+],
+[
 "2026-10-12T22:39:27+11:00",
 "c3fd2fc",
 "Armies out at once: 2, and 1 for each general; robots back a person to lead their state"

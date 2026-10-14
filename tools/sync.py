@@ -562,7 +562,7 @@ def race_rules(d, params):
     signed = lambda n: f"+{n}" if n > 0 else str(n)
     o = r.get("overrides", {})
     if "mercenary_ratio" in o:
-        add("override:mercenary_ratio", "good" if o["mercenary_ratio"] < p.get("mercenary_ratio", 0) else "bad", f'One <a href="military.html#Mercenaries">mercenary</a> for every {o["mercenary_ratio"]} of your own troops sent.')
+        add("override:mercenary_ratio", "good" if o["mercenary_ratio"] < p.get("mercenary_ratio", 0) else "bad", f'One <a href="attacks.html#Mercenaries">mercenary</a> for every {o["mercenary_ratio"]} of your own troops sent.')
     if "upgrade_cross_point" in o:
         add("override:upgrade_cross_point", "good" if o["upgrade_cross_point"] > p.get("upgrade_cross_point", 0) else "bad", f'Upgraded units gain {o["upgrade_cross_point"]} in their other stat.')
     for b in r.get("unit_bonuses", []):
@@ -734,6 +734,19 @@ UNIT_SHORT = {"soldier": "Soldiers", "offense": "Offense spec.", "defense": "Def
               "offense+": "Offense spec.+", "defense+": "Defense spec.+", "elite+": "Elite+"}
 LORE = CONTENT / "_lore.json"   # hand-written: {"troll": ["paragraph", ...]}; WY's lore for each race page
 RACE_ART = CONTENT / "_race-art.json"   # hand-written: {"troll": {"file", "alt"}}; files in site/assets/races/
+ATTACKING = CONTENT / "_attacking.html"   # hand-written: the top of the Attacks page (the battle, armies, mercenaries)
+
+
+def attacking_prose():
+    """content/_attacking.html, without its leading comment, for the top of the generated Attacks page."""
+    if not ATTACKING.exists():
+        return ""
+    text = ATTACKING.read_text(encoding="utf-8")
+    if text.startswith("<!--"):
+        text = text[text.index("-->") + 3:].lstrip("\n")
+    return text + "\n"
+
+
 AGE_DATES = CONTENT / "_age-dates.json"   # hand-edited: {"2": {"from": "2026-10-01", "to": "2026-12-31"}}; the game has no dates
 
 
@@ -1313,8 +1326,9 @@ def generate(rules):
                         + "".join(f'<th class="cell-num">{pct(x)}%</th>' for x, _ in sg)
                         + '</tr>\n<tr><td>Share of the usual gains</td>' + "".join(f'<td class="cell-num">{pct(y)}%</td>' for _, y in sg) + "</tr>\n</table></div>\n")
     if attack_rows:
-        pages["attacks.html"] = header("Attacks", "Rules") + (
-            '<p>Every <a href="military.html#Attacking">attack</a> is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. '
+        pages["attacks.html"] = header("Attacks", "Rules") + attacking_prose() + (
+            '<h2 id="Kinds">Kinds of attack</h2>\n'
+            '<p>Every attack is one of these kinds. They all fight the same battle; they differ in what a win takes and what they need. '
             "The first is the default. Every attack is between states except Raze, which clears idle houses out of your own state.</p>\n"
             '<div class="table-scroll" data-updated="none"><table>\n<tr><th>Attack</th><th>A win</th><th>Needs</th>'
             '<th class="cell-num"><a href="war.html#Meter">Meter</a></th><th class="cell-num">At war</th></tr>\n'

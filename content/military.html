@@ -1,7 +1,7 @@
 <!--
 title: Military
 category: Mechanics
-updated: 2026-10-06
+updated: 2026-10-14
 -->
 <p>Every house has soldiers, drafted from its peasants. Every race also has an offense specialist, a defense specialist, an elite and a thief, plus upgraded offense+, defense+ and elite+ units. Unit slots run in that order: soldiers, offense, defense, elite, thief, then the three upgrades. Each race's units and their numbers are on its <a href="races.html">race page</a>.</p>
 
@@ -77,29 +77,14 @@ updated: 2026-10-06
 </ul>
 
 <h2 id="Attacking">Attacking</h2>
-<p>You choose how many troops of each unit slot to send, and the <a href="attacks.html">kind of attack</a>: an Assault for land (the default), or Breach, Reclaim, Torch, Sack, Massacre or Blockade; within your own state, only Raze, for clearing out idle houses. Every kind fights the same battle; they differ in what a win takes and what they need. The battle resolves at once.</p>
-<p id="Armies"><b>Armies out at once.</b> Each attack sends an army, and it counts until it comes home. You may have {{armies_base}} armies out at once, and {{armies_per_general}} more for each <a href="generals.html">general</a> you have. With all out, an attack is refused and tells you when the first is back. A second strike joins the army already out.</p>
-<p id="Mercenaries"><b>Mercenaries.</b> You can hire {{mercenary_name}} for an attack: {{mercenary_gold}} gold each (times your <a href="effects.html#mercenary_cost">mercenary cost</a> modifier), at most one for every {{mercenary_ratio}} of your own troops sent. They fight at {{mercenary_off}} offense, die like the rest, and the survivors leave after the battle instead of coming home. Some races differ: the <a href="race-unlithian.html">Unlithians</a> may hire more per troop sent, may hire them upgraded (<code>upgraded_mercenaries</code> in the attack, for the upgrade material), and keep some survivors as offensive specialists; see each <a href="races.html">race's page</a>.</p>
-<ol>
-  <li><b>Offense</b> = the offense of every unit sent (elites times your <a href="effects.html#elite_offense">elite offense</a> modifier), times your <a href="effects.html#offense">offense</a> modifier, times battle luck (up to &plusmn;{{luck_pct}}%). A <a href="generals.html">general</a> leading the army adds its traits.</li>
-  <li><b>Defense</b> = the defense of every unit the target has at home (elites times their <a href="effects.html#elite_defense">elite defense</a> modifier), times their <a href="effects.html#defense">defense</a> modifier, plus 1 point per acre they own. Their defending general adds its traits.</li>
-  <li>If offense is higher, you win. An assault takes {{land_gain_pct}}% of their land; other kinds take what the <a href="attacks.html">Attacks</a> table says. They lose it at once; you receive it when your army returns. You take more from a state that is Unfriendly or Hostile toward yours, and more still from one you're <a href="war.html">at war</a> with.</li>
-  <li>Win or lose, {{attacker_loss_pct}}% of the troops you sent die, less what your <a href="#Medics">medics</a> save. Every attack costs you at least {{attacker_min_losses}} troop(s), however small.</li>
-  <li>Up to {{defender_loss_pct}}% of the target's troops at home die, less what their medics save. That full share dies when your offense at least matches their defense. A weaker attack kills in proportion: at half their defense, half as many die. A token army kills almost nobody.</li>
-  <li>An attack with less than {{weak_attack_pct}}% of the target's defense is <b>weak</b>. It is fought as usual, but it counts for nothing else: it adds nothing to the <a href="war.html#Meter">hostility meter</a>, doesn't count toward declaring war, can't put you among a mirroring race's attackers or afflict the target, and leaves no mark on their main general's record.</li>
-  <li>An assault, breach or reclaim that wins earns <a href="#Renown">renown</a>.</li>
-  <li>Sacked goods travel home with the army and arrive when it does.</li>
-  <li>A house hit often lately loses less to each new hit, in land and in troops (see <a href="attacks.html#protection">protection from repeated hits</a>).</li>
-  <li>Your army comes home {{attack_return_ticks}} ticks later, times your <a href="effects.html#return_time">return time</a> modifier.</li>
-</ol>
-<p>Troops that are away don't defend your house.</p>
-<p>You can't attack houses in your own state (except to <a href="attacks.html#raze">raze</a> an idle one), across a ceasefire, or while either house is under <a href="getting-started.html#Protection">protection</a>. No attack of any kind can be sent in the last {{attacks_close_ticks}} ticks of the age (see <a href="end-of-age.html">End of the Age</a>). Every attack raises the target state's <a href="war.html#Meter">hostility meter</a> toward yours.</p>
+<p>How a battle is fought, how many armies you may have out, mercenaries and what you learn are on <a href="attacks.html">Attacks</a>, with every kind of attack.</p>
+<p>Thieves don't fight. They are used for <a href="spying.html">spying</a>.</p>
 
 <h2 id="Renown">Renown</h2>
 <p>Renown is public, like land. A successful attack earns up to {{renown_per_win}} renown, scaled by how close the fight was: defense &divide; offense. Beating a well-defended house earns the most; crushing a defenceless one earns little. Renown is also scaled down against a much smaller house, by the <a href="attacks.html#size">target size</a> curve. Attacks on a state you are <a href="war.html">at war</a> with earn {{war_renown_pct}}% more.</p>
 <p>Renown is never spent. Where it comes from:</p>
 <ul>
-  <li><b>Attacks:</b> a winning assault, breach or reclaim (above). Other kinds of attack earn none.</li>
+  <li><b><a href="attacks.html">Attacks</a>:</b> a winning assault, breach or reclaim. Other kinds of attack earn none.</li>
   <li><b>Wars:</b> winning a war gives every house in the state {{war_win_renown}}; a peace gives both sides {{war_peace_renown}}; the loser gets none.</li>
   <li><b><a href="colloquium.html">Colloquium</a>:</b> {{renown_per_thousand_books}} for every 1,000 books you give to a project.</li>
   <li><b><a href="buildings.html#ancestral_hall">Ancestral Hall</a>:</b> renown every tick.</li>
@@ -111,7 +96,3 @@ updated: 2026-10-06
   <li><a href="end-of-age.html#Heirs">Heir slots</a> at the end of the age ({{heir_slot_list}}).</li>
   <li>Rankings: houses are ranked by renown at the end of the age. It doesn't count toward the state's score.</li>
 </ul>
-
-<h2 id="What_You_Learn">What you learn</h2>
-<p>You see your own offense, whether you won, the land taken and the losses on both sides, but never the defender's defense. The defender's news tells them who attacked and what they lost. To size up a target first, <a href="spying.html">spy</a> on it.</p>
-<p>Thieves don't fight. They are used for <a href="spying.html">spying</a>.</p>
