@@ -863,7 +863,7 @@
         }
       ],
       "changes_from_previous": null,
-      "hash": "f804b8cf797c3393",
+      "hash": "fcdb169478f50b21",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -2466,6 +2466,7 @@
         "starvation_specialists_bp": 200,
         "state_rename_ticks": 24,
         "states_per_realm": 7,
+        "targets_window_ticks": 36,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
@@ -5156,7 +5157,7 @@
           "to": "explorer@v1"
         }
       ],
-      "hash": "ecc67678fcc84a24",
+      "hash": "c4afc7fd9fab0bf5",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -6759,6 +6760,7 @@
         "starvation_specialists_bp": 200,
         "state_rename_ticks": 24,
         "states_per_realm": 7,
+        "targets_window_ticks": 36,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,
@@ -9749,7 +9751,7 @@
           "to": "mills@v2"
         }
       ],
-      "hash": "96598003922cb1c5",
+      "hash": "077e36426301f568",
       "materials": [
         {
           "description": "Prestige. Uses to be decided.",
@@ -11556,6 +11558,7 @@
         "starvation_specialists_bp": 200,
         "state_rename_ticks": 24,
         "states_per_realm": 7,
+        "targets_window_ticks": 36,
         "tax_default_bp": 200,
         "tax_max_bp": 1000,
         "tax_min_bp": 0,

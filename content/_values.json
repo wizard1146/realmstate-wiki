@@ -280,6 +280,7 @@
   "starvation_specialists_pct": "2",
   "state_rename_ticks": 24,
   "states_per_realm": 7,
+  "targets_window_ticks": 36,
   "tax_default_pct": "2",
   "tax_max_pct": "10",
   "tax_min_pct": "0",
